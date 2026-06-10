@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWITCH BATTLE – Äquivalenzumformung</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #0c0c10;
+  --surface: #14141c;
+  --card: #1a1a26;
+  --border: #252535;
+  --team-a: #c084fc;   /* violet */
+  --team-b: #34d399;   /* emerald */
+  --a-glow: rgba(192,132,252,0.25);
+  --b-glow: rgba(52,211,153,0.25);
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --easy-c: #60a5fa;
+  --mid-c: #fbbf24;
+  --hard-c: #f87171;
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Barlow Condensed', sans-serif;
+  --body: 'Rajdhani', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;overflow-x:hidden;}
+
+/* ── SCREENS ── */
+.screen{display:none;min-height:100vh;}
+.screen.active{display:flex;flex-direction:column;}
+
+/* ══════════════════════════════
+   SETUP SCREEN
+══════════════════════════════ */
+#setup{
+  align-items:center;justify-content:center;padding:2rem 1rem;gap:1.5rem;
+  background:radial-gradient(ellipse 60% 50% at 25% 50%, rgba(192,132,252,0.07),transparent),
+             radial-gradient(ellipse 60% 50% at 75% 50%, rgba(52,211,153,0.07),transparent);
+}
+.title-block{text-align:center;}
+.game-title{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2.8rem,8vw,5.5rem);
+  letter-spacing:0.12em;line-height:1;
+}
+.game-title .sw{color:var(--team-a);text-shadow:0 0 40px var(--a-glow);}
+.game-title .bt{color:var(--team-b);text-shadow:0 0 40px var(--b-glow);}
+.game-sub{font-family:var(--mono);font-size:0.78rem;color:var(--muted);letter-spacing:0.18em;margin-top:0.4rem;}
+
+.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%;max-width:640px;}
+.setup-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;
+}
+.setup-card.team-a{border-top:3px solid var(--team-a);}
+.setup-card.team-b{border-top:3px solid var(--team-b);}
+.setup-card h3{
+  font-family:var(--display);font-weight:700;font-size:1rem;
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;
+}
+.setup-card.team-a h3{color:var(--team-a);}
+.setup-card.team-b h3{color:var(--team-b);}
+.name-row{margin-bottom:0.6rem;}
+.name-row label{font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;display:block;margin-bottom:0.25rem;}
+.name-row input{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  color:var(--text);font-family:var(--display);font-weight:700;font-size:1.1rem;
+  padding:0.4rem 0.6rem;width:100%;outline:none;transition:border-color .2s;
+}
+.setup-card.team-a .name-row input:focus{border-color:var(--team-a);}
+.setup-card.team-b .name-row input:focus{border-color:var(--team-b);}
+.tisch-label{
+  font-family:var(--mono);font-size:0.68rem;color:var(--muted);
+  background:var(--bg);border:1px solid var(--border);border-radius:3px;
+  padding:0.2rem 0.5rem;display:inline-block;margin-top:0.3rem;letter-spacing:0.08em;
+}
+
+.settings-row{
+  display:flex;gap:1rem;width:100%;max-width:640px;flex-wrap:wrap;
+}
+.setting-block{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:0.9rem 1.2rem;flex:1;min-width:150px;
+}
+.setting-block label{font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;display:block;margin-bottom:0.5rem;}
+.setting-block select{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  color:var(--text);font-family:var(--display);font-weight:700;font-size:1rem;
+  padding:0.35rem 0.6rem;width:100%;outline:none;cursor:pointer;
+}
+
+.rules-box{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:1rem 1.4rem;width:100%;max-width:640px;
+}
+.rules-box h4{font-family:var(--display);font-weight:700;font-size:0.9rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;margin-bottom:0.6rem;}
+.rules-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.rules-list li{font-family:var(--mono);font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.rules-list li span.hl{color:var(--text);}
+.rules-list li .easy-tag{color:var(--easy-c);}
+.rules-list li .mid-tag{color:var(--mid-c);}
+.rules-list li .hard-tag{color:var(--hard-c);}
+
+.start-btn{
+  font-family:var(--display);font-weight:900;font-size:1.6rem;
+  letter-spacing:0.15em;padding:0.9rem 3.5rem;border:none;border-radius:6px;
+  cursor:pointer;background:linear-gradient(135deg,var(--team-a),var(--team-b));
+  color:#0c0c10;text-transform:uppercase;transition:all .2s;
+  box-shadow:0 4px 30px rgba(192,132,252,0.2);
+}
+.start-btn:hover{transform:translateY(-2px);filter:brightness(1.1);}
+
+/* ══════════════════════════════
+   GAME SCREEN  (TISCH-VIEW)
+══════════════════════════════ */
+#game{background:var(--bg);padding:0;}
+
+/* TOP BAR */
+.topbar{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:0.5rem 1rem;
+  background:var(--surface);border-bottom:1px solid var(--border);gap:0.5rem;
+}
+.tb-team{display:flex;align-items:center;gap:0.6rem;}
+.tb-team.right{flex-direction:row-reverse;}
+.tb-score{
+  font-family:var(--display);font-weight:900;font-size:2.2rem;line-height:1;min-width:2ch;text-align:center;
+}
+.tb-team.left .tb-score{color:var(--team-a);text-shadow:0 0 12px var(--a-glow);}
+.tb-team.right .tb-score{color:var(--team-b);text-shadow:0 0 12px var(--b-glow);}
+.tb-info{line-height:1.2;}
+.tb-name{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:0.06em;}
+.tb-team.left .tb-name{color:var(--team-a);}
+.tb-team.right .tb-name{color:var(--team-b);}
+.tb-rounds{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+
+/* CENTER HUD */
+.center-hud{text-align:center;}
+.hud-label{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;}
+.big-timer{
+  font-family:var(--display);font-weight:900;font-size:3rem;line-height:1;
+  transition:color .3s;
+}
+.big-timer.safe{color:var(--text);}
+.big-timer.warn{color:var(--warn);}
+.big-timer.danger{color:var(--danger);animation:throb .4s ease infinite alternate;}
+@keyframes throb{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hud-sub{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;margin-top:0.1rem;}
+
+/* SWITCH BANNER */
+.switch-banner{
+  display:none;position:fixed;inset:0;
+  background:rgba(10,10,16,0.95);
+  z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:1rem;
+}
+.switch-banner.show{display:flex;}
+.switch-icon{font-size:4rem;animation:spin .6s ease;}
+@keyframes spin{from{transform:rotate(-20deg) scale(0.7)}to{transform:rotate(0deg) scale(1)}}
+.switch-title{
+  font-family:var(--display);font-weight:900;font-size:clamp(2rem,6vw,4rem);
+  letter-spacing:0.1em;color:var(--warn);text-shadow:0 0 30px rgba(251,191,36,0.4);
+}
+.switch-sub{font-family:var(--mono);font-size:0.85rem;color:var(--muted);letter-spacing:0.12em;text-align:center;line-height:1.8;}
+.switch-countdown{
+  font-family:var(--display);font-weight:900;font-size:5rem;color:var(--text);line-height:1;
+}
+.resume-btn{
+  font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:0.12em;
+  padding:0.7rem 2.5rem;border:2px solid var(--warn);border-radius:4px;
+  background:transparent;color:var(--warn);cursor:pointer;transition:all .2s;text-transform:uppercase;
+}
+.resume-btn:hover{background:rgba(251,191,36,0.12);}
+
+/* TISCH PANELS */
+.tisch-area{
+  flex:1;display:grid;grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.tisch-panel{
+  padding:1rem;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:0.8rem;
+  position:relative;overflow:hidden;
+}
+.tisch-panel:last-child{border-right:none;}
+.tisch-panel.team-a-panel::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--team-a);
+}
+.tisch-panel.team-b-panel::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--team-b);
+}
+
+.tisch-header{
+  display:flex;align-items:center;justify-content:space-between;padding-top:0.3rem;
+}
+.tisch-title{
+  font-family:var(--display);font-weight:700;font-size:0.9rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+}
+.tisch-panel.team-a-panel .tisch-title{color:var(--team-a);}
+.tisch-panel.team-b-panel .tisch-title{color:var(--team-b);}
+.current-player{
+  font-family:var(--mono);font-size:0.7rem;color:var(--muted);
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:3px;padding:0.15rem 0.5rem;letter-spacing:0.08em;
+}
+
+/* STACKS */
+.stacks{display:flex;flex-direction:column;gap:0.5rem;}
+.stack-row{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:0.7rem 0.9rem;cursor:pointer;transition:all .15s;
+  display:flex;align-items:flex-start;gap:0.8rem;
+  position:relative;overflow:hidden;
+}
+.stack-row:hover{transform:translateX(3px);}
+.stack-row.easy:hover,.stack-row.easy.active-q{border-color:var(--easy-c);background:rgba(96,165,250,0.06);}
+.stack-row.mid:hover,.stack-row.mid.active-q{border-color:var(--mid-c);background:rgba(251,191,36,0.06);}
+.stack-row.hard:hover,.stack-row.hard.active-q{border-color:var(--hard-c);background:rgba(248,113,113,0.06);}
+
+.stack-badge{
+  font-family:var(--display);font-weight:700;font-size:0.75rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.2rem 0.5rem;border-radius:3px;white-space:nowrap;flex-shrink:0;
+}
+.stack-row.easy .stack-badge{background:rgba(96,165,250,0.15);color:var(--easy-c);}
+.stack-row.mid .stack-badge{background:rgba(251,191,36,0.15);color:var(--mid-c);}
+.stack-row.hard .stack-badge{background:rgba(248,113,113,0.15);color:var(--hard-c);}
+
+.stack-pts{
+  font-family:var(--mono);font-size:0.68rem;color:var(--muted);margin-top:0.15rem;
+  white-space:nowrap;
+}
+.stack-q{
+  font-family:var(--mono);font-size:0.9rem;color:var(--text);
+  flex:1;line-height:1.4;
+}
+.stack-q.hidden-q{color:var(--muted);font-style:italic;font-size:0.78rem;}
+
+.stack-count{
+  font-family:var(--display);font-weight:700;font-size:1.5rem;
+  color:var(--muted);align-self:center;
+}
+
+/* ACTIVE TASK AREA */
+.active-task{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:0.8rem;display:none;flex-direction:column;gap:0.6rem;
+}
+.active-task.show{display:flex;}
+.at-header{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.at-label{font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
+.at-diff{font-family:var(--display);font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;}
+.at-diff.easy{color:var(--easy-c);}
+.at-diff.mid{color:var(--mid-c);}
+.at-diff.hard{color:var(--hard-c);}
+.at-eq{
+  font-family:var(--mono);font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--warn);text-align:center;padding:0.5rem;
+  background:rgba(0,0,0,0.3);border-radius:4px;letter-spacing:0.04em;
+}
+.at-note{
+  font-family:var(--mono);font-size:0.72rem;color:var(--muted);
+  background:rgba(0,0,0,0.2);border-radius:4px;padding:0.5rem;
+  min-height:2.5rem;border:1px dashed var(--border);
+  white-space:pre-wrap;cursor:text;outline:none;
+}
+.at-note:focus{border-color:var(--muted);}
+.at-btns{display:flex;gap:0.5rem;}
+.at-btn{
+  flex:1;padding:0.5rem;border:none;border-radius:4px;
+  font-family:var(--display);font-weight:700;font-size:0.85rem;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all .15s;
+}
+.at-btn.solve{background:rgba(34,197,94,0.2);color:#22c55e;border:1px solid rgba(34,197,94,0.3);}
+.at-btn.solve:hover{background:rgba(34,197,94,0.3);}
+.at-btn.discard{background:rgba(100,116,139,0.15);color:var(--muted);border:1px solid var(--border);}
+.at-btn.discard:hover{background:rgba(100,116,139,0.25);}
+
+/* ROUND END OVERLAY */
+.round-end-overlay{
+  display:none;position:fixed;inset:0;background:rgba(10,10,16,0.97);
+  z-index:600;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;
+  padding:1.5rem;
+}
+.round-end-overlay.show{display:flex;}
+.re-title{
+  font-family:var(--display);font-weight:900;font-size:clamp(1.8rem,5vw,3.5rem);
+  letter-spacing:0.12em;color:var(--warn);text-align:center;
+}
+.re-sub{font-family:var(--mono);font-size:0.82rem;color:var(--muted);letter-spacing:0.12em;text-align:center;line-height:1.8;}
+.re-scores{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.re-score-card{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:1rem 1.5rem;text-align:center;min-width:130px;
+}
+.re-score-card.a{border-top:3px solid var(--team-a);}
+.re-score-card.b{border-top:3px solid var(--team-b);}
+.re-sc-name{font-family:var(--display);font-weight:700;font-size:0.95rem;letter-spacing:0.08em;margin-bottom:0.2rem;}
+.re-score-card.a .re-sc-name{color:var(--team-a);}
+.re-score-card.b .re-sc-name{color:var(--team-b);}
+.re-sc-num{font-family:var(--display);font-weight:900;font-size:2.8rem;line-height:1;}
+.re-score-card.a .re-sc-num{color:var(--team-a);}
+.re-score-card.b .re-sc-num{color:var(--team-b);}
+.re-sc-detail{font-family:var(--mono);font-size:0.68rem;color:var(--muted);margin-top:0.3rem;line-height:1.6;}
+
+.re-next-btn{
+  font-family:var(--display);font-weight:900;font-size:1.4rem;
+  letter-spacing:0.15em;padding:0.8rem 3rem;border:none;border-radius:6px;
+  cursor:pointer;background:linear-gradient(135deg,var(--team-a),var(--team-b));
+  color:#0c0c10;text-transform:uppercase;transition:all .2s;
+}
+.re-next-btn:hover{transform:translateY(-2px);filter:brightness(1.1);}
+
+/* EVAL SCREEN */
+#eval{
+  align-items:center;justify-content:flex-start;padding:1.5rem 1rem;gap:1rem;
+  background:radial-gradient(ellipse 60% 40% at 50% 10%, rgba(192,132,252,0.06),transparent);
+  overflow-y:auto;
+}
+.eval-title{
+  font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,4vw,3rem);
+  letter-spacing:0.12em;text-align:center;color:var(--text);
+}
+.eval-sub{font-family:var(--mono);font-size:0.78rem;color:var(--muted);letter-spacing:0.12em;text-align:center;}
+
+.eval-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%;max-width:860px;
+}
+.eval-col-header{
+  font-family:var(--display);font-weight:700;font-size:1rem;
+  letter-spacing:0.12em;text-transform:uppercase;text-align:center;
+  padding:0.5rem;border-radius:4px;
+}
+.eval-col-header.a{color:var(--team-a);background:rgba(192,132,252,0.1);}
+.eval-col-header.b{color:var(--team-b);background:rgba(52,211,153,0.1);}
+
+.eval-task-row{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:0.8rem;display:flex;flex-direction:column;gap:0.5rem;
+}
+.etr-eq{font-family:var(--mono);font-size:0.82rem;color:var(--warn);line-height:1.3;}
+.etr-answer{font-family:var(--mono);font-size:0.75rem;color:var(--muted);}
+.etr-answer strong{color:var(--green,#22c55e);}
+.etr-diff{font-family:var(--display);font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;}
+.etr-diff.easy{color:var(--easy-c);}
+.etr-diff.mid{color:var(--mid-c);}
+.etr-diff.hard{color:var(--hard-c);}
+.etr-pts{font-family:var(--mono);font-size:0.7rem;color:var(--muted);}
+.etr-check-row{display:flex;gap:0.4rem;align-items:center;}
+.etr-check-btn{
+  padding:0.3rem 0.7rem;border:1px solid;border-radius:3px;
+  font-family:var(--display);font-weight:700;font-size:0.78rem;letter-spacing:0.08em;
+  cursor:pointer;background:transparent;transition:all .15s;text-transform:uppercase;
+}
+.etr-check-btn.correct{color:#22c55e;border-color:#22c55e;}
+.etr-check-btn.correct.sel, .etr-check-btn.correct:hover{background:rgba(34,197,94,0.15);}
+.etr-check-btn.wrong{color:var(--danger);border-color:var(--danger);}
+.etr-check-btn.wrong.sel, .etr-check-btn.wrong:hover{background:rgba(248,113,113,0.12);}
+.etr-pts-live{
+  font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:0.08em;margin-left:auto;
+}
+
+.eval-total-row{
+  grid-column:1/-1;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  padding-top:0.5rem;border-top:1px solid var(--border);
+}
+.eval-total-card{
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:0.9rem 1.5rem;text-align:center;min-width:140px;
+}
+.eval-total-card.a{border-top:3px solid var(--team-a);}
+.eval-total-card.b{border-top:3px solid var(--team-b);}
+.etc-name{font-family:var(--display);font-weight:700;font-size:0.9rem;letter-spacing:0.08em;margin-bottom:0.2rem;}
+.eval-total-card.a .etc-name{color:var(--team-a);}
+.eval-total-card.b .etc-name{color:var(--team-b);}
+.etc-pts{font-family:var(--display);font-weight:900;font-size:2.5rem;line-height:1;}
+.eval-total-card.a .etc-pts{color:var(--team-a);}
+.eval-total-card.b .etc-pts{color:var(--team-b);}
+
+.winner-declare{
+  grid-column:1/-1;text-align:center;padding:1rem;
+  font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,4vw,2.5rem);
+  letter-spacing:0.12em;
+}
+
+.new-game-btn{
+  font-family:var(--display);font-weight:900;font-size:1.2rem;
+  letter-spacing:0.15em;padding:0.8rem 2.5rem;border:none;border-radius:6px;
+  cursor:pointer;background:linear-gradient(135deg,var(--team-a),var(--team-b));
+  color:#0c0c10;text-transform:uppercase;transition:all .2s;
+}
+.new-game-btn:hover{transform:translateY(-2px);}
+
+/* PROGRESS BAR */
+.game-progress{height:3px;background:var(--border);}
+.game-progress-fill{height:100%;background:linear-gradient(90deg,var(--team-a),var(--team-b));transition:width .5s linear;}
+
+/* PULSE ANIMATION FOR SCORE CHANGE */
+@keyframes scorePop{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}
+.score-pop{animation:scorePop .35s ease;}
+
+@media(max-width:580px){
+  .tisch-area{grid-template-columns:1fr;}
+  .tisch-panel{border-right:none;border-bottom:1px solid var(--border);}
+  .topbar{grid-template-columns:1fr;gap:0.3rem;}
+  .eval-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ SETUP SCREEN ══ -->
+<div id="setup" class="screen active">
+  <div class="title-block">
+    <div class="game-title"><span class="sw">SWITCH</span> <span class="bt">BATTLE</span></div>
+    <div class="game-sub">Äquivalenzumformung · 2 Teams · 2 Tische · Partnerwechsel</div>
+  </div>
+
+  <div class="setup-grid">
+    <div class="setup-card team-a">
+      <h3>Team A – Violett</h3>
+      <div class="name-row">
+        <label>Spieler A1 (Tisch 1)</label>
+        <input type="text" id="a1" value="Anna" maxlength="12">
+      </div>
+      <div class="name-row">
+        <label>Spieler A2 (Tisch 2)</label>
+        <input type="text" id="a2" value="Alex" maxlength="12">
+      </div>
+      <div class="tisch-label">A1 ↔ A2 wechseln zwischen Tisch 1 &amp; 2</div>
+    </div>
+    <div class="setup-card team-b">
+      <h3>Team B – Grün</h3>
+      <div class="name-row">
+        <label>Spieler B1 (Tisch 1)</label>
+        <input type="text" id="b1" value="Ben" maxlength="12">
+      </div>
+      <div class="name-row">
+        <label>Spieler B2 (Tisch 2)</label>
+        <input type="text" id="b2" value="Bea" maxlength="12">
+      </div>
+      <div class="tisch-label">B1 ↔ B2 wechseln zwischen Tisch 1 &amp; 2</div>
+    </div>
+  </div>
+
+  <div class="settings-row">
+    <div class="setting-block">
+      <label>Wechsel-Intervall</label>
+      <select id="interval-sel">
+        <option value="15">15 Sekunden</option>
+        <option value="20" selected>20 Sekunden</option>
+        <option value="25">25 Sekunden</option>
+      </select>
+    </div>
+    <div class="setting-block">
+      <label>Rundenlänge</label>
+      <select id="round-sel">
+        <option value="300" selected>5 Minuten</option>
+        <option value="600">10 Minuten</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="rules-box">
+    <h4>// Spielregeln</h4>
+    <ul class="rules-list">
+      <li>⟶ <span class="hl">Pro Tisch</span> sitzen ein Spieler von Team A und ein Spieler von Team B gleichzeitig.</li>
+      <li>⟶ Aufgaben selbst wählen: <span class="easy-tag">Leicht +1 Pkt</span> · <span class="mid-tag">Mittel +2 Pkt</span> · <span class="hard-tag">Schwer +3 Pkt / −1 bei falsch</span></li>
+      <li>⟶ Alle <span class="hl">~20 Sek.</span> piept es laut → sofort aufstehen und den Partner wechseln.</li>
+      <li>⟶ Der neue Partner sieht die Notizen und macht weiter. <span class="hl">Auf Papier rechnen!</span></li>
+      <li>⟶ Am Ende werden alle gelösten Aufgaben auf der Auswertungsseite verglichen.</li>
+    </ul>
+  </div>
+
+  <button class="start-btn" onclick="startGame()">▶ SPIEL STARTEN</button>
+</div>
+
+<!-- ══ GAME SCREEN ══ -->
+<div id="game" class="screen">
+  <div class="topbar">
+    <div class="tb-team left">
+      <div class="tb-score" id="score-a">0</div>
+      <div class="tb-info">
+        <div class="tb-name" id="tb-name-a">Team A</div>
+        <div class="tb-rounds" id="tb-detail-a">0 gelöst</div>
+      </div>
+    </div>
+    <div class="center-hud">
+      <div class="hud-label" id="hud-phase-label">RUNDE 1 · LÄUFT</div>
+      <div class="big-timer safe" id="main-timer">5:00</div>
+      <div class="hud-sub" id="hud-switch-sub" style="color:var(--muted)">nächster Wechsel in <span id="next-switch">20</span>s</div>
+    </div>
+    <div class="tb-team right">
+      <div class="tb-score" id="score-b">0</div>
+      <div class="tb-info">
+        <div class="tb-name" id="tb-name-b">Team B</div>
+        <div class="tb-rounds" id="tb-detail-b">0 gelöst</div>
+      </div>
+    </div>
+  </div>
+  <div class="game-progress"><div class="game-progress-fill" id="prog-fill" style="width:100%"></div></div>
+
+  <div class="tisch-area">
+    <!-- TISCH 1 -->
+    <div class="tisch-panel" id="tisch1-panel">
+      <div class="tisch-header">
+        <div class="tisch-title" id="t1-title">TISCH 1</div>
+        <div class="current-player" id="t1-players">A1 vs B1</div>
+      </div>
+      <div class="stacks" id="t1-stacks"></div>
+      <div class="active-task" id="t1-active">
+        <div class="at-header">
+          <span class="at-label">AKTIVE AUFGABE</span>
+          <span class="at-diff" id="t1-diff">LEICHT</span>
+        </div>
+        <div class="at-eq" id="t1-eq">–</div>
+        <div class="at-note" id="t1-note" contenteditable="true" spellcheck="false">Notizen hier eingeben… (oder auf Papier rechnen)</div>
+        <div class="at-btns">
+          <button class="at-btn solve" onclick="solveTask(1)">✓ Gelöst!</button>
+          <button class="at-btn discard" onclick="discardTask(1)">✗ Aufgeben</button>
+        </div>
+      </div>
+    </div>
+    <!-- TISCH 2 -->
+    <div class="tisch-panel" id="tisch2-panel">
+      <div class="tisch-header">
+        <div class="tisch-title" id="t2-title">TISCH 2</div>
+        <div class="current-player" id="t2-players">A2 vs B2</div>
+      </div>
+      <div class="stacks" id="t2-stacks"></div>
+      <div class="active-task" id="t2-active">
+        <div class="at-header">
+          <span class="at-label">AKTIVE AUFGABE</span>
+          <span class="at-diff" id="t2-diff">LEICHT</span>
+        </div>
+        <div class="at-eq" id="t2-eq">–</div>
+        <div class="at-note" id="t2-note" contenteditable="true" spellcheck="false">Notizen hier eingeben… (oder auf Papier rechnen)</div>
+        <div class="at-btns">
+          <button class="at-btn solve" onclick="solveTask(2)">✓ Gelöst!</button>
+          <button class="at-btn discard" onclick="discardTask(2)">✗ Aufgeben</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SWITCH BANNER ══ -->
+<div class="switch-banner" id="switch-banner">
+  <div class="switch-icon">🔄</div>
+  <div class="switch-title">PARTNER WECHSELN!</div>
+  <div class="switch-sub">Aufstehen &amp; Platz tauschen!<br>Notizen für den Partner stehen lassen.</div>
+  <div class="switch-countdown" id="switch-cd">3</div>
+  <button class="resume-btn" onclick="resumeAfterSwitch()">Alle bereit → WEITER</button>
+</div>
+
+<!-- ══ ROUND END OVERLAY ══ -->
+<div class="round-end-overlay" id="round-end">
+  <div class="re-title" id="re-title">RUNDE 1 VORBEI!</div>
+  <div class="re-sub" id="re-sub">Zwischenstand – gleich Runde 2</div>
+  <div class="re-scores">
+    <div class="re-score-card a">
+      <div class="re-sc-name" id="re-name-a">Team A</div>
+      <div class="re-sc-num" id="re-num-a">0</div>
+      <div class="re-sc-detail" id="re-detail-a"></div>
+    </div>
+    <div class="re-score-card b">
+      <div class="re-sc-name" id="re-name-b">Team B</div>
+      <div class="re-sc-num" id="re-num-b">0</div>
+      <div class="re-sc-detail" id="re-detail-b"></div>
+    </div>
+  </div>
+  <button class="re-next-btn" id="re-next-btn" onclick="startRound2()">▶ RUNDE 2 STARTEN</button>
+</div>
+
+<!-- ══ EVAL SCREEN ══ -->
+<div id="eval" class="screen">
+  <div class="eval-title">AUSWERTUNG</div>
+  <div class="eval-sub" id="eval-sub">Vergleicht eure Papier-Ergebnisse mit den Lösungen</div>
+
+  <div class="eval-grid" id="eval-grid"></div>
+
+  <button class="new-game-btn" onclick="newGame()">↩ NEUES SPIEL</button>
+</div>
+
+<script>
+// ═══════════════════════════════
+//  QUESTION BANK
+// ═══════════════════════════════
+const QBANK = {
+  easy: [
+    {eq:"2x + 4 = 10",  sol:"x = 3",  steps:["2x = 6","x = 3"]},
+    {eq:"3x - 6 = 9",   sol:"x = 5",  steps:["3x = 15","x = 5"]},
+    {eq:"5x + 2 = 22",  sol:"x = 4",  steps:["5x = 20","x = 4"]},
+    {eq:"x/2 + 1 = 5",  sol:"x = 8",  steps:["x/2 = 4","x = 8"]},
+    {eq:"4x - 3 = 17",  sol:"x = 5",  steps:["4x = 20","x = 5"]},
+    {eq:"6x + 1 = 25",  sol:"x = 4",  steps:["6x = 24","x = 4"]},
+    {eq:"2(x+3) = 14",  sol:"x = 4",  steps:["x+3 = 7","x = 4"]},
+    {eq:"3(x-1) = 12",  sol:"x = 5",  steps:["x-1 = 4","x = 5"]},
+    {eq:"8 - x = 3",    sol:"x = 5",  steps:["-x = -5","x = 5"]},
+    {eq:"x/3 + 2 = 6",  sol:"x = 12", steps:["x/3 = 4","x = 12"]},
+    {eq:"2x - 1 = x + 4", sol:"x = 5",steps:["x = 5"]},
+    {eq:"9 - 2x = 1",   sol:"x = 4",  steps:["-2x = -8","x = 4"]},
+  ],
+  mid: [
+    {eq:"3x + 5 = x + 13",     sol:"x = 4",   steps:["2x = 8","x = 4"]},
+    {eq:"5x - 3 = 2x + 9",     sol:"x = 4",   steps:["3x = 12","x = 4"]},
+    {eq:"2(3x+1) = 4x + 10",   sol:"x = 4",   steps:["6x+2 = 4x+10","2x = 8","x = 4"]},
+    {eq:"(x+4)/2 = 5",         sol:"x = 6",   steps:["x+4 = 10","x = 6"]},
+    {eq:"4(x-3) = 2x + 2",     sol:"x = 7",   steps:["4x-12 = 2x+2","2x = 14","x = 7"]},
+    {eq:"0,5x + 3 = 0,25x + 5",sol:"x = 8",   steps:["0,25x = 2","x = 8"]},
+    {eq:"3(x+2) = 2(x+5)",     sol:"x = 4",   steps:["3x+6 = 2x+10","x = 4"]},
+    {eq:"x/2 + x/3 = 5",       sol:"x = 6",   steps:["3x/6+2x/6 = 5","5x/6 = 5","x = 6"]},
+    {eq:"2x/3 + 1 = x/2 + 3",  sol:"x = 12",  steps:["2x/3 - x/2 = 2","x/6 = 2","x = 12"]},
+    {eq:"7 - 3(x-1) = x + 2",  sol:"x = 2",   steps:["7-3x+3 = x+2","10-3x = x+2","8 = 4x","x = 2"]},
+  ],
+  hard: [
+    {eq:"(2x+1)/3 = (x+2)/2",  sol:"x = 4",   steps:["2(2x+1) = 3(x+2)","4x+2 = 3x+6","x = 4"]},
+    {eq:"x² - 5x + 6 = 0",     sol:"x=2 oder x=3", steps:["(x-2)(x-3)=0","x=2 oder x=3"]},
+    {eq:"2x² - 8 = 0",         sol:"x=2 oder x=-2", steps:["x²=4","x=±2"]},
+    {eq:"3(x-4) = 2(x+1)-5",   sol:"x = 9",   steps:["3x-12 = 2x+2-5","3x-12 = 2x-3","x = 9"]},
+    {eq:"5(x+3)-2x = 3(x+5)",  sol:"∞ (alle x)", steps:["5x+15-2x=3x+15","3x+15=3x+15","immer wahr"]},
+    {eq:"4(x-1)+2 = 2(2x+1)",  sol:"∅ (keine Lösung)", steps:["4x-4+2=4x+2","-2=2  Widerspruch!"]},
+    {eq:"(3x-1)/4 - (x+1)/2 = 1", sol:"x = 10", steps:["(3x-1-2(x+1))/4=1","x-3=4","x=7 → recalc: 3x-1-2x-2=4","x=7"]},
+    {eq:"x² + 4x + 4 = 0",     sol:"x = -2 (doppelt)", steps:["(x+2)²=0","x=-2"]},
+    {eq:"2x²-5x-3 = 0",        sol:"x=3 oder x=-1/2", steps:["(2x+1)(x-3)=0","x=3 oder x=-½"]},
+    {eq:"(x+3)² = 25",         sol:"x=2 oder x=-8", steps:["x+3=±5","x=2 oder x=-8"]},
+  ]
+};
+
+// Fix hard[6]
+QBANK.hard[6] = {eq:"(3x-1)/4 - (x+1)/2 = 1", sol:"x = 7", steps:["3x-1-2(x+1) = 4","3x-1-2x-2=4","x-3=4","x=7"]};
+
+// ═══════════════════════════════
+//  STATE
+// ═══════════════════════════════
+let cfg = {};
+let gs = {
+  round: 1,
+  mainSec: 300,
+  maxSec: 300,
+  switchSec: 20,
+  switchCountdown: 20,
+  mainInterval: null,
+  switchInterval: null,
+  paused: false,
+  // solved tasks per team: {team, diff, eq, sol, correct:null}
+  solved: [],
+  // per-tisch state
+  tisch: [
+    { activeQ: null, qPool: {easy:[],mid:[],hard:[]}, usedIds: {easy:new Set(),mid:new Set(),hard:new Set()} },
+    { activeQ: null, qPool: {easy:[],mid:[],hard:[]}, usedIds: {easy:new Set(),mid:new Set(),hard:new Set()} }
+  ],
+  // whose turn at each tisch: {a: playerName, b: playerName}
+  seats: [ {a:'A1',b:'B1'}, {a:'A2',b:'B2'} ],
+  scores: {a:0, b:0},
+  solved_a: 0, solved_b: 0,
+};
+
+const PTS = {easy:1, mid:2, hard:3};
+const PENALTY = 1;
+
+// ═══════════════════════════════
+//  SETUP → START
+// ═══════════════════════════════
+function startGame() {
+  cfg.names = {
+    a1: document.getElementById('a1').value || 'A1',
+    a2: document.getElementById('a2').value || 'A2',
+    b1: document.getElementById('b1').value || 'B1',
+    b2: document.getElementById('b2').value || 'B2',
+  };
+  cfg.interval = parseInt(document.getElementById('interval-sel').value);
+  cfg.roundSec = parseInt(document.getElementById('round-sel').value);
+
+  // Name displays
+  document.getElementById('tb-name-a').textContent = 'Team A';
+  document.getElementById('tb-name-b').textContent = 'Team B';
+  document.getElementById('re-name-a').textContent = 'Team A';
+  document.getElementById('re-name-b').textContent = 'Team B';
+
+  gs.mainSec = gs.maxSec = cfg.roundSec;
+  gs.switchSec = cfg.interval;
+  gs.switchCountdown = cfg.interval;
+  gs.round = 1;
+  gs.solved = [];
+  gs.scores = {a:0, b:0};
+  gs.solved_a = 0; gs.solved_b = 0;
+
+  // seats
+  gs.seats = [
+    {a: cfg.names.a1, b: cfg.names.b1},
+    {a: cfg.names.a2, b: cfg.names.b2}
+  ];
+
+  // Init question pools (shuffle)
+  [0,1].forEach(t => {
+    gs.tisch[t].activeQ = null;
+    gs.tisch[t].usedIds = {easy:new Set(), mid:new Set(), hard:new Set()};
+    gs.tisch[t].qPool = {
+      easy: shuffle([...Array(QBANK.easy.length).keys()]),
+      mid:  shuffle([...Array(QBANK.mid.length).keys()]),
+      hard: shuffle([...Array(QBANK.hard.length).keys()]),
+    };
+  });
+
+  showScreen('game');
+  renderStacks(0); renderStacks(1);
+  updateSeatLabels();
+  updateScoreDisplay();
+  startTimers();
+  updateRulesInline();
+}
+
+function updateRulesInline() {
+  document.getElementById('hud-switch-sub').innerHTML =
+    `nächster Wechsel in <span id="next-switch">${cfg.interval}</span>s`;
+}
+
+// ═══════════════════════════════
+//  TIMERS
+// ═══════════════════════════════
+function startTimers() {
+  clearInterval(gs.mainInterval);
+  clearInterval(gs.switchInterval);
+
+  gs.mainInterval = setInterval(() => {
+    if (gs.paused) return;
+    gs.mainSec--;
+    gs.switchCountdown--;
+    updateTimerUI();
+    if (gs.switchCountdown <= 0) triggerSwitch();
+    if (gs.mainSec <= 0) endRound();
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const m = Math.floor(gs.mainSec/60);
+  const s = gs.mainSec % 60;
+  const el = document.getElementById('main-timer');
+  el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  const frac = gs.mainSec / gs.maxSec;
+  el.className = 'big-timer ' + (frac > 0.4 ? 'safe' : frac > 0.2 ? 'warn' : 'danger');
+  document.getElementById('prog-fill').style.width = (frac*100) + '%';
+  const sw = document.getElementById('next-switch');
+  if (sw) sw.textContent = gs.switchCountdown;
+}
+
+// ═══════════════════════════════
+//  SWITCH
+// ═══════════════════════════════
+function triggerSwitch() {
+  gs.paused = true;
+  gs.switchCountdown = cfg.interval;
+  playBeep();
+  // swap seats
+  const tmp = gs.seats[0].a;
+  gs.seats[0].a = gs.seats[1].a;
+  gs.seats[1].a = tmp;
+  const tmp2 = gs.seats[0].b;
+  gs.seats[0].b = gs.seats[1].b;
+  gs.seats[1].b = tmp2;
+  updateSeatLabels();
+
+  const banner = document.getElementById('switch-banner');
+  banner.classList.add('show');
+  let cd = 3;
+  document.getElementById('switch-cd').textContent = cd;
+  const cdInt = setInterval(() => {
+    cd--;
+    document.getElementById('switch-cd').textContent = Math.max(cd, 0);
+    if (cd <= 0) clearInterval(cdInt);
+  }, 1000);
+}
+
+function resumeAfterSwitch() {
+  document.getElementById('switch-banner').classList.remove('show');
+  gs.paused = false;
+}
+
+function updateSeatLabels() {
+  [0,1].forEach(t => {
+    document.getElementById(`t${t+1}-players`).textContent =
+      `${gs.seats[t].a} vs ${gs.seats[t].b}`;
+  });
+}
+
+// ═══════════════════════════════
+//  STACKS
+// ═══════════════════════════════
+function renderStacks(tIdx) {
+  const wrap = document.getElementById(`t${tIdx+1}-stacks`);
+  const ts = gs.tisch[tIdx];
+  const hasActive = !!ts.activeQ;
+
+  const diffs = ['easy','mid','hard'];
+  const labels = {easy:'Leicht',mid:'Mittel',hard:'Schwer'};
+  const pts = {easy:'+1 Pkt',mid:'+2 Pkt',hard:'+3 Pkt / −1 bei Fehler'};
+
+  wrap.innerHTML = '';
+  diffs.forEach(d => {
+    const remaining = ts.qPool[d].length - ts.usedIds[d].size;
+    const row = document.createElement('div');
+    row.className = `stack-row ${d}${ts.activeQ && ts.activeQ.diff===d ? ' active-q' : ''}`;
+
+    if (!hasActive && remaining > 0) {
+      row.onclick = () => pickTask(tIdx, d);
+      row.innerHTML = `
+        <div>
+          <div class="stack-badge">${labels[d]}</div>
+          <div class="stack-pts">${pts[d]}</div>
+        </div>
+        <div class="stack-q">Aufgabe ziehen →</div>
+        <div class="stack-count">${remaining}</div>`;
+    } else {
+      row.style.opacity = hasActive ? '0.4' : '0.5';
+      row.style.cursor = 'default';
+      row.innerHTML = `
+        <div>
+          <div class="stack-badge">${labels[d]}</div>
+          <div class="stack-pts">${pts[d]}</div>
+        </div>
+        <div class="stack-q hidden-q">${hasActive ? 'erst aktive Aufgabe lösen' : 'keine Aufgaben mehr'}</div>
+        <div class="stack-count">${remaining}</div>`;
+    }
+    wrap.appendChild(row);
+  });
+}
+
+function pickTask(tIdx, diff) {
+  const ts = gs.tisch[tIdx];
+  const pool = ts.qPool[diff];
+  // find unused
+  let qIdx = null;
+  for (let id of pool) {
+    if (!ts.usedIds[diff].has(id)) { qIdx = id; break; }
+  }
+  if (qIdx === null) return;
+
+  ts.usedIds[diff].add(qIdx);
+  const q = QBANK[diff][qIdx];
+  ts.activeQ = { diff, qIdx, eq: q.eq, sol: q.sol, steps: q.steps };
+
+  // show active task area
+  document.getElementById(`t${tIdx+1}-active`).classList.add('show');
+  document.getElementById(`t${tIdx+1}-diff`).textContent = {easy:'LEICHT',mid:'MITTEL',hard:'SCHWER'}[diff];
+  document.getElementById(`t${tIdx+1}-diff`).className = `at-diff ${diff}`;
+  document.getElementById(`t${tIdx+1}-eq`).textContent = q.eq;
+  document.getElementById(`t${tIdx+1}-note`).textContent = 'Notizen hier eingeben… (oder auf Papier rechnen)';
+
+  renderStacks(tIdx);
+}
+
+function solveTask(tNum) {
+  const tIdx = tNum - 1;
+  const ts = gs.tisch[tIdx];
+  if (!ts.activeQ) return;
+  const q = ts.activeQ;
+  const pts = PTS[q.diff];
+  // Wer hat welches Team? – beide Teams arbeiten zusammen an dem Tisch,
+  // aber eine Aufgabe "gehört" keinem Team – sie landet in der Auswertung.
+  // Wir tracken sie als "vom aktuellen Tisch gelöst" mit beiden Teamnamen für spätere Auswertung.
+  gs.solved.push({
+    tisch: tNum,
+    diff: q.diff,
+    eq: q.eq,
+    sol: q.sol,
+    steps: q.steps,
+    pts,
+    correct: null, // set during eval
+    // note: both teams can claim – decided in eval
+    teamA_player: gs.seats[tIdx].a,
+    teamB_player: gs.seats[tIdx].b,
+  });
+
+  ts.activeQ = null;
+  document.getElementById(`t${tIdx+1}-active`).classList.remove('show');
+  renderStacks(tIdx);
+  // Score placeholder – actual eval at end
+  // Temporarily show +X animation
+  showFloatPts(tNum, pts);
+}
+
+function discardTask(tNum) {
+  const tIdx = tNum - 1;
+  gs.tisch[tIdx].activeQ = null;
+  document.getElementById(`t${tIdx+1}-active`).classList.remove('show');
+  renderStacks(tIdx);
+}
+
+function showFloatPts(tNum, pts) {
+  const panel = document.getElementById(`tisch${tNum}-panel`);
+  const rect = panel.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.style.cssText = `position:fixed;left:${rect.left+rect.width/2-30}px;top:${rect.top+40}px;
+    font-family:var(--display);font-weight:900;font-size:1.8rem;color:var(--warn);
+    pointer-events:none;z-index:900;animation:floatUp 1s ease forwards;`;
+  el.textContent = '+' + pts;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1100);
+}
+
+// ═══════════════════════════════
+//  ROUND END
+// ═══════════════════════════════
+function endRound() {
+  clearInterval(gs.mainInterval);
+  gs.paused = true;
+
+  if (gs.round === 1) {
+    // Show round-end overlay
+    document.getElementById('re-title').textContent = 'RUNDE 1 VORBEI!';
+    document.getElementById('re-sub').textContent = `${gs.solved.length} Aufgaben gelöst – gleich Runde 2`;
+    document.getElementById('re-num-a').textContent = '?';
+    document.getElementById('re-num-b').textContent = '?';
+    document.getElementById('re-detail-a').textContent = 'Punkte werden am Ende gezählt';
+    document.getElementById('re-detail-b').textContent = 'Punkte werden am Ende gezählt';
+    document.getElementById('re-next-btn').textContent = '▶ RUNDE 2 STARTEN';
+    document.getElementById('round-end').classList.add('show');
+  } else {
+    goToEval();
+  }
+}
+
+function startRound2() {
+  document.getElementById('round-end').classList.remove('show');
+  gs.round = 2;
+  gs.mainSec = gs.maxSec = cfg.roundSec;
+  gs.switchCountdown = cfg.interval;
+  gs.paused = false;
+  document.getElementById('hud-phase-label').textContent = 'RUNDE 2 · LÄUFT';
+  startTimers();
+}
+
+// ═══════════════════════════════
+//  EVAL SCREEN
+// ═══════════════════════════════
+function goToEval() {
+  showScreen('eval');
+  buildEval();
+}
+
+function buildEval() {
+  const grid = document.getElementById('eval-grid');
+  grid.innerHTML = '';
+
+  // Headers
+  const hA = document.createElement('div');
+  hA.className = 'eval-col-header a';
+  hA.textContent = 'Team A – Gelöste Aufgaben';
+  const hB = document.createElement('div');
+  hB.className = 'eval-col-header b';
+  hB.textContent = 'Team B – Gelöste Aufgaben';
+  grid.appendChild(hA); grid.appendChild(hB);
+
+  // For each solved task: team A and team B each have their own entry
+  // We create separate "claims" per task for each team
+  // Actually each solved task has one solver; for simplicity: one card per task, two check rows (A + B)
+  // Let's split: each task was solved by one team representative at a tisch.
+  // To keep it simple and competitive: every solved task shows up for BOTH teams
+  // and you check whose answer was correct. Each team worked on same tasks.
+  // Better: Track separately per team which tasks they solved. 
+  // Since both teams work simultaneously at the same tisch, each task is "claimed" by whoever solved it.
+  // The "solveTask" button is hit by whoever is currently active – but both teams are at that tisch.
+  // In practice: teacher/students verify at end.
+  // Let's just show all solved tasks and let each team mark their own correct/wrong.
+
+  const diffLabel = {easy:'Leicht',mid:'Mittel',hard:'Schwer'};
+
+  // Team A column & Team B column – same tasks shown
+  let ptsA = 0, ptsB = 0;
+  let taskCountA = 0, taskCountB = 0;
+
+  // Create two arrays (same tasks, separate state)
+  const evalState = gs.solved.map((t, i) => ({...t, idx:i, stateA: null, stateB: null}));
+
+  function renderAll() {
+    // Clear and re-render columns (skip headers)
+    while (grid.children.length > 2) grid.removeChild(grid.lastChild);
+
+    let totA = 0, totB = 0;
+    let cntA = 0, cntB = 0;
+
+    evalState.forEach((t, i) => {
+      // Team A card
+      const cardA = makeEvalCard(t, i, 'a', (correct) => {
+        t.stateA = correct;
+        renderAll();
+      });
+      // Team B card
+      const cardB = makeEvalCard(t, i, 'b', (correct) => {
+        t.stateB = correct;
+        renderAll();
+      });
+      grid.appendChild(cardA);
+      grid.appendChild(cardB);
+
+      if (t.stateA === true)  { totA += PTS[t.diff]; cntA++; }
+      if (t.stateA === false) totA -= PENALTY;
+      if (t.stateB === true)  { totB += PTS[t.diff]; cntB++; }
+      if (t.stateB === false) totB -= PENALTY;
+    });
+
+    // Totals row
+    const totRow = document.createElement('div');
+    totRow.className = 'eval-total-row';
+    totRow.style.gridColumn = '1/-1';
+    totRow.innerHTML = `
+      <div class="eval-total-card a">
+        <div class="etc-name">Team A</div>
+        <div class="etc-pts">${Math.max(0, totA)}</div>
+        <div style="font-family:var(--mono);font-size:.68rem;color:var(--muted)">${cntA} richtig</div>
+      </div>
+      <div class="eval-total-card b">
+        <div class="etc-name">Team B</div>
+        <div class="etc-pts">${Math.max(0, totB)}</div>
+        <div style="font-family:var(--mono);font-size:.68rem;color:var(--muted)">${cntB} richtig</div>
+      </div>`;
+    grid.appendChild(totRow);
+
+    // Winner
+    const allDone = evalState.every(t => t.stateA !== null && t.stateB !== null);
+    if (allDone) {
+      const winDiv = document.createElement('div');
+      winDiv.className = 'winner-declare';
+      winDiv.style.gridColumn = '1/-1';
+      if (totA > totB) winDiv.innerHTML = `🏆 <span style="color:var(--team-a)">TEAM A GEWINNT!</span>`;
+      else if (totB > totA) winDiv.innerHTML = `🏆 <span style="color:var(--team-b)">TEAM B GEWINNT!</span>`;
+      else winDiv.innerHTML = `🤝 <span style="color:var(--warn)">UNENTSCHIEDEN!</span>`;
+      grid.appendChild(winDiv);
+      if (totA !== totB) spawnConfetti(totA > totB ? '#c084fc' : '#34d399');
+    }
+  }
+
+  renderAll();
+
+  document.getElementById('eval-sub').textContent =
+    `${gs.solved.length} Aufgaben insgesamt · Vergleicht eure Papier-Ergebnisse mit den Lösungen`;
+}
+
+function makeEvalCard(t, idx, team, onMark) {
+  const card = document.createElement('div');
+  card.className = 'eval-task-row';
+  const stateKey = team === 'a' ? 'stateA' : 'stateB';
+  const state = t[stateKey];
+  const pts = PTS[t.diff];
+
+  const stepsHtml = t.steps.map(s => `→ ${s}`).join('<br>');
+  const ptsDisplay = state === true ? `+${pts}` : state === false ? `-${PENALTY}` : `±?`;
+  const ptsColor = state === true ? '#22c55e' : state === false ? '#f87171' : 'var(--muted)';
+
+  card.innerHTML = `
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <span class="etr-diff ${t.diff}">${{easy:'Leicht',mid:'Mittel',hard:'Schwer'}[t.diff]}</span>
+      <span style="font-family:var(--mono);font-size:.65rem;color:var(--muted)">${team==='a'?'Team A':'Team B'} · Tisch ${t.tisch}</span>
+    </div>
+    <div class="etr-eq">${t.eq}</div>
+    <div class="etr-answer">Lösung: <strong>${t.sol}</strong></div>
+    <div style="font-family:var(--mono);font-size:.68rem;color:var(--muted);line-height:1.6">${stepsHtml}</div>
+    <div class="etr-check-row">
+      <button class="etr-check-btn correct${state===true?' sel':''}" onclick="this.closest('.eval-task-row').__mark(true)">✓ Richtig</button>
+      <button class="etr-check-btn wrong${state===false?' sel':''}" onclick="this.closest('.eval-task-row').__mark(false)">✗ Falsch</button>
+      <span class="etr-pts-live" style="color:${ptsColor}">${ptsDisplay}</span>
+    </div>`;
+  card.__mark = onMark;
+  return card;
+}
+
+// ═══════════════════════════════
+//  HELPERS
+// ═══════════════════════════════
+function updateScoreDisplay() {
+  document.getElementById('score-a').textContent = gs.scores.a;
+  document.getElementById('score-b').textContent = gs.scores.b;
+  document.getElementById('tb-detail-a').textContent = `${gs.solved.filter(s=>s.stateA).length} gelöst`;
+  document.getElementById('tb-detail-b').textContent = `${gs.solved.filter(s=>s.stateB).length} gelöst`;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function shuffle(arr) {
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext||window.webkitAudioContext)();
+    [0,0.15,0.3].forEach((t,i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = i===2 ? 880 : 660;
+      gain.gain.setValueAtTime(0.4, ctx.currentTime+t);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+t+0.18);
+      osc.start(ctx.currentTime+t);
+      osc.stop(ctx.currentTime+t+0.2);
+    });
+  } catch(e){}
+}
+
+function spawnConfetti(color) {
+  const colors = [color,'#fbbf24','#e2e8f0','#a855f7','#22c55e'];
+  for(let i=0;i<70;i++){
+    const el = document.createElement('div');
+    el.style.cssText = `position:fixed;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}vw;top:-20px;border-radius:2px;pointer-events:none;z-index:999;
+      animation:confettiFall ${1.5+Math.random()*2}s ${Math.random()*0.8}s linear forwards;
+      transform:rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),4000);
+  }
+}
+
+function newGame() {
+  clearInterval(gs.mainInterval);
+  showScreen('setup');
+}
+
+// CSS keyframe for confetti (inject once)
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes confettiFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:0}}
+  @keyframes floatUp{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-80px);opacity:0}}
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

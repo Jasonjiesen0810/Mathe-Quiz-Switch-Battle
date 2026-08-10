@@ -4,14 +4,62 @@
 > Neue Infos ergänzen, alte nicht kommentarlos löschen (bei Bedarf als "veraltet" markieren).
 
 ## Eckdaten der Feiernden
-- Name/Alter/Anlass:
-- Wiederkehrende Vorlieben (Farben, Motto, Musik, Essen):
-- Absolute No-Gos:
+- Anlass: 19. Geburtstag
+- Datum: noch offen — nach den Ferien, Freitag oder Samstag bevorzugt
+- Uhrzeit: Beginn 19 Uhr, Ende voraussichtlich 2-3 Uhr
+- Nur Erwachsene eingeladen (keine Kinder)
+- Wiederkehrende Vorlieben: Poker (Texas Hold'em), Trinkspiele, Hausparty-Vibe statt formelle Feier, house music, selbstgemachte Cocktails, "Hexentrank" (fester Bestandteil), kein Dresscode
+- Absolute No-Gos: Sachen klauen/kaputt machen, Betrunkene werden abgeholt (nicht selbst fahren lassen), Leute nerven, Streit/Kämpfe, Belästigung — normale Hausregeln
+- Gastgeber macht selbst: Deko, evtl. professionelle Cocktails, Hexentrank
+- Musik: macht ein Kollege, wahrscheinlich House
 
-## Gäste
-| Name | Beziehung | Allergien/Diät | Notizen |
-|------|-----------|-----------------|---------|
-|      |           |                  |         |
+## Location — NOCH OFFEN (bewusst offen gelassen, Budget wird für beide Szenarien parallel geplant)
+Drei Optionen, alle mit Vor-/Nachteilen:
+1. **Wohnzimmer**: zu viele Leute drinnen ist anstrengend (Schuhe, Sofa etc.) — eher ungern
+2. **Terrasse/Garten**: vorhanden, aber Gastgeber findet den Garten "nicht so schön" — unsicher
+3. **Location mieten**: zu teuer, wenn er alleine feiert/zahlt — eher raus
+
+→ Gästezahl (und damit Tier-Auswahl unten) hängt direkt von dieser Entscheidung ab.
+
+## Gästeliste (getiert, "Klasse" ist Pflicht, Rest je nach Location)
+Gastgeber hat selbst geranked: Bei Location "drinnen/klein" realistisch nur bis B-Tier, bei "Garten" auch bis B, C-Tier nur wenn großzügiger Rahmen (müsste stark eingrenzen). Es können bei A/B noch Namen dazukommen.
+
+**Klasse (Pflicht, 11 Personen):** Julian, Greta, Frida, Neo, Timm, Max, Leon, Nelly (unsicher), Neela, Shakar, Maria
+
+**A-Tier (3 Personen):** Luis, Noah, Hanwen
+
+**B-Tier (11 Personen):** Marlene, Matthias, Emil, Ali, Paul, Yujin, Liliana (unsicher), Benjamin, Leon Tao, Jonna, Freddy
+
+**C-Tier (7 Personen, nur bei großzügigem Rahmen):** Maite, Victor, Felix Geist, Destiny, Basti, Ben, Anton
+
+Grobe Szenarien für Budgetplanung:
+- Klein (Klasse + A): ~15 Personen inkl. Gastgeber
+- Mittel (Klasse + A + B): ~26 Personen inkl. Gastgeber
+- Groß (+ C-Tier): ~33 Personen inkl. Gastgeber
+
+## Essen — noch offen
+Kein festes Essen geplant, nur Kuchen + Snacks. Pizza als Option im Raum, nicht entschieden. Budget wird mit Puffer für beide Varianten (mit/ohne Pizza) geplant.
+
+## Getränke
+- Hausgemachter "Hexentrank" (fester Bestandteil, kam letztes Mal sehr gut an)
+- Evtl. professionelle Cocktails (Gastgeber traut sich das zu)
+- Standard: Hugo, Bier, Salitos
+
+## Programm / Aktivitäten
+- Kein festes Programm, hauptsächlich quatschen, singen, tanzen
+- Poker (Texas Hold'em): Gastgeber hat 1 Chip-Set (reicht für 4-5 Personen), plant Nachkauf von Karten/Chips (gerade in China — dort sehr günstig)
+- Becher-/Würfel-Bluffspiel (1-gegen-1), kam letztes Jahr sehr gut an
+- Blackjack als Option
+- **Token-System (bestätigt, Kombination):** Gäste bekommen bei Ankunft einen Start-Satz Tokens UND können über den Abend weitere Tokens durch Mini-Games/Challenges dazuverdienen. Gegen Tokens gibt's "gute Sachen" (Cocktails/Shots), am Ende Platzierung 1-2-3 mit Preisen (z.B. Vape, Zigaretten). Noch offen: konkrete Mini-Games, Token-Anzahl pro Person, Preis-Umfang der Prämien.
+- Späte Pokerrunde (ca. ab 1 Uhr, wenn ein Teil der Gäste weg ist) mit 4-5 guten Freunden als realistischste Umsetzung
+- Poker funktioniert nur drinnen — bei Garten-Option eingeschränkt/nicht möglich
+
+## Geschenke (falls Gastgeber an andere denkt / Richtwert für Gäste)
+- Richtwert ca. 10-15 €/Person, skaliert mit Gästezahl
+
+## Budget
+- Nur grobe Richtung gewünscht, kein festes Limit genannt
+- Detaillierte Kalkulation (2x2-Szenario nach Gästezahl/Pizza): siehe `party-planning/budget-2026.md`. Spanne: ~398 € (klein, ohne Pizza) bis ~683 € (mittel, mit Pizza)
 
 ## Bewährte Anbieter & Locations
 | Kategorie | Anbieter | Kontakt | Letzter Preis | Bewertung/Notiz |
@@ -24,7 +72,8 @@
 ## Budget-Historie
 | Jahr | Anlass | Gästezahl | Gesamtkosten | Details-Datei |
 |------|--------|-----------|--------------|----------------|
-|      |        |           |              |                |
+|      | Vorherige Party (Jahr unbekannt) | unbekannt | unbekannt | - |
 
 ## Lessons Learned
--
+- Hexentrank + Trinkspiele kamen bei der letzten Party sehr gut an, viele waren "gut betrunken", Feedback war durchweg positiv
+- Poker-Bluffspiel mit Becher/Würfel funktionierte gut als 1-gegen-1-Format

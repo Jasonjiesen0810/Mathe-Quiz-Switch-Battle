@@ -32,8 +32,8 @@ Grobe Szenarien für Budgetplanung (alle unter der 40er-Obergrenze):
 - Mittel (Klasse + A + B): ~26 Personen inkl. Gastgeber
 - Groß (Klasse + A + B + C): ~33 Personen inkl. Gastgeber
 
-## Essen — noch offen
-Kein festes Essen geplant, nur Kuchen + Snacks. Pizza als Option im Raum, nicht entschieden. Budget wird mit Puffer für beide Varianten (mit/ohne Pizza) geplant.
+## Essen — ENTSCHIEDEN
+Keine Pizza. Nur Kuchen + Snacks.
 
 ## Getränke
 - Hausgemachter "Hexentrank" (fester Bestandteil, kam letztes Mal sehr gut an)
@@ -52,9 +52,11 @@ Kein festes Essen geplant, nur Kuchen + Snacks. Pizza als Option im Raum, nicht 
 ## Geschenke (falls Gastgeber an andere denkt / Richtwert für Gäste)
 - Richtwert ca. 10-15 €/Person, skaliert mit Gästezahl
 
-## Budget
-- Nur grobe Richtung gewünscht, kein festes Limit genannt
-- Detaillierte Kalkulation (2x2-Szenario nach Gästezahl/Pizza): siehe `party-planning/budget-2026.md`. Spanne: ~398 € (klein, ohne Pizza) bis ~683 € (mittel, mit Pizza)
+## Budget — ENTSCHIEDEN
+- **Ziel: unter 300 €.** Deko, Snacks, Kuchen, Poker-Zubehör und Token-Preise sind bereits vorhanden/organisiert — einziger verbleibender Einkauf ist Alkohol.
+- Eingeladen wird bis B-Tier (~26 Personen), Gastgeber rechnet damit dass "noch mehr einfallen" → mit ~28 Personen kalkuliert, Puffer bis 40 (harte Grenze) vorhanden.
+- Finale Kalkulation (nur Alkohol): **~227 € inkl. 12% Puffer** bei 28 Personen → siehe `party-planning/budget-2026.md`, Abschnitt "FINALES BUDGET". Rest bis 300 € (~73 €) ist Puffer für mehr Gäste oder bessere Spirituosen.
+- Ansatz: Hexentrank + Cocktails primär mit günstigem Hochprozentigem (Wodka/Rum) statt teuren Kisten Bier/Sekt für alle — kosteneffizienter pro Gast.
 
 ## Bewährte Anbieter & Locations
 | Kategorie | Anbieter | Kontakt | Letzter Preis | Bewertung/Notiz |

@@ -1,6 +1,33 @@
 # Budget 19. Geburtstag (2026)
 
-> Location ist entschieden (Garten + drinnen kombiniert), harte Obergrenze **40 Gäste**. Offen bleibt die Tier-Auswahl (bis wohin eingeladen wird) und Essen (Pizza ja/nein) → hier als **3×2-Szenario** (klein/mittel/groß × mit/ohne Pizza) durchgerechnet.
+## FINALES BUDGET (Stand: alle Grundsatzentscheidungen getroffen)
+
+Entschieden: kein Pizza (nur Snacks/Kuchen), eingeladen wird bis B-Tier (~26 Personen, realistisch etwas mehr da "bestimmt noch mehr einfallen" — daher mit 28 Personen gerechnet, Puffer bis 40 vorhanden). Deko, Snacks, Kuchen, Poker-Zubehör und Token-Preise hat der Gastgeber bereits organisiert/vorrätig → **einziger noch offener Einkauf ist Alkohol**. Ziel: unter 300 €.
+
+| Posten | Menge | Kosten |
+|---|---|---|
+| Bier | 3 Kisten (20×0,5l) | 42,00 € |
+| Salitos | 1 Kiste (24×0,33l) | 18,00 € |
+| Hugo-Zutaten (Prosecco 4x + Sirup + Limette/Minze) | s.o. | 35,00 € |
+| Hexentrank-Spirituosen (Wodka/Rum, günstig) | 6× 0,7 l à ~9,50 € | 57,00 € |
+| Cocktail-Zutaten (Gin/Rum/Likör, etwas hochwertiger) | 3× 0,7 l à ~12 € | 36,00 € |
+| Mixer/Saft/Limo (Sicherheitsposten) | pauschal | 15,00 € |
+| **Zwischensumme** | | **203,00 €** |
+| Puffer 12 % | | 24,36 € |
+| **GESAMT (nur Alkohol)** | | **227,36 €** (~8,10 €/Kopf bei 28 Pers.) |
+
+**Puffer zum 300 €-Deckel: ~73 €.** Das reicht z. B. für:
+- mehr Gäste (bis ~35-38 Personen bleibt es noch unter 300 €, grobe Faustregel: +1 Kiste Bier ≈ 14 €, +1 Flasche Hochprozentiges ≈ 9-10 €)
+- bessere Spirituosen-Qualität statt Discounter-Ware
+- zusätzliche Shot-Runden/Preise fürs Token-System
+
+**Richtpreise Spirituosen (Quelle s.u.):** Wodka 0,7l ab ~6,50 € (Aktionspreis) bis ~10 € (Normalpreis); braune/weiße Rum-Sorten ähnliche Preisklasse. Vor dem Kauf kurz Prospekte/Angebote der Woche checken (Aldi/Netto/Kaufland) — bei Aktionspreisen ist sogar noch mehr Puffer drin.
+
+---
+
+## Ältere Szenario-Rechnungen (zur Referenz, inkl. Non-Alkohol-Posten — als Ausgangspunkt vor der Entscheidung "Rest ist schon vorhanden")
+
+> Location war zwischenzeitlich offen, ist jetzt entschieden (Garten + drinnen kombiniert), harte Obergrenze **40 Gäste**. Die folgenden Tabellen rechnen noch mit Neukauf von Deko/Kuchen/Snacks/Poker-Zubehör — das ist durch die Entscheidung oben überholt, bleibt aber als Kalkulationsbasis stehen.
 > Alle Preise sind recherchierte Richtwerte (siehe Quellen unten), keine Fixpreise — für die finale Bestellung nochmal lokal vergleichen.
 > Sicherheitspuffer: 12 % auf die Zwischensumme.
 

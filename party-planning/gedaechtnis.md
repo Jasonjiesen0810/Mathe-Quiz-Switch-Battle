@@ -13,16 +13,11 @@
 - Gastgeber macht selbst: Deko, evtl. professionelle Cocktails, Hexentrank
 - Musik: macht ein Kollege, wahrscheinlich House
 
-## Location — NOCH OFFEN (bewusst offen gelassen, Budget wird für beide Szenarien parallel geplant)
-Drei Optionen, alle mit Vor-/Nachteilen:
-1. **Wohnzimmer**: zu viele Leute drinnen ist anstrengend (Schuhe, Sofa etc.) — eher ungern
-2. **Terrasse/Garten**: vorhanden, aber Gastgeber findet den Garten "nicht so schön" — unsicher
-3. **Location mieten**: zu teuer, wenn er alleine feiert/zahlt — eher raus
+## Location — ENTSCHIEDEN
+Kombination aus **Garten/Terrasse (Hauptbereich)** und **drinnen** (Rückzugsraum, u.a. für die Poker-Runde). Damit ist die Gästezahl nicht mehr durch den Raum begrenzt — harte Obergrenze ist jetzt **40 Personen** (vom Gastgeber vorgegeben).
 
-→ Gästezahl (und damit Tier-Auswahl unten) hängt direkt von dieser Entscheidung ab.
-
-## Gästeliste (getiert, "Klasse" ist Pflicht, Rest je nach Location)
-Gastgeber hat selbst geranked: Bei Location "drinnen/klein" realistisch nur bis B-Tier, bei "Garten" auch bis B, C-Tier nur wenn großzügiger Rahmen (müsste stark eingrenzen). Es können bei A/B noch Namen dazukommen.
+## Gästeliste (getiert, "Klasse" ist Pflicht)
+Gastgeber hat selbst geranked. Da Location kein Platzproblem mehr ist, ist die Tier-Auswahl (bis wohin eingeladen wird) jetzt reine Präferenz-Entscheidung, keine Raum-Zwangslage mehr — auch C-Tier ist unter der 40er-Grenze problemlos machbar. Es können bei A/B noch Namen dazukommen.
 
 **Klasse (Pflicht, 11 Personen):** Julian, Greta, Frida, Neo, Timm, Max, Leon, Nelly (unsicher), Neela, Shakar, Maria
 
@@ -32,10 +27,10 @@ Gastgeber hat selbst geranked: Bei Location "drinnen/klein" realistisch nur bis 
 
 **C-Tier (7 Personen, nur bei großzügigem Rahmen):** Maite, Victor, Felix Geist, Destiny, Basti, Ben, Anton
 
-Grobe Szenarien für Budgetplanung:
+Grobe Szenarien für Budgetplanung (alle unter der 40er-Obergrenze):
 - Klein (Klasse + A): ~15 Personen inkl. Gastgeber
 - Mittel (Klasse + A + B): ~26 Personen inkl. Gastgeber
-- Groß (+ C-Tier): ~33 Personen inkl. Gastgeber
+- Groß (Klasse + A + B + C): ~33 Personen inkl. Gastgeber
 
 ## Essen — noch offen
 Kein festes Essen geplant, nur Kuchen + Snacks. Pizza als Option im Raum, nicht entschieden. Budget wird mit Puffer für beide Varianten (mit/ohne Pizza) geplant.
@@ -52,7 +47,7 @@ Kein festes Essen geplant, nur Kuchen + Snacks. Pizza als Option im Raum, nicht 
 - Blackjack als Option
 - **Token-System (bestätigt, Kombination):** Gäste bekommen bei Ankunft einen Start-Satz Tokens UND können über den Abend weitere Tokens durch Mini-Games/Challenges dazuverdienen. Gegen Tokens gibt's "gute Sachen" (Cocktails/Shots), am Ende Platzierung 1-2-3 mit Preisen (z.B. Vape, Zigaretten). Noch offen: konkrete Mini-Games, Token-Anzahl pro Person, Preis-Umfang der Prämien.
 - Späte Pokerrunde (ca. ab 1 Uhr, wenn ein Teil der Gäste weg ist) mit 4-5 guten Freunden als realistischste Umsetzung
-- Poker funktioniert nur drinnen — bei Garten-Option eingeschränkt/nicht möglich
+- Durch Location-Kombi (Garten als Hauptbereich + drinnen als Rückzugsraum) ist Poker jetzt unproblematisch möglich — eigener Raum drinnen dafür nutzbar
 
 ## Geschenke (falls Gastgeber an andere denkt / Richtwert für Gäste)
 - Richtwert ca. 10-15 €/Person, skaliert mit Gästezahl

@@ -1,6 +1,6 @@
 # Budget 19. Geburtstag (2026)
 
-> Zwei offene Variablen (Location → Gästezahl, Essen → Pizza ja/nein) werden hier als **2×2-Szenario** durchgerechnet.
+> Location ist entschieden (Garten + drinnen kombiniert), harte Obergrenze **40 Gäste**. Offen bleibt die Tier-Auswahl (bis wohin eingeladen wird) und Essen (Pizza ja/nein) → hier als **3×2-Szenario** (klein/mittel/groß × mit/ohne Pizza) durchgerechnet.
 > Alle Preise sind recherchierte Richtwerte (siehe Quellen unten), keine Fixpreise — für die finale Bestellung nochmal lokal vergleichen.
 > Sicherheitspuffer: 12 % auf die Zwischensumme.
 
@@ -64,14 +64,38 @@
 | Puffer 12 % | | 73,20 € |
 | **Gesamt mit Pizza** | | **683,20 €** (~26,30 €/Kopf) |
 
+## Szenario "groß" (Klasse + A + B + C-Tier, ~33 Personen inkl. dir — noch unter der 40er-Grenze)
+
+| Posten | Menge | Kosten |
+|---|---|---|
+| Bier | 3 Kisten | 42,00 € |
+| Salitos | 2 Kisten | 36,00 € |
+| Hugo-Zutaten | s.o. | 40,00 € |
+| Hexentrank-Zutaten | Fix (skaliert) | 50,00 € |
+| Cocktail-Zutaten | Fix (skaliert) | 70,00 € |
+| Chips/Snacks | ~2 €/Pers. | 66,00 € |
+| Softdrinks/Wasser | ~1,50 €/Pers. | 49,50 € |
+| Kuchen | kleine Highlight-Torte + Blechkuchen-Ergänzung | 100,00 € |
+| Deko | Fix | 75,00 € |
+| Poker-Zubehör | einmalig | 15,00 € |
+| Preise Token-Gewinner | Fix | 30,00 € |
+| **Zwischensumme (ohne Pizza)** | | **573,50 €** |
+| Puffer 12 % | | 68,82 € |
+| **Gesamt ohne Pizza** | | **642,32 €** (~19,50 €/Kopf) |
+| Pizza (17 Stück à 10 €) | | 170,00 € |
+| Zwischensumme mit Pizza | | 743,50 € |
+| Puffer 12 % | | 89,22 € |
+| **Gesamt mit Pizza** | | **832,72 €** (~25,20 €/Kopf) |
+
 ## Kurz-Überblick
 
 | | ohne Pizza | mit Pizza |
 |---|---|---|
 | klein (~15 Pers.) | 398 € | 488 € |
 | mittel (~26 Pers.) | 538 € | 683 € |
+| groß (~33 Pers.) | 642 € | 833 € |
 
-**Einordnung:** Pro-Kopf-Kosten sinken bei mehr Gästen (Fixkosten wie Deko/Poker/Preise verteilen sich), Gesamtkosten steigen aber deutlich. Größter Hebel neben Gästezahl ist die Pizza-Entscheidung (+80-150 €).
+**Einordnung:** Pro-Kopf-Kosten sinken bei mehr Gästen (Fixkosten wie Deko/Poker/Preise verteilen sich: klein ~5 €/Kopf davon, groß nur ~2,50 €/Kopf), Gesamtkosten steigen aber deutlich. Größter Hebel neben Gästezahl ist weiterhin die Pizza-Entscheidung (+80-170 €, je nach Größe). Da Location jetzt kein Platzlimit mehr ist und selbst "groß" mit 33 Personen noch unter der 40er-Grenze liegt, ist die Tier-Auswahl reine Geschmacksfrage — nicht mehr organisatorisch erzwungen.
 
 ## Offene Posten, die hier NICHT eingerechnet sind
 - Location mieten (aktuell ausgeschlossen laut deiner Einschätzung)

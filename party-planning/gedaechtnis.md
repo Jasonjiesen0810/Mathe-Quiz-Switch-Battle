@@ -36,8 +36,8 @@ Grobe Szenarien für Budgetplanung (alle unter der 40er-Obergrenze):
 Keine Pizza. Nur Kuchen + Snacks.
 
 ## Getränke
-- Hausgemachter "Hexentrank" (fester Bestandteil, kam letztes Mal sehr gut an)
-- Evtl. professionelle Cocktails (Gastgeber traut sich das zu)
+- **Jugjug/Hexentrank FINAL:** großer Ansatz, ~9 Liter Gesamtvolumen (Wodka+Rum als Basis, mit Saft/Limo/Grenadine/Obst gestreckt, ~15-16% Vol. im Mix)
+- Zusätzlich eigene, etwas hochwertigere Spirituosen für individuelle "professionelle" Cocktails (getrennt vom Jugjug)
 - Standard: Hugo, Bier, Salitos
 
 ## Programm / Aktivitäten
@@ -45,18 +45,19 @@ Keine Pizza. Nur Kuchen + Snacks.
 - Poker (Texas Hold'em): Gastgeber hat 1 Chip-Set (reicht für 4-5 Personen), plant Nachkauf von Karten/Chips (gerade in China — dort sehr günstig)
 - Becher-/Würfel-Bluffspiel (1-gegen-1), kam letztes Jahr sehr gut an
 - Blackjack als Option
-- **Token-System (bestätigt, Kombination):** Gäste bekommen bei Ankunft einen Start-Satz Tokens UND können über den Abend weitere Tokens durch Mini-Games/Challenges dazuverdienen. Gegen Tokens gibt's "gute Sachen" (Cocktails/Shots), am Ende Platzierung 1-2-3 mit Preisen (z.B. Vape, Zigaretten). Noch offen: konkrete Mini-Games, Token-Anzahl pro Person, Preis-Umfang der Prämien.
-- Späte Pokerrunde (ca. ab 1 Uhr, wenn ein Teil der Gäste weg ist) mit 4-5 guten Freunden als realistischste Umsetzung
-- Durch Location-Kombi (Garten als Hauptbereich + drinnen als Rückzugsraum) ist Poker jetzt unproblematisch möglich — eigener Raum drinnen dafür nutzbar
+- **Token-System-Idee wurde verworfen** (zu kompliziert in der Umsetzung), stattdessen einfacher gelöst — siehe Poker final unten
+- **Poker FINAL:** Pokertisch wird geöffnet, sobald die meisten Gäste da sind (kein separates spätes 4-5er-Format mehr nötig, da Location-Kombi das Platzproblem löst). Chips/Karten vorhanden. **Preisgeld: Platz 1 = 30€, Platz 2 = 10€** (Bargeld, vom Gastgeber ausgelegt). Regeln werden vorher erklärt, jeder darf mitspielen. Bereits in der Einladung kommuniziert, kam gut an — laut Gastgeber werden "viele spielen".
+- Durch Location-Kombi (Garten als Hauptbereich + drinnen als Rückzugsraum) ist Poker unproblematisch möglich — eigener Raum drinnen dafür nutzbar
 
 ## Geschenke (falls Gastgeber an andere denkt / Richtwert für Gäste)
 - Richtwert ca. 10-15 €/Person, skaliert mit Gästezahl
 
 ## Budget — ENTSCHIEDEN
-- **Ziel: unter 300 €.** Deko, Snacks, Kuchen, Poker-Zubehör und Token-Preise sind bereits vorhanden/organisiert — einziger verbleibender Einkauf ist Alkohol.
-- Eingeladen wird bis B-Tier (~26 Personen), Gastgeber rechnet damit dass "noch mehr einfallen" → mit ~28 Personen kalkuliert, Puffer bis 40 (harte Grenze) vorhanden.
-- Finale Kalkulation (nur Alkohol): **~227 € inkl. 12% Puffer** bei 28 Personen → siehe `party-planning/budget-2026.md`, Abschnitt "FINALES BUDGET". Rest bis 300 € (~73 €) ist Puffer für mehr Gäste oder bessere Spirituosen.
-- Ansatz: Hexentrank + Cocktails primär mit günstigem Hochprozentigem (Wodka/Rum) statt teuren Kisten Bier/Sekt für alle — kosteneffizienter pro Gast.
+- **Ziel: unter 300 €.** Deko, Snacks, Kuchen und Poker-Zubehör (Chips/Karten) sind bereits vorhanden/organisiert.
+- Snapchat-Gruppe steht, Einladung raus. **Gästezahl final bestätigt: ~30 Personen** (nicht mehr nur Schätzung).
+- Neu dazugekommen: **Poker-Preisgeld 40€ bar** (30€/10€) — echter Cash-Posten, kein Getränkeeinkauf, aber Teil des Gesamtbudgets.
+- Finale Kalkulation (Alkohol + Preisgeld): **~264 € inkl. 12% Puffer** bei 30 Personen → siehe `party-planning/budget-2026.md` und `party-planning/einkaufsliste.md`. Rest bis 300 € nur noch **~36 €** — spürbar knapper als vorher (73€), da Preisgeld + größerer Jugjug + mehr Gäste dazukamen. Bei weiterem Gästezuwachs oder mehr Jugjug-Volumen vorher nachrechnen.
+- Ansatz: Jugjug/Hexentrank + Cocktails primär mit günstigem Hochprozentigem (Wodka/Rum) statt teuren Kisten Bier/Sekt für alle — kosteneffizienter pro Gast.
 
 ## Bewährte Anbieter & Locations
 | Kategorie | Anbieter | Kontakt | Letzter Preis | Bewertung/Notiz |

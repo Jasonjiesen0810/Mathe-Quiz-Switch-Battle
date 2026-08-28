@@ -48,6 +48,7 @@ Keine Pizza. Nur Kuchen + Snacks.
 - **Token-System-Idee wurde verworfen** (zu kompliziert in der Umsetzung), stattdessen einfacher gelöst — siehe Poker final unten
 - **Poker FINAL:** Pokertisch wird geöffnet, sobald die meisten Gäste da sind (kein separates spätes 4-5er-Format mehr nötig, da Location-Kombi das Platzproblem löst). Chips/Karten vorhanden. **Preisgeld: Platz 1 = 30€, Platz 2 = 10€** (Bargeld, vom Gastgeber ausgelegt). Regeln werden vorher erklärt, jeder darf mitspielen. Bereits in der Einladung kommuniziert, kam gut an — laut Gastgeber werden "viele spielen".
 - Durch Location-Kombi (Garten als Hauptbereich + drinnen als Rückzugsraum) ist Poker unproblematisch möglich — eigener Raum drinnen dafür nutzbar
+- **Chip-Inventar & Setup final:** 380 Chips, Gesamtwert 37.200. 1 Dealer, 1 Tisch (8 Plätze), erwartet werden 15-20 Mitspieler über den Abend. Details, Stack-Verteilung, Blinds (SB 25/BB 50) und die 2-Flight-Turnierlösung (fair bei mehr Spielern als Plätzen) stehen in `party-planning/poker.md`.
 
 ## Geschenke (falls Gastgeber an andere denkt / Richtwert für Gäste)
 - Richtwert ca. 10-15 €/Person, skaliert mit Gästezahl

@@ -34,26 +34,48 @@ Gleiche Zusammenstellung für alle 8 Spieler:
 - **SB 25 / BB 50** (BB entspricht genau einem 50er-Chip, SB aus 20+5 zusammensetzbar — easy auszuzahlen)
 - Stacktiefe: 4.515 / 50 = **~90 Big Blinds** → sehr tief, lange & faire Spielzüge möglich, kein hektisches All-in-Fest von Anfang an
 
-## Turnier-Modus (für das Preisgeld: Platz 1 = 30€, Platz 2 = 10€)
+## FINAL: 2 Flights mit "Normal"-Buy-in (2.500, 50 BB)
 
-Problem: nur 1 Tisch/1 Dealer, aber potenziell 15-20 Spieler — passen nicht alle gleichzeitig hin, und es muss trotzdem fair sein, unabhängig davon, wer zuerst anfängt.
+Entscheidung: der tiefe 4.515er-Turnierstack ist raus — zu lang für eine Party, wo niemand 5 Stunden am Tisch sitzen will. Stattdessen läuft es als **2 Flights mit dem kleineren Buy-in von 2.500** (50 Big Blinds bei SB 25/BB 50), das geht deutlich schneller.
 
-**Lösung: 2-Flight-System** (wie bei großen Live-Turnieren, z.B. WSOP-Flights):
-1. Vor Start: alle Interessierten in 2 Gruppen à 8 (bei 16 Spielern) per Los/Kartenziehen aufteilen — nicht nach Ankunftsreihenfolge, damit niemand einen Nachteil/Vorteil hat.
-2. **Flight A** spielt zuerst als normales Freezeout-Turnier (kein Rebuy) mit vollem Stack (4.515) und den Blinds oben, bis nur noch 1-2 Spieler übrig sind.
-3. Danach werden alle Chips eingesammelt und **neu ausgegeben** — **Flight B** spielt exakt das gleiche Setup (voller Stack, gleiche Blinds) bis ebenfalls 1-2 Spieler übrig sind.
-4. **Finale:** Die Übriggebliebenen aus Flight A und B spielen gegeneinander (Heads-up oder kleine Finalrunde) um Platz 1 und 2. Da beide Flights mit identischem Stack/Blinds gestartet sind, ist es fair, unabhängig davon, wer in welcher Flight war oder zuerst gespielt hat.
+1. Vor Start: Interessierte in 2 Gruppen à 8 per Los/Kartenziehen aufteilen — nicht nach Ankunftsreihenfolge, damit niemand einen Vor-/Nachteil hat.
+2. **Flight A**: 8 Spieler bekommen je 2.500 (Zusammenstellung siehe unten), spielen Freezeout (kein Rebuy *innerhalb* der Flight) bis 1-2 übrig sind.
+3. Chips einsammeln, neu ausgeben — **Flight B** startet mit demselben Setup (2.500, gleiche Blinds).
+4. **Finale**: Top 3 aus Flight A + Top 3 aus Flight B = **6-Max-Finale** um Platz 1 (30€) und Platz 2 (10€).
 
-Bei mehr als 16 Interessierten (z.B. 20): einfach eine 3. Flight à 8 einschieben, Rest wandert auf eine Warteliste für freie Plätze in der jeweils laufenden Flight (siehe unten).
+Bei mehr als 16 Leuten: 3. Flight einschieben oder Warteliste für die nächste Flight führen. Nachrücken geht nur **zwischen** den Flights, nicht mitten in einer laufenden.
 
-Falls während einer Flight ein Spieler früh rausfliegt und noch jemand von der Warteliste nachrücken will, geht das **nur zwischen den Flights**, nicht mitten im laufenden Freezeout — sonst wird's unfair (unterschiedliche Stack-Historie).
+**Wichtig: Chipzahlen aus der Flight werden 1:1 mit ins Finale genommen, kein Reset/Ausgleich.**
+- Damit lohnt sich Risiko/Aggressivität in der Flight wirklich — ein großer Stack ist ein echter Vorteil im Finale, nicht nur "Top 3 reichen zum Überleben"
+- Sauberer Nebeneffekt: jede Flight hat immer exakt 20.000 im Umlauf (8×2.500) → im Finale sind es immer **genau 40.000 auf 6 Spieler verteilt**, egal wie die Chips innerhalb der Flights verteilt wurden
+- Finale startet **nicht wieder bei SB25/BB50**, sondern da, wo die Blind-Eskalation zuletzt stand (oder eine Stufe höher) — bei ⌀6.667 pro Kopf auf 6 Spieler sonst unnötig zäh
 
-## Normal-Modus ("Cash Game", man darf gehen & wiederkommen)
+**Buy-in-Zusammenstellung (2.500, mit genug kleinen Chips für Blinds/Wechselgeld):**
 
-Kein Turnier-Druck, eher lockeres Durchspielen über den Abend, kein festes Preisgeld daran gekoppelt (Preisgeld ist an den Turnier-Modus gebunden).
+| Chipwert | Anzahl |
+|---|---|
+| 5 | 4 |
+| 10 | 5 |
+| 20 | 4 |
+| 50 | 3 |
+| 200 | 1 |
+| 500 | 4 |
 
-- **Buy-in pro Spieler: 2.500** (statt vollem Stack, damit Bank genug Reserve für Nachkäufe hat)
-- Gleiche Blinds wie oben (SB 25 / BB 50) → 50 Big Blinds tief, schnelleres Spiel/mehr Umschlag als im Turnier
-- Erstausgabe an 8 Spieler: 20.000 → **Bank-Reserve für Rebuys: 17.200 = ca. 6 weitere volle Buy-ins**
-- Wenn ein Spieler pleite geht oder aufhört: Stuhl wird frei, nächster von der Warteliste kauft sich mit 2.500 aus der Bank-Reserve ein
-- Wenn die Reserve zur Neige geht, einfach Buy-in-Höhe je nach Bedarf runterschrauben (z.B. auf 1.500-2.000), damit es bis zum Ende des Abends reicht
+= 20+50+80+150+200+2.000 = **2.500**
+
+**Bank-Rechnung:** 8 Spieler × 2.500 = 20.000 pro Flight im Spiel (Chips werden zwischen den Flights zurück in die Bank gesammelt, also reicht der Vorrat locker). Übrig bleiben **17.200** als Reserve — genug für spontane Rebuys, falls jemand zwischendurch nochmal informell (ohne Preisgeld-Anspruch) mitspielen will.
+
+**Damit's wirklich nicht ewig dauert — Blind-Erhöhung empfohlen** (sonst kann ein 50-BB-Stack bei vorsichtigen Spielern trotzdem lange laufen):
+
+| Ab Minute | SB | BB |
+|---|---|---|
+| 0 | 25 | 50 |
+| 20 | 50 | 100 |
+| 40 | 100 | 200 |
+| 60 | 200 | 500 |
+
+Damit ist eine Flight realistisch in **~45-75 Minuten** durch, beide Flights + Finale passen locker in 2-3 Stunden vom Abend.
+
+## Optionaler lockerer Nebentisch (kein Preisgeld)
+
+Für alle, die nicht in den offiziellen Flights sitzen (oder früh raus sind) und trotzdem zocken wollen: informelles Spiel aus der Bank-Reserve (17.200), gehen & wiederkommen erlaubt, ohne Bezug zum Preisgeld.

@@ -40,24 +40,42 @@ the-bottom:
 Starte mit dem 6er-Set als Hauptprodukt. Einzelbilder und Bundles kannst
 du ergänzen, sobald du siehst, was sich verkauft.
 
-## 4. Produktbeschreibung-Template
+## 4. Produktbeschreibung: Ton wie Apple/Mercedes, nicht wie eine Feature-Liste
 
+**Regel:** Große Marken verkaufen ein Gefühl, keine Spec-Liste. Apple sagt
+nicht "hochauflösendes Display mit exzellenter Farbgenauigkeit" -- sie
+sagen "Think different." Mercedes sagt nicht "perfekter Komfort für
+zuhause" -- sie sagen "Das Beste oder nichts." Kurze, bildhafte Sätze, die
+zur Bild-Atmosphäre passen (Bronze, Sturm, Nachtstadt, Rauch -- je nach
+Set). Technische Details (Anzahl, Download, Lizenz) kommen als **eine
+unauffällige Fußzeile**, nicht als Verkaufsargument-Liste mit Häkchen.
+
+**Aufbau:**
+1. Ein kurzer, starker Satz/Fragment, das die Stimmung trifft (kein
+   vollständiger Werbesatz nötig)
+2. 1-2 Sätze, die das Set bildhaft beschreiben -- Material/Licht/Emotion
+   statt "hochwertig", "perfekt", "einzigartig"
+3. Optional: das Zitat aus dem Set selbst als Schlusszeile, falls eins dabei ist
+4. Fußzeile: `*N wallpapers · instant download · personal use*`
+
+**Beispiel (Odyssey-Set):**
 ```
-[STICHWORT] -- Luxury Wallpaper Pack
+ODYSSEY
 
-6 handgemalte Wallpaper im exklusiven Impasto-Öl-Stil. Kein generischer
-Stock-Kram -- jedes Bild ist einzigartig komponiert, mit sichtbaren
-Pinselstrichen und dramatischem Licht.
+Every hero returns changed.
 
-✓ 6 hochauflösende Wallpaper (optimiert für dein Handy-Display)
-✓ Sofortiger Download nach Kauf
-✓ Für persönlichen Gebrauch -- Weiterverkauf nicht erlaubt (siehe license.txt)
+Six wallpapers built from oil and thunder -- a warrior's face carved in
+bronze, a fist closed around a blade, a ship that answers to no god.
 
-Perfekt für alle, die ihr Home Screen auf das nächste Level bringen wollen.
+The sea forgives no one.
+
+
+*6 wallpapers · instant download · personal use*
 ```
 
-Pass den Titel/Text an das jeweilige Thema an (z. B. "ROLEX BLAU" oder
-"TRADING MINDSET").
+Jedes Set braucht eigene Bilder/Wörter passend zum Thema -- nicht diesen
+Text wiederverwenden, sondern das Prinzip (kurz, bildhaft, Gefühl statt
+Feature) auf das neue Thema übertragen.
 
 ## 5. Link zu TikTok/Instagram
 

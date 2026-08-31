@@ -54,8 +54,9 @@ NEGATIVE_BASE = (
 
 # Aspect ratios used for phone wallpapers (Leonardo needs explicit pixel sizes).
 WALLPAPER_SIZES = {
-    "phone": (1024, 1820),   # ~9:16, close to common phone screens
-    "square": (1024, 1024),  # for Instagram feed posts / previews
+    "phone": (1024, 1820),     # ~9:16, close to common phone screens
+    "square": (1024, 1024),    # for Instagram feed posts / previews
+    "desktop": (1820, 1024),   # ~16:9, common desktop/laptop screens
 }
 
 

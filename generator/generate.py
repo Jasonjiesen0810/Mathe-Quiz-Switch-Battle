@@ -34,6 +34,12 @@ def main() -> int:
         default=None,
         help='Custom quote to build an atmospheric scene around, e.g. "No Risk, No Story."',
     )
+    parser.add_argument(
+        "--format",
+        default="phone",
+        choices=["phone", "square", "desktop"],
+        help="Output aspect ratio (default phone)",
+    )
     args = parser.parse_args()
 
     load_dotenv()
@@ -44,7 +50,9 @@ def main() -> int:
         print(f"Setup error: {e}", file=sys.stderr)
         return 1
 
-    variants = build_prompt_variations(args.keyword, count=args.count, quote=args.quote)
+    variants = build_prompt_variations(
+        args.keyword, count=args.count, quote=args.quote, format=args.format
+    )
 
     run_dir = OUTPUT_DIR / slugify(args.keyword)
     run_dir.mkdir(parents=True, exist_ok=True)

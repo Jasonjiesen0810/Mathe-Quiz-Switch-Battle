@@ -149,7 +149,7 @@ def _match_color(keyword: str) -> str | None:
 
 
 def build_prompt_variations(
-    keyword: str, count: int = 6, quote: str | None = None
+    keyword: str, count: int = 6, quote: str | None = None, format: str = "phone"
 ) -> list[PromptVariant]:
     """Build `count` varied prompts for one keyword.
 
@@ -162,13 +162,16 @@ def build_prompt_variations(
     vintage-newspaper text-overlay style -- use this when the quote should
     feel like part of a whole mood/scene rather than a separate clipping
     pasted over the subject.
+
+    `format`: one of the keys in style.WALLPAPER_SIZES ("phone", "square",
+    "desktop") -- controls the output aspect ratio/resolution.
     """
     category = _match_category(keyword)
     color = _match_color(keyword)
     subject = category["subject"] if category else keyword
 
     color_clause = f", dominant accent color: {color}" if color else ""
-    w, h = WALLPAPER_SIZES["phone"]
+    w, h = WALLPAPER_SIZES[format]
     bg = random.choice(BACKGROUND_TEXTURES)
 
     props = random.sample(COMPANION_PROPS, k=2)

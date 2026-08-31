@@ -53,11 +53,13 @@ NEGATIVE_BASE = (
 )
 
 # Aspect ratios used for wallpapers. Leonardo requires both dimensions to
-# be multiples of 8 -- these are all standard resolutions that satisfy that.
+# be multiples of 8 AND no larger than 1536px on this model -- generate at
+# these sizes, then use Leonardo's Upscale feature afterward for a larger
+# final file if needed.
 WALLPAPER_SIZES = {
-    "phone": (1080, 1920),     # 9:16, standard phone resolution
+    "phone": (864, 1536),      # 9:16
     "square": (1024, 1024),    # for Instagram feed posts / previews
-    "desktop": (1920, 1080),   # 16:9, Full HD desktop/laptop screens
+    "desktop": (1536, 864),    # 16:9
 }
 
 

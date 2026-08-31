@@ -28,6 +28,13 @@ Impasto-Luxury-Stil raus.
    will (z. B. "Yachten", "Privatjets"), erweitere `CATEGORIES` in
    `prompts.py` mit passenden Keywords und einem `subject`-Satz, der zur
    bestehenden `STYLE_DNA` passt.
+   **Wichtiger Grundsatz (aus echtem Testing bestätigt)**: Objekte mit viel
+   feinem Detail (Zifferblätter mit Zahlen, Gravuren, kleine Etikett-Schrift)
+   erzeugen deutlich mehr KI-Fehler als Objekte mit großen, einfachen Formen
+   (Flaschen, Schmuck, Fahrzeuge aus der Distanz). Bei der Formulierung des
+   `subject`-Satzes: keine lesbare Schrift/Logos verlangen, stattdessen große
+   auffällige Formen/Embleme beschreiben (z. B. "a bold gold emblem" statt
+   "the brand name engraved in detail").
 2. **Stil-Tuning**: Wenn Ergebnisse nicht "gemalt genug" aussehen, iteriere
    an `STYLE_DNA` / `NEGATIVE_BASE` in `style.py`, oder schlage vor, ein
    spezielles Finetuned-Model (oil painting / impasto) über

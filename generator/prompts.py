@@ -58,6 +58,15 @@ CATEGORIES = {
         "keywords": ["marke", "brand", "fashion", "designer", "suit", "anzug"],
         "subject": "a tailored designer suit with fine fabric texture",
     },
+    "perfume": {
+        # Large simple glass/liquid forms with no fine engraved detail -- the AI
+        # renders these far more reliably than dense micro-detail like watch dials.
+        "keywords": ["parfum", "parfüm", "perfume", "versace", "duft", "cologne", "fragrance"],
+        "subject": (
+            "a bold luxury perfume bottle with a striking gold Medusa-head emblem, "
+            "faceted glass catching dramatic light, a heavy gold cap"
+        ),
+    },
 }
 
 COLOR_WORDS = {

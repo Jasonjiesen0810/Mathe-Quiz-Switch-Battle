@@ -45,16 +45,19 @@ du ergänzen, sobald du siehst, was sich verkauft.
 **Regel:** Große Marken verkaufen ein Gefühl, keine Spec-Liste. Apple sagt
 nicht "hochauflösendes Display mit exzellenter Farbgenauigkeit" -- sie
 sagen "Think different." Mercedes sagt nicht "perfekter Komfort für
-zuhause" -- sie sagen "Das Beste oder nichts." Kurze, bildhafte Sätze, die
-zur Bild-Atmosphäre passen (Bronze, Sturm, Nachtstadt, Rauch -- je nach
-Set). Technische Details (Anzahl, Download, Lizenz) kommen als **eine
-unauffällige Fußzeile**, nicht als Verkaufsargument-Liste mit Häkchen.
+zuhause" -- sie sagen "Das Beste oder nichts." Aber: Kunden, die etwas
+Digitales von einer neuen Marke kaufen, wollen trotzdem konkret wissen,
+was sie bekommen -- zu vage/blumig wirkt unseriös. Der Text muss klar
+sagen "das ist das Produkt" (wie viele Bilder, welcher Stil), ohne wie
+eine Feature-Checkliste mit Häkchen zu klingen. Technische Details
+(Anzahl, Download, Lizenz) kommen als **eine unauffällige Fußzeile**.
 
 **Aufbau:**
-1. Ein kurzer, starker Satz/Fragment, das die Stimmung trifft (kein
-   vollständiger Werbesatz nötig)
-2. 1-2 Sätze, die das Set bildhaft beschreiben -- Material/Licht/Emotion
-   statt "hochwertig", "perfekt", "einzigartig"
+1. Ein Satz, der klar sagt, was es ist (Anzahl, Format, Stil) UND wie es
+   sich anfühlt -- z. B. "Six phone wallpapers, hand-painted in a thick
+   oil-on-canvas style" statt nur "Six wallpapers" oder nur ein Stimmungssatz
+2. 1 Satz, der das Motiv/die Bildwelt bildhaft benennt (Bronze, Sturm,
+   Nachtstadt -- je nach Set) statt "hochwertig", "perfekt", "einzigartig"
 3. Optional: das Zitat aus dem Set selbst als Schlusszeile, falls eins dabei ist
 4. Fußzeile: `*N wallpapers · instant download · personal use*`
 
@@ -62,12 +65,11 @@ unauffällige Fußzeile**, nicht als Verkaufsargument-Liste mit Häkchen.
 ```
 ODYSSEY
 
-Every hero returns changed.
+Six phone wallpapers, hand-painted in a thick oil-on-canvas style --
+warriors, storms, and a ship that won't turn back.
 
-Six wallpapers built from oil and thunder -- a warrior's face carved in
-bronze, a fist closed around a blade, a ship that answers to no god.
-
-The sea forgives no one.
+Each piece is uniquely composed and delivered in high resolution, ready
+to set as your lock screen or home screen.
 
 
 *6 wallpapers · instant download · personal use*

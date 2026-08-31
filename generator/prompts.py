@@ -88,6 +88,20 @@ CATEGORIES = {
             "a heavy gold cap sculpted from impasto ridges"
         ),
     },
+    "odyssey": {
+        # VALIDATED (full 6-image set confirmed good): mythological Greek warrior
+        # theme, tied to public-domain Homeric mythology rather than any specific
+        # film's branding/actor likenesses -- keeps it legally safer for resale.
+        "keywords": [
+            "odyssey", "odysseus", "griechisch", "greek", "mythologie", "mythology",
+            "sparta", "spartan", "trojan", "troja", "krieger", "warrior",
+        ],
+        "subject": (
+            "a battle-scarred Greek warrior in a bronze plumed helmet and armor, "
+            "gripping a sword, a weathered dark-suited figure braced against a storm, "
+            "a wooden warship with torn sails battling violent waves in the background"
+        ),
+    },
 }
 
 COLOR_WORDS = {

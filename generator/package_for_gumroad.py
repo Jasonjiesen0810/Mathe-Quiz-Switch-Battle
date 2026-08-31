@@ -41,6 +41,21 @@ def slugify(text: str) -> str:
     return slug or "wallpaper"
 
 
+def package(src_dir: Path) -> Path:
+    """Zip the numbered wallpaper files in `src_dir` + license.txt. Returns
+    the zip path. Raises FileNotFoundError if nothing to pack."""
+    images = sorted(src_dir.glob("0*.jpg")) + sorted(src_dir.glob("0*.png"))
+    if not images:
+        raise FileNotFoundError(f"No images found in {src_dir}.")
+
+    zip_path = src_dir / f"{src_dir.name}-wallpaper-pack.zip"
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        for i, img in enumerate(images, start=1):
+            zf.write(img, arcname=f"wallpaper_{i:02d}{img.suffix}")
+        zf.writestr("license.txt", LICENSE_TEXT)
+    return zip_path
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Zip a generated wallpaper set for Gumroad upload.")
     parser.add_argument("keyword", help='the keyword used with generate.py, e.g. "rolex blau"')
@@ -52,18 +67,13 @@ def main() -> int:
         print(f"No output found at {src_dir}. Run generate.py first.")
         return 1
 
-    images = sorted(src_dir.glob("*.jpg")) + sorted(src_dir.glob("*.png"))
-    if not images:
-        print(f"No images found in {src_dir}.")
+    try:
+        zip_path = package(src_dir)
+    except FileNotFoundError as e:
+        print(str(e))
         return 1
 
-    zip_path = src_dir / f"{slug}-wallpaper-pack.zip"
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-        for i, img in enumerate(images, start=1):
-            zf.write(img, arcname=f"wallpaper_{i:02d}{img.suffix}")
-        zf.writestr("license.txt", LICENSE_TEXT)
-
-    print(f"Packed {len(images)} images -> {zip_path}")
+    print(f"Packed -> {zip_path}")
     print("Drag this ZIP into a new Gumroad product to upload.")
     return 0
 

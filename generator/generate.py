@@ -25,6 +25,48 @@ def slugify(text: str) -> str:
     return slug or "wallpaper"
 
 
+def generate_images(
+    keyword: str,
+    count: int = 6,
+    quote: str | None = None,
+    format: str = "phone",
+    client: "LeonardoClient | None" = None,
+) -> Path:
+    """Generate `count` wallpapers for `keyword` into output/<slug>/ and
+    return that directory. Reusable by both the CLI below and
+    generate_collection.py.
+    """
+    client = client or LeonardoClient()
+    variants = build_prompt_variations(keyword, count=count, quote=quote, format=format)
+
+    run_dir = OUTPUT_DIR / slugify(keyword)
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f'Generating {len(variants)} images for "{keyword}" -> {run_dir}')
+
+    for i, variant in enumerate(variants, start=1):
+        print(f"  [{i}/{len(variants)}] {variant.label} ...", end=" ", flush=True)
+        try:
+            urls = client.generate(
+                prompt=variant.prompt,
+                negative_prompt=variant.negative_prompt,
+                width=variant.width,
+                height=variant.height,
+                num_images=1,
+            )
+        except LeonardoError as e:
+            print(f"FAILED ({e})")
+            continue
+
+        for j, url in enumerate(urls):
+            suffix = f"_{j+1}" if len(urls) > 1 else ""
+            out_path = run_dir / f"{i:02d}_{slugify(variant.label)}{suffix}.jpg"
+            LeonardoClient.download(url, str(out_path))
+            print(f"saved -> {out_path.name}")
+
+    return run_dir
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate luxury wallpaper images from a keyword.")
     parser.add_argument("keyword", help='e.g. "rolex blau", "trading", "diamonds"')
@@ -50,34 +92,9 @@ def main() -> int:
         print(f"Setup error: {e}", file=sys.stderr)
         return 1
 
-    variants = build_prompt_variations(
-        args.keyword, count=args.count, quote=args.quote, format=args.format
+    generate_images(
+        args.keyword, count=args.count, quote=args.quote, format=args.format, client=client
     )
-
-    run_dir = OUTPUT_DIR / slugify(args.keyword)
-    run_dir.mkdir(parents=True, exist_ok=True)
-
-    print(f'Generating {len(variants)} images for "{args.keyword}" -> {run_dir}')
-
-    for i, variant in enumerate(variants, start=1):
-        print(f"  [{i}/{len(variants)}] {variant.label} ...", end=" ", flush=True)
-        try:
-            urls = client.generate(
-                prompt=variant.prompt,
-                negative_prompt=variant.negative_prompt,
-                width=variant.width,
-                height=variant.height,
-                num_images=1,
-            )
-        except LeonardoError as e:
-            print(f"FAILED ({e})")
-            continue
-
-        for j, url in enumerate(urls):
-            suffix = f"_{j+1}" if len(urls) > 1 else ""
-            out_path = run_dir / f"{i:02d}_{slugify(variant.label)}{suffix}.jpg"
-            LeonardoClient.download(url, str(out_path))
-            print(f"saved -> {out_path.name}")
 
     print("Done.")
     return 0

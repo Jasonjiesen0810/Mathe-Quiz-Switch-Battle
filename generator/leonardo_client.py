@@ -36,7 +36,13 @@ class LeonardoClient:
         }
 
     def _start_generation(
-        self, prompt: str, negative_prompt: str, width: int, height: int, num_images: int
+        self,
+        prompt: str,
+        negative_prompt: str,
+        width: int,
+        height: int,
+        num_images: int,
+        alchemy: bool = False,
     ) -> str:
         payload = {
             "modelId": self.model_id,
@@ -45,7 +51,7 @@ class LeonardoClient:
             "width": width,
             "height": height,
             "num_images": num_images,
-            "alchemy": True,
+            "alchemy": alchemy,
         }
         resp = requests.post(f"{API_BASE}/generations", headers=self._headers, json=payload)
         if resp.status_code >= 400:
@@ -79,9 +85,18 @@ class LeonardoClient:
         width: int = 1024,
         height: int = 1820,
         num_images: int = 1,
+        alchemy: bool = False,
     ) -> list[str]:
-        """Generate images and return a list of image URLs."""
-        generation_id = self._start_generation(prompt, negative_prompt, width, height, num_images)
+        """Generate images and return a list of image URLs.
+
+        alchemy=True gives higher quality but costs significantly more
+        tokens per image -- left off by default so it draws from the
+        cheaper token pool. Turn it on (or pass --alchemy via the CLI once
+        wired up) once you're ready to spend more per image.
+        """
+        generation_id = self._start_generation(
+            prompt, negative_prompt, width, height, num_images, alchemy=alchemy
+        )
         return self._poll_generation(generation_id)
 
     @staticmethod

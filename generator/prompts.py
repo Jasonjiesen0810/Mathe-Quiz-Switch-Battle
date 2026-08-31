@@ -134,12 +134,20 @@ def _match_color(keyword: str) -> str | None:
     return None
 
 
-def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]:
+def build_prompt_variations(
+    keyword: str, count: int = 6, quote: str | None = None
+) -> list[PromptVariant]:
     """Build `count` varied prompts for one keyword.
 
     Mix of: close-up product shot, lifestyle flat-lay, hand/wrist
     composition, dark atmospheric scene, symbolic/abstract shot, and one
-    motivational quote text-overlay wallpaper.
+    quote wallpaper.
+
+    `quote`: pass a specific quote (e.g. "NO RISK, NO STORY.") to get an
+    atmospheric scene built *around* that quote instead of the default
+    vintage-newspaper text-overlay style -- use this when the quote should
+    feel like part of a whole mood/scene rather than a separate clipping
+    pasted over the subject.
     """
     category = _match_category(keyword)
     color = _match_color(keyword)
@@ -201,15 +209,29 @@ def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]
         )
 
     # Always add one text-overlay "quote" wallpaper as the signature format.
-    quote = random.choice(QUOTES)
-    quote_prompt = (
-        f'{STYLE_DNA}, a vintage aged newspaper background with the words "{quote}" '
-        f"painted on top in thick dripping oil paint typography, {subject} faintly "
-        f"visible in the textured background{color_clause}"
-    )
+    if quote:
+        # Custom quote -> build a whole atmosphere around it, not a clipping
+        # pasted over the subject.
+        quote_prompt = (
+            f"{STYLE_DNA}, a cinematic atmospheric night scene built around {subject}, "
+            f"wet reflective ground catching golden and red light, dramatic rim "
+            f'lighting, the words "{quote.upper()}" painted large across the scene in '
+            f"thick dripping oil paint typography as if part of the painted "
+            f"atmosphere itself, moody fog suggesting motion and speed{color_clause}"
+        )
+        label = "atmosphere quote"
+    else:
+        quote_text = random.choice(QUOTES)
+        quote_prompt = (
+            f'{STYLE_DNA}, a vintage aged newspaper background with the words '
+            f'"{quote_text}" painted on top in thick dripping oil paint typography, '
+            f"{subject} faintly visible in the textured background{color_clause}"
+        )
+        label = "quote overlay"
+
     variants.append(
         PromptVariant(
-            label="quote overlay",
+            label=label,
             prompt=quote_prompt,
             negative_prompt=build_negative_prompt(allow_text=True),
             width=w,

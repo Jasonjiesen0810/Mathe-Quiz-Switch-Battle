@@ -4,6 +4,7 @@
 Usage:
     python generate.py "rolex blau"
     python generate.py "trading" --count 5
+    python generate.py "ferrari rot" --quote "No Risk, No Story."
 """
 
 import argparse
@@ -28,6 +29,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate luxury wallpaper images from a keyword.")
     parser.add_argument("keyword", help='e.g. "rolex blau", "trading", "diamonds"')
     parser.add_argument("--count", type=int, default=6, help="Number of images to generate (default 6)")
+    parser.add_argument(
+        "--quote",
+        default=None,
+        help='Custom quote to build an atmospheric scene around, e.g. "No Risk, No Story."',
+    )
     args = parser.parse_args()
 
     load_dotenv()
@@ -38,7 +44,7 @@ def main() -> int:
         print(f"Setup error: {e}", file=sys.stderr)
         return 1
 
-    variants = build_prompt_variations(args.keyword, count=args.count)
+    variants = build_prompt_variations(args.keyword, count=args.count, quote=args.quote)
 
     run_dir = OUTPUT_DIR / slugify(args.keyword)
     run_dir.mkdir(parents=True, exist_ok=True)

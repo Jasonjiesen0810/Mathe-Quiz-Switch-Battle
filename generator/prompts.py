@@ -8,7 +8,20 @@ so it stays fast, free to run, and fully deterministic.
 import random
 from dataclasses import dataclass
 
-from style import STYLE_DNA, WALLPAPER_SIZES, build_negative_prompt
+from style import BACKGROUND_TEXTURES, FRAME_STYLE, STYLE_DNA, WALLPAPER_SIZES, build_negative_prompt
+
+# Extra objects mixed into the "collage" composition alongside the main
+# subject -- kept generic/textless like the main CATEGORIES subjects.
+COMPANION_PROPS = [
+    "a matte black sports car silhouette",
+    "a crystal champagne coupe with rising bubbles",
+    "a folded leather designer wallet",
+    "a pair of aviator sunglasses",
+    "a loosely banded stack of cash",
+    "a lit cigar with curling smoke",
+    "a strand of pearls",
+    "a vintage travel postage stamp",
+]
 
 # Motivational / "rich life" quotes for the text-overlay wallpaper variant.
 # Keep these generic and original -- do not copy exact wording from any
@@ -126,33 +139,38 @@ def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]
 
     color_clause = f", dominant accent color: {color}" if color else ""
     w, h = WALLPAPER_SIZES["phone"]
+    bg = random.choice(BACKGROUND_TEXTURES)
+
+    props = random.sample(COMPANION_PROPS, k=2)
+    collage_items = f"{subject}, {props[0]} and {props[1]}"
 
     scene_templates = [
         (
             "macro close-up",
             f"extreme close-up painterly study of {subject}, dramatic single light "
             f"source, fine details suggested through loose expressive brushwork rather "
-            f"than sharp precise detail{color_clause}, {STYLE_DNA}",
+            f"than sharp precise detail{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
         ),
         (
-            "lifestyle flat-lay",
-            f"top-down flat-lay arrangement of {subject} surrounded by cash, poker chips "
-            f"and jewelry on a dark reflective table{color_clause}, {STYLE_DNA}",
+            "collage",
+            f"a flat-lay collage of {collage_items}, each object individually painted "
+            f"as a die-cut cutout with a thick raised paint border like a sticker, "
+            f"slightly overlapping, arranged on {bg}{color_clause}, {STYLE_DNA}",
         ),
         (
             "hand composition",
             f"a tanned hand holding {subject}, cinematic side lighting, dark background"
-            f"{color_clause}, {STYLE_DNA}",
+            f"{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
         ),
         (
             "atmospheric scene",
             f"{subject} in a dark moody atmospheric scene with golden rim lighting and "
-            f"soft bokeh{color_clause}, {STYLE_DNA}",
+            f"soft bokeh{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
         ),
         (
             "symbolic abstract",
             f"symbolic abstract composition built around {subject}, dramatic top-down "
-            f"lighting, deep shadows{color_clause}, {STYLE_DNA}",
+            f"lighting, deep shadows{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
         ),
     ]
 

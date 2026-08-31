@@ -40,44 +40,59 @@ the-bottom:
 Starte mit dem 6er-Set als Hauptprodukt. Einzelbilder und Bundles kannst
 du ergänzen, sobald du siehst, was sich verkauft.
 
-## 4. Produktbeschreibung: Ton wie Apple/Mercedes, nicht wie eine Feature-Liste
+## 4. Produktbeschreibung: Stimmung oben, klare Fakten unten
 
-**Regel:** Große Marken verkaufen ein Gefühl, keine Spec-Liste. Apple sagt
-nicht "hochauflösendes Display mit exzellenter Farbgenauigkeit" -- sie
-sagen "Think different." Mercedes sagt nicht "perfekter Komfort für
-zuhause" -- sie sagen "Das Beste oder nichts." Aber: Kunden, die etwas
-Digitales von einer neuen Marke kaufen, wollen trotzdem konkret wissen,
-was sie bekommen -- zu vage/blumig wirkt unseriös. Der Text muss klar
-sagen "das ist das Produkt" (wie viele Bilder, welcher Stil), ohne wie
-eine Feature-Checkliste mit Häkchen zu klingen. Technische Details
-(Anzahl, Download, Lizenz) kommen als **eine unauffällige Fußzeile**.
+**Regel:** Ein reiner Stimmungstext wirkt bei einer neuen/unbekannten
+Marke schnell vage oder unseriös -- Käufer wollen bei einem digitalen
+Produkt genau wissen, was sie bekommen (Anzahl, Auflösung, Lizenz). Ein
+reiner Feature-Bullet-Text ohne Stimmung wirkt dagegen langweilig/generisch.
+Das bewährte Format (bestätigt an einem real erfolgreichen Konkurrenz-
+Listing) kombiniert beides: ein kurzer Stimmungsabsatz oben, dann klare
+Fakten in zwei Listen darunter.
 
 **Aufbau:**
-1. Ein Satz, der klar sagt, was es ist (Anzahl, Format, Stil) UND wie es
-   sich anfühlt -- z. B. "Six phone wallpapers, hand-painted in a thick
-   oil-on-canvas style" statt nur "Six wallpapers" oder nur ein Stimmungssatz
-2. 1 Satz, der das Motiv/die Bildwelt bildhaft benennt (Bronze, Sturm,
-   Nachtstadt -- je nach Set) statt "hochwertig", "perfekt", "einzigartig"
-3. Optional: das Zitat aus dem Set selbst als Schlusszeile, falls eins dabei ist
-4. Fußzeile: `*N wallpapers · instant download · personal use*`
+1. **Titel in Großbuchstaben** (+ Format, falls relevant, z. B.
+   "-- DESKTOP WALLPAPER COLLECTION")
+2. **1-2 Sätze Stimmungsabsatz**: was es ist UND wie es sich anfühlt --
+   bildhaft (Bronze, Sturm, Nachtstadt -- je nach Set), keine leeren
+   Worte wie "hochwertig", "perfekt", "einzigartig"
+3. **"WHAT'S INCLUDED:"** -- Bullet-Liste mit konkreten Fakten: Anzahl
+   Bilder, Auflösung/Format, Themen, Download-Art, Lizenz (siehe
+   `license.txt` -- aktuell **nur persönlicher Gebrauch**, kommerzielle
+   Nutzung ist eine bewusste, separate Preis-/Rechte-Entscheidung, nicht
+   automatisch mit reinschreiben)
+4. **"PERFECT FOR:"** -- Bullet-Liste mit Anwendungsfällen/Zielgruppe
+5. Optional: eine kursive Schlussnotiz, die Qualität/Sorgfalt unterstreicht
+   (z. B. "no generic AI-art look") -- kein Zitat aus dem Set nötig, kann
+   aber ergänzt werden, falls eins dabei ist
 
 **Beispiel (Odyssey-Set):**
 ```
-ODYSSEY
+ODYSSEY -- DESKTOP WALLPAPER COLLECTION
 
-Six phone wallpapers, hand-painted in a thick oil-on-canvas style --
-warriors, storms, and a ship that won't turn back.
+Bring the tension and grandeur of ancient myth to your screen. This
+collection channels raw, storm-lit Greek mythology -- every piece painted
+entirely in thick, textured oil on canvas.
 
-Each piece is uniquely composed and delivered in high resolution, ready
-to set as your lock screen or home screen.
+WHAT'S INCLUDED:
+- 6 unique desktop wallpapers
+- 16:9 widescreen, high resolution
+- Themes: bronze-armored warriors, storm-battered ships, weapons of war
+- Instant download after purchase
+- Personal use license (see included license.txt)
 
+PERFECT FOR:
+- Desktop and laptop wallpaper setups
+- Anyone who wants their screen to feel like a scene from an epic, not a
+  stock photo
+- Fans of mythology, dark academia, and painterly aesthetics
 
-*6 wallpapers · instant download · personal use*
+Note: Each piece is individually composed -- no filters, no repeats, no
+generic "AI art" look.
 ```
 
-Jedes Set braucht eigene Bilder/Wörter passend zum Thema -- nicht diesen
-Text wiederverwenden, sondern das Prinzip (kurz, bildhaft, Gefühl statt
-Feature) auf das neue Thema übertragen.
+Jedes Set braucht eigene Bilder/Wörter passend zum Thema -- Aufbau
+übernehmen, Inhalt neu schreiben.
 
 ## 5. Link zu TikTok/Instagram
 

@@ -121,8 +121,9 @@ def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]
     scene_templates = [
         (
             "macro close-up",
-            f"extreme close-up macro shot of {subject}, dramatic single light source"
-            f"{color_clause}, {STYLE_DNA}",
+            f"extreme close-up painterly study of {subject}, dramatic single light "
+            f"source, fine details suggested through loose expressive brushwork rather "
+            f"than sharp precise detail{color_clause}, {STYLE_DNA}",
         ),
         (
             "lifestyle flat-lay",

@@ -210,8 +210,11 @@ def build_prompt_variations(
 
     # Always add one text-overlay "quote" wallpaper as the signature format.
     if quote:
-        # Custom quote -> build a whole atmosphere around it, not a clipping
-        # pasted over the subject.
+        # VALIDATED FORMULA (confirmed against a real generation, "ferrari rot" /
+        # "NO RISK, NO HISTORY" -- see git history around this line): a whole
+        # cinematic atmosphere built around the subject, with the quote painted
+        # directly into the scene rather than pasted on as a separate clipping.
+        # Do not simplify this back toward a single centered "product" shot.
         quote_prompt = (
             f"{STYLE_DNA}, a cinematic atmospheric night scene built around {subject}, "
             f"wet reflective ground catching golden and red light, dramatic rim "

@@ -102,6 +102,16 @@ CATEGORIES = {
             "a wooden warship with torn sails battling violent waves in the background"
         ),
     },
+    "monaco": {
+        "keywords": [
+            "monaco", "monte carlo", "riviera", "cote d'azur", "cannes", "yacht",
+        ],
+        "subject": (
+            "a sleek white luxury yacht anchored in a glittering Mediterranean "
+            "harbor, palm trees swaying against pastel Belle Epoque architecture, "
+            "steep coastal mountains rising behind the marina"
+        ),
+    },
 }
 
 COLOR_WORDS = {
@@ -196,8 +206,13 @@ def build_prompt_variations(
         ),
         (
             "hand composition",
-            f"{STYLE_DNA}, {FRAME_STYLE}, a tanned hand holding {subject}, cinematic "
-            f"side lighting, dark background{color_clause}",
+            # Holds a small companion prop (not the main subject itself) with
+            # the subject visible behind it -- "a hand holding {subject}"
+            # reads oddly when the subject is a full scene (a yacht, a ship)
+            # rather than a single graspable object.
+            f"{STYLE_DNA}, {FRAME_STYLE}, a tanned hand holding {random.choice(COMPANION_PROPS)}, "
+            f"{subject} visible blurred in the background, cinematic side "
+            f"lighting{color_clause}",
         ),
         (
             "atmospheric scene",

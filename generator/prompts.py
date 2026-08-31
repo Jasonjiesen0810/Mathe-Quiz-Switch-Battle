@@ -65,7 +65,14 @@ CATEGORIES = {
     },
     "poker": {
         "keywords": ["poker", "casino", "cards", "karten"],
-        "subject": "a poker table with chips, cash, cards and a martini glass",
+        "subject": (
+            "a hand in the foreground holding two pocket ace playing cards close to "
+            "the camera, a round poker table with a gold rim, tall stacks of black "
+            "and gold poker chips, thick bundles of banded cash, two crystal martini "
+            "glasses with olives, a loose diamond bracelet and necklace beside a gold "
+            "luxury wristwatch, a fanned hand of face-up playing cards, a blurred "
+            "dark-suited figure seated in the background"
+        ),
     },
     "fashion": {
         "keywords": ["marke", "brand", "fashion", "designer", "suit", "anzug"],

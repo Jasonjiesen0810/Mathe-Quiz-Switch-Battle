@@ -41,6 +41,19 @@ und lädt kurze Videos hoch, in denen die Wallpaper gezeigt werden
    dezent auf "Link in Bio" hinweisen. Preis-Empfehlungen (siehe
    Preis-Strategie in derselben Datei) nicht eigenmächtig ändern --
    das entscheidet der User.
+6. **Standard-Lieferumfang, IMMER automatisch mitliefern** sobald der
+   User ein Bilder-Set als gut/verkaufsfertig bestätigt -- ohne dass er
+   danach fragen muss:
+   - Produktbeschreibung (siehe Punkt 5)
+   - Cover-Mockup-Prompt (Laptop-in-Raum-Szene wie in `marketing/gumroad-setup.md`
+     beschrieben) -- **Beleuchtung/Raum-Stimmung ans Thema anpassen**
+     (z. B. dunkler Raum für düstere/dramatische Themen wie Odyssey,
+     heller sonniger Raum für Urlaub/Sommer-Themen wie Monaco), nicht
+     immer denselben dunklen Raum wiederverwenden
+   - Thumbnail-Hinweis (welches Bild sich am besten für einen quadratischen
+     Zuschnitt eignet)
+   Ziel: Der User muss nicht jedes Mal explizit "und Cover/Thumbnail/
+   Beschreibung" dazusagen.
 
 ## Leitplanken
 

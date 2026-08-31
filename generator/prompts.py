@@ -76,8 +76,9 @@ CATEGORIES = {
         # renders these far more reliably than dense micro-detail like watch dials.
         "keywords": ["parfum", "parfüm", "perfume", "versace", "duft", "cologne", "fragrance"],
         "subject": (
-            "a bold luxury perfume bottle with a striking gold Medusa-head emblem, "
-            "faceted glass catching dramatic light, a heavy gold cap"
+            "a bold luxury perfume bottle painted in thick angular strokes of deep "
+            "color, a striking raised gold Medusa-head emblem built from thick paint, "
+            "a heavy gold cap sculpted from impasto ridges"
         ),
     },
 }
@@ -144,33 +145,37 @@ def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]
     props = random.sample(COMPANION_PROPS, k=2)
     collage_items = f"{subject}, {props[0]} and {props[1]}"
 
+    # Style/technique comes FIRST in every prompt (earlier tokens carry more
+    # weight), the concrete subject comes after.
     scene_templates = [
         (
             "macro close-up",
-            f"extreme close-up painterly study of {subject}, dramatic single light "
-            f"source, fine details suggested through loose expressive brushwork rather "
-            f"than sharp precise detail{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
+            f"{STYLE_DNA}, {FRAME_STYLE}, an extreme close-up painterly study of "
+            f"{subject}, dramatic single light source, fine details suggested through "
+            f"loose expressive knife strokes rather than sharp precise detail"
+            f"{color_clause}",
         ),
         (
             "collage",
-            f"a flat-lay collage of {collage_items}, each object individually painted "
-            f"as a die-cut cutout with a thick raised paint border like a sticker, "
-            f"slightly overlapping, arranged on {bg}{color_clause}, {STYLE_DNA}",
+            f"{STYLE_DNA}, a flat-lay collage of {collage_items}, each object "
+            f"individually painted as a die-cut cutout with a thick raised paint "
+            f"border like a sticker, slightly overlapping, arranged on {bg}"
+            f"{color_clause}",
         ),
         (
             "hand composition",
-            f"a tanned hand holding {subject}, cinematic side lighting, dark background"
-            f"{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
+            f"{STYLE_DNA}, {FRAME_STYLE}, a tanned hand holding {subject}, cinematic "
+            f"side lighting, dark background{color_clause}",
         ),
         (
             "atmospheric scene",
-            f"{subject} in a dark moody atmospheric scene with golden rim lighting and "
-            f"soft bokeh{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
+            f"{STYLE_DNA}, {FRAME_STYLE}, {subject} in a dark moody atmospheric scene "
+            f"with golden rim lighting and soft bokeh{color_clause}",
         ),
         (
             "symbolic abstract",
-            f"symbolic abstract composition built around {subject}, dramatic top-down "
-            f"lighting, deep shadows{color_clause}, {FRAME_STYLE}, {STYLE_DNA}",
+            f"{STYLE_DNA}, {FRAME_STYLE}, a symbolic abstract composition built around "
+            f"{subject}, dramatic top-down lighting, deep shadows{color_clause}",
         ),
     ]
 
@@ -191,9 +196,9 @@ def build_prompt_variations(keyword: str, count: int = 6) -> list[PromptVariant]
     # Always add one text-overlay "quote" wallpaper as the signature format.
     quote = random.choice(QUOTES)
     quote_prompt = (
-        f'a vintage aged newspaper background with the words "{quote}" painted on top '
-        f"in thick dripping oil paint typography, {subject} faintly visible in the "
-        f"textured background{color_clause}, {STYLE_DNA}"
+        f'{STYLE_DNA}, a vintage aged newspaper background with the words "{quote}" '
+        f"painted on top in thick dripping oil paint typography, {subject} faintly "
+        f"visible in the textured background{color_clause}"
     )
     variants.append(
         PromptVariant(

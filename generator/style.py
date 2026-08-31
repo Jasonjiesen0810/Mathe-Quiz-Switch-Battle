@@ -5,17 +5,23 @@ though the subject changes. This module centralizes the style keywords
 so both prompt building and future style tweaks happen in one place.
 """
 
+# IMPORTANT: keep this purely affirmative (describe what the image IS).
+# Negated phrases inside a positive prompt ("not photorealistic", "no
+# glass reflections") tend to backfire on diffusion models -- the model
+# still picks up "photorealistic"/"glass reflections" as a strong signal
+# despite the "not"/"no" in front of it. All exclusions belong in
+# NEGATIVE_BASE only, never woven into STYLE_DNA/FRAME_STYLE.
+#
+# Style terms are also front-loaded (painting technique first, subject
+# second) since earlier tokens carry more weight in most of these models.
 STYLE_DNA = (
-    "museum-quality impasto oil painting, palette-knife technique with thick raised "
-    "paint ridges you can see the physical texture of, every surface in the frame -- "
-    "including glass, liquid and metal -- built from opaque thick daubs of paint that "
-    "suggest form and light rather than realistic optical transparency, reflection or "
-    "refraction (no see-through glass, no mirror-sharp chrome, no photoreal rendering "
-    "anywhere), the whole canvas painted in one consistent alla-prima technique with no "
-    "smooth or airbrushed area anywhere, aggressive visible brushwork texture across "
-    "100% of the image, dramatic chiaroscuro lighting, warm golden highlights carved by "
-    "light against deep black shadows, rich luxurious color palette of black, gold, "
-    "burgundy and cream, loose confident expressive brushwork, fine art gallery piece"
+    "a thick impasto oil painting made entirely with a palette knife, heavy raised "
+    "ridges of wet paint, coarse canvas weave visible beneath the paint, aggressive "
+    "gestural knife strokes sculpting every form and surface with paint, dramatic "
+    "chiaroscuro lighting, deep black shadows carved through with golden impasto "
+    "highlights, a rich palette of black, gold, burgundy and cream, one unified "
+    "hand-painted technique across the whole canvas, museum-quality brushwork, "
+    "fine art gallery piece"
 )
 
 # Rotated in for variety so backgrounds don't all look the same.
@@ -26,18 +32,21 @@ BACKGROUND_TEXTURES = [
     "a weathered dark stone surface",
 ]
 
-# A candid, cropped fragment -- not a centered studio product photo.
+# Framed as "a crop from an existing painting" rather than "a photo of an
+# arranged object" -- this shifts the model's whole frame of reference
+# toward painting instead of product photography.
 FRAME_STYLE = (
-    "candid cropped composition, off-center asymmetric framing, part of the subject "
-    "extending past the edge of the frame as if caught mid-scene, not a centered "
-    "isolated studio product photo, not on a plain empty background"
+    "a candid cropped detail from a larger painting, asymmetric off-center framing, "
+    "part of the subject running past the edge of the canvas as if caught mid-scene"
 )
 
 NEGATIVE_BASE = (
-    "photorealistic, photo, product photography, studio product shot, centered hero "
-    "shot, isolated on plain background, 3d render, cgi, ray tracing, hyperrealistic, "
-    "glossy mirror reflections, transparent glass, smooth digital painting, airbrushed, "
-    "flat lighting, low quality, blurry, out of focus, watermark, signature, cartoon, "
+    "photorealistic, photo, photograph, product photography, advertisement, "
+    "commercial photography, studio lighting, softbox, centered hero shot, isolated "
+    "on plain background, 3d render, cgi, ray tracing, hyperrealistic, glossy, "
+    "polished, shiny, mirror reflections, transparent glass, digital illustration, "
+    "vector art, clean lines, sharp focus, smooth digital painting, airbrushed, flat "
+    "lighting, low quality, blurry, out of focus, watermark, signature, cartoon, "
     "anime, extra limbs, deformed hands, sharp legible tiny text, readable engraving, "
     "legible brand wordmark, readable label typography, detailed logo text, warped "
     "text, gibberish text, misspelled logo, distorted lettering"

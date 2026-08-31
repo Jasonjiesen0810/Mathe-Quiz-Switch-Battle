@@ -52,11 +52,12 @@ NEGATIVE_BASE = (
     "text, gibberish text, misspelled logo, distorted lettering"
 )
 
-# Aspect ratios used for phone wallpapers (Leonardo needs explicit pixel sizes).
+# Aspect ratios used for wallpapers. Leonardo requires both dimensions to
+# be multiples of 8 -- these are all standard resolutions that satisfy that.
 WALLPAPER_SIZES = {
-    "phone": (1024, 1820),     # ~9:16, close to common phone screens
+    "phone": (1080, 1920),     # 9:16, standard phone resolution
     "square": (1024, 1024),    # for Instagram feed posts / previews
-    "desktop": (1820, 1024),   # ~16:9, common desktop/laptop screens
+    "desktop": (1920, 1080),   # 16:9, Full HD desktop/laptop screens
 }
 
 

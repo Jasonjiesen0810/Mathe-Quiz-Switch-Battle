@@ -144,6 +144,20 @@ CATEGORIES = {
             "ocean horizon blurred softly behind it",
             "palm leaves in sharp silhouette against a blazing golden sunset "
             "sky, dramatic warm backlight",
+            "a woven straw sun hat resting on a striped beach towel, dappled "
+            "sunlight filtering through a palm canopy above",
+            "the edge of an infinity pool merging seamlessly into the ocean "
+            "horizon, a half-submerged cocktail glass floating at the edge",
+            "a hammock strung between two leaning palm trunks, a sliver of "
+            "turquoise sea and sky glimpsed beyond it",
+            "a snorkel mask and fins resting in wet sand at the edge of "
+            "shallow turquoise water, small waves catching golden light",
+            "a beach bar counter close-up, a hand shaking a cocktail shaker, "
+            "limes and rum bottles blurred in the background",
+            "a surfboard leaning against a palm trunk, a large wave cresting "
+            "and crashing in the background",
+            "sunset light reflected in wet sand, a trail of footprints "
+            "leading toward the glowing horizon",
         ],
     },
     "monaco": {
@@ -211,8 +225,12 @@ def _build_from_vignettes(
     w: int,
     h: int,
 ) -> list[PromptVariant]:
+    # Sample rather than always take the first N, so repeated runs for the
+    # same theme (e.g. "more of this theme") surface fresh combinations
+    # instead of the identical first vignettes every time.
+    picked = random.sample(vignettes, k=min(max(count - 1, 1), len(vignettes)))
     variants: list[PromptVariant] = []
-    for i, vignette in enumerate(vignettes[: max(count - 1, 1)], start=1):
+    for i, vignette in enumerate(picked, start=1):
         variants.append(
             PromptVariant(
                 label=f"vignette {i}",

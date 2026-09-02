@@ -64,14 +64,18 @@ CATEGORIES = {
         "subject": "a trading desk with candlestick charts, cash and a laptop",
     },
     "poker": {
-        "keywords": ["poker", "casino", "cards", "karten"],
+        "keywords": [
+            "poker", "casino", "cards", "karten", "chips", "martini", "vegas",
+            "pokernacht",
+        ],
         "subject": (
             "a hand in the foreground holding two pocket ace playing cards close to "
             "the camera, a round poker table with a gold rim, tall stacks of black "
             "and gold poker chips, thick bundles of banded cash, two crystal martini "
             "glasses with olives, a loose diamond bracelet and necklace beside a gold "
             "luxury wristwatch, a fanned hand of face-up playing cards, a blurred "
-            "dark-suited figure seated in the background"
+            "dark-suited figure seated in the background, the glow of Las Vegas Strip "
+            "neon signs visible through a window behind the table"
         ),
     },
     "fashion": {

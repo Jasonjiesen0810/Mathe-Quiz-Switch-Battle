@@ -68,15 +68,34 @@ CATEGORIES = {
             "poker", "casino", "cards", "karten", "chips", "martini", "vegas",
             "pokernacht",
         ],
-        "subject": (
-            "a hand in the foreground holding two pocket ace playing cards close to "
-            "the camera, a round poker table with a gold rim, tall stacks of black "
-            "and gold poker chips, thick bundles of banded cash, two crystal martini "
-            "glasses with olives, a loose diamond bracelet and necklace beside a gold "
-            "luxury wristwatch, a fanned hand of face-up playing cards, a blurred "
-            "dark-suited figure seated in the background, the glow of Las Vegas Strip "
-            "neon signs visible through a window behind the table"
-        ),
+        # Short summary used only for the quote-overlay scene.
+        "subject": "a Las Vegas poker night, chips, cards and neon light",
+        # VALIDATED (user confirmed "sehr sehr gut" / "genau das meine ich"):
+        # distinct fragments/moments of one story instead of the same full
+        # scene repeated in 6 framings -- see the vignette-mode note below
+        # build_prompt_variations for why this matters.
+        "vignettes": [
+            "an extreme macro close-up of two fingers holding two ace playing "
+            "cards, soft golden light catching the card edges, stacks of poker "
+            "chips completely blurred into abstract shapes in the background, "
+            "nothing else in frame",
+            "a close-up of a single martini glass with an olive on a pick, "
+            "condensation beading on the glass, pink and blue neon casino light "
+            "reflected and refracted through the liquid, dark background "
+            "completely out of focus",
+            "a wide atmospheric view of the Las Vegas Strip at night through a "
+            "rain-streaked window, glowing casino neon signs reflected on wet "
+            "glass, a dark silhouetted hand resting on the windowsill balancing "
+            "a single poker chip between two fingers",
+            "a hand pushing a tall stack of poker chips across green felt, "
+            "chips caught mid-topple with motion suggested through dynamic "
+            "diagonal brushstrokes, a blurred edge of banded cash at the "
+            "frame's corner, dramatic single light source from above",
+            "a spinning roulette wheel caught mid-motion with the ball a "
+            "blurred streak of white, red and black numbers smeared by motion, "
+            "a still hand of playing cards resting sharp and in focus in the "
+            "foreground corner",
+        ],
     },
     "fashion": {
         "keywords": ["marke", "brand", "fashion", "designer", "suit", "anzug"],
@@ -105,6 +124,27 @@ CATEGORIES = {
             "gripping a sword, a weathered dark-suited figure braced against a storm, "
             "a wooden warship with torn sails battling violent waves in the background"
         ),
+    },
+    "beach": {
+        "keywords": [
+            "strand", "beach", "cocktail", "sonnenbrille", "palmen", "palm",
+            "meer", "sea", "ocean", "sommer", "summer",
+        ],
+        "subject": "a tropical beach vacation, palms, cocktails and turquoise sea",
+        "vignettes": [
+            "an extreme close-up of dark aviator sunglasses lying on white sand, "
+            "a turquoise ocean and palm silhouette reflected in the lenses",
+            "a tropical cocktail glass with a slice of pineapple and a small "
+            "paper umbrella, condensation beading on the glass, the dappled "
+            "shadow of a palm leaf falling across it",
+            "a wide view of bare feet standing at the shoreline, turquoise "
+            "waves lapping over golden sand, palm trees leaning in from the "
+            "frame's edge",
+            "a tanned hand holding a cocktail glass, an endless turquoise "
+            "ocean horizon blurred softly behind it",
+            "palm leaves in sharp silhouette against a blazing golden sunset "
+            "sky, dramatic warm backlight",
+        ],
     },
     "monaco": {
         "keywords": [
@@ -162,6 +202,58 @@ def _match_color(keyword: str) -> str | None:
     return None
 
 
+def _build_from_vignettes(
+    vignettes: list[str],
+    subject_summary: str,
+    color_clause: str,
+    quote: str | None,
+    count: int,
+    w: int,
+    h: int,
+) -> list[PromptVariant]:
+    variants: list[PromptVariant] = []
+    for i, vignette in enumerate(vignettes[: max(count - 1, 1)], start=1):
+        variants.append(
+            PromptVariant(
+                label=f"vignette {i}",
+                prompt=f"{STYLE_DNA}, {vignette}{color_clause}",
+                negative_prompt=build_negative_prompt(allow_text=False),
+                width=w,
+                height=h,
+            )
+        )
+
+    if quote:
+        quote_prompt = (
+            f"{STYLE_DNA}, a cinematic atmospheric scene built around "
+            f"{subject_summary}, dramatic rim lighting, the words "
+            f'"{quote.upper()}" painted large across the scene in thick '
+            f"dripping oil paint typography as if part of the painted "
+            f"atmosphere itself{color_clause}"
+        )
+        label = "atmosphere quote"
+    else:
+        quote_text = random.choice(QUOTES)
+        quote_prompt = (
+            f'{STYLE_DNA}, a vintage aged newspaper background with the words '
+            f'"{quote_text}" painted on top in thick dripping oil paint '
+            f"typography, {subject_summary} faintly visible in the textured "
+            f"background{color_clause}"
+        )
+        label = "quote overlay"
+
+    variants.append(
+        PromptVariant(
+            label=label,
+            prompt=quote_prompt,
+            negative_prompt=build_negative_prompt(allow_text=True),
+            width=w,
+            height=h,
+        )
+    )
+    return variants[:count]
+
+
 def build_prompt_variations(
     keyword: str, count: int = 6, quote: str | None = None, format: str = "phone"
 ) -> list[PromptVariant]:
@@ -182,10 +274,23 @@ def build_prompt_variations(
     """
     category = _match_category(keyword)
     color = _match_color(keyword)
-    subject = category["subject"] if category else keyword
-
     color_clause = f", dominant accent color: {color}" if color else ""
     w, h = WALLPAPER_SIZES[format]
+
+    # VIGNETTE MODE: for a "scene" theme (a whole poker night, a whole beach
+    # vacation) reusing one big subject description across every composition
+    # template produces 6 near-identical images -- the model has almost the
+    # same content list to work with every time. Real variety comes from
+    # treating each image as a DIFFERENT fragment/moment of the story
+    # instead (confirmed with the user: "sehr sehr gut... genau das meine
+    # ich" on the poker set built this way). Prefer adding "vignettes" to a
+    # new scene-heavy category over a single long "subject".
+    if category and category.get("vignettes"):
+        return _build_from_vignettes(
+            category["vignettes"], category["subject"], color_clause, quote, count, w, h
+        )
+
+    subject = category["subject"] if category else keyword
     bg = random.choice(BACKGROUND_TEXTURES)
 
     props = random.sample(COMPANION_PROPS, k=2)

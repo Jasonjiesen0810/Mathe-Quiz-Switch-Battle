@@ -191,6 +191,21 @@ def build_prompt_variations(
     props = random.sample(COMPANION_PROPS, k=2)
     collage_items = f"{subject}, {props[0]} and {props[1]}"
 
+    # A subject that already contains its own hand (e.g. the poker category's
+    # "a hand ... holding two pocket ace playing cards") would otherwise get
+    # a second, unrelated hand+prop bolted on -- use it directly instead.
+    if "hand" in subject.lower():
+        hand_composition_prompt = (
+            f"{STYLE_DNA}, {FRAME_STYLE}, {subject}, cinematic side lighting"
+            f"{color_clause}"
+        )
+    else:
+        hand_composition_prompt = (
+            f"{STYLE_DNA}, {FRAME_STYLE}, a tanned hand holding "
+            f"{random.choice(COMPANION_PROPS)}, {subject} visible blurred in the "
+            f"background, cinematic side lighting{color_clause}"
+        )
+
     # Style/technique comes FIRST in every prompt (earlier tokens carry more
     # weight), the concrete subject comes after.
     scene_templates = [
@@ -210,13 +225,7 @@ def build_prompt_variations(
         ),
         (
             "hand composition",
-            # Holds a small companion prop (not the main subject itself) with
-            # the subject visible behind it -- "a hand holding {subject}"
-            # reads oddly when the subject is a full scene (a yacht, a ship)
-            # rather than a single graspable object.
-            f"{STYLE_DNA}, {FRAME_STYLE}, a tanned hand holding {random.choice(COMPANION_PROPS)}, "
-            f"{subject} visible blurred in the background, cinematic side "
-            f"lighting{color_clause}",
+            hand_composition_prompt,
         ),
         (
             "atmospheric scene",

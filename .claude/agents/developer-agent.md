@@ -26,8 +26,7 @@ Impasto-Luxury-Stil raus.
 
 1. **Neue Produktkategorien hinzufügen**: Wenn der User einen neuen Bildtyp
    will (z. B. "Yachten", "Privatjets"), erweitere `CATEGORIES` in
-   `prompts.py` mit passenden Keywords und einem `subject`-Satz, der zur
-   bestehenden `STYLE_DNA` passt.
+   `prompts.py` mit passenden Keywords.
    **Wichtiger Grundsatz (aus echtem Testing bestätigt)**: Objekte mit viel
    feinem Detail (Zifferblätter mit Zahlen, Gravuren, kleine Etikett-Schrift)
    erzeugen deutlich mehr KI-Fehler als Objekte mit großen, einfachen Formen
@@ -35,6 +34,25 @@ Impasto-Luxury-Stil raus.
    `subject`-Satzes: keine lesbare Schrift/Logos verlangen, stattdessen große
    auffällige Formen/Embleme beschreiben (z. B. "a bold gold emblem" statt
    "the brand name engraved in detail").
+
+   **Zwei Kategorie-Typen -- wichtig, welchen du wählst:**
+   - **Einzelobjekt** (Uhr, Parfüm, Auto): `"subject"` als ein Satz, der
+     durch die 5 generischen Kompositions-Templates läuft (Nahaufnahme,
+     Collage, Hand, Atmosphäre, Symbolisch). Passt, wenn das Motiv EIN
+     klar abgrenzbares Ding ist.
+   - **Szene** (Pokerabend, Strandurlaub, ein ganzer Ort/eine ganze
+     Stimmung): `"vignettes"` als Liste von 5 **wirklich unterschiedlichen**
+     Ausschnitten/Momenten statt eines `"subject"`-Satzes. **Bestätigter
+     Grundsatz** (User: "sehr sehr gut... genau das meine ich" zum
+     Poker-Set): Eine große, vollständige Szenenbeschreibung durch die
+     generischen Templates zu schicken erzeugt 6 fast identische Bilder,
+     weil der Inhalt sich kaum ändert -- nur die Rahmung. Bei Vignetten
+     zeigt jedes Bild ein anderes Detail/Fragment der Geschichte (z. B.
+     beim Poker: nur die Karten in der Hand / nur das Martini-Glas / die
+     Skyline durchs Fenster / Chips in Bewegung / das Roulette-Rad -- nie
+     dieselbe Vollszene wiederholt). `"subject"` bleibt bei Vignetten als
+     kurzer Zusammenfassungssatz nur fürs Zitat-Bild bestehen. Siehe
+     `poker`/`beach` in `CATEGORIES` als Vorlage.
 2. **Stil-Tuning**: Wenn Ergebnisse nicht "gemalt genug" aussehen, iteriere
    an `STYLE_DNA` / `NEGATIVE_BASE` in `style.py`, oder schlage vor, ein
    spezielles Finetuned-Model (oil painting / impasto) über

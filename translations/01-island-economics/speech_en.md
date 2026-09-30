@@ -3,7 +3,7 @@
 *An English speech adapted from a Chinese podcast on 《小岛经济学》 (*Island Economics*), published in English as* How an Economy Grows and Why It Crashes *by Peter and Andrew Schiff.*
 
 > The section headings below are for the speaker's orientation only. They are not meant to be read aloud.
-> Passages in **[square brackets]** are English additions that are not in the Chinese original. See `notes.md`.
+> Passages in **[square brackets]** are English additions that are not in the Chinese original. See the translation notes (`notes.pdf`).
 
 ---
 

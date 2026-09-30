@@ -1,7 +1,7 @@
 # Übersetzungsnotizen – 《小岛经济学》解读
 
 Quelle: `source_zh.txt` (automatisches Transkript von TurboScribe)
-Ergebnis: `speech_en.md` (amerikanisches Englisch, Redestil: lehrreich und motivierend, ca. 3.700 Wörter, gesprochen etwa 25 Minuten)
+Ergebnis: `speech_en.pdf` (amerikanisches Englisch, Redestil: lehrreich und motivierend, ca. 3.700 Wörter, gesprochen etwa 25 Minuten)
 
 ## 1. Transkriptionsfehler, die ich korrigiert habe
 

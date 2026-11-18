@@ -34,7 +34,10 @@ Wie Apple-Design: elegant, ruhig, flüssig, hochwertig. Wenig Elemente, viel Rau
 
 ## Inhaltsregeln
 - Keine erfundenen Zahlen; Rechnungen nur sichtbar (z. B. 30 YEARS = 10,950 DAYS)
-- Keine Versprechen ("guaranteed", "you will get rich")
+- Zahlen/Behauptungen aus Büchern sind erlaubt, aber immer mit Quelle im Bild
+  (z. B. "— Brian Tracy, Eat That Frog!"), nie als eigene Tatsache
+- Keine eigenen Versprechen an Zuschauer ("guaranteed", "you will get rich");
+  Aussagen des Autors nur als Zitat/zugeschrieben
 - Eigene Texte – Referenzen nur als Stilvorbild, nichts 1:1 kopieren, keine fremden Logos
 - Zu jedem Video: Caption + Hashtags als Textdatei in output/
 

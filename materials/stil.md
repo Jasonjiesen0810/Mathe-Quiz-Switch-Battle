@@ -43,3 +43,12 @@ Wie Apple-Design: elegant, ruhig, flüssig, hochwertig. Wenig Elemente, viel Rau
 
 ## Referenzen
 materials/referenzen/ (Screenshots, nur Stilvorbild)
+
+## Musik & Export (fester Ablauf)
+- Jedes Video in 2 Fassungen:
+  1. `NN_name_VORSCHAU_musik.mp4` – mit Musik, nur zur Ansicht (nicht ins Repo, urheberrechtlich geschützt)
+  2. `NN_name_UPLOAD_ohne-musik.mp4` – nur Stimme, wird hochgeladen
+- Musik kommt auf TikTok als Sound aus der App (Standard: "Glue" von Bicep)
+- Höhepunkt: Song-Sekunde 44,38 (Einschlag nach kurzer Stille) liegt auf dem Schluss-Moment des Videos
+- In der Textdatei steht immer, bei welcher Video-Sekunde der Einschlag sitzen muss
+- Stimme: Kokoro af_bella, kurze Satzteile mit Pausen, wichtige Stellen langsamer

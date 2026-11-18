@@ -53,3 +53,5 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - In der Textdatei steht immer, bei welcher Video-Sekunde der Einschlag sitzen muss
 - Stimme: Kokoro af_bella, kurze Satzteile mit Pausen, wichtige Stellen langsamer
 - Feste Zeitachse: Schluss-Szene (s6) startet immer bei 34,6 s, Einschlag bei 34,75 s → gleicher TikTok-Sound-Start (0:09,6) für alle Videos
+- Sprechertext: dicht und konkret – kurze Pausen (0,1–0,2 s), keine Lücken über ~1 s (außer vor dem Einschlag)
+- Immer konkrete Anleitung geben ("Step 1 / 2 / 3", Beispiele), nicht nur Parolen

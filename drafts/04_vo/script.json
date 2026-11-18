@@ -1,25 +1,28 @@
 {
  "voice": "af_bella",
- "speed": 0.95,
- "duration": 39,
+ "speed": 0.97,
+ "duration": 40,
  "lines": [
   {
    "id": "s1",
    "at": 0.3,
    "parts": [
     {
-     "text": "You've got the perfect plan\u2026",
-     "speed": 0.9,
-     "pause": 0.35
-    },
-    {
-     "text": "every detail\u2026 every step\u2026 mapped out.",
+     "text": "You've got the perfect plan.",
      "speed": 0.93,
-     "pause": 0.5
+     "pause": 0.15
     },
     {
-     "text": "But you haven't taken a single one.",
-     "speed": 0.86
+     "text": "Every detail mapped out.",
+     "pause": 0.15
+    },
+    {
+     "text": "You've read the books, made the lists\u2026",
+     "pause": 0.2
+    },
+    {
+     "text": "but you haven't taken a single step.",
+     "speed": 0.9
     }
    ]
   },
@@ -28,33 +31,36 @@
    "at": 7.8,
    "parts": [
     {
-     "text": "Weeks go by\u2026",
-     "speed": 0.88,
-     "pause": 0.45
+     "text": "Weeks go by.",
+     "speed": 0.92,
+     "pause": 0.15
     },
     {
-     "text": "and you're still\u2026 planning.",
-     "speed": 0.84
+     "text": "You keep fixing the plan, waiting for the right moment\u2026",
+     "pause": 0.15
+    },
+    {
+     "text": "and nothing changes.",
+     "speed": 0.9
     }
    ]
   },
   {
    "id": "s3",
-   "at": 12.8,
+   "at": 13.5,
    "parts": [
     {
-     "text": "Brian Tracy puts it like this.",
+     "text": "Brian Tracy puts it like this:",
+     "pause": 0.2
+    },
+    {
+     "text": "an average plan, vigorously executed,",
      "speed": 0.95,
-     "pause": 0.35
+     "pause": 0.1
     },
     {
-     "text": "An average plan, vigorously executed\u2026",
-     "speed": 0.92,
-     "pause": 0.25
-    },
-    {
-     "text": "is far better than a brilliant plan\u2026 on which nothing is done.",
-     "speed": 0.93
+     "text": "is far better than a brilliant plan on which nothing is done.",
+     "speed": 0.95
     }
    ]
   },
@@ -63,33 +69,33 @@
    "at": 22.2,
    "parts": [
     {
-     "text": "For any kind of success\u2026",
-     "speed": 0.9,
-     "pause": 0.35
+     "text": "Execution is everything.",
+     "speed": 0.92,
+     "pause": 0.2
     },
     {
-     "text": "execution is everything.",
-     "speed": 0.85
+     "text": "So start here: pick the one task that moves you forward the most."
     }
    ]
   },
   {
    "id": "s5",
-   "at": 28.6,
+   "at": 28.0,
    "parts": [
     {
-     "text": "So do something.",
-     "speed": 0.9,
-     "pause": 0.35
+     "text": "Then do the first small step. Right now.",
+     "pause": 0.15
     },
     {
-     "text": "Do anything.",
-     "speed": 0.88,
-     "pause": 0.35
+     "text": "Make the call.",
+     "pause": 0.1
     },
     {
-     "text": "Just start.",
-     "speed": 0.85
+     "text": "Write the first line.",
+     "pause": 0.1
+    },
+    {
+     "text": "Book the appointment."
     }
    ]
   },
@@ -98,13 +104,13 @@
    "at": 34.8,
    "parts": [
     {
-     "text": "Take action.",
-     "speed": 0.85,
-     "pause": 0.35
+     "text": "Every morning, start with that one task.",
+     "speed": 1.0,
+     "pause": 0.15
     },
     {
-     "text": "Today.",
-     "speed": 0.8
+     "text": "Take action. Today.",
+     "speed": 0.9
     }
    ]
   }

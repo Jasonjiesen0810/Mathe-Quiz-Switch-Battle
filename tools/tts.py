@@ -44,16 +44,20 @@ def main():
     durs, sr, clips = {}, 24000, []
     for line in script['lines']:
         parts = line.get('parts') or [{'text': line['text']}]
-        chunks = []
+        chunks, starts, pos = [], [], 0.0
         for p in parts:
             a, sr = k.create(p['text'], voice=p.get('voice', line.get('voice', script['voice'])),
                              speed=p.get('speed', line.get('speed', script.get('speed', 1.0))), lang='en-us')
-            chunks += [trim(a), np.zeros(int(sr * p.get('pause', 0)), dtype=np.float32)]
+            a = trim(a)
+            starts.append(round(line.get('at', 0) + pos, 2))
+            pos += len(a) / sr + p.get('pause', 0)
+            chunks += [a, np.zeros(int(sr * p.get('pause', 0)), dtype=np.float32)]
         audio = np.concatenate(chunks)
         sf.write(os.path.join(out, line['id'] + '.wav'), audio, sr)
         d = round(len(audio) / sr, 2)
         durs[line['id']] = {'at': line.get('at'), 'len': d,
-                            'end': round(line['at'] + d, 2) if 'at' in line else None}
+                            'end': round(line['at'] + d, 2) if 'at' in line else None,
+                            'parts': starts}
         print(line['id'], durs[line['id']])
         clips.append((line.get('at'), audio))
     json.dump(durs, open(os.path.join(out, 'durations.json'), 'w'), indent=1)

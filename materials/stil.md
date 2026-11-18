@@ -52,3 +52,4 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Höhepunkt: Song-Sekunde 44,38 (Einschlag nach kurzer Stille) liegt auf dem Schluss-Moment des Videos
 - In der Textdatei steht immer, bei welcher Video-Sekunde der Einschlag sitzen muss
 - Stimme: Kokoro af_bella, kurze Satzteile mit Pausen, wichtige Stellen langsamer
+- Feste Zeitachse: Schluss-Szene (s6) startet immer bei 34,6 s, Einschlag bei 34,75 s → gleicher TikTok-Sound-Start (0:09,6) für alle Videos

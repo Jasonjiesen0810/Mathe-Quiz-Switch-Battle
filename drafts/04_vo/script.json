@@ -1,0 +1,112 @@
+{
+ "voice": "af_bella",
+ "speed": 0.95,
+ "duration": 39,
+ "lines": [
+  {
+   "id": "s1",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "You've got the perfect plan\u2026",
+     "speed": 0.9,
+     "pause": 0.35
+    },
+    {
+     "text": "every detail\u2026 every step\u2026 mapped out.",
+     "speed": 0.93,
+     "pause": 0.5
+    },
+    {
+     "text": "But you haven't taken a single one.",
+     "speed": 0.86
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "at": 7.8,
+   "parts": [
+    {
+     "text": "Weeks go by\u2026",
+     "speed": 0.88,
+     "pause": 0.45
+    },
+    {
+     "text": "and you're still\u2026 planning.",
+     "speed": 0.84
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "at": 12.8,
+   "parts": [
+    {
+     "text": "Brian Tracy puts it like this.",
+     "speed": 0.95,
+     "pause": 0.35
+    },
+    {
+     "text": "An average plan, vigorously executed\u2026",
+     "speed": 0.92,
+     "pause": 0.25
+    },
+    {
+     "text": "is far better than a brilliant plan\u2026 on which nothing is done.",
+     "speed": 0.93
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "at": 22.2,
+   "parts": [
+    {
+     "text": "For any kind of success\u2026",
+     "speed": 0.9,
+     "pause": 0.35
+    },
+    {
+     "text": "execution is everything.",
+     "speed": 0.85
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "at": 28.6,
+   "parts": [
+    {
+     "text": "So do something.",
+     "speed": 0.9,
+     "pause": 0.35
+    },
+    {
+     "text": "Do anything.",
+     "speed": 0.88,
+     "pause": 0.35
+    },
+    {
+     "text": "Just start.",
+     "speed": 0.85
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "at": 34.8,
+   "parts": [
+    {
+     "text": "Take action.",
+     "speed": 0.85,
+     "pause": 0.35
+    },
+    {
+     "text": "Today.",
+     "speed": 0.8
+    }
+   ]
+  }
+ ]
+}

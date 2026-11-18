@@ -1,0 +1,25 @@
+{"voice": "af_bella", "speed": 1.0, "duration": 45,
+ "lines": [
+  {"id": "all", "at": 0.25, "parts": [
+    {"text": "The life you want…", "speed": 0.92, "pause": 0.1},
+    {"text": "is going to cause you embarrassment.", "speed": 0.95, "pause": 0.2},
+    {"text": "That is the price.", "speed": 0.88, "pause": 0.35},
+    {"text": "Asking out that girl you like?", "pause": 0.1},
+    {"text": "Embarrassing.", "speed": 0.92, "pause": 0.25},
+    {"text": "Starting that business?", "pause": 0.1},
+    {"text": "Everybody's gonna laugh.", "pause": 0.25},
+    {"text": "Posting content?", "pause": 0.1},
+    {"text": "You're gonna feel like a fucking clown.", "pause": 0.35},
+    {"text": "But here's what they don't tell you.", "speed": 0.95, "pause": 0.2},
+    {"text": "That five seconds of embarrassment…", "pause": 0.1},
+    {"text": "is so much better than being fifty years old,", "pause": 0.1},
+    {"text": "looking back at a life full of regret…", "speed": 0.95, "pause": 0.1},
+    {"text": "because you were too scared to take the chance.", "pause": 0.35},
+    {"text": "Every single person you look up to…", "pause": 0.1},
+    {"text": "at some point risked looking like a fucking idiot.", "pause": 0.2},
+    {"text": "And yet… they did it anyway.", "speed": 0.92, "pause": 0.3},
+    {"text": "You think they weren't scared?", "pause": 0.15},
+    {"text": "They just put their dreams above their fucking ego.", "pause": 0.4},
+    {"text": "Stop protecting your pride…", "speed": 0.95, "pause": 0.15},
+    {"text": "and start chasing your fucking life.", "speed": 0.9}]}
+ ]}

@@ -55,3 +55,9 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Feste Zeitachse: Schluss-Szene (s6) startet immer bei 34,6 s, Einschlag bei 34,75 s → gleicher TikTok-Sound-Start (0:09,6) für alle Videos
 - Sprechertext: dicht und konkret – kurze Pausen (0,1–0,2 s), keine Lücken über ~1 s (außer vor dem Einschlag)
 - Immer konkrete Anleitung geben ("Step 1 / 2 / 3", Beispiele), nicht nur Parolen
+
+## Nonverbale Details (immer einbauen)
+- Figuren reagieren körperlich auf den Inhalt: Kopf senken (Scham/Reue), husten (Alter), zusammenzucken,
+  umschauen (Verwirrung), aufrichten (Entschluss), rennen/lehnen (Aufbruch), auf etwas zeigen
+- Bei jedem Satz prüfen: Was würde die Figur jetzt mit dem Körper tun?
+- Musik-Drop auch visuell betonen (kurzer Lichtimpuls/Bewegung)

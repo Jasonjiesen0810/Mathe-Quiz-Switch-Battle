@@ -132,8 +132,9 @@ function makeFig(parent){const g=el("g",{filter:"url(#glow)"},parent||scene);con
     set(L.legL,hip,[x+(-24+sw)*s,yF-13*s]);set(L.legR,hip,[x+(24-sw)*s,yF-13*s]);set(L.body,hip,neck);
     const sh=[neck[0],neck[1]+20*s];const aL=Math.PI/2+.38+sw*.01*(o.swing||0);
     set(L.armL,sh,[sh[0]+Math.cos(aL-sw*.012)*104*s,sh[1]+Math.sin(aL-sw*.012)*104*s]);
-    const ang=lerp(Math.PI/2-.38+sw*.012,-Math.PI/5.2,raise);
-    set(L.armR,sh,[sh[0]+Math.cos(ang)*110*s,sh[1]+Math.sin(ang)*110*s]);
+    let ang=lerp(Math.PI/2-.38+sw*.012,-Math.PI/5.2,raise), aLen=110;
+    const m=o.mouth||0; if(m>0){ang=lerp(ang,-Math.PI/2-.55,m);aLen=lerp(110,78,m);}
+    set(L.armR,sh,[sh[0]+Math.cos(ang)*aLen*s,sh[1]+Math.sin(ang)*aLen*s]);
     const hx=neck[0]+(droop*16+look*12+lean*10)*s, hy=neck[1]-(50-droop*14)*s;
     head.setAttribute("cx",hx);head.setAttribute("cy",hy);head.setAttribute("r",36*s);
     nose.setAttribute("cx",hx+look*14*s);nose.setAttribute("cy",hy+6*s);nose.setAttribute("r",11*s);
@@ -197,6 +198,9 @@ const cAge=txt(sC,BX1,BY+62,"AGE 50",24,{fill:C.grey});
 const c5=txt(sC,BX0+10,BY-40,"5 SEC",26,{fill:C.red,"font-weight":700});
 const cReg=txt(sC,(BX0+BX1)/2+20,BY-40,"REGRET",26,{fill:C.grey,"font-weight":700});
 const figC=makeFig(sC);
+const COUGH=[20.2,20.75,21.25];
+const PUFF=[];COUGH.forEach((c,ci)=>{for(let k=0;k<4;k++)PUFF.push({c:el("circle",{r:5+rnd()*5,fill:C.grey,opacity:0},sC),t:c+.04+k*.03,vx:-(40+rnd()*60),vy:-(10+rnd()*40)});});
+const pulse=el("rect",{x:0,y:0,width:1080,height:1920,fill:"#ffffff",opacity:0},scene);
 
 /* ===== D: everyone you look up to ===== */
 const sD=el("g",{},scene);
@@ -287,7 +291,16 @@ function seek(t){
   cReg.setAttribute("opacity",eOut(P(t,T[12],T[12]+.5)).toFixed(3));
   cAge.setAttribute("opacity",eOut(P(t,T[11],T[11]+.5)).toFixed(3));
   const fc=eExpo(P(t,T[11]+.3,T[11]+1.0));
-  figC.draw({x:830,y:GY,droop:lerp(0,1.1,eIO(P(t,T[12],T[12]+1.2))),look:-eIO(P(t,T[12]+.3,T[12]+1.0))});
+  // coughing: short forward jerks, hand to mouth, then head sinks low
+  const cp=COUGH.reduce((acc,c)=>acc+(t>=c?Math.exp(-(t-c)*9)*Math.sin(Math.min(1,(t-c)*12)*Math.PI/2):0),0);
+  const hand=eIO(P(t,COUGH[0]-.35,COUGH[0]-.1))*(1-eIO(P(t,COUGH[2]+.35,COUGH[2]+.7)));
+  const sink=eIO(P(t,T[13]-.1,T[13]+1.1));
+  figC.draw({x:830,y:GY+cp*4,droop:lerp(0,1.0,eIO(P(t,T[12],T[12]+1.0)))+cp*.6+sink*.9,
+             look:-eIO(P(t,T[12]+.3,T[12]+1.0))*(1-sink*.6),mouth:hand});
+  PUFF.forEach(p=>{const k=P(t,p.t,p.t+.7);const hx=+figC.g.querySelector("circle").getAttribute("cx"),hy=+figC.g.querySelector("circle").getAttribute("cy");
+    if(k>0&&k<1){if(p.x0===undefined||t<p.t+.02){p.x0=hx-30;p.y0=hy+8;}p.c.setAttribute("cx",p.x0+p.vx*eOut(k));p.c.setAttribute("cy",p.y0+p.vy*eOut(k));p.c.setAttribute("opacity",((1-k)*.7).toFixed(3));p.c.setAttribute("r",(5+8*k).toFixed(1));}
+    else p.c.setAttribute("opacity",0);});
+  pulse.setAttribute("opacity",(Math.exp(-Math.max(0,t-13.55)*7)*(t>=13.55?.13:0)).toFixed(3));
   figC.g.setAttribute("opacity",fc.toFixed(3));
 
   // D

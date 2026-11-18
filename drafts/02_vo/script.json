@@ -1,8 +1,26 @@
-{"voice":"am_michael","speed":0.95,"lines":[
- {"id":"s1","text":"Only about three percent of adults have clear, written goals. At least, that's what Brian Tracy writes in Eat That Frog."},
- {"id":"s2","text":"Because a goal that only lives in your head... is just a wish."},
- {"id":"s3","text":"It has no energy behind it. It leads to confusion, vagueness, and mistakes."},
- {"id":"s4","text":"So write it down. Think on paper. Turn it into something you can touch and see."},
- {"id":"s5","text":"Try this today. Write down ten goals. Then pick the one that would change your life the most."},
- {"id":"s6","text":"Write it down. And make it real."}
-]}
+{"voice": "af_bella", "speed": 0.95, "duration": 39,
+ "lines": [
+  {"id": "s1", "at": 0.3, "parts": [
+    {"text": "Only about three percent of adults…", "speed": 0.9, "pause": 0.3},
+    {"text": "have clear, written goals.", "speed": 0.86, "pause": 0.55},
+    {"text": "At least — that's what Brian Tracy writes, in Eat That Frog.", "speed": 0.97}]},
+  {"id": "s2", "at": 9.8, "parts": [
+    {"text": "Because a goal that only lives in your head…", "speed": 0.93, "pause": 0.45},
+    {"text": "is just a wish.", "speed": 0.82}]},
+  {"id": "s3", "at": 14.6, "parts": [
+    {"text": "It has no energy behind it.", "speed": 0.9, "pause": 0.4},
+    {"text": "It leads to confusion…", "speed": 0.92, "pause": 0.2},
+    {"text": "vagueness…", "speed": 0.9, "pause": 0.2},
+    {"text": "and mistakes.", "speed": 0.88}]},
+  {"id": "s4", "at": 21.2, "parts": [
+    {"text": "So write it down!", "speed": 0.92, "pause": 0.3},
+    {"text": "Think on paper.", "speed": 0.9, "pause": 0.3},
+    {"text": "Turn it into something you can touch… and see.", "speed": 0.92}]},
+  {"id": "s5", "at": 27.4, "parts": [
+    {"text": "Try this today.", "speed": 0.92, "pause": 0.3},
+    {"text": "Write down ten goals.", "speed": 0.95, "pause": 0.35},
+    {"text": "Then pick the one that would change your life the most.", "speed": 0.93}]},
+  {"id": "s6", "at": 34.8, "parts": [
+    {"text": "Write it down.", "speed": 0.88, "pause": 0.4},
+    {"text": "And make it real.", "speed": 0.82}]}
+ ]}

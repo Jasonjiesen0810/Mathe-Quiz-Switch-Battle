@@ -1,0 +1,2 @@
+materials/tts/*.onnx
+materials/tts/voices.npz

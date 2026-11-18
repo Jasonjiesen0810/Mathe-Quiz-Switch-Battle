@@ -1,2 +1,5 @@
 materials/tts/*.onnx
 materials/tts/voices.npz
+materials/musik/
+*_musik.mp4
+drafts/*_vo/mix.wav

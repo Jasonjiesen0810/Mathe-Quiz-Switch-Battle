@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Logo</title>
+<style>html,body{margin:0;background:#070707}svg{display:block}</style></head>
+<body>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="65%"><stop offset="0" stop-color="#151515"/><stop offset="1" stop-color="#070707"/></radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#F5B83D" stop-opacity=".30"/><stop offset="1" stop-color="#F5B83D" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowG" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <circle cx="512" cy="560" r="300" fill="url(#halo)"/>
+  <!-- shackle -->
+  <path d="M372,470 V372 A140,140 0 0 1 652,372 V470" fill="none" stroke="#F5F5F7" stroke-width="56" stroke-linecap="round" filter="url(#glow)"/>
+  <!-- body -->
+  <rect x="292" y="452" width="440" height="360" rx="72" fill="#F5F5F7" filter="url(#glow)"/>
+  <!-- keyhole -->
+  <g filter="url(#glowG)">
+    <circle cx="512" cy="600" r="44" fill="#F5B83D"/>
+    <path d="M490,620 L534,620 L548,720 Q548,730 538,730 L486,730 Q476,730 476,720 Z" fill="#F5B83D"/>
+  </g>
+</svg>
+</body></html>

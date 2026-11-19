@@ -1,6 +1,8 @@
 PROFIL – lock.in.hq
 
-=== PROFILBILDER (1080×1080, im Kreis gut lesbar) ===
+=== LOGO (final, schlicht): logo_4k.png – 4096×4096 px, weißes Schloss, goldenes Schlüsselloch ===
+
+=== FRÜHERE PROFILBILD-ENTWÜRFE (1080×1080) ===
 Option 1: Figur mit erhobenen Armen im Spotlight, goldene Zielringe + Lichtstrahlen (= die Figur aus den Videos)
 Option 2: Vorhängeschloss, das Schlüsselloch ist die goldene Figur ("lock in")
 Option 3: Schriftzug "LOCK IN." mit goldenem Textmarker (wie in den Videos)

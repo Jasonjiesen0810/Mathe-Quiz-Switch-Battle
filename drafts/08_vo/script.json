@@ -1,0 +1,78 @@
+{
+ "voice": "af_bella",
+ "speed": 0.97,
+ "duration": 43,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Being smart can make you stupid.",
+     "speed": 0.88,
+     "pause": 0.55
+    },
+    {
+     "text": "Here is what I mean.",
+     "pause": 0.3
+    },
+    {
+     "text": "Smart people see every risk.",
+     "pause": 0.25
+    },
+    {
+     "text": "They read one more book and make one more plan.",
+     "pause": 0.3
+    },
+    {
+     "text": "They know exactly why every idea could fail.",
+     "pause": 0.3
+    },
+    {
+     "text": "So they wait.",
+     "speed": 0.85
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 15.65,
+   "parts": [
+    {
+     "text": "And while they are still thinking, someone with half their knowledge is already doing it.",
+     "pause": 0.45
+    },
+    {
+     "text": "Because knowledge without action is just an expensive way to stay stuck.",
+     "pause": 0.45
+    },
+    {
+     "text": "Overthinking feels like progress. But it is not.",
+     "pause": 0.35
+    },
+    {
+     "text": "So here is the rule: if you have researched it for weeks, you are not learning. You are hiding.",
+     "pause": 0.4
+    },
+    {
+     "text": "Take one imperfect step today."
+    }
+   ]
+  },
+  {
+   "id": "c",
+   "at": 36.1,
+   "parts": [
+    {
+     "text": "Smart people plan. Successful people start.",
+     "speed": 0.92,
+     "pause": 0.35
+    },
+    {
+     "text": "Be smart enough to start.",
+     "speed": 0.88
+    }
+   ]
+  }
+ ]
+}

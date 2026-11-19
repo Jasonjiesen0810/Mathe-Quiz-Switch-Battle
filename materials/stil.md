@@ -80,3 +80,12 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Zitate kürzen/vereinfachen, aber Sinn und Namen behalten
 - GANZE Sätze sprechen (keine Satzfetzen hintereinander) – Pausen NUR am Satzende, nie mitten im Satz
 - Keine Wörter, die allein keinen Sinn ergeben (z. B. ein einzelnes "Faster.")
+
+## Hook, Plot-Twist, Spannung (Pflicht für jedes Video)
+- HOOK (erste 1–2 s): ein überraschender, scheinbar widersprüchlicher Satz, der die Frage auslöst
+  "Wie kann das stimmen? Warum habe ich das nie so gesehen?" – man WILL die Erklärung hören.
+  Beispiele: "Being smart can make you stupid." · "This is why some people become successful before they make any money."
+  · "Money doesn't grow just because you refuse to spend it." · "Some of the smartest people are slowly withdrawing."
+- PLOT-TWIST: jedes Video braucht eine überraschende Wendung (die Erklärung dreht die Erwartung um)
+- SPANNUNG: Auflösung erst gegen Ende; Neugier offen halten ("here's the part nobody tells you…"),
+  Bild baut sich schrittweise auf, Musik-Drop + größter Moment kurz vor Schluss → Zuschauer schauen bis zum Ende

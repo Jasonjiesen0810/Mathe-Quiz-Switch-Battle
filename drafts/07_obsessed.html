@@ -208,6 +208,7 @@ const hero=makeFig(scene);
 const habits=el("g",{opacity:0},scene);
 el("rect",{x:-300,y:-200,width:600,height:400,rx:44,fill:"none",stroke:C.white,"stroke-width":4},habits);
 for(let x=-280;x<=280;x+=20){el("line",{x1:x,y1:-200,x2:x,y2:-191,stroke:"#fff","stroke-width":2,opacity:.45},habits);el("line",{x1:x,y1:191,x2:x,y2:200,stroke:"#fff","stroke-width":2,opacity:.45},habits);}
+txt(habits,0,10,"EVERY",80,{fill:"#4a4a4e","font-weight":800,"letter-spacing":"6"});txt(habits,0,82,"SINGLE DAY",34,{fill:"#6a6a6e","font-weight":700,"letter-spacing":"10"});
 const HAB=[["5 AM",-200,-200],["FOCUS",0,-200],["TRAIN",200,-200],["REPEAT",-120,200],["NO EXCUSES",120,200]].map(([lab,x,y])=>{const g=el("g",{},habits);
   el("rect",{x:x-24,y:y-24,width:48,height:48,rx:10,fill:"#fff"},g);
   el("path",{d:`M${x-11},${y} L${x-3},${y+9} L${x+12},${y-9}`,fill:"none",stroke:"#070707","stroke-width":6,"stroke-linecap":"round","stroke-linejoin":"round"},g);
@@ -277,7 +278,7 @@ function seek(t){
     const tired=eIO(P(t,7.6,T[6]));
     o={x,y:hillY(x),ph:wk*Math.PI*7,stride:lerp(1,.5,tired),lean:.25+.25*tired,droop:.4*tired};
     const sitK=eIO(P(t,T[6]+.05,T[6]+.5));if(sitK>0){o.sit=sitK;o.lean=.2;o.droop=.6+.3*Math.sin(t*9)*.15;o.ph=0;o.y=hillY(560)+sitK*0;o.raise=sitK*.3;}
-    ugh.setAttribute("transform",`translate(${560+120},${hillY(560)-330}) scale(${clamp(ug).toFixed(3)})`);ugh.setAttribute("opacity",clamp(ug).toFixed(3));
+    ugh.setAttribute("transform",`translate(${560+150},${hillY(560)-430}) scale(${clamp(ug).toFixed(3)})`);ugh.setAttribute("opacity",clamp(ug).toFixed(3));
     figOp=1-eIO(P(t,10.4,10.7));}
   else ugh.setAttribute("opacity",0);
   if(t>=10.6&&t<25.4)figOp=0;
@@ -310,13 +311,13 @@ function seek(t){
 
   // ===== D: the obsessed hero with rings + habit card
   const dOn=win(t,20.3,25.3,.4,.35);
-  hero.draw({x:540,y:GY-60,col:C.white,droop:-.3,raise:.15+.1*beatPulse(t,20.3,25.3),raiseL:.15});
+  hero.draw({x:790,y:GY-40,col:C.white,droop:-.3,raise:.15+.1*beatPulse(t,20.3,25.3),raiseL:.15});
   hero.g.setAttribute("opacity",dOn.toFixed(3));
-  habits.setAttribute("opacity",dOn.toFixed(3));habits.setAttribute("transform",`translate(540,${GY-230})`);
+  habits.setAttribute("opacity",dOn.toFixed(3));habits.setAttribute("transform",`translate(450,${GY-330}) scale(.92)`);
   HAB.forEach((h,i)=>{const bt=22.39+i*BP*2;const k=eBack(P(t,bt,bt+.3));h.setAttribute("opacity",clamp(k).toFixed(3));h.setAttribute("transform",`translate(0,${(1-clamp(k))*12})`);});
   const rOn=Math.max(dOn,eIO(P(t,T[17],T[17]+.3))*endFade*.9);
   rings.setAttribute("opacity",rOn.toFixed(3));
-  const rc=t<30?[540,GY-260]:[520,GY-250];
+  const rc=t<30?[790,GY-330]:[520,GY-250];
   rings.setAttribute("transform",`translate(${rc[0]},${rc[1]}) rotate(${t*8})`);
   RINGS.forEach((r,i)=>r.setAttribute("transform",`scale(${(1+.04*Math.sin(t*2-i)+.1*beatPulse(t,20.3,DUR)*(i+1)/4).toFixed(3)})`));
   rays.setAttribute("opacity",(Math.max(dOn*.6,eIO(P(t,T[17],T[17]+.25))*(.5+.5*beatPulse(t,T[17],DUR,7)))*endFade).toFixed(3));

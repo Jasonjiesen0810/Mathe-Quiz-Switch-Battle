@@ -7,8 +7,8 @@
    "at": 0.25,
    "parts": [
     {
-     "text": "You work hard.",
-     "speed": 0.92
+     "text": "You're always busy.",
+     "speed": 0.95
     }
    ]
   },
@@ -17,8 +17,8 @@
    "at": 1.78,
    "parts": [
     {
-     "text": "Every single day.",
-     "speed": 0.92
+     "text": "Always moving.",
+     "speed": 0.95
     }
    ]
   },
@@ -27,8 +27,8 @@
    "at": 3.42,
    "parts": [
     {
-     "text": "You climb and climb\u2026",
-     "speed": 0.92
+     "text": "Always climbing\u2026",
+     "speed": 0.93
     }
    ]
   },
@@ -37,28 +37,28 @@
    "at": 4.85,
    "parts": [
     {
-     "text": "But where are you going?",
-     "speed": 0.92
+     "text": "But busy is not progress.",
+     "speed": 0.9
     }
    ]
   },
   {
    "id": "p04",
-   "at": 6.98,
+   "at": 6.82,
    "parts": [
     {
-     "text": "Stephen Covey said:",
-     "speed": 0.95
+     "text": "Stephen Covey put it perfectly:",
+     "speed": 0.97
     }
    ]
   },
   {
    "id": "p05",
-   "at": 8.58,
+   "at": 8.72,
    "parts": [
     {
-     "text": "If your ladder is on the wrong wall\u2026",
-     "speed": 0.93
+     "text": "If the ladder leans on the wrong wall\u2026",
+     "speed": 0.95
     }
    ]
   },
@@ -67,18 +67,18 @@
    "at": 11.17,
    "parts": [
     {
-     "text": "every step takes you to the wrong place. Faster.",
+     "text": "every step gets you to the wrong place. Faster.",
      "speed": 0.95
     }
    ]
   },
   {
    "id": "p07",
-   "at": 15.09,
+   "at": 14.2,
    "parts": [
     {
-     "text": "Brian Tracy says: clarity comes first. You need to know what you want.",
-     "speed": 0.95
+     "text": "Brian Tracy calls clarity perhaps the most important concept in productivity. Clarity comes first.",
+     "speed": 0.97
     }
    ]
   },
@@ -87,8 +87,8 @@
    "at": 21.02,
    "parts": [
     {
-     "text": "Here is the problem:",
-     "speed": 0.95
+     "text": "Remember this:",
+     "speed": 0.93
     }
    ]
   },
@@ -97,8 +97,8 @@
    "at": 22.99,
    "parts": [
     {
-     "text": "You can do a task perfectly\u2026 and it can still be useless.",
-     "speed": 0.95
+     "text": "Never perfect a task that shouldn't exist.",
+     "speed": 0.9
     }
    ]
   },
@@ -107,8 +107,8 @@
    "at": 26.74,
    "parts": [
     {
-     "text": "So, step one:",
-     "speed": 0.92
+     "text": "Step one: be specific.",
+     "speed": 0.93
     }
    ]
   },
@@ -117,18 +117,18 @@
    "at": 28.45,
    "parts": [
     {
-     "text": "Decide what you want.",
-     "speed": 0.9
+     "text": "Vague goals get vague results.",
+     "speed": 0.95
     }
    ]
   },
   {
    "id": "p12",
-   "at": 30.15,
+   "at": 30.2,
    "parts": [
     {
      "text": "Not: get fit.",
-     "speed": 0.92
+     "speed": 0.93
     }
    ]
   },
@@ -137,8 +137,8 @@
    "at": 31.35,
    "parts": [
     {
-     "text": "Say: I will run five kilometers.",
-     "speed": 0.95
+     "text": "Run five K by June.",
+     "speed": 0.92
     }
    ]
   },
@@ -147,17 +147,17 @@
    "at": 33.5,
    "parts": [
     {
-     "text": "Step two: every morning,",
-     "speed": 0.93
+     "text": "Step two: every morning, ask:",
+     "speed": 0.95
     }
    ]
   },
   {
    "id": "p15",
-   "at": 35.38,
+   "at": 35.52,
    "parts": [
     {
-     "text": "ask: does this help my goal?",
+     "text": "Does this move me closer?",
      "speed": 0.92
     }
    ]
@@ -167,7 +167,7 @@
    "at": 37.25,
    "parts": [
     {
-     "text": "If not, do it later.",
+     "text": "If not, it can wait.",
      "speed": 0.92
     }
    ]

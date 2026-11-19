@@ -72,6 +72,8 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Beats aus dem Song messen (Bass-Onsets) und als Liste in die Animation übernehmen
 
 ## Sprache (wichtig – viele Zuschauer sind keine Muttersprachler)
+- Ziel: Zuschauer behalten 2–4 kurze ZITATE im Kopf (z. B. "Busy is not progress.", "Vague goals, vague results.")
+- Mischung: klare, einfache Sätze + einzelne starke Fachwörter (clarity, progress, productivity) – nicht kindlich
 - Einfaches Englisch: kurze Sätze (max. ~8–10 Wörter), bekannte Wörter, keine verschachtelten Nebensätze
 - Zuschauer direkt ansprechen: "you", "your", Fragen an den Zuschauer
 - Schlagzeile im Bild = möglichst wörtlich das Gesprochene (mitlesen + mithören)

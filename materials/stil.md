@@ -89,3 +89,13 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - PLOT-TWIST: jedes Video braucht eine überraschende Wendung (die Erklärung dreht die Erwartung um)
 - SPANNUNG: Auflösung erst gegen Ende; Neugier offen halten ("here's the part nobody tells you…"),
   Bild baut sich schrittweise auf, Musik-Drop + größter Moment kurz vor Schluss → Zuschauer schauen bis zum Ende
+
+## Abwechslung (nicht monoton!)
+- Jedes Video mischt mehrere BILDWELTEN, nicht nur "Figur auf Boden":
+  Draufsicht (z. B. Bett um 3:07 mit roter Digitaluhr), Zeigefinger/Hände von allen Seiten mit Labels (Druck von außen),
+  Objekte als Metapher (Kassenbon, Käfig aus Büchern, Waage, Preisschild), Montagen im Beat, Diagramme/Kurven, Kalender
+- Figur verdeckt Gesicht mit beiden Händen = Scham/Überforderung
+- Zwischen Videos Schauplätze und Metaphern wechseln
+- Weitere Bildideen (Referenzen): Schlinge/Lasso, mit der die Masse einen vom Ziel ("DREAM"-Flagge) zurückhält;
+  Seite-an-Seite-Vergleich mit Labels + Zahlen-Kacheln (z. B. "HARDWORKING" vs. "WHILE HE SLEEPS"),
+  Requisiten wie Schreibtisch, Liegestuhl, Maschine mit Zahnrädern, Münzstapel – Zahlen nur als erfundene Beispiele klar erkennbar, nie als Statistik

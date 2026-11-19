@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "speed": 0.97,
+ "duration": 44,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Some people become successful before they make any money.",
+     "speed": 0.92,
+     "pause": 0.35
+    },
+    {
+     "text": "At first, it looks like failure.",
+     "pause": 0.3
+    },
+    {
+     "text": "They start. They fail. People laugh.",
+     "pause": 0.3
+    },
+    {
+     "text": "Everyone says: get a real job.",
+     "pause": 0.3
+    },
+    {
+     "text": "And at three in the morning, they lie awake and doubt everything.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 15.62,
+   "parts": [
+    {
+     "text": "But here is the twist:",
+     "speed": 0.92,
+     "pause": 0.3
+    },
+    {
+     "text": "Money is not the success. Money is just the receipt.",
+     "speed": 0.93,
+     "pause": 0.45
+    },
+    {
+     "text": "Real success starts the day you show up, even when nothing pays yet."
+    }
+   ]
+  },
+  {
+   "id": "c",
+   "at": 26.1,
+   "parts": [
+    {
+     "text": "Same time. Same work. Every single day.",
+     "pause": 0.3
+    },
+    {
+     "text": "Pick one thing and do it daily, even when nobody is watching.",
+     "pause": 0.35
+    },
+    {
+     "text": "Because one day, the results catch up with who you became."
+    }
+   ]
+  },
+  {
+   "id": "d",
+   "at": 37.2,
+   "parts": [
+    {
+     "text": "So become that person first.",
+     "speed": 0.92,
+     "pause": 0.35
+    },
+    {
+     "text": "Everything else is just the receipt.",
+     "speed": 0.9
+    }
+   ]
+  }
+ ]
+}

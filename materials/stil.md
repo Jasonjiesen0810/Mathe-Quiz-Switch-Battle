@@ -78,3 +78,5 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Zuschauer direkt ansprechen: "you", "your", Fragen an den Zuschauer
 - Schlagzeile im Bild = möglichst wörtlich das Gesprochene (mitlesen + mithören)
 - Zitate kürzen/vereinfachen, aber Sinn und Namen behalten
+- GANZE Sätze sprechen (keine Satzfetzen hintereinander) – Pausen NUR am Satzende, nie mitten im Satz
+- Keine Wörter, die allein keinen Sinn ergeben (z. B. ein einzelnes "Faster.")

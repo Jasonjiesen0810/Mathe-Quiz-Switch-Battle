@@ -54,7 +54,7 @@ body.export #ui{display:none}
 <audio id="vo" src="01_vo/voiceover.wav" preload="auto"></audio>
 <script>
 /* Satzteil-Zeiten aus 01_vo/durations.json */
-const T=[0.25,1.78,3.42,4.85,6.98,8.58,11.17,15.09,21.02,22.99,26.74,28.45,30.3,31.29,33.58,35.36,37.06,38.85,40.24];
+const T=[1.0,2.18,3.18,4.56,8.31,9.99,12.02,15.55,19.1,20.07,23.6,25.53,27.63,28.8,31.31,33.82,36.04,38.85,40.42];
 const DROP=38.85, DUR=44;
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const P=(t,a,b)=>clamp((t-a)/(b-a));
@@ -72,24 +72,25 @@ const mixHex=(a,b,x)=>{const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));co
 const win=(t,a,b,fi=.5,fo=.4)=>{const i=eExpo(P(t,a,a+fi)),o=eIO(P(t,b,b+fo));return i*(1-o);};
 
 /* ===== Headlines ===== */
+const STAMP=T[9]+2.2;
 const HEADS=[
-  {a:.2,  b:3.25, lines:[["ALWAYS","BUSY."],["ALWAYS","MOVING."]]},
-  {a:3.4, b:6.7,  lines:[["BUSY","IS",{t:"NOT",red:1}],["PROGRESS."]]},
-  {a:6.85,b:10.95,lines:[["IS","YOUR","LADDER","ON"],["THE",{t:"RIGHT",gold:1},{t:"WALL?",gold:1}]]},
-  {a:11.1,b:14.1, lines:[["THE","WRONG","PLACE."],[{t:"FASTER.",red:1}]]},
-  {a:14.2,b:20.8, lines:[[{t:"CLARITY",mark:1}],["COMES","FIRST."]]},
-  {a:21.0,b:26.45,lines:[["NEVER","PERFECT","A","TASK"],["THAT",{t:"SHOULDN'T",red:1},{t:"EXIST.",red:1}]]},
-  {a:26.7,b:28.3, lines:[["STEP","1:"],["BE",{t:"SPECIFIC.",gold:1}]]},
-  {a:28.45,b:33.3,lines:[["VAGUE","GOALS,"],["VAGUE",{t:"RESULTS.",red:1}]]},
-  {a:33.45,b:38.45,lines:[["DOES","THIS","MOVE"],["ME",{t:"CLOSER?",gold:1}]]},
-  {a:38.85,b:40.05,lines:[["FIND","THE",{t:"RIGHT",gold:1}],[{t:"WALL.",gold:1}]]},
-  {a:40.2,b:DUR-.6,lines:[[{t:"THEN CLIMB.",mark:1}]]},
+  {a:T[0]-.1,b:T[3]-.15, lines:[["ALWAYS","BUSY."],["ALWAYS","MOVING."]]},
+  {a:T[3]-.05,b:T[4]-.25,lines:[["BUSY","IS",{t:"NOT",red:1}],["PROGRESS."]]},
+  {a:T[4]-.05,b:T[6]-.15,lines:[["IS","YOUR","LADDER","ON"],["THE",{t:"RIGHT",gold:1},{t:"WALL?",gold:1}]]},
+  {a:T[6]-.05,b:T[7]-.25,lines:[["EVERY","STEP","TAKES","YOU"],["TO","THE",{t:"WRONG",red:1},{t:"PLACE.",red:1}]]},
+  {a:T[7]-.05,b:T[8]-.25,lines:[[{t:"CLARITY",mark:1}],["COMES","FIRST."]]},
+  {a:T[8]-.05,b:T[10]-.25,lines:[["NEVER","PERFECT","A","TASK"],["THAT",{t:"SHOULDN'T",red:1},{t:"EXIST.",red:1}]]},
+  {a:T[10]-.05,b:T[11]-.15,lines:[["STEP","1:"],["BE",{t:"SPECIFIC.",gold:1}]]},
+  {a:T[11]-.05,b:T[14]-.25,lines:[["VAGUE","GOALS,"],["VAGUE",{t:"RESULTS.",red:1}]]},
+  {a:T[14]-.05,b:38.45,lines:[["DOES","THIS","MOVE","ME"],["CLOSER","TO","MY",{t:"GOAL?",gold:1}]]},
+  {a:38.85,b:T[18]-.2,lines:[["FIND","THE",{t:"RIGHT",gold:1}],[{t:"WALL.",gold:1}]]},
+  {a:T[18]-.05,b:DUR-.6,lines:[[{t:"THEN CLIMB.",mark:1}]]},
 ];
 const LABELS=[
-  {a:8.7, b:14.1, text:"— Stephen Covey"},
-  {a:14.7,b:20.8, text:"— Brian Tracy, Eat That Frog!"},
-  {a:30.2,b:33.3, text:"Not “get fit” → “Run 5K by June”"},
-  {a:33.6,b:38.45,text:"Step 2 · Every morning"},
+  {a:T[4]+.2,b:T[7]-.25, text:"— Stephen Covey"},
+  {a:T[7]+.3,b:T[8]-.25, text:"— Brian Tracy, Eat That Frog!"},
+  {a:T[12],b:T[14]-.25,  text:"Not “get fit” → “Run 5K by June”"},
+  {a:T[14]+.2,b:38.45,   text:"Step 2 · Every morning"},
 ];
 const heads=document.getElementById("heads");
 HEADS.forEach(h=>{
@@ -245,7 +246,7 @@ function seek(t){
   const wlGrey=eIO(P(t,T[7],T[7]+1.5));
   wallL.setAttribute("opacity",(wl*lerp(1,.45,wlGrey)).toFixed(3));
   const wr=eExpo(P(t,T[5]+.4,T[5]+1.2));
-  const wrDim=lerp(1,.16,eIO(P(t,15.0,16.0))*(1-eIO(P(t,DROP-.3,DROP+.3))));
+  const wrDim=lerp(1,.16,eIO(P(t,T[7]+.2,T[7]+1.2))*(1-eIO(P(t,DROP-.3,DROP+.3))));
   wallR.setAttribute("opacity",(wr*wrDim*endFade).toFixed(3));
   const wg=eBack(P(t,T[5]+1.3,T[5]+1.8));
   wrong.setAttribute("transform",`translate(185,${WALL_TOP+110}) rotate(-6) scale(${clamp(wg).toFixed(3)})`);
@@ -280,7 +281,7 @@ function seek(t){
     if(down<=0){const bb=[185,WALL_TOP],a=onLadder(.82);o={x:lerp(bb[0],a[0],k),y:lerp(bb[1],a[1],k),droop:1};}
     else{const u=lerp(.82,0,down);const [x,y]=onLadder(u);const ph=down*Math.PI*6;o={x,y,ph,stride:.6,raise:.5+.3*Math.sin(ph),raiseL:.5-.3*Math.sin(ph),droop:.8};}
     const walk=eIO(P(t,T[7]+4.2,T[7]+5.2));if(walk>0){o={x:lerp(onLadder(0)[0],330,walk),y:GY,ph:walk*Math.PI*3,droop:.6*(1-walk)};}}
-  if(t>=T[8]-.2){const fl=Math.exp(-Math.max(0,t-25.05)*8)*(t>=25.05?1:0);o={x:330-fl*18,y:GY,look:.5,droop:-fl*.6};}
+  if(t>=T[8]-.2){const fl=Math.exp(-Math.max(0,t-STAMP)*8)*(t>=STAMP?1:0);o={x:330-fl*18,y:GY,look:.5,droop:-fl*.6};}
   // S4: think (hand to chin, look up), then nod
   if(t>=T[10]){const th=eIO(P(t,T[10]+.1,T[10]+.6))*(1-eIO(P(t,T[12]+.2,T[12]+.6)));
     const nod=t>T[13]+.6&&t<T[13]+1.6?Math.max(0,Math.sin((t-T[13]-.6)*Math.PI*4))*.5:0;
@@ -311,20 +312,20 @@ function seek(t){
   else{cloud.setAttribute("opacity",0);if(t<T[6]+1.6)cloud.x0=undefined;}
 
   // S3 task card: done perfectly, then stamped NOT NEEDED
-  const tk=win(t,T[9]-.2,26.4);
+  const tk=win(t,T[9]-.2,T[10]-.4);
   task.setAttribute("opacity",tk.toFixed(3));task.setAttribute("transform",`translate(640,1060)`);
   check.style.strokeDashoffset=chkLen*(1-eIO(P(t,T[9]+.3,T[9]+.8)));
   SPARK.forEach((sp,i)=>{const k=P(t,T[9]+.7+i*.08,T[9]+1.5+i*.08);sp.setAttribute("opacity",(k>0&&k<1?Math.sin(k*Math.PI):0).toFixed(3));});
-  const st=P(t,25.0,25.25);
+  const st=P(t,STAMP-.05,STAMP+.2);
   stamp.setAttribute("transform",`translate(640,1060) rotate(-10) scale(${lerp(1.8,1,eOut(st)).toFixed(3)})`);
-  stamp.setAttribute("opacity",(st>0?1:0)*(1-eIO(P(t,26.4,26.8))));
+  stamp.setAttribute("opacity",(st>0?1:0)*(1-eIO(P(t,T[10]-.4,T[10]))));
   task.setAttribute("filter","");
 
   // S4 cards
   const vg=win(t,T[12]-.05,T[13]+.4);
   vague.setAttribute("opacity",vg.toFixed(3));vague.setAttribute("transform",`translate(640,1000) scale(${(1-eIO(P(t,T[13],T[13]+.4))*.2).toFixed(3)})`);
   strike.setAttribute("x2",lerp(-120,120,eIO(P(t,T[12]+.45,T[12]+.8))));strike.setAttribute("opacity",t>T[12]+.45?1:0);
-  const spk=eBack(P(t,T[13]+.1,T[13]+.6))*(1-eIO(P(t,33.3,33.7)));
+  const spk=eBack(P(t,T[13]+.1,T[13]+.6))*(1-eIO(P(t,T[14]-.3,T[14]+.1)));
   spec.setAttribute("opacity",clamp(spk).toFixed(3));spec.setAttribute("transform",`translate(640,1000) scale(${clamp(spk).toFixed(3)})`);
 
   // S5 tasks
@@ -348,10 +349,10 @@ function seek(t){
   floor.setAttribute("opacity",(eExpo(P(t,.2,1.2))*endFade).toFixed(3));
   const beatK=BEATS.reduce((a,b,i)=>a+(t>=b?Math.exp(-(t-b)*(i?9:6))*(i?.6:1):0),0);
   spotL.setAttribute("opacity",(eIO(P(t,T[5]+1.4,T[5]+2.0))*(1-eIO(P(t,T[7]+1.0,T[7]+2.0)))*.9).toFixed(3));
-  spotR.setAttribute("opacity",((eIO(P(t,T[5]+.6,T[5]+1.4))*.35*(1-eIO(P(t,15,16)))+eIO(P(t,DROP,DROP+.4))*(.75+.25*beatK))*endFade).toFixed(3));
+  spotR.setAttribute("opacity",((eIO(P(t,T[5]+.6,T[5]+1.4))*.35*(1-eIO(P(t,T[7]+.2,T[7]+1.2)))+eIO(P(t,DROP,DROP+.4))*(.75+.25*beatK))*endFade).toFixed(3));
   rays.setAttribute("opacity",(eIO(P(t,DROP-.05,DROP+.25))*(.45+.55*clamp(beatK))*endFade).toFixed(3));
   rays.setAttribute("transform",`translate(865,${WALL_TOP-120}) rotate(${(t*6).toFixed(2)}) scale(${(1+.06*clamp(beatK)).toFixed(3)})`);
-  const rgIn=eExpo(P(t,T[5]+.8,T[5]+1.8))*(1-eIO(P(t,15,16))*.7);
+  const rgIn=eExpo(P(t,T[5]+.8,T[5]+1.8))*(1-eIO(P(t,T[7]+.2,T[7]+1.2))*.7);
   rings.setAttribute("opacity",(Math.max(rgIn,eIO(P(t,DROP,DROP+.3)))*endFade).toFixed(3));
   rings.setAttribute("transform",`translate(865,${WALL_TOP-120})`);
   RINGS.forEach((r,i)=>r.setAttribute("transform",`scale(${(1+.04*Math.sin(t*2-i)+.08*clamp(beatK)*(i+1)/4).toFixed(3)})`));
@@ -359,13 +360,13 @@ function seek(t){
   // ===== camera: slow pushes, punch-zoom + flash on every beat after the drop
   let sc=1,cx=540,cy=1100,dx=0,dy=0;
   const k1=eIO(P(t,0,6.8))*(1-eIO(P(t,6.8,8.8)));sc=1+.08*k1;cx=lerp(540,310,k1);cy=lerp(1100,1150,k1);
-  const k3=eIO(P(t,11.1,14.4))*(1-eIO(P(t,14.6,15.6)));if(k3>0){sc=1+.1*k3;cx=lerp(540,185,k3);cy=lerp(1100,900,k3);}
-  const k4=eIO(P(t,26.7,38.4))*(1-eIO(P(t,38.4,38.85)));if(k4>0){sc=1+.05*k4;}
+  const k3=eIO(P(t,T[6]-.2,T[7]-.4))*(1-eIO(P(t,T[7]-.2,T[7]+.8)));if(k3>0){sc=1+.1*k3;cx=lerp(540,185,k3);cy=lerp(1100,900,k3);}
+  const k4=eIO(P(t,T[10],38.4))*(1-eIO(P(t,38.4,38.85)));if(k4>0){sc=1+.05*k4;}
   const k5=eIO(P(t,41.3,43.2));if(t>=DROP){sc=1+.1*k5;cx=lerp(540,865,k5);cy=lerp(1100,880,k5);}
   sc+=BEATS.reduce((a,b,i)=>a+(t>=b?Math.exp(-(t-b)*8)*(i?.035:.1):0),0);
-  const shk=t>=25.05?Math.exp(-(t-25.05)*7):0; dx=Math.sin(t*95)*16*shk; dy=Math.cos(t*80)*10*shk;
+  const shk=t>=STAMP?Math.exp(-(t-STAMP)*7):0; dx=Math.sin(t*95)*16*shk; dy=Math.cos(t*80)*10*shk;
   cam.setAttribute("transform",`translate(${(cx+dx).toFixed(2)},${(cy+dy).toFixed(2)}) scale(${sc.toFixed(4)}) translate(${-cx},${-cy})`);
-  const fl=BEATS.reduce((a,b,i)=>a+(t>=b?Math.exp(-(t-b)*12)*(i?.1:.32):0),0)+(t>=25.05?Math.exp(-(t-25.05)*14)*.08:0);
+  const fl=BEATS.reduce((a,b,i)=>a+(t>=b?Math.exp(-(t-b)*12)*(i?.1:.32):0),0)+(t>=STAMP?Math.exp(-(t-STAMP)*14)*.08:0);
   document.getElementById("flash").style.opacity=Math.min(.5,fl).toFixed(3);
 }
 

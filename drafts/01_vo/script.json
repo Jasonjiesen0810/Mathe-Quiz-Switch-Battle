@@ -1,0 +1,23 @@
+{"voice": "af_bella", "speed": 1.0, "duration": 42,
+ "lines": [
+  {"id": "all", "at": 0.25, "parts": [
+    {"text": "You're working harder than ever.", "speed": 0.95, "pause": 0.15},
+    {"text": "Busy every single day…", "pause": 0.1},
+    {"text": "climbing, and climbing…", "speed": 0.95, "pause": 0.15},
+    {"text": "but are you actually getting anywhere?", "speed": 0.93, "pause": 0.35},
+    {"text": "Stephen Covey said it best:", "pause": 0.15},
+    {"text": "if the ladder is not leaning against the right wall,", "pause": 0.1},
+    {"text": "every step we take just gets us to the wrong place… faster.", "speed": 0.95, "pause": 0.35},
+    {"text": "Brian Tracy calls clarity perhaps the most important concept in personal productivity.", "pause": 0.15},
+    {"text": "Because one of the worst uses of time…", "pause": 0.1},
+    {"text": "is doing something very well that doesn't need to be done at all.", "pause": 0.35},
+    {"text": "So before you climb another step:", "pause": 0.1},
+    {"text": "decide exactly what you want.", "speed": 0.92, "pause": 0.15},
+    {"text": "Not 'get fit.'", "pause": 0.1},
+    {"text": "Run five kilometers without stopping.", "pause": 0.3},
+    {"text": "Then ask yourself every morning:", "pause": 0.1},
+    {"text": "does this task move me closer?", "speed": 0.95, "pause": 0.1},
+    {"text": "If not… it can wait.", "speed": 0.92, "pause": 0.4},
+    {"text": "Find the right wall.", "speed": 0.9, "pause": 0.2},
+    {"text": "Then climb.", "speed": 0.85}]}
+ ]}

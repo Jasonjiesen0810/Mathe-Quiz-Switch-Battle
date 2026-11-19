@@ -64,3 +64,9 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Erröten = ganzer Kopf zartrot (keine roten Punkte – wirken wie Augen)
 - Seufzen/Ausatmen = weiche Wolke, die ~2 s stehen bleibt (kein Husten)
 - Frage/Unsicherheit = Sprechblase mit "?"; peinliche Stille = Blase mit "…"
+
+## Detailgrad & Kamera (ab Video 1)
+- Mehr Tiefe: Perspektiv-Gitterboden, feine Hintergrund-Linien, Spotlight-Kegel, Lichtstrahlen-Burst,
+  pulsierende Zielringe, gestrichelte "Geister"-Figuren (z. B. FUTURE YOU), Strichmarken an Rahmen
+- Kamera: langsame Push-ins auf das Wichtige, Wackeln bei Aufprall (Stempel), Zoom-Punch + weißer Flash auf jedem Beat nach dem Drop
+- Beats aus dem Song messen (Bass-Onsets) und als Liste in die Animation übernehmen

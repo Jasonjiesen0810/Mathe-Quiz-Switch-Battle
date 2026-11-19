@@ -103,3 +103,8 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 ## Zusammenarbeit
 - Immer aktiv Bescheid geben, wenn neue Songs oder neues inhaltliches Material (Buchseiten, Texte) gebraucht werden
 - Songs liegen nur lokal in der Sitzung – in einer neuen Sitzung um erneutes Senden bitten (Liste: materials/musik-bibliothek.md)
+
+## Scroll-Stopper (TikTok)
+- Die ersten 3 Sekunden entscheiden: Hook-TEXT + starkes BILD schon im allerersten Frame (kein langsames Einblenden)
+- Spätestens alle 2–3 Sekunden etwas NEUES: neues Bild, neue Bewegung, neuer Text, Kamera-Wechsel
+- Keine Leerlauf-Momente; Pausen nur bewusst als Spannung (max. ~1 s)

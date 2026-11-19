@@ -1,0 +1,69 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 60,
+ "lines": [
+  {
+   "id": "all",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Two tasks on your to-do list are worth more than the other eight combined.",
+     "pause": 0.3
+    },
+    {
+     "text": "That is the eighty-twenty rule.",
+     "pause": 0.2
+    },
+    {
+     "text": "Twenty percent of your tasks bring eighty percent of your results.",
+     "pause": 0.3
+    },
+    {
+     "text": "But here is the twist:",
+     "pause": 0.2,
+     "speed": 0.92
+    },
+    {
+     "text": "those are exactly the tasks you avoid.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "Because they are the hardest.",
+     "pause": 0.35
+    },
+    {
+     "text": "So you clear the small stuff first. Emails. Messages. Little things.",
+     "pause": 0.3
+    },
+    {
+     "text": "And small tasks are like rabbits. They multiply, and you never catch up.",
+     "pause": 0.4
+    },
+    {
+     "text": "Before you start anything, ask one question:",
+     "pause": 0.15
+    },
+    {
+     "text": "is this in my top twenty percent, or in the bottom eighty?",
+     "pause": 0.4
+    },
+    {
+     "text": "Brian Tracy's rule: resist the temptation to clear up small things first.",
+     "pause": 0.35
+    },
+    {
+     "text": "Do the big one first.",
+     "pause": 0.25,
+     "speed": 0.92
+    },
+    {
+     "text": "Eat that frog.",
+     "pause": 0,
+     "speed": 0.88
+    }
+   ]
+  }
+ ]
+}

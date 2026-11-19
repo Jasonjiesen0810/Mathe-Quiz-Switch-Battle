@@ -1,0 +1,69 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 55,
+ "lines": [
+  {
+   "id": "all",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "An important task takes the same time as a useless one.",
+     "pause": 0.3
+    },
+    {
+     "text": "One hour on your dream, or one hour cleaning your desk.",
+     "pause": 0.2
+    },
+    {
+     "text": "Same hour. Same energy.",
+     "pause": 0.35
+    },
+    {
+     "text": "So what is the difference?",
+     "pause": 0.4,
+     "speed": 0.93
+    },
+    {
+     "text": "The useless task gives you nothing. No pride. No progress.",
+     "pause": 0.35
+    },
+    {
+     "text": "The important one changes who you are.",
+     "pause": 0.45,
+     "speed": 0.93
+    },
+    {
+     "text": "That is why Brian Tracy says: time management is really life management.",
+     "pause": 0.35
+    },
+    {
+     "text": "Every hour, you choose what you do next.",
+     "pause": 0.2
+    },
+    {
+     "text": "And you are always free to choose.",
+     "pause": 0.4
+    },
+    {
+     "text": "Most people choose what is easy.",
+     "pause": 0.2
+    },
+    {
+     "text": "Effective people choose what matters.",
+     "pause": 0.5
+    },
+    {
+     "text": "So choose like your life depends on it.",
+     "pause": 0.35,
+     "speed": 0.9
+    },
+    {
+     "text": "Because it does.",
+     "pause": 0,
+     "speed": 0.85
+    }
+   ]
+  }
+ ]
+}

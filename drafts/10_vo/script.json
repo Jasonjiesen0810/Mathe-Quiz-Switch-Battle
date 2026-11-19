@@ -1,0 +1,77 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 70,
+ "lines": [
+  {
+   "id": "all",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "You're not lazy.",
+     "pause": 0.2,
+     "speed": 0.92
+    },
+    {
+     "text": "You just start your day without a plan.",
+     "pause": 0.35
+    },
+    {
+     "text": "How do you eat an elephant?",
+     "pause": 0.2
+    },
+    {
+     "text": "One bite at a time.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "Your biggest task works the same way: break it into small steps, and start with the first one.",
+     "pause": 0.35
+    },
+    {
+     "text": "Brian Tracy says ten minutes of planning can save you up to two hours a day.",
+     "pause": 0.35
+    },
+    {
+     "text": "But here is the part most people miss:",
+     "pause": 0.2
+    },
+    {
+     "text": "make your list the night before.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "According to Tracy, your mind keeps working on it while you sleep.",
+     "pause": 0.2
+    },
+    {
+     "text": "You wake up, and you already know what to do.",
+     "pause": 0.35
+    },
+    {
+     "text": "Use three lists: one for the month, one for the week, and one for the day.",
+     "pause": 0.3
+    },
+    {
+     "text": "Then tick off every task you finish.",
+     "pause": 0.2
+    },
+    {
+     "text": "Every check mark is proof that you are moving.",
+     "pause": 0.4
+    },
+    {
+     "text": "Alan Lakein said it best: planning is bringing the future into the present, so you can do something about it now.",
+     "pause": 0.4
+    },
+    {
+     "text": "Tonight, take ten minutes. Write tomorrow's list.",
+     "pause": 0,
+     "speed": 0.93
+    }
+   ]
+  }
+ ]
+}

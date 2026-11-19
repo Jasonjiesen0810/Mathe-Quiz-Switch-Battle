@@ -99,3 +99,7 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Weitere Bildideen (Referenzen): Schlinge/Lasso, mit der die Masse einen vom Ziel ("DREAM"-Flagge) zurückhält;
   Seite-an-Seite-Vergleich mit Labels + Zahlen-Kacheln (z. B. "HARDWORKING" vs. "WHILE HE SLEEPS"),
   Requisiten wie Schreibtisch, Liegestuhl, Maschine mit Zahnrädern, Münzstapel – Zahlen nur als erfundene Beispiele klar erkennbar, nie als Statistik
+
+## Zusammenarbeit
+- Immer aktiv Bescheid geben, wenn neue Songs oder neues inhaltliches Material (Buchseiten, Texte) gebraucht werden
+- Songs liegen nur lokal in der Sitzung – in einer neuen Sitzung um erneutes Senden bitten (Liste: materials/musik-bibliothek.md)

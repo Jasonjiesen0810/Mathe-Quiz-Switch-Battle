@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reloading</title></head>
+<body>
+<script>
+/* Song 4 "The End" ab 0 – Ton → Satz → Ton → Satz */
+const L=[0.3,4.8,8.2,13.9,16.6,18.35,20.65,22.9,25.2,29.6,31.95,34.2,36.5,38.75,41.0];
+const TONES=[0.1,4.6,8.0,13.7,16.4,18.15,20.48,22.69,24.95,27.22,29.49,31.77,34.04,36.3,38.64,40.85,43.11];
+window.VIDEO={DUR:45,seed:171,audio:"17_vo/mix.wav",
+HEADS:[
+ {a:-1,b:L[1]-.1,lines:[[{t:"REST",gold:1},"IS","PART"],["OF","THE",{t:"WORK.",gold:1}]]},
+ {a:L[1]-.05,b:L[2]-.1,lines:[["YOU","KEEP","GOING."],["NO",{t:"BREAKS.",red:1}]]},
+ {a:L[2]-.05,b:10.6,lines:[["LATE","NIGHTS."],["ALWAYS",{t:"ON.",red:1}]]},
+ {a:10.7,b:L[3]-.1,lines:[["UNTIL","ONE","DAY…"],["YOU",{t:"CAN'T.",red:1}]]},
+ {a:L[3]-.05,b:L[4]-.1,lines:[["THINK","ABOUT"],["YOUR","PHONE."]]},
+ {a:L[4]-.05,b:L[5]-.1,lines:[["AT",{t:"1%…",red:1}]]},
+ {a:L[5]-.05,b:L[6]-.1,lines:[["IT","DOESN'T","WORK"],[{t:"HARDER.",gold:1}]]},
+ {a:L[6]-.05,b:L[7]-.1,lines:[["IT","JUST","DIES"],[{t:"FASTER.",red:1}]]},
+ {a:L[7]-.05,b:L[8]-.1,lines:[["AND","SO"],["DO",{t:"YOU.",red:1}]]},
+ {a:L[8]-.05,b:L[9]-.1,lines:[["TIRED","PEOPLE","DON'T"],["WORK",{t:"BETTER.",red:1}]]},
+ {a:L[9]-.05,b:L[10]-.1,lines:[["SO","WORK"],[{t:"HARD.",gold:1}]]},
+ {a:L[10]-.05,b:L[11]-.1,lines:[["THEN",{t:"RECOVER",gold:1}],["ON","PURPOSE."]]},
+ {a:L[11]-.05,b:L[12]-.1,lines:[["SLEEP.","WALK."],[{t:"BREATHE.",gold:1}]]},
+ {a:L[12]-.05,b:L[13]-.1,lines:[["COME","BACK"],[{t:"STRONGER.",gold:1}]]},
+ {a:L[13]-.05,b:L[14]-.1,lines:[["REST","IS","NOT"],[{t:"QUITTING.",red:1}]]},
+ {a:L[14]-.05,b:44.4,lines:[["IT'S"],[{t:"RELOADING.",mark:1}]]},
+],
+LABELS:[
+ {a:2.2,b:L[1]-.1,text:"Sounds lazy, right?"},
+ {a:L[8]+1.6,b:L[9]-.1,text:"They just work longer."},
+],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.rays=K.raysG(540,1000);S.spot=K.spot(400);S.fig=makeFig();
+ // big battery
+ S.bat=el("g",{},scene);S.batBody=el("rect",{x:-70,y:-150,width:140,height:300,rx:22,fill:C.card,stroke:C.white,"stroke-width":6},S.bat);el("rect",{x:-30,y:-170,width:60,height:22,rx:6,fill:C.white},S.bat);
+ S.batFill=el("rect",{x:-56,width:112,rx:12,fill:C.gold},S.bat);S.batT=txt(S.bat,0,220,"100%",44,{"font-weight":800,"letter-spacing":"2"});
+ S.bolt=el("path",{d:"M12,-80 L-30,10 L0,10 L-12,80 L34,-14 L4,-14 Z",fill:"#070707",opacity:0},S.bat);
+ // desk
+ S.desk=el("g",{opacity:0},scene);el("rect",{x:300,y:1290,width:320,height:16,rx:8,fill:C.white},S.desk);el("line",{x1:320,y1:1306,x2:320,y2:1440,stroke:C.white,"stroke-width":8},S.desk);el("line",{x1:600,y1:1306,x2:600,y2:1440,stroke:C.white,"stroke-width":8},S.desk);
+ el("path",{d:"M440,1290 L470,1200 L590,1200 L575,1290 Z",fill:C.card,stroke:C.white,"stroke-width":5},S.desk);
+ S.chair=el("path",{d:"M160,1328 L280,1328 M170,1328 L162,1440 M270,1328 L278,1440 M158,1328 L146,1190",fill:"none",stroke:C.grey,"stroke-width":8,"stroke-linecap":"round"},S.desk);
+ S.cups=[0,1,2,3].map(i=>{const g=el("g",{opacity:0},S.desk);el("path",{d:`M${330+i*34},1290 L${334+i*34},1250 L${358+i*34},1250 L${362+i*34},1290 Z`,fill:"none",stroke:C.grey,"stroke-width":4},g);return g;});
+ S.window=el("g",{opacity:0},scene);el("rect",{x:600,y:740,width:200,height:240,rx:10,fill:"#0b0f1a",stroke:"#3a4258","stroke-width":5},S.window);el("circle",{cx:740,cy:820,r:34,fill:"#dfe6ff"},S.window);el("circle",{cx:726,cy:812,r:34,fill:"#0b0f1a"},S.window);
+ S.clock=el("g",{opacity:0},scene);el("circle",{r:56,fill:C.card,stroke:C.white,"stroke-width":5},S.clock);S.ch1=el("line",{x1:0,y1:0,x2:0,y2:-40,stroke:C.white,"stroke-width":5,"stroke-linecap":"round"},S.clock);
+ // phone
+ S.phone=el("g",{opacity:0},scene);el("rect",{x:-160,y:-290,width:320,height:580,rx:44,fill:C.card,stroke:C.white,"stroke-width":7,filter:"url(#glowB)"},S.phone);
+ S.screen=el("rect",{x:-136,y:-250,width:272,height:510,rx:24,fill:"#141824"},S.phone);
+ S.pbat=el("g",{},S.phone);el("rect",{x:-60,y:-40,width:110,height:60,rx:10,fill:"none",stroke:C.red,"stroke-width":5},S.pbat);el("rect",{x:52,y:-22,width:10,height:24,rx:3,fill:C.red},S.pbat);el("rect",{x:-52,y:-32,width:8,height:44,rx:3,fill:C.red},S.pbat);
+ S.pT=txt(S.pbat,0,90,"1%",60,{fill:C.red,"font-weight":800,"letter-spacing":"2"});
+ S.apps=[...Array(8)].map((_,i)=>el("rect",{x:-110+(i%4)*58,y:-210+Math.floor(i/4)*64,width:44,height:44,rx:10,fill:"#2a3040"},S.phone));
+ // bars: hours vs results
+ S.bars=el("g",{opacity:0},scene);
+ [["HOURS",C.grey,0],["RESULTS",C.red,1]].forEach(([l,col,i])=>{txt(S.bars,160,1000+i*170,l,26,{fill:col,"font-weight":800,"letter-spacing":"5","text-anchor":"start"});el("rect",{x:160,y:1020+i*170,width:760,height:60,rx:14,fill:C.card,stroke:"#333","stroke-width":3},S.bars);});
+ S.hBar=el("rect",{x:166,y:1026,height:48,rx:10,fill:C.grey},S.bars);S.rBar=el("rect",{x:166,y:1196,height:48,rx:10,fill:C.red},S.bars);
+ // recovery icons
+ const icon=(lab,draw)=>{const g=el("g",{opacity:0},scene);el("circle",{r:80,fill:"rgba(245,184,61,.08)",stroke:C.gold,"stroke-width":5,filter:"url(#glowB)"},g);draw(g);txt(g,0,130,lab,26,{fill:C.gold,"font-weight":800,"letter-spacing":"5"});return g;};
+ S.ic=[icon("SLEEP",g=>{el("circle",{r:34,fill:C.gold},g);el("circle",{cx:14,cy:-10,r:32,fill:"#141414"},g);}),
+   icon("WALK",g=>{el("ellipse",{cx:-16,cy:10,rx:14,ry:24,fill:C.gold},g);el("ellipse",{cx:18,cy:-14,rx:14,ry:24,fill:C.gold},g);}),
+   icon("BREATHE",g=>{[0,1,2].forEach(k=>el("path",{d:`M-40,${-20+k*20} Q-10,${-36+k*20} 10,${-20+k*20} T40,${-20+k*20}`,fill:"none",stroke:C.gold,"stroke-width":6,"stroke-linecap":"round"},g));})];
+ S.cable=el("path",{fill:"none",stroke:C.white,"stroke-width":8,"stroke-linecap":"round",opacity:0},scene);
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const tone=K.pulses(t,TONES,6,1,1);
+ // battery level over time
+ let lvl=1;
+ if(t>=L[1])lvl=lerp(1,.45,eIO(P(t,L[1],L[2])));if(t>=L[2])lvl=lerp(.45,.03,eIO(P(t,L[2],L[3]-.4)));
+ if(t>=L[9])lvl=lerp(.35,.15,eIO(P(t,L[9],L[10])));if(t>=L[10])lvl=lerp(.15,1,eIO(P(t,L[10]+.5,L[12]+.3)));
+ const batOn=Math.max(win(t,-1,L[3]-.05,.01,.25),win(t,L[9]-.05,45,.2,.6));
+ S.bat.setAttribute("opacity",batOn.toFixed(3));
+ const bx=t<L[1]?800:900;S.bat.setAttribute("transform",`translate(${bx},${t<L[1]?1080:960}) scale(${t<L[1]?1:.7})`);
+ const hh=272*lvl;S.batFill.setAttribute("y",(136-hh).toFixed(1));S.batFill.setAttribute("height",hh.toFixed(1));
+ const red=lvl<.25;S.batFill.setAttribute("fill",red?C.red:C.gold);S.batBody.setAttribute("stroke",red&&Math.sin(t*10)>0?C.red:C.white);
+ S.batT.textContent=Math.round(lvl*100)+"%";S.batT.setAttribute("fill",red?C.red:C.white);
+ S.bolt.setAttribute("opacity",(t>=L[10]+.5&&lvl<.99?1:0));S.batFill.setAttribute("filter",lvl>.95&&t>L[12]?"url(#glowB)":"");
+ S.cable.setAttribute("opacity",win(t,L[10],L[12]+.5,.2,.4).toFixed(3));
+ S.cable.setAttribute("d",`M1000,1440 Q1000,1260 ${bx},${960+150*.7+30} L${bx},${960+150*.7}`);
+ // figure
+ let o={x:420,y:GY},op=1;
+ S.spot.setAttribute("opacity",(win(t,-1,L[1],.01,.3)*.8+win(t,L[12],45,.3,.6)*.8).toFixed(3));
+ if(t<L[1])o={x:420,y:GY,droop:-.2,look:1,raise:.15};
+ const dk=win(t,L[1]-.05,L[3]-.05,.25,.25);S.desk.setAttribute("opacity",dk.toFixed(3));
+ S.cups.forEach((c,i)=>c.setAttribute("opacity",t>L[2]+i*.5?1:0));
+ S.window.setAttribute("opacity",win(t,L[2]-.05,L[3]-.05,.3,.25).toFixed(3));
+ S.clock.setAttribute("opacity",win(t,L[1],L[3]-.05,.2,.25).toFixed(3));S.clock.setAttribute("transform","translate(470,860)");S.ch1.setAttribute("transform",`rotate(${t*300})`);
+ if(sw(L[1],L[3])){const col=10.7;const k=eIO(P(t,col+.6,col+1.4));o={x:220,y:GY,sit:1,chair:1,work:1-k,t,droop:.2+k*1.2,col:K.mixHex(C.white,C.grey,eIO(P(t,L[2],L[3])))};}
+ // phone
+ const ph=win(t,L[3]-.05,L[7]-.05,.25,.25);S.phone.setAttribute("opacity",ph.toFixed(3));S.phone.setAttribute("transform",`translate(540,1060) scale(${(.9+.1*eOut(P(t,L[3],L[3]+.4))).toFixed(3)})`);
+ S.pbat.setAttribute("opacity",(t>=L[4]&&t<L[6]+.6?(Math.sin(t*8)>0?1:.35):0));
+ const dead=eIO(P(t,L[6]+.4,L[6]+.9));S.screen.setAttribute("fill",K.mixHex("#141824","#000000",dead));S.apps.forEach(a=>a.setAttribute("opacity",(1-dead)*(t<L[4]?1:.4)));
+ if(sw(L[3],L[7]))op=0;
+ if(sw(L[7],L[8])){o={x:540,y:GY,sit:1,droop:1.2,col:C.dim,cover:eIO(P(t,L[7]+.5,L[7]+1))};op=1;}
+ // bars
+ const br=win(t,L[8]-.05,L[9]-.05,.2,.25);S.bars.setAttribute("opacity",br.toFixed(3));
+ S.hBar.setAttribute("width",(748*eIO(P(t,L[8]+.2,L[8]+1.8))).toFixed(1));S.rBar.setAttribute("width",(748*.18*eIO(P(t,L[8]+1,L[8]+2))).toFixed(1));
+ if(sw(L[8],L[9]))op=0;
+ // recover
+ if(sw(L[9],L[10]))o={x:360,y:GY,work:1,t,droop:-.1,lean:.1};
+ if(sw(L[10],L[12])){o={x:360,y:GY,sit:1,droop:.3,look:1};}
+ const ipos=[[200,980],[450,940],[700,980]];const iat=[L[11],L[11]+.6,L[11]+1.2];
+ S.ic.forEach((g,i)=>{const k=eBack(P(t,iat[i],iat[i]+.3))*(1-eIO(P(t,L[12]-.2,L[12]+.1)));g.setAttribute("opacity",clamp(k).toFixed(3));g.setAttribute("transform",`translate(${ipos[i][0]},${ipos[i][1]}) scale(${clamp(k).toFixed(3)})`);});
+ if(sw(L[11],L[12]))o={x:360,y:GY,sit:1,droop:-.2,look:0};
+ if(t>=L[12]){const up=eBack(P(t,L[12],L[12]+.4));o={x:400,y:GY,droop:-.3,raise:t>=L[14]?clamp(eBack(P(t,L[14],L[14]+.4)))*1.1:.2,raiseL:t>=L[14]?clamp(eBack(P(t,L[14],L[14]+.4)))*1.1:.2,col:K.mixHex(C.white,C.gold,eIO(P(t,L[14],L[14]+.5)))};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,L[12],45,.2,.6)*(.4+.4*tone)).toFixed(3));S.rays.setAttribute("transform",`translate(560,1150) rotate(${t*6})`);
+ K.ground.setAttribute("opacity",(1-win(t,L[3],L[7]-.05,.2,.2)*.9-win(t,L[8],L[9]-.05,.2,.2)*.9)*K.endFade);
+ const c=K.cam;
+ if(t<L[1]){c.sc=1.1-.1*eOut(P(t,0,1.2));}
+ if(sw(L[2],L[3])){c.sc=1+.12*eIO(P(t,L[2],L[3]));c.cx=lerp(540,330,eIO(P(t,L[2],L[3])));c.cy=1250;}
+ if(sw(L[3],L[7])){c.sc=1+.1*eIO(P(t,L[3],L[7]));c.cy=1060;}
+ if(t>=L[12]){c.sc=1+.06*eIO(P(t,L[12],44));}
+ c.sc+=tone*.025;
+ K.flash=tone*.07+K.pulses(t,[18.15,L[14]],9,.3,.3);
+ K.dim=win(t,L[6]+.6,L[8]-.05,.2,.3)*.5;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

@@ -1,0 +1,62 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 44,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Motivation is the reason you're not making progress.",
+     "pause": 0.3
+    },
+    {
+     "text": "Sounds wrong, right?",
+     "pause": 0.3
+    },
+    {
+     "text": "You wait to feel ready. You wait for the right mood. You wait for Monday.",
+     "pause": 0.3
+    },
+    {
+     "text": "And while you wait, nothing happens.",
+     "pause": 0,
+     "speed": 0.93
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 13.85,
+   "parts": [
+    {
+     "text": "Here's the truth: motivation is a feeling, and feelings come and go.",
+     "pause": 0.3
+    },
+    {
+     "text": "Discipline is a decision.",
+     "pause": 0.4,
+     "speed": 0.9
+    },
+    {
+     "text": "Disciplined people don't feel like it either. They just don't ask their feelings for permission.",
+     "pause": 0.4
+    },
+    {
+     "text": "So stop waiting. Start with two minutes. Put your shoes on. Open the book. Write one line.",
+     "pause": 0.35
+    },
+    {
+     "text": "Action creates motivation. Not the other way around.",
+     "pause": 0.4
+    },
+    {
+     "text": "Don't wait to feel it. Start, and you will.",
+     "pause": 0,
+     "speed": 0.92
+    }
+   ]
+  }
+ ]
+}

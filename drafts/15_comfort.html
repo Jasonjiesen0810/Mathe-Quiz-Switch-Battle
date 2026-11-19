@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Move Out</title></head>
+<body>
+<script>
+/* Song 2 (180DB_130 Intro) ab 0; Schlag alle 0,7225 s ab 0,05 */
+const T=[0.15,4.23,8.1,10.3,11.37,13.36,19.14,24.17,31.83,35.8];
+const B0=.05, BP=.7225;
+window.VIDEO={DUR:39,seed:151,audio:"15_vo/mix.wav",
+HEADS:[
+ {a:-1,b:T[1]-.1,lines:[["YOUR",{t:"COMFORT",red:1},{t:"ZONE",red:1}],["IS","THE","MOST",{t:"EXPENSIVE",gold:1}],["PLACE","YOU'LL","LIVE."]]},
+ {a:T[1]-.05,b:T[2]-.1,lines:[["IT","FEELS"],[{t:"FREE.",gold:1}]]},
+ {a:T[2]-.05,b:T[3]-.1,lines:[["BUT","EVERY","MONTH,"],["YOU","PAY",{t:"RENT.",red:1}]]},
+ {a:T[3]-.05,b:T[4]-.1,lines:[["NOT","WITH"],["MONEY."]]},
+ {a:T[4]-.05,b:T[5]-.1,lines:[["WITH","THE",{t:"CHANCES",red:1}],["YOU","NEVER","TOOK."]]},
+ {a:T[5]-.05,b:T[6]-.1,lines:[["THE",{t:"YOU",gold:1},"THAT"],["NEVER","SHOWED","UP."]]},
+ {a:T[6]-.05,b:T[7]-.1,lines:[["THE","RENT","GOES","UP"],[{t:"EVERY",red:1},{t:"YEAR.",red:1}]]},
+ {a:T[7]-.05,b:T[8]-.1,lines:[["PAY","FOR"],[{t:"GROWTH",mark:1},"INSTEAD."]]},
+ {a:T[8]-.05,b:T[9]-.1,lines:[["GROWTH","COSTS","TOO."],["BUT","YOU",{t:"GET",gold:1},{t:"SOMETHING",gold:1},{t:"BACK.",gold:1}]]},
+ {a:T[9]-.05,b:38.5,lines:[[{t:"MOVE OUT.",mark:1}]]},
+],
+LABELS:[
+ {a:T[1]+.2,b:T[2]-.1,text:"Warm bed · Same routine · No risk"},
+ {a:T[6]+2.3,b:T[7]-.1,text:"The longer you stay, the more it costs to leave."},
+],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.rays=K.raysG(540,1000);S.fig=makeFig();
+ // room
+ S.room=el("g",{},scene);
+ el("rect",{x:110,y:700,width:860,height:740,rx:10,fill:"rgba(255,255,255,.02)",stroke:"#3a3a3e","stroke-width":5},S.room);
+ for(let x=150;x<970;x+=46)el("line",{x1:x,y1:705,x2:x,y2:1435,stroke:"#fff",opacity:.03,"stroke-width":3},S.room);
+ S.lampCone=el("path",{d:"M215,880 L255,880 L330,1440 L140,1440 Z",fill:"url(#lamp)"},S.room);
+ el("line",{x1:235,y1:1440,x2:235,y2:880,stroke:C.white,"stroke-width":5},S.room);el("path",{d:"M200,880 L270,880 L255,840 L215,840 Z",fill:C.white},S.room);
+ el("path",{d:"M290,1440 L290,1280 Q290,1250 320,1250 L620,1250 Q650,1250 650,1280 L650,1440",fill:C.card,stroke:C.white,"stroke-width":6},S.room);
+ el("rect",{x:300,y:1330,width:340,height:70,rx:16,fill:"#1a1a1c",stroke:"#444","stroke-width":4},S.room);
+ S.tv=el("rect",{x:700,y:900,width:200,height:120,rx:10,fill:"#0f1320",stroke:"#3c4a6e","stroke-width":5},S.room);
+ S.tvGlow=el("path",{d:"M700,1020 L900,1020 L700,1300 L420,1300 Z",fill:"url(#moon)",opacity:.6},S.room);
+ S.door=el("g",{},scene);S.doorFrame=el("rect",{x:780,y:1120,width:150,height:320,rx:8,fill:"#070707",stroke:C.white,"stroke-width":6},S.door);
+ S.doorLight=el("rect",{x:786,y:1126,width:138,height:308,rx:6,fill:"url(#doorGlow)",opacity:0},S.door);
+ const dg=el("linearGradient",{id:"doorGlow",x1:0,y1:0,x2:0,y2:1},document.querySelector("defs"));el("stop",{offset:0,"stop-color":"#FFE3A3"},dg);el("stop",{offset:1,"stop-color":"#F5B83D"},dg);
+ S.knob=el("circle",{cx:905,cy:1290,r:8,fill:C.white},S.door);
+ S.locks=[0,1,2].map(i=>el("rect",{x:890,y:1180+i*40,width:28,height:22,rx:5,fill:C.red,opacity:0},S.door));
+ S.doorHalo=el("circle",{cx:855,cy:1280,r:300,fill:"url(#halo)",opacity:0},K.bgfx);
+ // price tag
+ S.tag=el("g",{},scene);el("line",{x1:0,y1:-160,x2:0,y2:-40,stroke:C.grey,"stroke-width":3},S.tag);
+ S.tagR=el("rect",{x:-150,y:-40,width:300,height:90,rx:18,fill:"rgba(255,69,58,.08)",stroke:C.red,"stroke-width":5,filter:"url(#glowB)"},S.tag);
+ el("circle",{cx:0,cy:-22,r:7,fill:"none",stroke:C.red,"stroke-width":3},S.tag);S.tagT=txt(S.tag,0,26,"$$$$$",40,{fill:C.red,"font-weight":800,"letter-spacing":"6"});
+ // rent bill
+ S.bill=el("g",{opacity:0},scene);
+ S.paper=el("rect",{x:-170,y:-120,width:340,height:240,rx:10,fill:"#f2efe6"},S.bill);
+ txt(S.bill,0,-70,"RENT DUE",34,{fill:"#222","font-weight":800,"letter-spacing":"6"});el("line",{x1:-140,y1:-48,x2:140,y2:-48,stroke:"#999","stroke-width":2,"stroke-dasharray":"6 6"},S.bill);
+ S.items=[["CHANCES","−1"],["SKILLS","−1"],["PEOPLE","−1"],["YOUR BEST SELF","−1"]].map(([a,b],i)=>{const g=el("g",{opacity:0},S.bill);
+   txt(g,-140,-4+i*58,a,24,{fill:"#222","font-weight":700,"letter-spacing":"3","text-anchor":"start"});txt(g,140,-4+i*58,b,28,{fill:"#C7362C","font-weight":800,"text-anchor":"end"});return g;});
+ S.notMoney=el("g",{opacity:0},S.bill);txt(S.notMoney,0,30,"$",110,{fill:"#888","font-weight":800});el("line",{x1:-60,y1:60,x2:60,y2:-40,stroke:C.red,"stroke-width":10,"stroke-linecap":"round"},S.notMoney);
+ // rising rent bars
+ S.chart=el("g",{opacity:0},scene);S.bars=[...Array(6)].map((_,i)=>{const r=el("rect",{x:200+i*115,width:80,rx:8,fill:"rgba(255,69,58,.18)",stroke:C.red,"stroke-width":4},S.chart);txt(S.chart,240+i*115,1400,"Y"+(i+1),20,{fill:C.grey,"font-weight":700,"letter-spacing":"2"});return r;});
+ // growth steps
+ S.growth=["1 UNCOMFORTABLE THING A DAY","1 HARD CONVERSATION","1 NEW SKILL"].map((l,i)=>pill(scene,540,0,l,C.gold,l.length*15+70,22,58));
+ S.coins=[...Array(10)].map(()=>el("circle",{r:16,fill:C.gold,stroke:"#B07A12","stroke-width":3,opacity:0,filter:"url(#glowB)"},scene));
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const beat=(a,b,d=9,e=1)=>grid(t,B0,BP,a,b,d,e);
+ let o={x:440,y:GY},op=1;
+ const roomOn=win(t,-1,38,.01,.5);S.room.setAttribute("opacity",(roomOn*(1-win(t,T[6]-.05,T[7]-.05,.2,.2)*.85)).toFixed(3));
+ S.lampCone.setAttribute("opacity",(.7+.2*Math.sin(t*1.5)).toFixed(3));S.tvGlow.setAttribute("opacity",(.4+.25*Math.abs(Math.sin(t*7))).toFixed(3));
+ // tag
+ const tg=win(t,-1,T[6]-.1,.01,.3);S.tag.setAttribute("opacity",tg.toFixed(3));
+ S.tag.setAttribute("transform",`translate(470,${980+Math.sin(t*2)*6}) rotate(${Math.sin(t*1.7)*4})`);
+ const free=t>=T[1]&&t<T[2];S.tagT.textContent=free?"FREE":"$$$$$";S.tagT.setAttribute("fill",free?C.gold:C.red);S.tagR.setAttribute("stroke",free?C.gold:C.red);
+ // lying on the sofa -> sitting up
+ if(t<T[2]){o={x:470,y:1330,sit:1,droop:.35+.1*Math.sin(t*1.2),look:-.4,hold:.6};}
+ if(sw(T[2],T[6])){const up=eBack(P(t,T[2],T[2]+.3));o={x:470,y:1330,sit:1,droop:lerp(.35,-.3,clamp(up)),look:.5};
+   if(t>T[3])o.hold=1;if(t>T[5])o={x:470,y:1330,sit:1,droop:.9,cover:eIO(P(t,T[5]+3.2,T[5]+3.8))};}
+ // bill
+ const bl=win(t,T[2]+.05,T[6]-.05,.25,.25);S.bill.setAttribute("opacity",bl.toFixed(3));
+ const grow=eIO(P(t,T[4],T[5]+4));S.paper.setAttribute("height",(240+grow*170).toFixed(1));
+ S.bill.setAttribute("transform",`translate(560,${lerp(-200,735,eOut(P(t,T[2],T[2]+.5)))}) rotate(${(1-eOut(P(t,T[2],T[2]+.5)))*-20})`);
+ const nm=win(t,T[3]+.05,T[4]-.05,.15,.15);S.notMoney.setAttribute("opacity",nm.toFixed(3));
+ S.items.forEach((g,i)=>{const at=[T[4]+.6,T[5],T[5]+2,T[5]+3.9][i];g.setAttribute("opacity",t>at?1:0);g.setAttribute("transform",`translate(0,${t>at&&t<at+.15?-8:0})`);});
+ // rent rising
+ const ch=win(t,T[6]-.05,T[7]-.05,.2,.2);S.chart.setAttribute("opacity",ch.toFixed(3));
+ S.bars.forEach((b,i)=>{const k=eBack(P(t,T[6]+.3+i*.35,T[6]+.7+i*.35));const h=(80+i*70)*clamp(k);b.setAttribute("y",(1360-h).toFixed(1));b.setAttribute("height",h.toFixed(1));});
+ S.locks.forEach((l,i)=>l.setAttribute("opacity",(t>T[6]+2.4+i*.6&&t<T[7]+1+i*.8?1:0)));
+ if(sw(T[6],T[7]))op=0;
+ // growth: get up, walk to the door, pills light
+ S.growth.forEach((p,i)=>{p.x=520;p.y=900+i*90;K.popAt(p,t,[T[7]+2.3,T[7]+4.7,T[7]+6.4][i],T[8]-.1);});
+ if(sw(T[7],T[9])){const w=eIO(P(t,T[7]+.3,T[8]));o={x:lerp(470,720,w),y:GY,ph:w*10,stride:.8,droop:lerp(.2,-.2,w),lean:.1};
+   if(t>=T[8]){o={x:720,y:GY,raise:.4,raiseL:.4,droop:-.3};}}
+ S.coins.forEach((c,i)=>{const k=P(t,T[8]+.8+i*.12,T[8]+1.6+i*.12);c.setAttribute("opacity",(k>0&&k<1?1:t>T[8]+1.6+i*.12&&t<T[9]?1:0)*(t<T[9]?1:0));
+   c.setAttribute("cx",560+(i%5)*36);c.setAttribute("cy",lerp(700,1380-Math.floor(i/5)*34,eOut(k)));});
+ // move out
+ const lit=eIO(P(t,T[8],T[9]+.3));S.doorLight.setAttribute("opacity",lit);S.doorHalo.setAttribute("opacity",(lit*(.7+.3*beat(T[9],39,6))).toFixed(3));
+ if(t>=T[9]){const w=eIO(P(t,T[9]+.2,T[9]+1.6));o={x:lerp(720,855,w),y:GY,ph:w*6,col:K.mixHex(C.white,C.gold,w),droop:-.2,sc:1-.15*w};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade*(t>=T[9]+1.4?1-eIO(P(t,T[9]+1.4,T[9]+2)):1)).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,T[9],39,.1,.6)*(.4+.6*beat(T[9],39,7))).toFixed(3));S.rays.setAttribute("transform",`translate(855,1280) rotate(${t*7})`);
+ K.ground.setAttribute("opacity",K.endFade);
+ const c=K.cam;
+ if(t<T[1]){c.sc=1.12-.08*eOut(P(t,0,1.5));c.cy=1100;}
+ if(sw(T[3],T[6])){c.sc=1+.1*eIO(P(t,T[3],T[6]));c.cx=lerp(540,560,eIO(P(t,T[3],T[6])));c.cy=lerp(1150,1000,eIO(P(t,T[3],T[6])));}
+ if(t>=T[9]){c.sc=1+.15*eIO(P(t,T[9],38.5));c.cx=lerp(540,855,eIO(P(t,T[9],38.5)));c.cy=lerp(1150,1280,eIO(P(t,T[9],38.5)));}
+ c.sc+=beat(T[3],T[6],10)*.015+(t>=T[3]?Math.exp(-(t-T[3])*6)*.1:0);
+ const shk=t>=T[2]+.5?Math.exp(-(t-T[2]-.5)*7):0;c.dx=Math.sin(t*90)*12*shk;c.dy=Math.cos(t*77)*8*shk;
+ K.flash=K.pulses(t,[T[3],T[7],T[9]],10,.3,.3)+beat(T[9],38.5,12,2)*.08;
+ K.dim=win(t,T[3],T[6]-.1,.3,.3)*.35;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

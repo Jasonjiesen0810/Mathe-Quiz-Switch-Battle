@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Stop Waiting</title></head>
+<body>
+<script>
+/* VYZEE ab 0; Energie-Einsatz 13,80 s; 136 BPM (0,4405 s) */
+const A=[0.15,3.74,5.13,9.43], B=[13.85,18.26,20.37,25.91,31.58,35.23];
+const E=13.8, BP=.4405;
+window.VIDEO={DUR:40,seed:141,audio:"14_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,lines:[[{t:"MOTIVATION",gold:1},"IS","WHY"],["YOU'RE",{t:"NOT",red:1},{t:"MOVING.",red:1}]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["SOUNDS",{t:"WRONG,",red:1}],["RIGHT?"]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["YOU","WAIT","TO"],["FEEL",{t:"READY.",gold:1}]]},
+ {a:A[3]-.05,b:E-.1,lines:[["WHILE","YOU","WAIT,"],[{t:"NOTHING",red:1},{t:"HAPPENS.",red:1}]]},
+ {a:E,b:B[1]-.1,lines:[["MOTIVATION","IS","A"],[{t:"FEELING.",red:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["DISCIPLINE","IS","A"],[{t:"DECISION.",mark:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["DON'T","ASK","YOUR","FEELINGS"],["FOR",{t:"PERMISSION.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["START","WITH"],[{t:"2 MINUTES.",mark:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[[{t:"ACTION",gold:1},"CREATES"],["MOTIVATION."]]},
+ {a:B[5]-.05,b:39.5,lines:[["DON'T","WAIT","TO","FEEL","IT."],[{t:"START,",gold:1},"AND","YOU","WILL."]]},
+],
+LABELS:[
+ {a:B[0]+2.3,b:B[1]-.1,text:"Feelings come and go."},
+ {a:B[2]+.3,b:B[3]-.1,text:"Disciplined people don't feel like it either."},
+ {a:B[4]+2.2,b:B[5]-.1,text:"Not the other way around."},
+],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spot=K.spot(330);S.rays=K.raysG(540,1000);S.fig=makeFig();
+ // bus stop
+ S.stop=el("g",{},scene);el("line",{x1:560,y1:GY,x2:560,y2:900,stroke:C.white,"stroke-width":8,"stroke-linecap":"round"},S.stop);
+ el("rect",{x:440,y:820,width:240,height:110,rx:22,fill:C.card,stroke:C.gold,"stroke-width":5,filter:"url(#glowB)"},S.stop);
+ el("circle",{cx:478,cy:875,r:18,fill:"none",stroke:C.gold,"stroke-width":4},S.stop);txt(S.stop,478,882,"B",18,{fill:C.gold,"font-weight":800,"letter-spacing":"0"});
+ txt(S.stop,580,866,"MOTIVATION",22,{fill:C.gold,"font-weight":800,"letter-spacing":"3"});S.eta=txt(S.stop,580,904,"ARRIVING: ???",16,{fill:C.grey,"font-weight":700,"letter-spacing":"3"});
+ S.bench=el("path",{d:"M600,1350 L800,1350 M612,1350 L612,1440 M788,1350 L788,1440",fill:"none",stroke:C.grey,"stroke-width":8,"stroke-linecap":"round"},S.stop);
+ S.road=el("g",{},scene);for(let x=0;x<1200;x+=120)el("line",{x1:x,y1:GY+90,x2:x+60,y2:GY+90,stroke:"#555","stroke-width":6},S.road);
+ S.clock=el("g",{opacity:0},scene);el("circle",{r:60,fill:C.card,stroke:C.white,"stroke-width":5},S.clock);S.h1=el("line",{x1:0,y1:0,x2:0,y2:-44,stroke:C.white,"stroke-width":5,"stroke-linecap":"round"},S.clock);S.h2=el("line",{x1:0,y1:0,x2:0,y2:-28,stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},S.clock);
+ S.q=el("g",{opacity:0},scene);txt(S.q,0,40,"?",150,{fill:C.red,"font-weight":800,"letter-spacing":"0",filter:"url(#glowB)"});
+ S.waits=[["FEEL READY",230,960],["RIGHT MOOD",830,1060],["MONDAY",260,1140]].map(([l,x,y])=>pill(scene,x,y,l,C.white,l.length*16+60,22,54));
+ S.cal=el("g",{opacity:0},scene);el("rect",{x:-90,y:-100,width:180,height:200,rx:16,fill:"#f2efe6"},S.cal);el("rect",{x:-90,y:-100,width:180,height:50,rx:16,fill:C.red},S.cal);
+ S.calT=txt(S.cal,0,40,"MON",54,{fill:"#222","font-weight":800,"letter-spacing":"2"});
+ S.web=el("g",{opacity:0},scene);for(let k=0;k<5;k++)el("path",{d:`M0,0 L${Math.cos(k*.35)*120},${Math.sin(k*.35)*120}`,stroke:"#aaa","stroke-width":2},S.web);[40,75,110].forEach(r=>el("path",{d:`M${r},0 A${r},${r} 0 0 1 ${Math.cos(1.4)*r},${Math.sin(1.4)*r}`,fill:"none",stroke:"#aaa","stroke-width":2},S.web));
+ // mood meter
+ S.meter=el("g",{opacity:0},scene);
+ el("path",{d:"M-260,0 A260,260 0 0 1 260,0",fill:"none",stroke:C.dim,"stroke-width":34},S.meter);
+ el("path",{d:"M-260,0 A260,260 0 0 1 -80,-247",fill:"none",stroke:C.red,"stroke-width":34,opacity:.6},S.meter);
+ el("path",{d:"M80,-247 A260,260 0 0 1 260,0",fill:"none",stroke:C.gold,"stroke-width":34,opacity:.6},S.meter);
+ txt(S.meter,-250,60,"LOW",24,{fill:C.red,"font-weight":800,"letter-spacing":"4"});txt(S.meter,250,60,"HIGH",24,{fill:C.gold,"font-weight":800,"letter-spacing":"4"});txt(S.meter,0,90,"MOOD",28,{fill:C.grey,"font-weight":800,"letter-spacing":"8"});
+ S.needle=el("line",{x1:0,y1:0,x2:0,y2:-220,stroke:C.white,"stroke-width":10,"stroke-linecap":"round"},S.meter);el("circle",{r:18,fill:C.white},S.meter);
+ // switch
+ S.sw=el("g",{opacity:0},scene);el("rect",{x:-200,y:-90,width:400,height:180,rx:90,fill:C.card,stroke:C.white,"stroke-width":6},S.sw);
+ S.swFill=el("rect",{x:-194,y:-84,width:388,height:168,rx:84,fill:C.gold,opacity:0,filter:"url(#glowB)"},S.sw);S.knob=el("circle",{r:72,fill:C.white},S.sw);
+ S.swOff=txt(S.sw,90,14,"OFF",40,{fill:C.grey,"font-weight":800,"letter-spacing":"4"});S.swOn=txt(S.sw,-90,14,"ON",40,{fill:"#070707","font-weight":800,"letter-spacing":"4",opacity:0});
+ // grey cloud "NOT IN THE MOOD"
+ S.cloud=el("g",{opacity:0},scene);[[0,0,70],[-70,20,50],[70,20,55],[-35,-40,48],[40,-38,52]].forEach(([x,y,r])=>el("circle",{cx:x,cy:y,r,fill:"#3a3a3e"},S.cloud));
+ txt(S.cloud,0,22,"NOT IN THE MOOD",20,{fill:C.white,"font-weight":800,"letter-spacing":"3"});
+ // 2-minute timer + montage
+ S.timer=el("g",{opacity:0},scene);el("circle",{r:130,fill:C.card,stroke:C.white,"stroke-width":6},S.timer);S.tRing=el("circle",{r:130,fill:"none",stroke:C.gold,"stroke-width":10,transform:"rotate(-90)",filter:"url(#glowB)"},S.timer);S.tL=2*Math.PI*130;S.tRing.style.strokeDasharray=S.tL;
+ S.tT=txt(S.timer,0,22,"2:00",64,{"font-weight":800,"letter-spacing":"2"});
+ S.icons=["SHOES ON","OPEN THE BOOK","WRITE ONE LINE"].map((l,i)=>pill(scene,540,1300,l,C.gold,l.length*16+80,26,64));
+ // action -> motivation loop
+ S.loop=el("g",{opacity:0},scene);
+ const nd=(x,l,col)=>{const g=el("g",{transform:`translate(${x},1060)`},S.loop);el("circle",{r:120,fill:C.card,stroke:col,"stroke-width":6,filter:col===C.gold?"url(#glowB)":""},g);txt(g,0,10,l,col===C.gold?32:24,{fill:col,"font-weight":800,"letter-spacing":"3"});return g;};
+ S.nA=nd(300,"ACTION",C.gold);S.nM=nd(780,"MOTIVATION",C.white);
+ S.arr1=el("path",{d:"M420,1010 Q540,900 660,1010",fill:"none",stroke:C.gold,"stroke-width":6,"stroke-linecap":"round"},S.loop);S.arr2=el("path",{d:"M660,1110 Q540,1220 420,1110",fill:"none",stroke:C.white,"stroke-width":6,"stroke-linecap":"round","stroke-dasharray":"10 10"},S.loop);
+ S.pulseDot=el("circle",{r:12,fill:C.gold,filter:"url(#glowB)"},S.loop);
+ S.cross=el("g",{opacity:0},scene);el("line",{x1:-200,y1:-60,x2:200,y2:60,stroke:C.red,"stroke-width":10,"stroke-linecap":"round"},S.cross);
+ S.wrongWay=txt(scene,540,1300,"MOTIVATION → ACTION",30,{fill:C.grey,"font-weight":800,"letter-spacing":"4",opacity:0});
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const beat=(a,b,d=9,e=1)=>grid(t,E,BP,a,b,d,e);
+ let o={x:330,y:GY},op=1;
+ // bus stop scenes 0-3 and back at end
+ const st=Math.max(win(t,-1,E-.05,.01,.15),win(t,B[5]-.05,40,.2,.6)*(1-eIO(P(t,37,38.5))));S.stop.setAttribute("opacity",st.toFixed(3));S.road.setAttribute("opacity",(st*.8).toFixed(3));
+ S.eta.textContent=t<A[3]?"ARRIVING: ???":"ARRIVING: NEVER";S.eta.setAttribute("fill",t<A[3]?C.grey:C.red);
+ S.spot.setAttribute("opacity",(win(t,-1,E,.01,.1)*.8).toFixed(3));
+ const cl=win(t,-1,E-.05,.01,.2);S.clock.setAttribute("opacity",cl.toFixed(3));S.clock.setAttribute("transform","translate(820,760)");
+ const spd=t<A[3]?60:t<E?400:60;S.h1.setAttribute("transform",`rotate(${t*spd})`);S.h2.setAttribute("transform",`rotate(${t*spd/12})`);
+ if(t<A[1])o={x:330,y:GY,look:1,droop:.1+.05*Math.sin(t*2),hold:0};
+ if(sw(A[1],A[2])){o={x:330,y:GY,look:-.2,droop:-.2};}
+ const qk=eBack(P(t,A[1]+.1,A[1]+.4))*(1-eIO(P(t,A[2]-.2,A[2])));S.q.setAttribute("opacity",clamp(qk).toFixed(3));S.q.setAttribute("transform",`translate(220,1000) rotate(${Math.sin(t*20)*6}) scale(${clamp(qk).toFixed(3)})`);
+ S.waits.forEach((p,i)=>K.popAt(p,t,A[2]+.2+i*1.3,A[3]-.15));
+ const ck=win(t,A[2]+2.8,A[3]-.05,.2,.2);S.cal.setAttribute("opacity",ck.toFixed(3));S.cal.setAttribute("transform","translate(820,1180)");
+ S.calT.textContent=["TUE","WED","THU","FRI","SAT","SUN","MON"][Math.min(6,Math.floor(P(t,A[2]+2.8,A[3]-.2)*7))];
+ if(sw(A[2],A[3]))o={x:330,y:GY,look:Math.sin(t*1.5)*.6,droop:.2};
+ if(sw(A[3],E)){const s=eIO(P(t,A[3],A[3]+.6));o={x:lerp(330,690,s),y:GY,sit:s,chair:1,droop:.4+.6*eIO(P(t,A[3]+1.5,E-.5)),ph:s<1?s*8:0};
+   S.web.setAttribute("opacity",eIO(P(t,A[3]+2,E-.5)).toFixed(3));S.web.setAttribute("transform","translate(440,820)");}else S.web.setAttribute("opacity",0);
+ K.dim=eIO(P(t,A[3]+1.5,E-.1))*(1-eIO(P(t,E,E+.15)))*.7;
+ // meter
+ const mt=win(t,E-.02,B[1]-.05,.1,.2);S.meter.setAttribute("opacity",mt.toFixed(3));S.meter.setAttribute("transform","translate(540,1220)");
+ const nd=Math.sin(t*5.3)*55+Math.sin(t*2.1)*30;S.needle.setAttribute("transform",`rotate(${nd})`);
+ if(sw(E,B[1]))op=0;
+ // switch
+ const sk=win(t,B[1]-.05,B[2]-.05,.15,.2);S.sw.setAttribute("opacity",sk.toFixed(3));S.sw.setAttribute("transform",`translate(540,1060) scale(${(.9+.1*eOut(P(t,B[1],B[1]+.3))).toFixed(3)})`);
+ const fl=eIO(P(t,B[1]+.9,B[1]+1.15));S.knob.setAttribute("cx",lerp(-110,110,fl));S.swFill.setAttribute("opacity",fl);S.swOff.setAttribute("opacity",1-fl);S.swOn.setAttribute("opacity",fl);
+ if(sw(B[1],B[2]))op=0;
+ // walking through the mood cloud
+ const cw=win(t,B[2]-.05,B[3]-.05,.25,.25);S.cloud.setAttribute("opacity",(cw*(1-eIO(P(t,B[2]+3.2,B[2]+4.2))*.8)).toFixed(3));
+ S.cloud.setAttribute("transform",`translate(${560+Math.sin(t*3)*10},${1180}) scale(${lerp(1,1.3,eIO(P(t,B[2]+3.2,B[2]+4.2)))})`);
+ if(sw(B[2],B[3])){const w=P(t,B[2]+.2,B[3]-.2);o={x:lerp(160,920,w),y:GY,ph:w*16,stride:.9,lean:.15+.2*(w>.4&&w<.6?1:0),droop:-.1};}
+ // timer + montage on the beat
+ const tm=win(t,B[3]-.05,B[4]-.05,.2,.2);S.timer.setAttribute("opacity",tm.toFixed(3));S.timer.setAttribute("transform",`translate(540,1000) scale(${(1+.04*beat(B[3],B[4])).toFixed(3)})`);
+ const tk=P(t,B[3]+.3,B[4]-.3);S.tRing.style.strokeDashoffset=S.tL*tk;const secs=Math.round(120*(1-tk*.05));S.tT.textContent=`${Math.floor(secs/60)}:${String(secs%60).padStart(2,"0")}`;
+ S.icons.forEach((p,i)=>K.popAt(p,t,[28.55,29.65,30.6][i],[29.6,30.55,B[4]-.1][i]));
+ if(sw(B[3],B[4])){o={x:300,y:GY,raise:.3+.3*beat(B[3],B[4],8),droop:-.2,point:eIO(P(t,B[3]+.3,B[3]+.6))};}
+ // loop
+ const lp=win(t,B[4]-.05,B[5]-.05,.2,.25);S.loop.setAttribute("opacity",lp.toFixed(3));
+ const u=((t-B[4])*.7)%1;const ang=u*Math.PI*2;S.pulseDot.setAttribute("cx",540+Math.cos(ang+Math.PI)*240);S.pulseDot.setAttribute("cy",1060+Math.sin(ang+Math.PI)*120);
+ S.nA.setAttribute("transform",`translate(300,1060) scale(${(1+.08*beat(B[4],B[5],8)).toFixed(3)})`);
+ S.wrongWay.setAttribute("opacity",win(t,B[4]+2.0,B[5]-.05,.2,.2).toFixed(3));K.popAt(S.cross,t,B[4]+2.4,B[5]-.1);S.cross.x=540;S.cross.y=1290;
+ if(sw(B[4],B[5]))op=0;
+ // end: leave the bus stop
+ if(t>=B[5]){const w=P(t,B[5]+.4,39.5);o={x:lerp(330,980,w),y:GY,ph:w*20,run:eIO(P(t,B[5]+.4,B[5]+1)),lean:.4,droop:-.2};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,B[1]+.9,B[2],.05,.4)*.8+win(t,B[5],40,.2,.6)*(.5+.5*beat(B[5],40,8))).toFixed(3));S.rays.setAttribute("transform",`translate(540,1060) rotate(${t*8})`);
+ K.floorScroll=t>=B[5]+.5?1.4:0;
+ K.ground.setAttribute("opacity",(1-win(t,E,B[2]-.05,.1,.2)*.9-win(t,B[3],B[5]-.05,.2,.2)*.9)*K.endFade);
+ const c=K.cam;
+ if(t<A[1]){c.sc=1.1-.1*eOut(P(t,0,1.2));}
+ if(sw(A[3],E)){c.sc=1+.12*eIO(P(t,A[3],E));c.cx=lerp(540,620,eIO(P(t,A[3],E)));}
+ c.sc+=(t>=E?Math.exp(-(t-E)*6)*.14:0)+beat(E,B[1],9,2)*.03+beat(B[5],40,9,2)*.04+(t>=B[1]+.9?Math.exp(-(t-B[1]-.9)*8)*.06:0);
+ const shk=(t>=E?Math.exp(-(t-E)*6):0)+(t>=A[1]?Math.exp(-(t-A[1])*8)*.6:0);c.dx=Math.sin(t*90)*14*shk;c.dy=Math.cos(t*77)*9*shk;
+ K.flash=(t>=E?Math.exp(-(t-E)*9)*.5:0)+K.pulses(t,[B[1]+.9,B[5]],10,.3,.3)+beat(E,B[1],12,4)*.1+beat(B[5]+.5,39,12,4)*.1;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

@@ -1,0 +1,74 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 45,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "If you dream of being rich, this video found you for a reason.",
+     "pause": 0.25
+    },
+    {
+     "text": "Your feed shows what you keep searching for.",
+     "pause": 0.15
+    },
+    {
+     "text": "And you keep searching for a way up.",
+     "pause": 0.3
+    },
+    {
+     "text": "Most people scroll to escape. You scroll to learn.",
+     "pause": 0.25
+    },
+    {
+     "text": "Most people ask: how much does it cost?",
+     "pause": 0.1
+    },
+    {
+     "text": "You ask: how could I own it?",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 15.75,
+   "parts": [
+    {
+     "text": "And here is the part nobody tells you:",
+     "pause": 0.15,
+     "speed": 0.95
+    },
+    {
+     "text": "mindset compounds.",
+     "pause": 0.4,
+     "speed": 0.88
+    },
+    {
+     "text": "One idea becomes a skill. One skill becomes an opportunity. And one opportunity can change everything.",
+     "pause": 0.35
+    },
+    {
+     "text": "Getting one percent better every day feels like nothing.",
+     "pause": 0.15
+    },
+    {
+     "text": "But after one year, that's about thirty-seven times better.",
+     "pause": 0.4
+    },
+    {
+     "text": "You don't need to be rich yet. You need to think like someone who will be.",
+     "pause": 0.35
+    },
+    {
+     "text": "Save this video. The person watching it right now is just getting started.",
+     "pause": 0,
+     "speed": 0.95
+    }
+   ]
+  }
+ ]
+}

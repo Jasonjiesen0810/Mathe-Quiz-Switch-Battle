@@ -1,0 +1,66 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 44,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "The people around you decide your future more than your goals do.",
+     "pause": 0.3
+    },
+    {
+     "text": "You set a goal. You get excited. You tell your friends.",
+     "pause": 0.25
+    },
+    {
+     "text": "And they say: why would you do that? Just relax.",
+     "pause": 0.3
+    },
+    {
+     "text": "So you stay.",
+     "pause": 0.5,
+     "speed": 0.9
+    },
+    {
+     "text": "Because the people around you are like a rope. You can't see it, but it holds you in place.",
+     "pause": 0.35
+    },
+    {
+     "text": "There's a famous idea, often credited to Jim Rohn: you become the average of the five people you spend the most time with.",
+     "pause": 0.35
+    },
+    {
+     "text": "That doesn't mean you drop everyone. It means you choose more carefully.",
+     "pause": 0.3
+    },
+    {
+     "text": "Spend time with people who are already where you want to go. Watch them. Ask them questions.",
+     "pause": 0.3
+    },
+    {
+     "text": "And if you can't find them yet, find them in books.",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 38.6,
+   "parts": [
+    {
+     "text": "Cut the rope.",
+     "pause": 0.35,
+     "speed": 0.88
+    },
+    {
+     "text": "Choose your circle.",
+     "pause": 0,
+     "speed": 0.88
+    }
+   ]
+  }
+ ]
+}

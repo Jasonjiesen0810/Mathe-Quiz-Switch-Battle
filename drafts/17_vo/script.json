@@ -1,0 +1,157 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 45,
+ "lines": [
+  {
+   "id": "p00",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Rest is part of the work. Sounds lazy, right?",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p01",
+   "at": 4.8,
+   "parts": [
+    {
+     "text": "So you keep going. No breaks.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p02",
+   "at": 8.2,
+   "parts": [
+    {
+     "text": "Late nights. Always on. Until one day, you can't anymore.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "at": 13.9,
+   "parts": [
+    {
+     "text": "Think about your phone.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "at": 16.6,
+   "parts": [
+    {
+     "text": "At one percent,",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "at": 18.35,
+   "parts": [
+    {
+     "text": "it doesn't work harder.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "at": 20.65,
+   "parts": [
+    {
+     "text": "It just dies faster.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "at": 22.9,
+   "parts": [
+    {
+     "text": "And so do you.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "at": 25.2,
+   "parts": [
+    {
+     "text": "Tired people don't work better. They just work longer.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "at": 29.6,
+   "parts": [
+    {
+     "text": "So work hard.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "at": 31.95,
+   "parts": [
+    {
+     "text": "Then recover on purpose.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p11",
+   "at": 34.2,
+   "parts": [
+    {
+     "text": "Sleep. Walk. Breathe.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p12",
+   "at": 36.5,
+   "parts": [
+    {
+     "text": "Then come back stronger.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p13",
+   "at": 38.75,
+   "parts": [
+    {
+     "text": "Rest is not quitting.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p14",
+   "at": 41.0,
+   "parts": [
+    {
+     "text": "It's reloading.",
+     "speed": 0.95
+    }
+   ]
+  }
+ ]
+}

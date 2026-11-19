@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mindset Compounds</title></head>
+<body>
+<script>
+/* AKAI ab 0, Highlight 15,55 s; Beat 0,64 s */
+const A=[0.15,3.84,6.3,8.28,11.62,14.03], B=[15.75,17.89,19.69,26.87,30.25,33.88,37.93];
+const HI=15.55, BP=.64;
+window.VIDEO={DUR:45,seed:131,audio:"13_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,lines:[["DREAM","OF","BEING",{t:"RICH?",gold:1}],["THIS","VIDEO","FOUND","YOU."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["YOUR","FEED","SHOWS"],["WHAT","YOU",{t:"SEARCH",gold:1},{t:"FOR.",gold:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["AND","YOU","SEARCH"],["FOR","A",{t:"WAY",gold:1},{t:"UP.",gold:1}]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["THEY","SCROLL","TO",{t:"ESCAPE.",red:1}],["YOU","SCROLL","TO",{t:"LEARN.",gold:1}]]},
+ {a:A[4]-.05,b:HI-.1,lines:[["“HOW","MUCH","IS","IT?”"],[{t:"“HOW COULD I OWN IT?”",gold:1}]]},
+ {a:B[0]-.2,b:B[2]-.1,lines:[["MINDSET"],[{t:"COMPOUNDS.",mark:1}]]},
+ {a:B[2]-.05,b:21.9,lines:[["ONE",{t:"IDEA",gold:1}],["BECOMES","A","SKILL."]]},
+ {a:22,b:24.3,lines:[["ONE",{t:"SKILL",gold:1}],["BECOMES","A","CHANCE."]]},
+ {a:24.4,b:B[3]-.1,lines:[["ONE",{t:"CHANCE",gold:1},"CAN"],["CHANGE",{t:"EVERYTHING.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["1%","BETTER","A","DAY"],["FEELS","LIKE",{t:"NOTHING.",red:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["AFTER","ONE","YEAR:"],[{t:"~37× BETTER.",mark:1}]]},
+ {a:B[5]-.05,b:B[6]-.1,lines:[["THINK","LIKE","SOMEONE"],["WHO",{t:"WILL",gold:1},{t:"BE.",gold:1}]]},
+ {a:B[6]-.05,b:41.1,lines:[[{t:"SAVE THIS.",mark:1}]]},
+ {a:41.2,b:44.4,lines:[["YOU'RE","JUST","GETTING"],[{t:"STARTED.",gold:1}]]},
+],
+LABELS:[
+ {a:B[4]+.6,b:B[5]-.1,text:"1.01 ^ 365 ≈ 37.8"},
+ {a:B[5]+1.8,b:B[6]-.1,text:"You don't need to be rich yet."},
+],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spot=K.spot(540);S.rays=K.raysG(540,1000);S.fig=makeFig();S.fig2=makeFig();
+ // thought bubble with house
+ S.bub=el("g",{},scene);[[0,0,12],[30,-40,20]].forEach(([x,y,r])=>el("circle",{cx:x,cy:y,r,fill:"none",stroke:C.white,"stroke-width":4},S.bub));
+ el("circle",{cx:80,cy:-170,r:110,fill:"rgba(255,255,255,.04)",stroke:C.white,"stroke-width":5,filter:"url(#glowB)"},S.bub);
+ el("path",{d:"M20,-150 L80,-200 L140,-150 L140,-110 L20,-110 Z",fill:"none",stroke:C.white,"stroke-width":5,"stroke-linejoin":"round"},S.bub);
+ el("rect",{x:70,y:-140,width:20,height:30,fill:"none",stroke:C.white,"stroke-width":4},S.bub);
+ [[35,-230],[130,-235]].forEach(([x,y])=>el("path",{d:`M${x},${y-10} L${x+3},${y-3} L${x+10},${y} L${x+3},${y+3} L${x},${y+10} L${x-3},${y+3} L${x-10},${y} L${x-3},${y-3} Z`,fill:C.gold},S.bub));
+ // phone feed
+ S.phone=el("g",{},scene);el("rect",{x:-150,y:-280,width:300,height:560,rx:40,fill:C.card,stroke:C.white,"stroke-width":6,filter:"url(#glowB)"},S.phone);
+ el("rect",{x:-40,y:-266,width:80,height:14,rx:7,fill:C.white},S.phone);
+ S.feedClip=el("clipPath",{id:"feedClip"},document.querySelector("defs"));el("rect",{x:-130,y:-240,width:260,height:500,rx:20},S.feedClip);
+ S.feed=el("g",{"clip-path":"url(#feedClip)"},S.phone);S.feedIn=el("g",{},S.feed);
+ S.cards=["HOW TO START","SKILLS","THIS VIDEO","BUSINESS","MINDSET","HOW TO START","SKILLS","THIS VIDEO"].map((l,i)=>{const g=el("g",{},S.feedIn);const gold=l==="THIS VIDEO";
+   const r=el("rect",{x:-120,y:i*150-230,width:240,height:130,rx:16,fill:gold?"rgba(245,184,61,.12)":"rgba(255,255,255,.03)",stroke:gold?C.gold:"#555","stroke-width":3},g);
+   el("rect",{x:-100,y:i*150-210,width:200,height:56,rx:8,fill:"none",stroke:gold?C.gold:"#444","stroke-width":2},g);txt(g,0,i*150-120,l,18,{fill:gold?C.gold:C.grey,"font-weight":700,"letter-spacing":"3"});return{r,gold};});
+ S.mag=el("g",{opacity:0},scene);el("circle",{r:46,fill:"none",stroke:C.gold,"stroke-width":8},S.mag);el("line",{x1:32,y1:32,x2:78,y2:78,stroke:C.gold,"stroke-width":12,"stroke-linecap":"round"},S.mag);
+ S.upArrow=el("g",{opacity:0},scene);el("path",{d:"M0,-200 L80,-100 L30,-100 L30,120 L-30,120 L-30,-100 L-80,-100 Z",fill:"rgba(245,184,61,.12)",stroke:C.gold,"stroke-width":6,"stroke-linejoin":"round",filter:"url(#glowB)"},S.upArrow);
+ // split compare
+ S.split=el("g",{opacity:0},scene);el("line",{x1:540,y1:760,x2:540,y2:1440,stroke:"#fff","stroke-width":3,"stroke-dasharray":"8 10",opacity:.4},S.split);
+ txt(S.split,280,1530,"MOST PEOPLE",34,{fill:C.grey,"font-weight":800,"letter-spacing":"5"});txt(S.split,800,1530,"YOU",40,{"font-weight":800,"letter-spacing":"8"});
+ S.ph1=el("g",{},S.split);el("rect",{x:200,y:860,width:160,height:270,rx:24,fill:C.card,stroke:C.grey,"stroke-width":5},S.ph1);S.zz=txt(S.ph1,280,1010,"z z",40,{fill:C.grey,"font-weight":800});
+ S.ph2=el("g",{},S.split);el("rect",{x:720,y:860,width:160,height:270,rx:24,fill:C.card,stroke:C.white,"stroke-width":5,filter:"url(#glowB)"},S.ph2);
+ el("circle",{cx:800,cy:960,r:34,fill:C.gold,filter:"url(#glowB)"},S.ph2);el("rect",{x:786,y:994,width:28,height:16,rx:4,fill:C.gold},S.ph2);
+ [1040,1060,1080].forEach((y,i)=>el("line",{x1:750,y1:y,x2:850-i*20,y2:y,stroke:C.white,"stroke-width":4,"stroke-linecap":"round"},S.ph2));
+ S.tag=el("g",{opacity:0},scene);el("path",{d:"M-70,-40 L50,-40 L90,0 L50,40 L-70,40 Z",fill:C.card,stroke:C.grey,"stroke-width":5,"stroke-linejoin":"round"},S.tag);el("circle",{cx:50,cy:0,r:8,fill:C.grey},S.tag);txt(S.tag,-10,12,"$$$?",30,{fill:C.grey,"font-weight":800,"letter-spacing":"2"});
+ S.key=el("g",{opacity:0},scene);el("circle",{cx:-50,cy:0,r:36,fill:"none",stroke:C.gold,"stroke-width":9,filter:"url(#glowB)"},S.key);el("path",{d:"M-14,0 L90,0 M60,0 L60,26 M80,0 L80,20",stroke:C.gold,"stroke-width":9,"stroke-linecap":"round",fill:"none"},S.key);
+ // compounding rings
+ S.rings=[...Array(5)].map((_,i)=>el("circle",{cx:540,cy:1060,r:10,fill:"none",stroke:i%2?C.white:C.gold,"stroke-width":4,opacity:0},scene));
+ // chain
+ S.chain=el("g",{opacity:0},scene);
+ const node=(x,y,draw)=>{const g=el("g",{opacity:0,transform:`translate(${x},${y})`},S.chain);const c=el("circle",{r:80,fill:C.card,stroke:C.white,"stroke-width":5},g);draw(g);return{g,c};};
+ S.n1=node(250,1080,g=>{el("circle",{cx:0,cy:-12,r:28,fill:C.white},g);el("rect",{x:-12,y:16,width:24,height:16,rx:4,fill:C.white},g);});
+ S.n2=node(540,1080,g=>{let d="";for(let k=0;k<16;k++){const a=k*Math.PI/8,R=k%2?32:44;d+=(k?"L":"M")+(Math.cos(a)*R).toFixed(1)+","+(Math.sin(a)*R).toFixed(1);}el("path",{d:d+"Z",fill:"none",stroke:C.white,"stroke-width":6},g);el("circle",{r:12,fill:"none",stroke:C.white,"stroke-width":6},g);});
+ S.n3=node(830,1080,g=>{el("rect",{x:-28,y:-44,width:56,height:88,fill:"none",stroke:C.white,"stroke-width":5},g);el("path",{d:"M-28,-44 L10,-34 L10,52 L-28,44 Z",fill:"rgba(255,255,255,.25)"},g);});
+ S.ar1=el("line",{x1:340,y1:1080,x2:450,y2:1080,stroke:C.white,"stroke-width":5,opacity:0},S.chain);S.ar2=el("line",{x1:630,y1:1080,x2:740,y2:1080,stroke:C.white,"stroke-width":5,opacity:0},S.chain);
+ S.labs=["IDEA","SKILL","CHANCE"].map((l,i)=>txt(S.chain,250+i*290,1210,l,26,{"font-weight":800,"letter-spacing":"5",opacity:0}));
+ // curve
+ S.graph=el("g",{opacity:0},scene);el("line",{x1:170,y1:1360,x2:910,y2:1360,stroke:"#fff","stroke-width":3,opacity:.7},S.graph);el("line",{x1:170,y1:1360,x2:170,y2:740,stroke:"#fff","stroke-width":3,opacity:.7},S.graph);
+ for(let x=210;x<=910;x+=40)el("line",{x1:x,y1:1360,x2:x,y2:1370,stroke:"#fff","stroke-width":2,opacity:.4},S.graph);
+ let gp="M170,1360";for(let i=1;i<=120;i++){const u=i/120;gp+=` L${170+u*720},${1360-(Math.pow(1.01,365*u)-1)/36.8*590}`;}
+ S.curve=el("path",{d:gp,fill:"none",stroke:C.gold,"stroke-width":7,"stroke-linecap":"round",filter:"url(#glowGoldU)"},S.graph);S.cL=S.curve.getTotalLength();S.curve.style.strokeDasharray=S.cL;
+ S.dot=el("circle",{r:14,fill:C.white,filter:"url(#glowB)"},S.graph);S.x37=txt(S.graph,820,740,"×37",70,{fill:C.gold,"font-weight":800,"letter-spacing":"0",opacity:0,filter:"url(#glowB)"});
+ txt(S.graph,170,1400,"DAY 1",18,{fill:C.grey,"text-anchor":"start","letter-spacing":"3"});txt(S.graph,910,1400,"DAY 365",18,{fill:C.grey,"text-anchor":"end","letter-spacing":"3"});
+ // bookmark
+ S.book=el("g",{opacity:0},scene);el("path",{d:"M-60,-90 L60,-90 L60,90 L0,50 L-60,90 Z",fill:"rgba(245,184,61,.15)",stroke:C.gold,"stroke-width":7,"stroke-linejoin":"round",filter:"url(#glowB)"},S.book);
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const beat=(a,b,d=9,e=1)=>grid(t,HI,BP,a,b,d,e);
+ let o={x:220,y:GY},op=1,o2=null;
+ S.spot.setAttribute("opacity",(win(t,-1,A[3],.01,.3)*.7+win(t,B[5],45,.3,.6)*.8).toFixed(3));
+ // 0-2 phone + bubble
+ const ph=win(t,-1,A[3]-.05,.01,.3);S.phone.setAttribute("opacity",ph.toFixed(3));
+ S.phone.setAttribute("transform",`translate(700,1010) scale(${(1.04-.04*eOut(P(t,0,.4))).toFixed(3)})`);
+ const scr=t<A[1]?lerp(0,-300,eIO(P(t,0,1.4))):t<A[2]?-300-lerp(0,600,eIO(P(t,A[1]+.3,A[2]-.4))):-900;
+ S.feedIn.setAttribute("transform",`translate(0,${scr})`);
+ S.cards.forEach(c=>{if(c.gold)c.r.setAttribute("stroke-width",3+3*Math.abs(Math.sin(t*4)));});
+ const bb=win(t,-1,A[1]-.1,.01,.3);S.bub.setAttribute("opacity",bb.toFixed(3));S.bub.setAttribute("transform",`translate(250,1110)`);
+ K.popAt(S.mag,t,A[1]+.2,A[2]-.1).toString();S.mag.x=820;S.mag.y=900;
+ const ua=win(t,A[2]-.05,A[3]-.1,.25,.25);S.upArrow.setAttribute("opacity",ua.toFixed(3));S.upArrow.setAttribute("transform",`translate(560,${1100-eOut(P(t,A[2],A[3]))*60})`);
+ if(t<A[1])o={x:220,y:GY,droop:-.2,look:1};
+ if(sw(A[1],A[2]))o={x:220,y:GY,hold:1,look:1,droop:.1};
+ if(sw(A[2],A[3]))o={x:300,y:GY,look:.6,droop:-.6,raise:eIO(P(t,A[2]+.4,A[2]+.8))*.9};
+ // 3-4 split
+ const sp=win(t,A[3]-.05,HI,.25,.15);S.split.setAttribute("opacity",sp.toFixed(3));
+ S.ph1.setAttribute("opacity",t<A[4]?1:.0);S.ph2.setAttribute("opacity",t<A[4]?1:0);S.zz.setAttribute("y",1010-Math.abs(Math.sin(t*2))*10);
+ S.tag.x=280;S.tag.y=1000;K.popAt(S.tag,t,A[4]+.1,HI-.15);S.key.x=800;S.key.y=1000;K.popAt(S.key,t,A[5]+.1,HI-.15);
+ if(sw(A[3],HI)){o={x:280,y:GY,col:C.dim,droop:.6,hold:t<A[4]?1:0};o2={x:800,y:GY,droop:-.2,hold:t<A[4]?1:0,raise:t>A[5]+.2?eBack(P(t,A[5]+.2,A[5]+.5))*.6:0};}
+ // 5 compounding rings
+ const rg=win(t,HI-.02,B[2]-.1,.1,.3);S.rings.forEach((r,i)=>{const k=((t-HI)*.6+i*.2)%1;r.setAttribute("r",(20+k*420).toFixed(1));r.setAttribute("opacity",(rg*(1-k)*.8).toFixed(3));});
+ if(sw(HI,B[2])){o={x:540,y:GY,raise:eBack(P(t,HI,HI+.4))*.8,raiseL:eBack(P(t,HI,HI+.4))*.8,droop:-.4};}
+ // 6 chain
+ const ch=win(t,B[2]-.05,B[3]-.1,.2,.25);S.chain.setAttribute("opacity",ch.toFixed(3));
+ [[S.n1,B[2]],[S.n2,22],[S.n3,24.4]].forEach(([n,at],i)=>{const k=eBack(P(t,at,at+.35));n.g.setAttribute("opacity",clamp(k).toFixed(3));n.g.setAttribute("transform",`translate(${250+i*290},1080) scale(${clamp(k).toFixed(3)})`);
+   n.c.setAttribute("stroke",t>at+.3?C.gold:C.white);S.labs[i].setAttribute("opacity",clamp(k).toFixed(3));});
+ S.ar1.setAttribute("opacity",t>21.8?1:0);S.ar2.setAttribute("opacity",t>24.2?1:0);
+ if(sw(B[2],B[3])){op=0;}
+ // 7-8 curve
+ const gr=win(t,B[3]-.05,B[5]-.1,.25,.25);S.graph.setAttribute("opacity",gr.toFixed(3));
+ const u=t<B[4]?.7*eIO(P(t,B[3]+.2,B[4]-.2)):lerp(.7,1,eIO(P(t,B[4]+.1,B[4]+1.4)));
+ S.curve.style.strokeDashoffset=S.cL*(1-Math.pow(u,1));S.dot.setAttribute("cx",170+u*720);S.dot.setAttribute("cy",1360-(Math.pow(1.01,365*u)-1)/36.8*590);
+ S.x37.setAttribute("opacity",eBack(P(t,B[4]+1.3,B[4]+1.6))>0?clamp(eBack(P(t,B[4]+1.3,B[4]+1.6))).toFixed(3):0);
+ if(sw(B[3],B[5]))op=0;
+ // 9 future self
+ if(t>=B[5]){const m=eIO(P(t,B[5]+1.8,B[6]-.2));o={x:360,y:GY,droop:-.2,look:1};o2={x:lerp(760,360,m),y:GY,col:C.gold,droop:-.3,dashed:1};
+   if(t>=B[6]){o2=null;const w=P(t,41.2,44.5);o={x:lerp(360,560,w),y:GY,ph:w*10,stride:.9,col:K.mixHex(C.white,C.gold,.6),droop:-.2};}}
+ K.popAt(S.book,t,B[6]+.1,41.1);S.book.x=760;S.book.y=1060;
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ if(o2){S.fig2.draw(o2);S.fig2.g.setAttribute("opacity",o2.dashed?(.75+.25*Math.sin(t*4)).toFixed(3):"1");S.fig2.g.setAttribute("stroke-dasharray",o2.dashed?"8 8":"");}else S.fig2.g.setAttribute("opacity",0);
+ S.rays.setAttribute("opacity",(Math.max(win(t,HI,B[1],.05,.4),win(t,B[6],45,.2,.6))*(.5+.5*beat(HI,45,8))).toFixed(3));S.rays.setAttribute("transform",`translate(540,1060) rotate(${t*8})`);
+ K.ground.setAttribute("opacity",((1-win(t,B[2]-.05,B[5]-.1,.2,.2)))*K.endFade);
+ const c=K.cam;
+ if(t<A[1]){c.sc=1.1-.1*eOut(P(t,0,1.2));}
+ if(sw(A[2],A[3])){c.sc=1+.06*eIO(P(t,A[2],A[3]));c.cy=1050;}
+ if(sw(B[4],B[5])){c.sc=1+.12*eIO(P(t,B[4]+.8,B[5]));c.cx=lerp(540,780,eIO(P(t,B[4]+.8,B[5])));c.cy=lerp(1150,900,eIO(P(t,B[4]+.8,B[5])));}
+ c.sc+=(t>=HI?Math.exp(-(t-HI)*6)*.14:0)+beat(26,30,9,2)*.03+beat(B[6],45,9,2)*.03;
+ const shk=t>=HI?Math.exp(-(t-HI)*6):0;c.dx=Math.sin(t*90)*14*shk;c.dy=Math.cos(t*77)*9*shk;
+ K.flash=(t>=HI?Math.exp(-(t-HI)*9)*.5:0)+K.pulses(t,[A[3],B[2],B[4]+1.3,B[6]],10,.2,.2);
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

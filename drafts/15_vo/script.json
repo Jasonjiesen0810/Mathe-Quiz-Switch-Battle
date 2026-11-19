@@ -1,0 +1,56 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 52,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Your comfort zone is the most expensive place you'll ever live.",
+     "pause": 0.3
+    },
+    {
+     "text": "It feels free. Warm bed. Same routine. No risk.",
+     "pause": 0.3
+    },
+    {
+     "text": "But every month, you pay rent.",
+     "pause": 0.45,
+     "speed": 0.93
+    },
+    {
+     "text": "Not with money.",
+     "pause": 0.2,
+     "speed": 0.93
+    },
+    {
+     "text": "With the chances you never took.",
+     "pause": 0.3
+    },
+    {
+     "text": "The skills you never learned. The people you never met. The version of you that never showed up.",
+     "pause": 0.35
+    },
+    {
+     "text": "And the rent goes up every year. The longer you stay, the more it costs to leave.",
+     "pause": 0.4
+    },
+    {
+     "text": "So start paying for growth instead. One uncomfortable thing a day. One hard conversation. One new skill.",
+     "pause": 0.35
+    },
+    {
+     "text": "Growth is expensive too. But at least you get something back.",
+     "pause": 0.4
+    },
+    {
+     "text": "Move out.",
+     "pause": 0,
+     "speed": 0.85
+    }
+   ]
+  }
+ ]
+}

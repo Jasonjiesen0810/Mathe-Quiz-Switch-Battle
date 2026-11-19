@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Profilbild</title>
+<style>
+@font-face{font-family:"Outfit";src:url("../fonts/Outfit-latin.woff2") format("woff2");font-weight:100 900}
+html,body{margin:0;background:#070707}
+svg{display:block}
+</style></head>
+<body>
+<svg id="s" width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="48%" r="60%"><stop offset="0" stop-color="#1c1c1e"/><stop offset=".55" stop-color="#0d0d0d"/><stop offset="1" stop-color="#070707"/></radialGradient>
+  <radialGradient id="halo"><stop offset="0" stop-color="#F5B83D" stop-opacity=".55"/><stop offset="1" stop-color="#F5B83D" stop-opacity="0"/></radialGradient>
+  <radialGradient id="haloW"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="spot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowG" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<g id="art"></g>
+</svg>
+<script>
+const v=+(new URLSearchParams(location.search).get("v")||1);
+const NS="http://www.w3.org/2000/svg",art=document.getElementById("art");
+const el=(t,a,p=art)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+let seed=5;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+// stars
+for(let i=0;i<40;i++)el("circle",{cx:rnd()*1080,cy:rnd()*1080,r:1+rnd()*2,fill:"#fff",opacity:.08+rnd()*.2});
+const fig=(x,y,s,col="#F5F5F7",arms="down")=>{const g=el("g",{filter:"url(#glow)"});
+  const L=(a,b)=>el("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:col,"stroke-width":26*s,"stroke-linecap":"round"},g);
+  const hip=[x,y-118*s],neck=[x,y-236*s],sh=[x,y-216*s];
+  L(hip,[x-26*s,y-13*s]);L(hip,[x+26*s,y-13*s]);L(hip,neck);
+  if(arms==="up"){L(sh,[x-80*s,y-300*s]);L(sh,[x+80*s,y-300*s]);}else{L(sh,[x-40*s,y-118*s]);L(sh,[x+40*s,y-118*s]);}
+  el("circle",{cx:x,cy:y-286*s,r:36*s,fill:col},g);return g;};
+
+if(v===1){ // the character: figure in a spotlight with gold target rings
+  el("path",{d:"M500,-50 L580,-50 L760,900 L320,900 Z",fill:"url(#spot)"});
+  el("circle",{cx:540,cy:600,r:330,fill:"url(#halo)"});
+  [150,230,320,420].forEach((r,i)=>el("circle",{cx:540,cy:600,r,fill:"none",stroke:i===0?"#F5B83D":"#fff",opacity:i===0?.7:.16,"stroke-width":i===0?4:3,"stroke-dasharray":i%2?"6 14":"none"}));
+  for(let i=0;i<26;i++){const a=rnd()*Math.PI*2,r0=170,L=380+rnd()*260;el("line",{x1:540+Math.cos(a)*r0,y1:600+Math.sin(a)*r0,x2:540+Math.cos(a)*L,y2:600+Math.sin(a)*L,stroke:i%4?"#fff":"#F5B83D",opacity:.12+rnd()*.2,"stroke-width":2+rnd()*2,"stroke-linecap":"round"});}
+  el("line",{x1:300,y1:830,x2:780,y2:830,stroke:"#F5F5F7","stroke-width":6,"stroke-linecap":"round",filter:"url(#glow)"});
+  fig(540,830,1.45,"#F5F5F7","up");
+}
+if(v===2){ // padlock whose keyhole is the figure
+  el("circle",{cx:540,cy:600,r:360,fill:"url(#halo)"});
+  el("path",{d:"M380,470 L380,350 A160,160 0 0 1 700,350 L700,470",fill:"none",stroke:"#F5F5F7","stroke-width":44,"stroke-linecap":"round",filter:"url(#glow)"});
+  el("rect",{x:290,y:450,width:500,height:420,rx:70,fill:"#0d0d0d",stroke:"#F5F5F7","stroke-width":14,filter:"url(#glow)"});
+  for(let x=330;x<=750;x+=24){el("line",{x1:x,y1:452,x2:x,y2:468,stroke:"#fff","stroke-width":3,opacity:.4});el("line",{x1:x,y1:852,x2:x,y2:868,stroke:"#fff","stroke-width":3,opacity:.4});}
+  fig(540,815,1.05,"#F5B83D","up").setAttribute("filter","url(#glowG)");
+}
+if(v===3){ // wordmark LOCK IN. with gold marker
+  el("circle",{cx:540,cy:540,r:420,fill:"url(#haloW)",opacity:.6});
+  [360,440].forEach((r,i)=>el("circle",{cx:540,cy:540,r,fill:"none",stroke:"#fff",opacity:.14,"stroke-width":3,"stroke-dasharray":i?"6 14":"none"}));
+  const t1=el("text",{x:540,y:505,"text-anchor":"middle","font-family":"Outfit","font-weight":800,"font-size":210,fill:"#F5F5F7","letter-spacing":"-4",filter:"url(#glow)"});t1.textContent="LOCK";
+  el("rect",{x:330,y:545,width:420,height:200,rx:28,fill:"#F5B83D",filter:"url(#glowG)"});
+  const t2=el("text",{x:540,y:712,"text-anchor":"middle","font-family":"Outfit","font-weight":800,"font-size":210,fill:"#070707","letter-spacing":"-4"});t2.textContent="IN.";
+}
+document.fonts.ready.then(()=>{window.READY=true;});
+</script>
+</body></html>

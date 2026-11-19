@@ -1,26 +1,123 @@
-{"voice": "af_bella", "speed": 1.0, "duration": 50,
+{
+ "voice": "af_bella",
+ "speed": 1.0,
+ "duration": 50,
  "lines": [
-  {"id": "all", "at": 0.25, "parts": [
-    {"text": "I thought you said you wanted this.", "speed": 0.9, "pause": 0.3},
-    {"text": "You asked for this.", "speed": 0.9, "pause": 0.2},
-    {"text": "You asked to be different.", "pause": 0.1},
-    {"text": "You asked to be successful.", "pause": 0.25},
-    {"text": "You strived for this life…", "speed": 0.95, "pause": 0.1},
-    {"text": "and now that you're here…", "pause": 0.1},
-    {"text": "you're complaining that it's hard.", "speed": 0.95, "pause": 0.35},
-    {"text": "If you want a life better than ninety-nine point nine percent of people…", "pause": 0.1},
-    {"text": "you need to outwork ninety-nine point nine percent.", "pause": 0.2},
-    {"text": "You need to be in the zero point one percent.", "speed": 0.95, "pause": 0.35},
-    {"text": "And guess what they all have in common?", "pause": 0.2},
-    {"text": "They are obsessed…", "speed": 0.88, "pause": 0.1},
-    {"text": "with the thing they want to achieve.", "pause": 0.35},
-    {"text": "So I thought you said you wanted this.", "speed": 0.95, "pause": 0.1},
-    {"text": "Otherwise, why would you be sitting here?", "pause": 0.25},
-    {"text": "You told yourself you were going to do it.", "pause": 0.1},
-    {"text": "So why aren't you doing it?", "speed": 0.92, "pause": 0.4},
-    {"text": "Go do it.", "speed": 0.88, "pause": 0.25},
-    {"text": "You can do it…", "pause": 0.1},
-    {"text": "but you need to be obsessed.", "speed": 0.95, "pause": 0.2},
-    {"text": "You need to become obsessed.", "speed": 0.9, "pause": 0.25},
-    {"text": "Go do the thing you said you were gonna do.", "speed": 0.95}]}
- ]}
+  {
+   "id": "all",
+   "at": 0.25,
+   "parts": [
+    {
+     "text": "I thought you said you wanted this.",
+     "speed": 0.9,
+     "pause": 0.3
+    },
+    {
+     "text": "You asked for this.",
+     "speed": 0.9,
+     "pause": 0.2
+    },
+    {
+     "text": "You asked to be different.",
+     "pause": 0.1
+    },
+    {
+     "text": "You asked to be successful.",
+     "pause": 0.25
+    },
+    {
+     "text": "You strived for this life\u2026",
+     "speed": 0.95,
+     "pause": 0.1
+    },
+    {
+     "text": "and now that you're here\u2026",
+     "pause": 0.1
+    },
+    {
+     "text": "you're complaining that it's hard.",
+     "speed": 0.95,
+     "pause": 0.35
+    },
+    {
+     "text": "If you want a life better than ninety-nine point nine percent of people\u2026",
+     "pause": 0.1
+    },
+    {
+     "text": "you need to outwork ninety-nine point nine percent.",
+     "pause": 0.2
+    },
+    {
+     "text": "You need to be in the zero point one percent.",
+     "speed": 0.95,
+     "pause": 0.35
+    },
+    {
+     "text": "And guess what they all have in common?",
+     "pause": 0.2
+    },
+    {
+     "text": "They are obsessed\u2026",
+     "speed": 0.88,
+     "pause": 0.1
+    },
+    {
+     "text": "with the thing they want to achieve.",
+     "pause": 0.35
+    },
+    {
+     "text": "So I thought you said you wanted this.",
+     "speed": 0.95,
+     "pause": 0.1
+    },
+    {
+     "text": "Otherwise, why would you be sitting here?",
+     "pause": 0.25
+    },
+    {
+     "text": "You told yourself you were going to do it.",
+     "pause": 0.1
+    },
+    {
+     "text": "So why aren't you doing it?",
+     "speed": 0.92,
+     "pause": 0.4
+    },
+    {
+     "text": "Go do it.",
+     "speed": 0.88,
+     "pause": 0.25
+    },
+    {
+     "text": "You can do it\u2026",
+     "pause": 0.1
+    },
+    {
+     "text": "but you need to be obsessed.",
+     "speed": 0.95,
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "new",
+   "at": 37.03,
+   "parts": [
+    {
+     "text": "Nobody is coming to save you.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "at": 39.0,
+   "parts": [
+    {
+     "text": "Go do the thing you said you were gonna do.",
+     "speed": 0.95
+    }
+   ]
+  }
+ ]
+}

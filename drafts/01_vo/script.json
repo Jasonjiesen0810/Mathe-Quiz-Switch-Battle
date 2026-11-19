@@ -1,23 +1,196 @@
-{"voice": "af_bella", "speed": 1.0, "duration": 42,
+{
+ "voice": "af_bella",
+ "duration": 44,
  "lines": [
-  {"id": "all", "at": 0.25, "parts": [
-    {"text": "You're working harder than ever.", "speed": 0.95, "pause": 0.15},
-    {"text": "Busy every single day…", "pause": 0.1},
-    {"text": "climbing, and climbing…", "speed": 0.95, "pause": 0.15},
-    {"text": "but are you actually getting anywhere?", "speed": 0.93, "pause": 0.35},
-    {"text": "Stephen Covey said it best:", "pause": 0.15},
-    {"text": "if the ladder is not leaning against the right wall,", "pause": 0.1},
-    {"text": "every step we take just gets us to the wrong place… faster.", "speed": 0.95, "pause": 0.35},
-    {"text": "Brian Tracy calls clarity perhaps the most important concept in personal productivity.", "pause": 0.15},
-    {"text": "Because one of the worst uses of time…", "pause": 0.1},
-    {"text": "is doing something very well that doesn't need to be done at all.", "pause": 0.35},
-    {"text": "So before you climb another step:", "pause": 0.1},
-    {"text": "decide exactly what you want.", "speed": 0.92, "pause": 0.15},
-    {"text": "Not 'get fit.'", "pause": 0.1},
-    {"text": "Run five kilometers without stopping.", "pause": 0.3},
-    {"text": "Then ask yourself every morning:", "pause": 0.1},
-    {"text": "does this task move me closer?", "speed": 0.95, "pause": 0.1},
-    {"text": "If not… it can wait.", "speed": 0.92, "pause": 0.4},
-    {"text": "Find the right wall.", "speed": 0.9, "pause": 0.2},
-    {"text": "Then climb.", "speed": 0.85}]}
- ]}
+  {
+   "id": "p00",
+   "at": 0.25,
+   "parts": [
+    {
+     "text": "You work hard.",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p01",
+   "at": 1.78,
+   "parts": [
+    {
+     "text": "Every single day.",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p02",
+   "at": 3.42,
+   "parts": [
+    {
+     "text": "You climb and climb\u2026",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "at": 4.85,
+   "parts": [
+    {
+     "text": "But where are you going?",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "at": 6.98,
+   "parts": [
+    {
+     "text": "Stephen Covey said:",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "at": 8.58,
+   "parts": [
+    {
+     "text": "If your ladder is on the wrong wall\u2026",
+     "speed": 0.93
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "at": 11.17,
+   "parts": [
+    {
+     "text": "every step takes you to the wrong place. Faster.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "at": 15.09,
+   "parts": [
+    {
+     "text": "Brian Tracy says: clarity comes first. You need to know what you want.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "at": 21.02,
+   "parts": [
+    {
+     "text": "Here is the problem:",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "at": 22.99,
+   "parts": [
+    {
+     "text": "You can do a task perfectly\u2026 and it can still be useless.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "at": 26.74,
+   "parts": [
+    {
+     "text": "So, step one:",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p11",
+   "at": 28.45,
+   "parts": [
+    {
+     "text": "Decide what you want.",
+     "speed": 0.9
+    }
+   ]
+  },
+  {
+   "id": "p12",
+   "at": 30.15,
+   "parts": [
+    {
+     "text": "Not: get fit.",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p13",
+   "at": 31.35,
+   "parts": [
+    {
+     "text": "Say: I will run five kilometers.",
+     "speed": 0.95
+    }
+   ]
+  },
+  {
+   "id": "p14",
+   "at": 33.5,
+   "parts": [
+    {
+     "text": "Step two: every morning,",
+     "speed": 0.93
+    }
+   ]
+  },
+  {
+   "id": "p15",
+   "at": 35.38,
+   "parts": [
+    {
+     "text": "ask: does this help my goal?",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p16",
+   "at": 37.25,
+   "parts": [
+    {
+     "text": "If not, do it later.",
+     "speed": 0.92
+    }
+   ]
+  },
+  {
+   "id": "p17",
+   "at": 38.85,
+   "parts": [
+    {
+     "text": "Find the right wall.",
+     "speed": 0.88
+    }
+   ]
+  },
+  {
+   "id": "p18",
+   "at": 40.24,
+   "parts": [
+    {
+     "text": "Then climb.",
+     "speed": 0.82
+    }
+   ]
+  }
+ ]
+}

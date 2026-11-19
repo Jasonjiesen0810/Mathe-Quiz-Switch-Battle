@@ -73,23 +73,23 @@ const win=(t,a,b,fi=.5,fo=.4)=>{const i=eExpo(P(t,a,a+fi)),o=eIO(P(t,b,b+fo));re
 
 /* ===== Headlines ===== */
 const HEADS=[
-  {a:.2,  b:3.25, lines:[["WORKING","HARDER"],["THAN","EVER."]]},
-  {a:3.4, b:6.75, lines:[["CLIMBING","FAST…"],["BUT","WHERE",{t:"TO?",red:1}]]},
+  {a:.2,  b:3.25, lines:[["YOU","WORK","HARD."],["EVERY","SINGLE","DAY."]]},
+  {a:3.4, b:6.75, lines:[["BUT","WHERE","ARE"],["YOU",{t:"GOING?",red:1}]]},
   {a:6.95,b:10.95,lines:[["IS","YOUR","LADDER","ON"],["THE",{t:"RIGHT",gold:1},{t:"WALL?",gold:1}]]},
-  {a:11.1,b:14.8, lines:[["THE","WRONG","PLACE…"],[{t:"FASTER.",red:1}]]},
+  {a:11.1,b:14.8, lines:[["THE","WRONG","PLACE."],[{t:"FASTER.",red:1}]]},
   {a:15.05,b:20.8,lines:[[{t:"CLARITY",mark:1}],["COMES","FIRST."]]},
-  {a:21.0,b:26.45,lines:[["DONE","PERFECTLY…"],["BUT",{t:"POINTLESS.",red:1}]]},
-  {a:26.7,b:33.3, lines:[["DECIDE","EXACTLY"],["WHAT","YOU",{t:"WANT.",gold:1}]]},
-  {a:33.55,b:38.45,lines:[["DOES","THIS","MOVE"],["ME",{t:"CLOSER?",gold:1}]]},
+  {a:21.0,b:26.45,lines:[["PERFECT…"],["BUT",{t:"USELESS.",red:1}]]},
+  {a:26.7,b:33.3, lines:[["STEP","1:"],["DECIDE","WHAT","YOU",{t:"WANT.",gold:1}]]},
+  {a:33.45,b:38.45,lines:[["STEP","2:","DOES","THIS"],["HELP","MY",{t:"GOAL?",gold:1}]]},
   {a:38.85,b:40.05,lines:[["FIND","THE",{t:"RIGHT",gold:1}],[{t:"WALL.",gold:1}]]},
   {a:40.2,b:DUR-.6,lines:[[{t:"THEN CLIMB.",mark:1}]]},
 ];
 const LABELS=[
-  {a:1.78,b:3.25, text:"Busy every single day."},
   {a:8.6, b:14.8, text:"— Stephen Covey"},
   {a:15.6,b:20.8, text:"— Brian Tracy, Eat That Frog!"},
-  {a:26.9,b:33.3, text:"Step 1 · Be specific"},
-  {a:33.7,b:38.45,text:"Step 2 · Ask every morning"},
+  {a:17.2,b:20.8, text:"Know what you want.",top:575},
+  {a:30.2,b:33.3, text:"Not “get fit” → “I will run 5 km”"},
+  {a:35.4,b:38.45,text:"Every morning · If not: later"},
 ];
 const heads=document.getElementById("heads");
 HEADS.forEach(h=>{
@@ -196,7 +196,7 @@ const chkLen=check.getTotalLength();check.style.strokeDasharray=chkLen;
 const SPARK=[[-150,-70],[160,-60],[150,70],[-160,60]].map(([x,y])=>el("path",{d:"M0,-12 L3,-3 L12,0 L3,3 L0,12 L-3,3 L-12,0 L-3,-3 Z",fill:C.gold,transform:`translate(${x},${y})`},task));
 const stamp=el("g",{},scene);
 el("rect",{x:-170,y:-40,width:340,height:80,rx:12,fill:"rgba(255,69,58,.08)",stroke:C.red,"stroke-width":6},stamp);
-txt(stamp,0,13,"NOT NEEDED",36,{fill:C.red,"font-weight":800,"letter-spacing":"6"});
+txt(stamp,0,13,"USELESS",40,{fill:C.red,"font-weight":800,"letter-spacing":"6"});
 
 /* ===== S4: vague vs specific goal ===== */
 const vague=el("g",{},scene);
@@ -206,7 +206,7 @@ const strike=el("line",{x1:-120,y1:0,x2:120,y2:0,stroke:C.red,"stroke-width":7,"
 const spec=el("g",{},scene);
 el("rect",{x:-220,y:-80,width:440,height:160,rx:24,fill:"rgba(245,184,61,.06)",stroke:C.gold,"stroke-width":5,filter:"url(#glowB)"},spec);
 txt(spec,0,-10,"RUN 5 KM",44,{fill:C.white,"font-weight":800,"letter-spacing":"4"});
-txt(spec,0,40,"WITHOUT STOPPING",26,{fill:C.gold,"font-weight":700,"letter-spacing":"5"});
+txt(spec,0,40,"MY GOAL",26,{fill:C.gold,"font-weight":700,"letter-spacing":"5"});
 
 for(let x=-200;x<=200;x+=20){el("line",{x1:x,y1:-80,x2:x,y2:-72,stroke:C.gold,"stroke-width":2,opacity:.6},spec);el("line",{x1:x,y1:72,x2:x,y2:80,stroke:C.gold,"stroke-width":2,opacity:.6},spec);}
 const ghost=el("g",{opacity:0},scene);

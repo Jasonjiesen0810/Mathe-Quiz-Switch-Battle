@@ -11,24 +11,25 @@ Inspired by "Eat That Frog!" by Brian Tracy (Chapter 1: Set the Table)
 === HASHTAGS ===
 #clarity #goals #goalsetting #eatthatfrog #briantracy #stephencovey #productivity #focus #motivation #mindset #selfimprovement #fyp
 
-=== TEXT IM BILD ===
-0.2 – 3.3 s    WORKING HARDER THAN EVER.  /  Busy every single day.   (Figur klettert hektisch, Schweißtropfen)
-3.4 – 6.8 s    CLIMBING FAST… BUT WHERE TO?   (oben: schaut sich um, "?"-Blase)
-7.0 – 11.0 s   IS YOUR LADDER ON THE RIGHT WALL?  /  — Stephen Covey   (rechte Wand mit Flagge + Ringe, "WRONG"-Schild)
-11.1 – 14.8 s  THE WRONG PLACE… FASTER.   (Spotlight, Figur sackt zusammen, seufzt – Wolke)
-15.1 – 20.8 s  CLARITY COMES FIRST.  /  — Brian Tracy, Eat That Frog!   (klettert langsam runter, Kopf gesenkt)
-21.0 – 26.5 s  DONE PERFECTLY… BUT POINTLESS.   (Aufgabe ✓ glänzt → Stempel "NOT NEEDED", Kamera wackelt)
-26.7 – 33.3 s  DECIDE EXACTLY WHAT YOU WANT.  /  Step 1 · Be specific   (Hand am Kinn; "GET FIT" durchgestrichen → "RUN 5 KM WITHOUT STOPPING"; gestrichelte "FUTURE YOU" auf der rechten Wand; Figur nickt)
-33.6 – 38.5 s  DOES THIS MOVE ME CLOSER?  /  Step 2 · Ask every morning   (zeigt auf Aufgaben: SCROLLING ✗ · TRAINING RUN ✓ · REORGANIZE DESK → later)
-38.85 s        BEAT-DROP: FIND THE RIGHT WALL.   (Flash + Zoom, Lichtstrahlen, Figur trägt die Leiter zur richtigen Wand)
-40.2 – 43.4 s  THEN CLIMB.   (klettert im Takt, Sprossen leuchten gold, Jubel-Pose auf der Wand; Zoom + Flash auf jedem Beat)
+=== TEXT IM BILD (= fast wörtlich der Sprechertext, zum Mitlesen) ===
+0.2 – 3.3 s    YOU WORK HARD. EVERY SINGLE DAY.
+3.4 – 6.8 s    BUT WHERE ARE YOU GOING?
+7.0 – 11.0 s   IS YOUR LADDER ON THE RIGHT WALL?  /  — Stephen Covey
+11.1 – 14.8 s  THE WRONG PLACE. FASTER.
+15.1 – 20.8 s  CLARITY COMES FIRST.  /  — Brian Tracy, Eat That Frog!  /  Know what you want.
+21.0 – 26.5 s  PERFECT… BUT USELESS.   (Stempel "USELESS")
+26.7 – 33.3 s  STEP 1: DECIDE WHAT YOU WANT.  /  Not "get fit" → "I will run 5 km"
+33.5 – 38.5 s  STEP 2: DOES THIS HELP MY GOAL?  /  Every morning · If not: later
+38.85 s        FIND THE RIGHT WALL.   (Beat-Drop)
+40.2 – 43.4 s  THEN CLIMB.
 
-=== SPRECHERTEXT (Stimme: af_bella, Kokoro) ===
-You're working harder than ever. Busy every single day… climbing, and climbing… but are you actually getting anywhere?
-Stephen Covey said it best: if the ladder is not leaning against the right wall, every step we take just gets us to the wrong place… faster.
-Brian Tracy calls clarity perhaps the most important concept in personal productivity. Because one of the worst uses of time… is doing something very well that doesn't need to be done at all.
-So before you climb another step: decide exactly what you want. Not 'get fit.' Run five kilometers without stopping.
-Then ask yourself every morning: does this task move me closer? If not… it can wait.
+=== SPRECHERTEXT (einfaches Englisch, direkte Ansprache) ===
+You work hard. Every single day. You climb and climb… But where are you going?
+Stephen Covey said: If your ladder is on the wrong wall… every step takes you to the wrong place. Faster.
+Brian Tracy says: clarity comes first. You need to know what you want.
+Here is the problem: You can do a task perfectly… and it can still be useless.
+So, step one: Decide what you want. Not: get fit. Say: I will run five kilometers.
+Step two: every morning, ask: does this help my goal? If not, do it later.
 Find the right wall. Then climb.
 
 === TIKTOK-SOUND ===

@@ -70,3 +70,9 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
   pulsierende Zielringe, gestrichelte "Geister"-Figuren (z. B. FUTURE YOU), Strichmarken an Rahmen
 - Kamera: langsame Push-ins auf das Wichtige, Wackeln bei Aufprall (Stempel), Zoom-Punch + weißer Flash auf jedem Beat nach dem Drop
 - Beats aus dem Song messen (Bass-Onsets) und als Liste in die Animation übernehmen
+
+## Sprache (wichtig – viele Zuschauer sind keine Muttersprachler)
+- Einfaches Englisch: kurze Sätze (max. ~8–10 Wörter), bekannte Wörter, keine verschachtelten Nebensätze
+- Zuschauer direkt ansprechen: "you", "your", Fragen an den Zuschauer
+- Schlagzeile im Bild = möglichst wörtlich das Gesprochene (mitlesen + mithören)
+- Zitate kürzen/vereinfachen, aber Sinn und Namen behalten

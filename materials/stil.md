@@ -61,3 +61,6 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
   umschauen (Verwirrung), aufrichten (Entschluss), rennen/lehnen (Aufbruch), auf etwas zeigen
 - Bei jedem Satz prüfen: Was würde die Figur jetzt mit dem Körper tun?
 - Musik-Drop auch visuell betonen (kurzer Lichtimpuls/Bewegung)
+- Erröten = ganzer Kopf zartrot (keine roten Punkte – wirken wie Augen)
+- Seufzen/Ausatmen = weiche Wolke, die ~2 s stehen bleibt (kein Husten)
+- Frage/Unsicherheit = Sprechblase mit "?"; peinliche Stille = Blase mit "…"

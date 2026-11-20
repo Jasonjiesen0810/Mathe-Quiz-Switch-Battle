@@ -1,7 +1,7 @@
 {
- "voice": "af_bella",
- "speed": 0.98,
- "duration": 45,
+ "voice": "am_liam",
+ "speed": 1.02,
+ "duration": 34,
  "lines": [
   {
    "id": "a",
@@ -9,51 +9,53 @@
    "parts": [
     {
      "text": "This is what it feels like when you finally make it.",
-     "pause": 0.4,
-     "speed": 0.9
+     "pause": 0.3,
+     "speed": 0.96
+    },
+    {
+     "text": "Look how far you've come.",
+     "pause": 0
     }
    ]
   },
   {
    "id": "b",
-   "at": 7.0,
+   "at": 6.6,
    "parts": [
     {
      "text": "You breathe out.",
-     "pause": 0.35,
-     "speed": 0.88
+     "pause": 0.3,
+     "speed": 0.95
     },
     {
      "text": "All the early mornings. All the no's. All the nights nobody saw.",
-     "pause": 0.4
+     "pause": 0.35
     },
     {
-     "text": "And here's the strange part:",
-     "pause": 0.25,
-     "speed": 0.93
+     "text": "And here's the strange part.",
+     "pause": 0.2
     },
     {
-     "text": "it's not the money you remember. It's not the applause.",
-     "pause": 0.3
+     "text": "It's not the money you remember. It's not the applause.",
+     "pause": 0.25
     },
     {
      "text": "It's the version of you that refused to quit.",
-     "pause": 0.45,
-     "speed": 0.92
+     "pause": 0.4,
+     "speed": 0.97
     },
     {
      "text": "Because success was never the finish line. It was who you became on the way there.",
-     "pause": 0.4
+     "pause": 0.35
     },
     {
      "text": "So keep going.",
-     "pause": 0.3,
-     "speed": 0.92
+     "pause": 0.25
     },
     {
      "text": "One day, you'll take that breath too.",
      "pause": 0,
-     "speed": 0.9
+     "speed": 0.97
     }
    ]
   }

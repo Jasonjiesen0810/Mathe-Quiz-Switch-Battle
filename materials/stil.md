@@ -124,3 +124,9 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Musik deutlich hörbar: Grundlautstärke ×2, nur leichtes Absenken unter der Stimme (ratio 2.5), Gesamt −13 LUFS
 - Neu mischen ohne Neu-Rendern: tools/remix.sh (Parameter je Video siehe Textdateien / musik.md)
 - TikTok-Tipp: Sound auf ca. 40–50 % statt 20–30 %
+
+## Stimmen
+- Frau: af_bella (Standard bis Video 21)
+- Mann: am_liam "selbstbewusst" (ab Video 22): Tonhöhe −4,5 %, mehr Bass, schneller (speed 1.02), kurze Pausen, keine "…"
+  → im VO-Ordner Datei "confident" anlegen, dann wendet tools/finish.sh die Bearbeitung an
+- Abwechseln zwischen Videos

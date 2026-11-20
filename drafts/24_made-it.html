@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>You Made It</title></head>
+<body>
+<script>
+/* Song 11 "worry" ab 0 – Highlight 6,82 s (Ausatmen) */
+const A=[0.15,3.22], B=[6.6,8.14,11.91,13.82,16.83,19.75,24.4,25.9];
+const HI=6.82;
+window.VIDEO={DUR:31,seed:241,audio:"24_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,lines:[["THIS","IS","WHAT","IT"],["FEELS","LIKE","TO",{t:"MAKE",gold:1},{t:"IT.",gold:1}]]},
+ {a:A[1]-.05,b:B[0]-.1,lines:[["LOOK","HOW","FAR"],["YOU'VE",{t:"COME.",gold:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["YOU",{t:"BREATHE",gold:1}],[{t:"OUT.",gold:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["THE","EARLY","MORNINGS."],["THE",{t:"NO'S.",red:1},"THE","NIGHTS."]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["THE",{t:"STRANGE",gold:1}],["PART:"]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["IT'S","NOT","THE",{t:"MONEY.",red:1}],["NOT","THE",{t:"APPLAUSE.",red:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["IT'S","THE","YOU","THAT"],[{t:"REFUSED TO QUIT.",mark:1}]]},
+ {a:B[5]-.05,b:B[6]-.1,lines:[["NOT","THE","FINISH","LINE."],["WHO","YOU",{t:"BECAME.",gold:1}]]},
+ {a:B[6]-.05,b:B[7]-.1,lines:[["SO","KEEP"],[{t:"GOING.",gold:1}]]},
+ {a:B[7]-.05,b:30.5,lines:[["ONE","DAY,","YOU'LL","TAKE"],[{t:"THAT BREATH TOO.",mark:1}]]},
+],
+LABELS:[{a:B[1]+1.6,b:B[2]-.1,text:"The nights nobody saw."}],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.rays=K.raysG(540,900);S.fig=makeFig();S.past=makeFig();
+ /* sunset sky + mountain */
+ S.sky=el("g",{},K.bgfx);S.sun=el("circle",{cx:540,cy:1180,r:520,fill:"url(#halo)"},S.sky);
+ el("circle",{cx:540,cy:1180,r:140,fill:"rgba(245,184,61,.18)",stroke:C.gold,"stroke-width":3,opacity:.7},S.sky);
+ for(let i=0;i<6;i++)el("line",{x1:0,y1:1080+i*36,x2:1080,y2:1080+i*36,stroke:"#F5B83D",opacity:.05+i*.01,"stroke-width":3},S.sky);
+ S.mtn=el("g",{},scene);
+ S.mtnBack=el("path",{d:"M-200,1700 L180,1200 L360,1340 L620,980 L900,1300 L1300,1700 Z",fill:"#0e0e12",stroke:"#2a2a30","stroke-width":4},S.mtn);
+ S.peak=el("path",{d:"M-300,2400 L540,900 L1380,2400 Z",fill:"#121216",stroke:C.white,"stroke-width":6,"stroke-linejoin":"round",filter:"url(#glowB)"},S.mtn);
+ for(let i=0;i<9;i++){const y=1000+i*140;el("line",{x1:540-(y-900)*.56+40,y1:y,x2:540+(y-900)*.3,y2:y+40,stroke:"#fff",opacity:.06,"stroke-width":3},S.mtn);}
+ /* winding trail on the mountain */
+ let d="M540,905";const pts=[];for(let i=1;i<=14;i++){const y=905+i*105,x=540+Math.sin(i*1.15)*(i*30);pts.push([x,y]);d+=` L${x.toFixed(1)},${y}`;}
+ S.trail=el("path",{d,fill:"none",stroke:C.gold,"stroke-width":5,"stroke-dasharray":"2 16","stroke-linecap":"round",opacity:.8},S.mtn);S.trailPts=pts;
+ /* city lights below */
+ S.city=el("g",{},S.mtn);for(let i=0;i<70;i++)el("circle",{cx:rnd()*1080,cy:2100+rnd()*260,r:2+rnd()*3,fill:i%5?"#F5B83D":"#fff",opacity:.3+rnd()*.5},S.city);
+ /* flag on summit */
+ S.flag=el("g",{},scene);el("line",{x1:600,y1:905,x2:600,y2:760,stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},S.flag);S.cloth=el("path",{fill:C.gold,filter:"url(#glowB)"},S.flag);
+ /* exhale cloud */
+ S.cloud=el("g",{opacity:0},scene);[[0,0,30],[-34,8,22],[34,6,24],[-16,-18,22],[18,-20,24],[-50,-2,15],[52,-4,16]].forEach(([x,y,r])=>el("circle",{cx:x,cy:y,r,fill:"#c9c9d0"},S.cloud));
+ /* memory polaroids along the trail */
+ const mem=(lab,draw)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-110,y:-120,width:220,height:240,rx:10,fill:"#e9e6dc"},g);el("rect",{x:-94,y:-104,width:188,height:160,rx:4,fill:"#141418"},g);draw(g);
+   txt(g,0,92,lab,20,{fill:"#222","font-weight":800,"letter-spacing":"3"});return g;};
+ S.mems=[mem("5:00 AM",g=>{txt(g,0,-8,"5:00",54,{fill:C.red,"font-weight":800,"letter-spacing":"2",filter:"url(#glowB)"});}),
+  mem("NO",g=>{el("rect",{x:-60,y:-60,width:120,height:70,rx:8,fill:"none",stroke:C.red,"stroke-width":5,transform:"rotate(-12)"},g);txt(g,0,-10,"NO",42,{fill:C.red,"font-weight":800,transform:"rotate(-12)"});}),
+  mem("3:07 AM",g=>{el("rect",{x:-70,y:-20,width:140,height:10,rx:5,fill:"#ddd"},g);el("path",{d:"M-10,-20 L0,-70 L40,-70 L36,-20 Z",fill:"none",stroke:"#ddd","stroke-width":4},g);el("circle",{cx:-50,cy:-60,r:14,fill:"#dfe6ff"},g);})];
+ /* money + applause floating away */
+ S.coin=el("g",{opacity:0},scene);el("circle",{r:56,fill:C.gold,stroke:"#B07A12","stroke-width":5},S.coin);txt(S.coin,0,20,"$",58,{fill:"#070707","font-weight":800,"letter-spacing":"0"});
+ S.clap=el("g",{opacity:0},scene);el("circle",{r:56,fill:"#0b0b0d",stroke:C.white,"stroke-width":5},S.clap);el("path",{d:"M-16,-24 L-16,16 Q-16,30 -2,30 M16,-24 L16,16",fill:"none",stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},S.clap);
+ [S.coin,S.clap].forEach(g=>el("line",{x1:-64,y1:-64,x2:64,y2:64,stroke:C.red,"stroke-width":7,"stroke-linecap":"round"},g));
+ /* finish tape */
+ S.tape=el("g",{opacity:0},scene);S.tapeL=el("path",{fill:"none",stroke:C.white,"stroke-width":6},S.tape);S.tapeR=el("path",{fill:"none",stroke:C.white,"stroke-width":6},S.tape);
+ [S.past,S.fig].forEach(f=>{scene.appendChild(f.shadow);scene.appendChild(f.g);});
+ S.you=el("circle",{cx:540,cy:880,r:60,fill:"none",stroke:C.gold,"stroke-width":4,"stroke-dasharray":"8 8",opacity:0},scene);
+ S.youT=txt(scene,540,800,"YOU",30,{fill:C.gold,"font-weight":800,"letter-spacing":"8",opacity:0});
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const SUM=905;let o={x:540,y:SUM,droop:-.35,col:C.gold,raise:.15,raiseL:.15},op=1;
+ K.ground.setAttribute("opacity",0);K.floorScroll=0;
+ const w=Math.sin(t*4)*6;S.cloth.setAttribute("d",`M603,762 Q640,${770+w} 680,786 Q640,${802-w} 603,810 Z`);
+ S.sun.setAttribute("opacity",(.8+.2*Math.sin(t*.8)).toFixed(3));
+ // 0-6.6 summit; looking down
+ if(t<A[1])o={x:540,y:SUM,droop:-.3,col:C.gold,raise:.2+.1*Math.sin(t*1.5),raiseL:.2};
+ if(sw(A[1],B[0]))o={x:540,y:SUM,droop:.25,col:C.gold,look:-.3};
+ // exhale at highlight
+ const inh=eIO(P(t,HI-.6,HI))*(1-eIO(P(t,HI,HI+.9)));const exh=eIO(P(t,HI,HI+.9));
+ if(sw(B[0],B[1]))o={x:540,y:SUM-inh*6,droop:-.5*inh+.2*exh,col:C.gold,raise:.25*exh,raiseL:.25*exh};
+ const ck=P(t,HI+.05,HI+2.8);
+ if(ck>0&&ck<1){S.cloud.setAttribute("opacity",(.6*clamp(ck*6)*(1-eIO(P(ck,.55,1)))).toFixed(3));S.cloud.setAttribute("transform",`translate(${600+ck*90},${790-ck*80}) scale(${(.15+.9*eOut(clamp(ck*3))).toFixed(3)})`);}else S.cloud.setAttribute("opacity",0);
+ // memories along the trail (camera pans down)
+ const pos=[[300,1250],[780,1500],[320,1780]];
+ S.mems.forEach((m,i)=>{const at=B[1]+.3+i*1.15;const k=eBack(P(t,at,at+.4))*(1-eIO(P(t,B[2]-.2,B[2]+.2)));m.setAttribute("opacity",clamp(k).toFixed(3));m.setAttribute("transform",`translate(${pos[i][0]},${pos[i][1]}) rotate(${[-8,6,-4][i]}) scale(${(.7+.3*clamp(k)).toFixed(3)})`);});
+ // strange part: look down; money/applause float up and fade
+ if(sw(B[2],B[4]))o={x:540,y:SUM,droop:.1,col:C.gold,look:.3,headTouch:sw(B[2],B[3])?eIO(P(t,B[2]+.3,B[2]+.7)):0};
+ [[S.coin,B[3]+.2,400],[S.clap,B[3]+1.6,680]].forEach(([g,at,x])=>{const k=P(t,at,at+2.6);g.setAttribute("opacity",(k>0&&k<1?Math.min(1,k*5)*(1-P(k,.6,1)):0).toFixed(3));g.setAttribute("transform",`translate(${x},${960-k*300}) rotate(${k*30})`);});
+ // past self still climbing on the trail
+ const past=win(t,B[4]-.05,B[6],.3,.5);
+ if(past>0){const k=P(t,B[4],B[6]);const idx=Math.min(S.trailPts.length-1,Math.floor(lerp(5,0,eIO(k))));const fr=(lerp(5,0,eIO(k)))%1;const p0=S.trailPts[idx],p1=S.trailPts[Math.max(0,idx-1)];
+   S.past.draw({x:lerp(p0[0],p1[0],fr),y:lerp(p0[1],p1[1],fr),ph:t*8,stride:.8,lean:.35,col:"#8E8E93",droop:.2,sc:.85});S.past.g.setAttribute("opacity",(past*.9).toFixed(3));S.past.shadow.setAttribute("opacity",0);}
+ else S.past.g.setAttribute("opacity",0);
+ if(sw(B[4],B[6]))o={x:540,y:SUM,col:C.gold,droop:.35,look:-.2,raise:sw(B[5],B[6])?.3:0};
+ // finish tape snapping behind (finish line wasn't the point)
+ const tp=win(t,B[5]-.05,B[6],.2,.4);S.tape.setAttribute("opacity",tp.toFixed(3));const sn=eOut(P(t,B[5]+.6,B[5]+1.4));
+ S.tapeL.setAttribute("d",`M300,${SUM-60} Q${430-sn*60},${SUM-60+sn*70} ${490-sn*120},${SUM-50+sn*140}`);S.tapeR.setAttribute("d",`M780,${SUM-60} Q${650+sn*60},${SUM-60+sn*70} ${590+sn*120},${SUM-50+sn*140}`);
+ // keep going -> place for YOU
+ if(t>=B[6]){const g=eIO(P(t,B[6]+.2,B[7]));o={x:lerp(540,625,g),y:SUM+(lerp(540,625,g)-540)*1.79,lean:.2,col:C.gold,droop:-.1,look:-1,raise:t>B[7]?.6:0};}
+ const yk=win(t,B[7]+.1,31,.4,.6);S.you.setAttribute("opacity",(yk*(.7+.3*Math.sin(t*4))).toFixed(3));S.youT.setAttribute("opacity",yk.toFixed(3));
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));S.fig.shadow.setAttribute("opacity",0);
+ S.rays.setAttribute("opacity",(win(t,HI,B[1]+1,.1,.8)*.8+win(t,B[7],31,.3,.6)*.6).toFixed(3));S.rays.setAttribute("transform",`translate(540,880) rotate(${t*5})`);
+ // camera: start tight on summit, pull back, pan down the trail, rise back up
+ const c=K.cam;
+ if(t<A[1]){c.sc=lerp(1.35,1.2,eOut(P(t,0,A[1])));c.cx=560;c.cy=lerp(980,960,P(t,0,A[1]));}
+ if(sw(A[1],B[1])){const k=eIO(P(t,A[1],B[0]+.6));c.sc=lerp(1.2,.82,k);c.cx=540;c.cy=lerp(960,1200,k);}
+ if(sw(B[1],B[2])){const k=eIO(P(t,B[1],B[2]));c.sc=lerp(.82,1.0,k);c.cy=lerp(1200,1650,k);c.cx=lerp(540,520,k);}
+ if(sw(B[2],B[4])){const k=eIO(P(t,B[2],B[2]+1.2));c.sc=lerp(1.0,1.3,k);c.cy=lerp(1650,900,k);c.cx=540;}
+ if(sw(B[4],B[6])){const k=eIO(P(t,B[4],B[5]));c.sc=lerp(1.3,.92,k);c.cy=lerp(900,1150,k);}
+ if(t>=B[6]){const k=eIO(P(t,B[6],30.5));c.sc=lerp(.95,1.2,k);c.cy=lerp(1100,900,k);c.cx=lerp(540,600,k);}
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.04,7);camFX.punch(t,c,[HI],.08,3);
+ camFX.shake(t,c,[B[5]+.6],8,6);
+ K.flash+=K.pulses(t,[HI],5,.25)+K.pulses(t,[B[7]],8,.2);
+ K.dim=win(t,B[1],B[2],.3,.3)*.35;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

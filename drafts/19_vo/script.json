@@ -1,0 +1,56 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 46,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "School taught you the wrong lesson.",
+     "pause": 0.3,
+     "speed": 0.93
+    },
+    {
+     "text": "Sit still. Wait for instructions. Raise your hand. Don't make mistakes.",
+     "pause": 0.25
+    },
+    {
+     "text": "Follow every rule, and you get a good grade.",
+     "pause": 0.4
+    },
+    {
+     "text": "But real life doesn't hand out instructions.",
+     "pause": 0.35
+    },
+    {
+     "text": "Nobody tells you when to start. Nobody grades your effort. Nobody checks your homework.",
+     "pause": 0.4
+    },
+    {
+     "text": "The people who win didn't wait for permission.",
+     "pause": 0.25
+    },
+    {
+     "text": "They started before they felt ready, made mistakes, and learned faster.",
+     "pause": 0.4
+    },
+    {
+     "text": "So unlearn it. Stop waiting for someone to tell you it's time.",
+     "pause": 0.35
+    },
+    {
+     "text": "Raise your own hand.",
+     "pause": 0.35,
+     "speed": 0.9
+    },
+    {
+     "text": "And start.",
+     "pause": 0,
+     "speed": 0.85
+    }
+   ]
+  }
+ ]
+}

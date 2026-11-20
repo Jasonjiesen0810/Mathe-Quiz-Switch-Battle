@@ -1,0 +1,71 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 46,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Being busy is a form of laziness.",
+     "pause": 0.3,
+     "speed": 0.93
+    },
+    {
+     "text": "Sounds crazy, right?",
+     "pause": 0.25
+    },
+    {
+     "text": "You answer every message. You clean your desk. You reorganize your to-do list.",
+     "pause": 0.25
+    },
+    {
+     "text": "And by the end of the day, you're exhausted.",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 11.35,
+   "parts": [
+    {
+     "text": "But you never touched the one task that actually mattered.",
+     "pause": 0.35
+    },
+    {
+     "text": "Because busy work is easy. It feels productive, and it never scares you.",
+     "pause": 0.25
+    },
+    {
+     "text": "The important task does.",
+     "pause": 0.4,
+     "speed": 0.9
+    },
+    {
+     "text": "So you hide in small tasks, and call it hard work.",
+     "pause": 0.45
+    },
+    {
+     "text": "Here's the fix: tomorrow morning, before you open a single message, do the one thing you've been avoiding.",
+     "pause": 0.2
+    },
+    {
+     "text": "Just one.",
+     "pause": 0.4,
+     "speed": 0.9
+    },
+    {
+     "text": "Busy is easy. Important is hard.",
+     "pause": 0.35
+    },
+    {
+     "text": "Choose hard.",
+     "pause": 0,
+     "speed": 0.85
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Spend It</title></head>
+<body>
+<script>
+/* Devil Music ab Song 12,46 s: Stille 9,5–11 s, Drop 1 = 11,6 s, Drop 2 = 32,0 s */
+const A=[0.15,2.3,3.76,7.53,9.61], B=[11.75,15.7,18.83,22.73,23.99,26.4,28.09], Cc=[32.1,33.98];
+const D1=11.6, D2=32.0;
+const BEATS1=[0,2.54,2.95,3.34,3.79,5.06,5.45,5.91].map(x=>D1+x), BEATS2=[0,.48,.98,1.29,1.8,2.28,2.61,3.11,3.59].map(x=>D2+x);
+window.VIDEO={DUR:36,seed:201,audio:"20_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,lines:[["YOUR","PHONE","ISN'T"],[{t:"STEALING",red:1},"YOUR","TIME."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["YOU'RE",{t:"GIVING",gold:1}],[{t:"IT AWAY.",mark:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["5","MIN.","10","MIN."],["ONE","MORE","VIDEO."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["SCROLL.","SWIPE."],[{t:"REPEAT.",red:1}]]},
+ {a:A[4]-.05,b:D1,lines:[["IT","FEELS","LIKE"],["NOTHING."]]},
+ {a:B[0]-.15,b:B[1]-.1,lines:[["EASY","TO",{t:"OPEN.",gold:1}],["HARD","TO",{t:"CLOSE.",red:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["EVERY","MINUTE","IS"],[{t:"GONE",red:1},{t:"FOR",red:1},{t:"GOOD.",red:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["YOUR","FUTURE","NEEDS"],["YOUR",{t:"ATTENTION.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["MAKE","IT"],[{t:"HARDER.",mark:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["PHONE","IN"],["ANOTHER",{t:"ROOM.",gold:1}]]},
+ {a:B[5]-.05,b:B[6]-.1,lines:[["NOTIFICATIONS"],[{t:"OFF.",red:1}]]},
+ {a:B[6]-.05,b:D2-.1,lines:[["FIRST","HOUR","OF","THE","DAY"],["=",{t:"YOURS.",gold:1}]]},
+ {a:D2,b:Cc[1]-.1,lines:[["STOP","GIVING","YOUR"],["TIME",{t:"AWAY.",red:1}]]},
+ {a:Cc[1]-.05,b:35.5,lines:[[{t:"SPEND IT.",mark:1}]]},
+],
+LABELS:[
+ {a:B[6]+1.5,b:D2-.1,text:"Not to your feed."},
+],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.rays=K.raysG(540,1000);S.spot=K.spot(540);S.fig=makeFig();S.ghost=makeFig();
+ // phone
+ S.phone=el("g",{},scene);el("rect",{x:-170,y:-300,width:340,height:600,rx:46,fill:C.card,stroke:C.white,"stroke-width":7,filter:"url(#glowB)"},S.phone);
+ el("rect",{x:-46,y:-284,width:92,height:16,rx:8,fill:C.white},S.phone);
+ S.slot=el("rect",{x:-70,y:-250,width:140,height:16,rx:8,fill:"#000",stroke:C.gold,"stroke-width":3},S.phone);
+ const fc=el("clipPath",{id:"pclip"},document.querySelector("defs"));el("rect",{x:-146,y:-230,width:292,height:500,rx:22},fc);
+ S.feed=el("g",{"clip-path":"url(#pclip)"},S.phone);S.feedIn=el("g",{},S.feed);
+ for(let i=0;i<14;i++){el("rect",{x:-130,y:-220+i*170,width:260,height:150,rx:16,fill:"rgba(255,255,255,.04)",stroke:"#444","stroke-width":3},S.feedIn);el("rect",{x:-110,y:-200+i*170,width:220,height:70,rx:8,fill:"#1d1d22"},S.feedIn);}
+ S.openBtn=el("g",{opacity:0},S.phone);el("rect",{x:-120,y:-60,width:240,height:120,rx:60,fill:C.gold,filter:"url(#glowB)"},S.openBtn);txt(S.openBtn,0,18,"OPEN",50,{fill:"#070707","font-weight":800,"letter-spacing":"6"});
+ S.closeBtn=el("g",{opacity:0},S.phone);el("circle",{cx:118,cy:-206,r:12,fill:"none",stroke:"#555","stroke-width":2},S.closeBtn);txt(S.closeBtn,118,-201,"×",16,{fill:"#555","font-weight":700,"letter-spacing":"0"});
+ // coins
+ S.coins=[...Array(9)].map((_,i)=>{const g=el("g",{opacity:0},scene);el("circle",{r:42,fill:C.gold,stroke:"#B07A12","stroke-width":4,filter:"url(#glowB)"},g);
+   el("circle",{r:24,fill:"none",stroke:"#070707","stroke-width":4},g);el("path",{d:"M0,0 L0,-16 M0,0 L12,6",stroke:"#070707","stroke-width":4,"stroke-linecap":"round"},g);
+   const lab=txt(g,0,74,["5 MIN","10 MIN","1 MORE","5 MIN","15 MIN","2 MIN","10 MIN","5 MIN","1 MORE"][i],20,{fill:C.gold,"font-weight":800,"letter-spacing":"3"});return{g,lab,d:i};});
+ S.swipe=el("g",{opacity:0},scene);el("path",{d:"M0,80 L0,-80 M0,-80 l-24,30 M0,-80 l24,30",stroke:C.white,"stroke-width":8,"stroke-linecap":"round",fill:"none"},S.swipe);
+ // hourglass
+ S.hg=el("g",{opacity:0},scene);el("path",{d:"M-70,-110 L70,-110 Q70,-40 8,-4 L8,4 Q70,40 70,110 L-70,110 Q-70,40 -8,4 L-8,-4 Q-70,-40 -70,-110 Z",fill:"none",stroke:C.white,"stroke-width":6,filter:"url(#glowB)"},S.hg);
+ el("rect",{x:-86,y:-124,width:172,height:14,rx:5,fill:C.white},S.hg);el("rect",{x:-86,y:110,width:172,height:14,rx:5,fill:C.white},S.hg);
+ S.sandTop=el("path",{fill:C.gold},S.hg);S.sandBot=el("path",{fill:C.gold},S.hg);
+ S.stream=el("path",{fill:"none",stroke:C.gold,"stroke-width":5,"stroke-dasharray":"4 10",opacity:0},scene);
+ // door
+ S.door=el("g",{opacity:0},scene);el("rect",{x:800,y:1080,width:160,height:360,rx:6,fill:"#070707",stroke:C.white,"stroke-width":6},S.door);
+ S.doorLeaf=el("rect",{x:806,y:1086,width:148,height:348,rx:4,fill:"#1a1a1c",stroke:C.grey,"stroke-width":3},S.door);
+ // bell
+ S.bell=el("g",{opacity:0},scene);el("path",{d:"M-60,30 Q-60,-70 0,-70 Q60,-70 60,30 L76,48 L-76,48 Z",fill:"none",stroke:C.white,"stroke-width":8,"stroke-linejoin":"round"},S.bell);el("circle",{cx:0,cy:70,r:14,fill:C.white},S.bell);
+ S.bellX=el("line",{x1:-90,y1:-90,x2:90,y2:90,stroke:C.red,"stroke-width":12,"stroke-linecap":"round"},S.bell);
+ // day clock
+ S.day=el("g",{opacity:0},scene);el("circle",{r:220,fill:C.card,stroke:C.white,"stroke-width":6},S.day);
+ S.firstHour=el("path",{d:"M0,0 L0,-210 A210,210 0 0 1 105,-182 Z",fill:C.gold,filter:"url(#glowB)"},S.day);
+ for(let k=0;k<24;k++){const a=k*Math.PI/12;el("line",{x1:Math.sin(a)*190,y1:-Math.cos(a)*190,x2:Math.sin(a)*205,y2:-Math.cos(a)*205,stroke:"#fff","stroke-width":3,opacity:.5},S.day);}
+ txt(S.day,52,-128,"YOU",24,{fill:"#070707","font-weight":800,"letter-spacing":"3"});txt(S.day,0,80,"FEED LATER",26,{fill:C.grey,"font-weight":700,"letter-spacing":"4"});
+ // big gold hourglass in hands (end)
+ S.myHG=el("g",{opacity:0},scene);el("path",{d:"M-44,-70 L44,-70 Q44,-26 6,-3 L6,3 Q44,26 44,70 L-44,70 Q-44,26 -6,3 L-6,-3 Q-44,-26 -44,-70 Z",fill:"rgba(245,184,61,.2)",stroke:C.gold,"stroke-width":6,filter:"url(#glowB)"},S.myHG);
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const bp1=K.pulses(t,BEATS1,9,1,.5),bp2=K.pulses(t,BEATS2,8,1,.7);
+ let o={x:240,y:GY},op=1;
+ // phone (0–18.8)
+ const ph=win(t,-1,B[2]-.05,.01,.3);S.phone.setAttribute("opacity",ph.toFixed(3));
+ const zoomIn=eIO(P(t,A[4],D1));S.phone.setAttribute("transform",`translate(${lerp(640,540,zoomIn)},1020) scale(${(1+.15*zoomIn+.04*bp1).toFixed(3)})`);
+ const scr=t<A[3]?0:(t-A[3])*900*(t<A[4]?1:Math.max(0,1-(t-A[4])*.6));S.feedIn.setAttribute("transform",`translate(0,${-(scr%1700)})`);
+ S.slot.setAttribute("opacity",t<A[3]?1:0);
+ S.openBtn.setAttribute("opacity",win(t,B[0]-.1,B[1]-.1,.15,.2).toFixed(3));S.openBtn.setAttribute("transform",`scale(${(1+.08*bp1).toFixed(3)})`);
+ S.closeBtn.setAttribute("opacity",win(t,B[0]+1.4,B[1]-.1,.3,.2).toFixed(3));
+ // coins flowing into the phone
+ S.coins.forEach((c,i)=>{const at=A[1]+.3+i*.55;const k=P(t,at,at+.9);
+   c.g.setAttribute("opacity",(k>0&&k<1?Math.min(1,k*5)*(1-P(k,.85,1)):0).toFixed(3));
+   c.g.setAttribute("transform",`translate(${lerp(300,640,eIO(k))},${lerp(1200,770,eIO(k))-Math.sin(k*Math.PI)*120}) scale(${lerp(1,.4,P(k,.6,1))})`);
+   c.lab.setAttribute("opacity",i<2||t>A[2]?1:0);});
+ const swk=P(t,A[3],A[4]);S.swipe.setAttribute("opacity",(swk>0&&swk<1?Math.abs(Math.sin(swk*Math.PI*3)):0).toFixed(3));S.swipe.setAttribute("transform",`translate(880,${1100-((swk*3)%1)*120})`);
+ if(t<A[1])o={x:240,y:GY,hold:1,look:1,droop:.15};
+ if(sw(A[1],A[3]))o={x:240,y:GY,raise:.5+.2*Math.sin(t*6),look:1,droop:.1};
+ if(sw(A[3],D1))o={x:240,y:GY,hold:1,look:1,droop:.25+.3*eIO(P(t,A[4],D1))};
+ // hourglass draining into phone
+ const hg=win(t,B[1]-.05,B[2]-.05,.2,.25);S.hg.setAttribute("opacity",hg.toFixed(3));S.hg.setAttribute("transform",`translate(250,880)`);
+ const lv=1-eIO(P(t,B[1],B[2]));S.sandTop.setAttribute("d",`M${-60*lv},${-6-90*lv} L${60*lv},${-6-90*lv} L6,-6 L-6,-6 Z`);S.sandBot.setAttribute("d",`M-60,100 L60,100 L${60-30*lv},${100-60*(1-lv)} L${-60+30*lv},${100-60*(1-lv)} Z`);
+ S.stream.setAttribute("opacity",(hg*.9).toFixed(3));S.stream.setAttribute("d","M250,990 Q420,1150 560,1000");S.stream.setAttribute("stroke-dashoffset",(-t*60).toFixed(1));
+ if(sw(D1,B[2])){op=0;}
+ // future self
+ if(sw(B[2],B[3])){const lk=eIO(P(t,B[2]+.6,B[2]+1.2));o={x:330,y:GY,hold:1-lk,look:lk,droop:lerp(.5,-.4,lk)};
+   S.ghost.draw({x:780,y:GY,col:C.gold,droop:-.3,raise:.3,raiseL:.3});S.ghost.g.setAttribute("opacity",(win(t,B[2]+.8,B[3]-.05,.3,.2)*(.7+.3*Math.sin(t*4))).toFixed(3));}
+ else S.ghost.g.setAttribute("opacity",0);
+ // make it harder → door
+ const dr=win(t,B[3]-.05,B[5]-.05,.2,.2);S.door.setAttribute("opacity",dr.toFixed(3));
+ const close=eIO(P(t,B[4]+1.3,B[4]+1.6));S.doorLeaf.setAttribute("width",(148*close+4).toFixed(1));
+ if(sw(B[3],B[5])){const w=eIO(P(t,B[4]+.1,B[4]+1.1));o={x:lerp(330,690,w),y:GY,ph:w*8,hold:1-close,droop:-.1,lean:.1};
+   if(t<B[4]+1.3){S.phone.setAttribute("opacity",1);S.phone.setAttribute("transform",`translate(${lerp(420,820,w)+(t>B[4]+1.1?(t-B[4]-1.1)*400:0)},${lerp(1260,1250,w)}) scale(.22)`);}
+   if(t>=B[4]+1.3)S.phone.setAttribute("opacity",0);}
+ // notifications off
+ const bl=win(t,B[5]-.05,B[6]-.05,.2,.2);S.bell.setAttribute("opacity",bl.toFixed(3));S.bell.setAttribute("transform",`translate(540,1000) rotate(${t<B[5]+.6?Math.sin(t*40)*12:0})`);
+ S.bellX.setAttribute("opacity",t>B[5]+.6?1:0);
+ if(sw(B[5],B[6]))o={x:300,y:GY,point:1,droop:-.1};
+ // first hour
+ const dy=win(t,B[6]-.05,D2-.05,.2,.2);S.day.setAttribute("opacity",dy.toFixed(3));S.day.setAttribute("transform",`translate(560,1000) rotate(${lerp(-30,0,eOut(P(t,B[6],B[6]+.8)))})`);
+ S.firstHour.setAttribute("opacity",eIO(P(t,B[6]+.6,B[6]+1.2)).toFixed(3));
+ if(sw(B[6],D2))op=0;
+ // end: hourglass held high, walk
+ if(t>=D2){op=1;const v=eBack(P(t,D2,D2+.4));o={x:540,y:GY,raise:clamp(v)*1.15,raiseL:clamp(v)*1.15,droop:-.4,col:K.mixHex(C.white,C.gold,eIO(P(t,D2,D2+.6)))};
+   if(t>=Cc[1]){const w=P(t,Cc[1],36);o={x:lerp(540,640,w),y:GY,ph:w*8,raise:1.1,raiseL:1.1,col:C.gold,droop:-.3};}}
+ S.myHG.setAttribute("opacity",(t>=D2?eExpo(P(t,D2,D2+.3)):0).toFixed(3));
+ if(t>=D2){S.myHG.setAttribute("transform",`translate(${(o.x)},${GY-420}) rotate(${Math.sin(t*2)*4})`);}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ S.spot.setAttribute("opacity",(win(t,-1,A[3],.01,.3)*.6+win(t,D2,36,.1,.6)*.9).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,D2,36,.05,.6)*(.4+.6*clamp(bp2))).toFixed(3));S.rays.setAttribute("transform",`translate(${o.x},${GY-420}) rotate(${t*9})`);
+ // ===== camera
+ const c=K.cam;
+ camFX.dolly(t,c,0,A[1],{sc:1.1,cx:520,cy:1060});
+ if(sw(A[1],A[3])){c.sc=1.1;c.cx=lerp(480,600,eIO(P(t,A[1],A[3])));c.cy=1050;}
+ if(sw(A[3],A[4])){c.sc=1.15;c.cx=640;c.cy=1020;c.rot+=Math.sin(t*9)*1.2;}
+ if(sw(A[4],D1)){const k=eIO(P(t,A[4],D1));c.sc=lerp(1.15,1.9,k);c.cx=lerp(640,560,k);c.cy=lerp(1020,1000,k);}
+ if(sw(D1,B[1])){c.sc=lerp(1.5,1.08,eOut(P(t,D1,D1+.8)));c.cx=560;c.cy=1020;}
+ if(sw(B[1],B[2]))camFX.dolly(t,c,B[1],B[2],{sc:1.12,cx:420,cy:960});
+ if(sw(B[2],B[3])){camFX.dolly(t,c,B[2],B[3],{sc:1.1,cx:560,cy:1200});}
+ if(sw(B[3],B[5]))camFX.dolly(t,c,B[3],B[5],{sc:1.14,cx:700,cy:1250});
+ if(sw(B[5],B[6])){c.sc=1.1;c.cx=480;c.cy=1050;}
+ if(sw(B[6],D2))camFX.dolly(t,c,B[6],D2,{sc:1.15,cx:560,cy:1000,rot:4});
+ if(t>=D2){c.sc=lerp(1.3,1.05,eOut(P(t,D2,D2+1)));c.cx=560;c.cy=1100;}
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);
+ c.sc+=bp1*.05+bp2*.07;
+ camFX.shake(t,c,[A[1],D1,B[4]+1.3,B[5]+.6,D2],18,6);camFX.shake(t,c,[A[3],A[3]+.7,A[3]+1.4],8,10);
+ camFX.whip(t,c,B[1],1);camFX.whip(t,c,B[3],-1);camFX.whip(t,c,B[6],1);
+ camFX.tilt(t,c,A[4],D1,-4);
+ K.flash+=K.pulses(t,[D1],9,.55)+K.pulses(t,BEATS2,11,.5,.15)+K.pulses(t,BEATS1.slice(1),12,.08,.08)+K.pulses(t,[B[4]+1.3],12,.15);
+ K.dim=win(t,A[4],D1,.4,.05)*.6;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

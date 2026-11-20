@@ -1,0 +1,88 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 36,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Your phone isn't stealing your time.",
+     "pause": 0.3,
+     "speed": 0.93
+    },
+    {
+     "text": "You're giving it away.",
+     "pause": 0.35,
+     "speed": 0.9
+    },
+    {
+     "text": "Five minutes here. Ten minutes there. Just one more video.",
+     "pause": 0.3
+    },
+    {
+     "text": "Scroll. Swipe. Repeat.",
+     "pause": 0.3,
+     "speed": 0.95
+    },
+    {
+     "text": "It feels like nothing.",
+     "pause": 0,
+     "speed": 0.93
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 11.75,
+   "parts": [
+    {
+     "text": "But every app is built to be easy to open, and hard to close.",
+     "pause": 0.35
+    },
+    {
+     "text": "And every minute you give it is a minute you never get back.",
+     "pause": 0.4
+    },
+    {
+     "text": "Your future doesn't need more content. It needs your attention.",
+     "pause": 0.35
+    },
+    {
+     "text": "So make it harder.",
+     "pause": 0.25,
+     "speed": 0.92
+    },
+    {
+     "text": "Put your phone in another room while you work.",
+     "pause": 0.2
+    },
+    {
+     "text": "Turn off the notifications.",
+     "pause": 0.2
+    },
+    {
+     "text": "And give the first hour of your day to yourself, not to your feed.",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "c",
+   "at": 32.1,
+   "parts": [
+    {
+     "text": "Stop giving your time away.",
+     "pause": 0.35,
+     "speed": 0.92
+    },
+    {
+     "text": "Spend it.",
+     "pause": 0,
+     "speed": 0.85
+    }
+   ]
+  }
+ ]
+}

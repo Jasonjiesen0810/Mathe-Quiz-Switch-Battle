@@ -128,7 +128,22 @@ V.HEADS.forEach(h=>{const d=document.createElement("div");d.className="hl";d.sty
       ln.appendChild(w);h.words.push(w);});d.appendChild(ln);});heads.appendChild(d);});
 (V.LABELS||[]).forEach(l=>{const d=document.createElement("div");d.className="label";d.style.top=(l.top||540)+"px";d.textContent=l.text;heads.appendChild(d);l.el=d;});
 
-const K={clamp,P,eOut,eExpo,eIO,eBack,lerp,el,txt,rnd,C,mixHex,win,pulses,grid,scene,bgfx,GY,makeFig,pill,popAt,spot,raysG,ground,FLOORH,dots,
+/* camera helpers: call inside render(t,K) */
+const camFX={
+  // ruhiges Handkamera-Schweben (immer an, ausschaltbar mit VIDEO.noDrift)
+  drift(t,c,amt=1){c.dx+=(Math.sin(t*.7)*6+Math.sin(t*1.9)*2.5)*amt;c.dy+=(Math.cos(t*.53)*5+Math.sin(t*1.3)*2)*amt;c.rot=(c.rot||0)+Math.sin(t*.41)*.35*amt;},
+  // Wackeln ab Zeitpunkten (Aufprall, Drop, Schock)
+  shake(t,c,list,str=16,decay=6){list.forEach(a=>{if(t>=a){const k=Math.exp(-(t-a)*decay);c.dx+=Math.sin(t*93)*str*k;c.dy+=Math.cos(t*71)*str*.65*k;c.rot=(c.rot||0)+Math.sin(t*57)*1.2*k*str/16;}});},
+  // Zoom-Stoß (Punch-in)
+  punch(t,c,list,amt=.12,decay=6){list.forEach(a=>{if(t>=a)c.sc+=Math.exp(-(t-a)*decay)*amt;});},
+  // Kamerafahrt zu einem Punkt (a→b Sekunden)
+  dolly(t,c,a,b,to){const k=eIO(P(t,a,b));if(k<=0)return;c.sc=lerp(c.sc,to.sc||c.sc,k);c.cx=lerp(c.cx,to.cx??c.cx,k);c.cy=lerp(c.cy,to.cy??c.cy,k);c.rot=lerp(c.rot||0,to.rot||0,k);},
+  // Reißschwenk (Whip-Pan) mit Bewegungsunschärfe-Gefühl
+  whip(t,c,at,dir=1,dur=.35){const k=P(t,at-dur/2,at+dur/2);if(k>0&&k<1){const s=Math.sin(k*Math.PI);c.dx+=dir*s*420;c.rot=(c.rot||0)+dir*s*3;K.flash+=s*.15;}},
+  // Kamera kippt leicht (Dutch angle) für Unruhe/Spannung
+  tilt(t,c,a,b,deg=4){c.rot=(c.rot||0)+deg*win(t,a,b,.4,.4);},
+};
+const K={camFX,clamp,P,eOut,eExpo,eIO,eBack,lerp,el,txt,rnd,C,mixHex,win,pulses,grid,scene,bgfx,GY,makeFig,pill,popAt,spot,raysG,ground,FLOORH,dots,
   cam:{sc:1,cx:540,cy:1150,dx:0,dy:0}, flash:0, dim:0};
 V.build(K);
 
@@ -138,11 +153,12 @@ function seek(t){t=clamp(t,0,V.DUR);
     w.style.opacity=(p*(1-q)).toFixed(3);w.style.transform=`translateY(${(1-p)*44-q*22}px)`;w.style.filter=`blur(${((1-p)*13+q*9).toFixed(2)}px)`;
     if(w.bar){const m=eIO(P(t,h.a+.2,h.a+.7));w.bar.style.transform=`scaleX(${m})`;w.txt.style.color=m>.5?"#070707":"";w.style.textShadow=m>.5?"none":"";}}));
   (V.LABELS||[]).forEach(l=>{const p=eOut(P(t,l.a,l.a+.4)),q=P(t,l.b,l.b+.3);l.el.style.opacity=(p*(1-q)).toFixed(3);l.el.style.transform=`translateY(${(1-p)*18}px)`;});
-  K.cam={sc:1,cx:540,cy:1150,dx:0,dy:0};K.flash=0;K.dim=0;K.floorScroll=0;
+  K.cam={sc:1,cx:540,cy:1150,dx:0,dy:0,rot:0};K.flash=0;K.dim=0;K.floorScroll=0;
   K.endFade=1-eIO(P(t,V.DUR-.6,V.DUR));
   V.render(t,K);
   FLOORH.forEach((l,k)=>{const y=GY+14*Math.pow(1.48,k+(K.floorScroll?((t*K.floorScroll)%1):0));l.setAttribute("y1",y);l.setAttribute("y2",y);});
-  const c=K.cam;cam.setAttribute("transform",`translate(${(c.cx+c.dx).toFixed(2)},${(c.cy+c.dy).toFixed(2)}) scale(${c.sc.toFixed(4)}) translate(${-c.cx},${-c.cy})`);
+  const c=K.cam;if(!V.noDrift)camFX.drift(t,c,V.drift??1);
+  cam.setAttribute("transform",`translate(${(c.cx+c.dx).toFixed(2)},${(c.cy+c.dy).toFixed(2)}) rotate(${(c.rot||0).toFixed(3)}) scale(${(c.sc*1.02).toFixed(4)}) translate(${-c.cx},${-c.cy})`);
   document.getElementById("flash").style.opacity=Math.min(.6,K.flash).toFixed(3);
   document.getElementById("dim").style.opacity=clamp(K.dim).toFixed(3);
 }

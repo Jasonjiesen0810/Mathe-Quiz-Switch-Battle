@@ -112,3 +112,10 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 ## Aussprache (Kokoro)
 - Mehrdeutige Wörter vor dem Export prüfen: python3 -c "from kokoro_onnx.tokenizer import Tokenizer;print(Tokenizer().phonemize('…','en-us'))"
 - "live" (wohnen) am Satzende wird als /laɪv/ gelesen → im Sprechertext "liv" schreiben (Bildtext bleibt "LIVE")
+
+## Kamera (mehr Bewegung – ab sofort Standard, Referenz: Klassenzimmer-Draufsicht mit Spotlight)
+- Immer leichtes Handkamera-Schweben (drift) – das Bild steht nie ganz still
+- Pro Szene mindestens eine Kamerabewegung: Kamerafahrt (dolly) auf das Wichtige, Zoom-Punch bei neuen Infos
+- Shake bei Aufprall, Schock, Drop, Stempel; Whip-Pan (Reißschwenk) als Szenenwechsel; leichtes Kippen (tilt) bei Unruhe/Zweifel
+- Perspektiv-Wechsel nutzen: Draufsicht (schräg von oben) mit Raster von Tischen/Figuren, Spotlight-Kegel hebt EINE Person heraus
+- Bausteine in drafts/lib/core.js: K.camFX.drift/shake/punch/dolly/whip/tilt

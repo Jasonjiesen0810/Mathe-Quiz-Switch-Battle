@@ -1,0 +1,64 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 50,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "You're one decision away from a completely different life.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "Not a big one. Not quitting your job. Not moving to another country.",
+     "pause": 0.35
+    },
+    {
+     "text": "It's the small decision you make every morning.",
+     "pause": 0.25
+    },
+    {
+     "text": "Snooze, or stand up. Scroll, or start. Later, or now.",
+     "pause": 0.35
+    },
+    {
+     "text": "Most people make the wrong one, every single day, and wonder why nothing changes.",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 29.7,
+   "parts": [
+    {
+     "text": "But make the right one once.",
+     "pause": 0.2,
+     "speed": 0.93
+    },
+    {
+     "text": "Then again. And again.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "After a week, it's a habit. After a year, it's a different life.",
+     "pause": 0.4
+    },
+    {
+     "text": "One decision. Every morning.",
+     "pause": 0.3,
+     "speed": 0.92
+    },
+    {
+     "text": "Make it tomorrow.",
+     "pause": 0,
+     "speed": 0.88
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 45,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "This is what it feels like when you finally make it.",
+     "pause": 0.4,
+     "speed": 0.9
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 7.0,
+   "parts": [
+    {
+     "text": "You breathe out.",
+     "pause": 0.35,
+     "speed": 0.88
+    },
+    {
+     "text": "All the early mornings. All the no's. All the nights nobody saw.",
+     "pause": 0.4
+    },
+    {
+     "text": "And here's the strange part:",
+     "pause": 0.25,
+     "speed": 0.93
+    },
+    {
+     "text": "it's not the money you remember. It's not the applause.",
+     "pause": 0.3
+    },
+    {
+     "text": "It's the version of you that refused to quit.",
+     "pause": 0.45,
+     "speed": 0.92
+    },
+    {
+     "text": "Because success was never the finish line. It was who you became on the way there.",
+     "pause": 0.4
+    },
+    {
+     "text": "So keep going.",
+     "pause": 0.3,
+     "speed": 0.92
+    },
+    {
+     "text": "One day, you'll take that breath too.",
+     "pause": 0,
+     "speed": 0.9
+    }
+   ]
+  }
+ ]
+}

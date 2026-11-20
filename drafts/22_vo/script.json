@@ -1,0 +1,61 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 50,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.6,
+   "parts": [
+    {
+     "text": "Nobody is going to clap for you at the beginning.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "When you start, it's quiet. No likes. No support. Just you, and an empty room.",
+     "pause": 0.35
+    },
+    {
+     "text": "Your friends don't get it. Your family asks when you'll get a real job.",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": 20.6,
+   "parts": [
+    {
+     "text": "And then one day, it hits you:",
+     "pause": 0.3,
+     "speed": 0.92
+    },
+    {
+     "text": "they were never supposed to clap.",
+     "pause": 0.25,
+     "speed": 0.93
+    },
+    {
+     "text": "This was never their dream. It was yours.",
+     "pause": 0.4,
+     "speed": 0.92
+    },
+    {
+     "text": "So stop waiting for applause. Post the video anyway. Write the page anyway. Show up anyway.",
+     "pause": 0.35
+    },
+    {
+     "text": "One day, they will clap.",
+     "pause": 0.25,
+     "speed": 0.93
+    },
+    {
+     "text": "But by then, you won't need it.",
+     "pause": 0,
+     "speed": 0.9
+    }
+   ]
+  }
+ ]
+}

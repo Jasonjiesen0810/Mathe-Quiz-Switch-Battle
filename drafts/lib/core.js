@@ -33,6 +33,7 @@ document.body.insertAdjacentHTML("afterbegin",`
  <linearGradient id="moon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bcd2ff" stop-opacity=".28"/><stop offset="1" stop-color="#bcd2ff" stop-opacity="0"/></linearGradient>
  <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE3A3" stop-opacity=".45"/><stop offset="1" stop-color="#F5B83D" stop-opacity="0"/></linearGradient>
  <radialGradient id="halo"><stop offset="0" stop-color="#F5B83D" stop-opacity=".45"/><stop offset="1" stop-color="#F5B83D" stop-opacity="0"/></radialGradient>
+ <radialGradient id="headShade" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#ececf0"/><stop offset="1" stop-color="#c9c9d0"/></radialGradient>
  <radialGradient id="haloW"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
  <clipPath id="floorClip"><rect x="-2000" y="1442" width="5080" height="2000"/></clipPath>
 </defs><g id="cam"><g id="bgfx"></g><g id="stars"></g><g id="scene"></g></g></svg>
@@ -82,11 +83,23 @@ const raysG=(cx,cy,n=34)=>{const g=el("g",{opacity:0},bgfx);for(let i=0;i<n;i++)
   el("line",{x1:Math.cos(a)*r0,y1:Math.sin(a)*r0,x2:Math.cos(a)*L,y2:Math.sin(a)*L,stroke:i%4===0?C.gold:"#fff",opacity:.15+rnd()*.3,"stroke-width":1.5+rnd()*2.5,"stroke-linecap":"round"},g);}g.cx=cx;g.cy=cy;return g;};
 
 /* figure with knees/elbows */
-function makeFig(parent){const g=el("g",{filter:"url(#glow)"},parent||scene);const L={};
-  ["legL","legR","armL","armR","body"].forEach(k=>L[k]=el("polyline",{fill:"none",stroke:C.white,"stroke-width":26,"stroke-linecap":"round","stroke-linejoin":"round"},g));
-  const head=el("circle",{r:36,fill:C.white},g);
-  const F={g,head,hand:[0,0]};
+function makeFig(parent){
+  /* Detaillierte Figur: Glieder in 2 Abschnitten mit Kontur, Hände, Füße, Rumpf, schattierter Kopf, Bodenschatten */
+  const P0=parent||scene;
+  const shadow=el("ellipse",{rx:60,ry:11,fill:"#000",opacity:.55,filter:"url(#blur8)"},P0);
+  const g=el("g",{filter:"url(#glow)"},P0);
+  const mk=(tag,a)=>el(tag,Object.assign({fill:"none","stroke-linecap":"round","stroke-linejoin":"round"},a),g);
+  const limb=()=>({o:mk("polyline",{}),f:mk("polyline",{}),j:el("circle",{r:0},g)});
+  const legB=limb(),armB=limb();
+  const torsoO=mk("polyline",{}),torsoF=mk("polyline",{}),torsoS=mk("polyline",{opacity:.18});
+  const neckL=mk("line",{});
+  const head=el("circle",{r:36},g);const headHi=el("circle",{r:12,fill:"#fff",opacity:.55},g);
+  const legF=limb(),armF=limb();
+  const feet=[0,1].map(()=>el("path",{},g)),hands=[0,1].map(()=>el("circle",{},g));
+  const F={g,head,shadow,hand:[0,0]};
+  const setPL=(e,pts)=>e.setAttribute("points",pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" "));
   F.draw=o=>{const s=o.sc||1,x=o.x,yF=o.y,ph=o.ph||0,droop=o.droop||0,look=o.look||0,col=o.col||C.white,lean=o.lean||0,sit=o.sit||0,run=o.run||0;
+    const face=o.face??(look<-.2?-1:1);
     const hipY=yF-lerp(118,o.chair?112:70,sit)*s, hip=[x,hipY];
     const neck=[x+(droop*8+look*4+lean*30)*s,hipY-(118-droop*6)*s];
     const legs=[0,1].map(i=>{const sg=i?-1:1, sw=Math.sin(ph+(i?Math.PI:0))*(o.stride||1);
@@ -95,24 +108,40 @@ function makeFig(parent){const g=el("g",{filter:"url(#glow)"},parent||scene);con
       const rk=[x+sw*42*s,hipY+52*s-Math.max(0,sw)*22*s], rf=[x+sw*30*s-Math.max(0,-sw)*40*s,yF-13*s-Math.max(0,sw)*46*s];
       const k=[lerp(lerp(sk[0],ck[0],sit),rk[0],run),lerp(lerp(sk[1],ck[1],sit),rk[1],run)], f=[lerp(lerp(sf[0],cf[0],sit),rf[0],run),lerp(lerp(sf[1],cf[1],sit),rf[1],run)];
       return [hip,k,f];});
-    L.legL.setAttribute("points",legs[0].map(p=>p.join(",")).join(" "));L.legR.setAttribute("points",legs[1].map(p=>p.join(",")).join(" "));
-    L.body.setAttribute("points",[hip,neck].map(p=>p.join(",")).join(" "));
     const hx=neck[0]+(droop*16+look*12+lean*12)*s, hy=neck[1]-(50-droop*14)*s;
     const sh=[neck[0],neck[1]+20*s];const rs=Math.sin(ph)*run;
-    const arm=(side,raise,extra)=>{let a=side<0?lerp(Math.PI/2+.38,-Math.PI+Math.PI/5.2,raise):lerp(Math.PI/2-.38,-Math.PI/5.2,raise);a+=side*rs*.9*-1;
-      let e=[sh[0]+Math.cos(a)*55*s,sh[1]+Math.sin(a)*55*s],h=[sh[0]+Math.cos(a)*108*s,sh[1]+Math.sin(a)*108*s];
+    const arm=(side,raise)=>{let a=side<0?lerp(Math.PI/2+.38,-Math.PI+Math.PI/5.2,raise):lerp(Math.PI/2-.38,-Math.PI/5.2,raise);a+=side*rs*.9*-1;
+      let e=[sh[0]+Math.cos(a+side*.12)*55*s,sh[1]+Math.sin(a+side*.12)*55*s],h=[sh[0]+Math.cos(a)*104*s,sh[1]+Math.sin(a)*104*s];
       const mix=(k,E,H)=>{if(!k)return;e=[lerp(e[0],E[0],k),lerp(e[1],E[1],k)];h=[lerp(h[0],H[0],k),lerp(h[1],H[1],k)];};
       mix(o.cover||0,[sh[0]+side*48*s,sh[1]+30*s],[hx+side*12*s,hy+6*s]);
       mix(o.work||0,[sh[0]+40*s,sh[1]+50*s],[sh[0]+95*s,sh[1]+40*s+Math.sin((o.t||0)*20+side)*8*s]);
+      mix(o.chin&&side>0?o.chin:0,[sh[0]+40*s,sh[1]+50*s],[hx+14*s,hy+34*s]);
       if(side>0){mix(o.point||0,[sh[0]+55*s,sh[1]-5*s],[sh[0]+110*s,sh[1]-15*s]);
         mix(o.headTouch||0,[sh[0]+55*s,sh[1]-20*s],[hx+28*s,hy-18*s]);
         mix(o.write||0,[sh[0]+45*s,sh[1]+45*s],[sh[0]+90*s+Math.sin((o.t||0)*14)*10*s,sh[1]+70*s]);
         mix(o.hold||0,[sh[0]+50*s,sh[1]+40*s],[sh[0]+88*s,sh[1]+10*s]);}
+      if(side<0)mix(o.holdL||0,[sh[0]-50*s,sh[1]+40*s],[sh[0]-88*s,sh[1]+10*s]);
       return [sh,e,h];};
     const aL=arm(-1,o.raiseL||0),aR=arm(1,o.raise||0);F.hand=aR[2];F.handL=aL[2];
-    L.armL.setAttribute("points",aL.map(p=>p.join(",")).join(" "));L.armR.setAttribute("points",aR.map(p=>p.join(",")).join(" "));
+    const back=mixHex(col,"#000000",.22), rim=mixHex(col,"#000000",.55), W=24*s, O=W+6*s;
+    const styleLimb=(L,pts,c)=>{setPL(L.o,pts);setPL(L.f,pts);L.o.setAttribute("stroke",rim);L.o.setAttribute("stroke-width",O);L.f.setAttribute("stroke",c);L.f.setAttribute("stroke-width",W);
+      L.j.setAttribute("cx",pts[1][0]);L.j.setAttribute("cy",pts[1][1]);L.j.setAttribute("r",(W*.5).toFixed(1));L.j.setAttribute("fill",c);};
+    styleLimb(legB,legs[0],back);styleLimb(armB,aL,back);
+    const tp=[hip,[lerp(hip[0],neck[0],.5),lerp(hip[1],neck[1],.5)],[neck[0],neck[1]+8*s]];
+    setPL(torsoO,tp);setPL(torsoF,tp);torsoO.setAttribute("stroke",rim);torsoO.setAttribute("stroke-width",44*s);torsoF.setAttribute("stroke",col);torsoF.setAttribute("stroke-width",38*s);
+    setPL(torsoS,[[hip[0]+10*s*face*-1,hip[1]-4*s],[neck[0]+10*s*face*-1,neck[1]+16*s]]);torsoS.setAttribute("stroke","#000");torsoS.setAttribute("stroke-width",12*s);
+    neckL.setAttribute("x1",neck[0]);neckL.setAttribute("y1",neck[1]+6*s);neckL.setAttribute("x2",lerp(neck[0],hx,.6));neckL.setAttribute("y2",lerp(neck[1],hy,.6));neckL.setAttribute("stroke",col);neckL.setAttribute("stroke-width",16*s);
+    styleLimb(legF,legs[1],col);styleLimb(armF,aR,col);
+    [[legs[0][2],back],[legs[1][2],col]].forEach(([p,c],i)=>{const fx=p[0],fy=p[1]+4*s;const L2=26*s*face;
+      feet[i].setAttribute("d",`M${fx-8*s*face},${fy-9*s} L${fx+L2*.7},${fy-9*s} Q${fx+L2},${fy-9*s} ${fx+L2},${fy} Q${fx+L2},${fy+8*s} ${fx+L2*.7},${fy+8*s} L${fx-8*s*face},${fy+8*s} Q${fx-14*s*face},${fy} ${fx-8*s*face},${fy-9*s} Z`);
+      feet[i].setAttribute("fill",c);feet[i].setAttribute("stroke",rim);feet[i].setAttribute("stroke-width",3*s);});
+    [[aL[2],back],[aR[2],col]].forEach(([p,c],i)=>{hands[i].setAttribute("cx",p[0]);hands[i].setAttribute("cy",p[1]);hands[i].setAttribute("r",(15*s).toFixed(1));hands[i].setAttribute("fill",c);hands[i].setAttribute("stroke",rim);hands[i].setAttribute("stroke-width",3*s);});
     head.setAttribute("cx",hx);head.setAttribute("cy",hy);head.setAttribute("r",36*s);
-    [L.legL,L.legR,L.armL,L.armR,L.body].forEach(l=>{l.setAttribute("stroke",col);l.setAttribute("stroke-width",26*s);});head.setAttribute("fill",o.blush?mixHex(col,"#FF6B5E",o.blush*.75):col);};
+    head.setAttribute("fill",o.blush?mixHex(col,"#FF6B5E",o.blush*.75):(col===C.white?"url(#headShade)":col));head.setAttribute("stroke",rim);head.setAttribute("stroke-width",4*s);
+    headHi.setAttribute("cx",hx-12*s*face);headHi.setAttribute("cy",hy-14*s);headHi.setAttribute("r",9*s);headHi.setAttribute("opacity",col===C.white?.0:.25);
+    const air=Math.max(0,GY-yF);shadow.setAttribute("cx",x);shadow.setAttribute("cy",GY+4);shadow.setAttribute("rx",(64*s*(1-Math.min(.6,air/400))).toFixed(1));
+    shadow.setAttribute("opacity",(yF>GY+20||yF<GY-400?0:.5*(1-Math.min(.8,air/300))).toFixed(3));
+  };
   return F;}
 function pill(parent,x,y,str,col,w,size=22,h=52){const g=el("g",{opacity:0},parent);
   el("rect",{x:-w/2,y:-h/2,width:w,height:h,rx:h/2,fill:col===C.gold?"rgba(245,184,61,.08)":col===C.red?"rgba(255,69,58,.07)":"rgba(255,255,255,.04)",stroke:col,"stroke-width":3.5},g);

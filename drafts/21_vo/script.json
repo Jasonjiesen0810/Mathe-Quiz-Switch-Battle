@@ -1,0 +1,67 @@
+{
+ "voice": "af_bella",
+ "speed": 0.98,
+ "duration": 46,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "Money doesn't grow just because you refuse to spend it.",
+     "pause": 0.35,
+     "speed": 0.93
+    },
+    {
+     "text": "You save every coin. You lock it away. You feel safe.",
+     "pause": 0.3
+    },
+    {
+     "text": "And everyone calls it the smartest financial decision.",
+     "pause": 0.35
+    },
+    {
+     "text": "But here's what nobody tells you:",
+     "pause": 0.2,
+     "speed": 0.95
+    },
+    {
+     "text": "saving money is not the same as building wealth.",
+     "pause": 0.45,
+     "speed": 0.92
+    },
+    {
+     "text": "A locked piggy bank can only protect what you already have. It can't make it grow.",
+     "pause": 0.35
+    },
+    {
+     "text": "The people who move ahead spend differently.",
+     "pause": 0.25
+    },
+    {
+     "text": "Not on things that lose value, but on things that pay them back.",
+     "pause": 0.35
+    },
+    {
+     "text": "A course that teaches a skill. A book. A tool that saves you hours.",
+     "pause": 0.35
+    },
+    {
+     "text": "Your best investment is often the one you make in yourself.",
+     "pause": 0.4,
+     "speed": 0.93
+    },
+    {
+     "text": "So keep saving.",
+     "pause": 0.2,
+     "speed": 0.92
+    },
+    {
+     "text": "But spend on what makes you grow.",
+     "pause": 0,
+     "speed": 0.9
+    }
+   ]
+  }
+ ]
+}

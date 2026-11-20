@@ -20,3 +20,15 @@ Muster TON → SATZ → TON → SATZ: jeder Sprechsatz beginnt direkt nach einem
 - fdream – Thelema: Video 4 (Drop Song 13,555 s = Video 0)
 - Bevozn – Devil Music: Video 6, 8 (Drop Song 44,455 s; erster Drop 24,06 s)
 - SOPHIE – VYZEE: Video 7 (Start 0, Energie 13,8 s)
+
+## Neue Songs (Runde 2)
+| Nr | Datei | Stimmung / wann benutzen | Start / Highlight |
+|----|-------|--------------------------|-------------------|
+| 7 | s7_lost_soul.mp3 (NBSPLV – The Lost Soul Down × Lost Soul) | tiefgründig, spannungsvoll | Start 0 s; gleichmäßiger Puls ~0,67 s |
+| 8 | s8_struct.mp3 (UdieNnx – STRUCT, Slowed) | Plot-Twist / Spannungsaufbau | Highlight 1:24 (stärkster Einsatz 83,5 s) |
+| 9 | s9_lilacs.mp3 (azrxel & abxddon – lilacs, slowed) | etwas traurige Motivation | Start 0 s |
+| 10 | s10_still_love_you.mp3 (GLM-RST – still love you, slowed) | Erfolg, "LARP", Verbildlichung von Erfolg | Highlight 1:17 (Einsatz 77,9 s) |
+| 11 | s11_worry.mp3 (LONOWN – worry / One Summer Night) | Erfolg, "endlich geschafft", Ausatmen, Zeit danach | Highlight 7 s (Einsatz 6,8 s) |
+| 12 | s12_insonamia.mp3 (INSONAMIA, Slowed + Reverb) | hartes Arbeiten, dunkel, Spannung, Kampf | Start 0 s |
+| 13 | s13_disgracemode.mp3 (STAKILLAZ – DISGRACEMODE, Ultra Slowed) | Spannungsaufbau, "bald schaffe ich es"; ab 30 s Tempo hoch = der Plan ging auf | Start 0 s, Wechsel 29,65 s |
+| 14 | s14_fallen_angel.mp3 (fdream – Fallen Angel) | positives Arbeiten, alles läuft nach Plan | Beat-Drop 25 s |

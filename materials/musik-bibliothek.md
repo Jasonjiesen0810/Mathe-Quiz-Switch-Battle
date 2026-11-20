@@ -31,4 +31,4 @@ Muster TON → SATZ → TON → SATZ: jeder Sprechsatz beginnt direkt nach einem
 | 11 | s11_worry.mp3 (LONOWN – worry / One Summer Night) | Erfolg, "endlich geschafft", Ausatmen, Zeit danach | Highlight 7 s (Einsatz 6,8 s) |
 | 12 | s12_insonamia.mp3 (INSONAMIA, Slowed + Reverb) | hartes Arbeiten, dunkel, Spannung, Kampf | Start 0 s |
 | 13 | s13_disgracemode.mp3 (STAKILLAZ – DISGRACEMODE, Ultra Slowed) | Spannungsaufbau, "bald schaffe ich es"; ab 30 s Tempo hoch = der Plan ging auf | Start 0 s, Wechsel 29,65 s |
-| 14 | s14_fallen_angel.mp3 (fdream – Fallen Angel) | positives Arbeiten, alles läuft nach Plan | Beat-Drop 25 s |
+| 14 | s14_fallen_angel.mp3 (fdream – Fallen Angel) | positives Arbeiten, alles läuft nach Plan | Beat-Drop 25,6 s |

@@ -108,3 +108,7 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Die ersten 3 Sekunden entscheiden: Hook-TEXT + starkes BILD schon im allerersten Frame (kein langsames Einblenden)
 - Spätestens alle 2–3 Sekunden etwas NEUES: neues Bild, neue Bewegung, neuer Text, Kamera-Wechsel
 - Keine Leerlauf-Momente; Pausen nur bewusst als Spannung (max. ~1 s)
+
+## Aussprache (Kokoro)
+- Mehrdeutige Wörter vor dem Export prüfen: python3 -c "from kokoro_onnx.tokenizer import Tokenizer;print(Tokenizer().phonemize('…','en-us'))"
+- "live" (wohnen) am Satzende wird als /laɪv/ gelesen → im Sprechertext "liv" schreiben (Bildtext bleibt "LIVE")

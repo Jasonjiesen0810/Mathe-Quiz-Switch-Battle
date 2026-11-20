@@ -32,3 +32,4 @@ Muster TON → SATZ → TON → SATZ: jeder Sprechsatz beginnt direkt nach einem
 | 12 | s12_insonamia.mp3 (INSONAMIA, Slowed + Reverb) | hartes Arbeiten, dunkel, Spannung, Kampf | Start 0 s |
 | 13 | s13_disgracemode.mp3 (STAKILLAZ – DISGRACEMODE, Ultra Slowed) | Spannungsaufbau, "bald schaffe ich es"; ab 30 s Tempo hoch = der Plan ging auf | Start 0 s, Wechsel 29,65 s |
 | 14 | s14_fallen_angel.mp3 (fdream – Fallen Angel) | positives Arbeiten, alles läuft nach Plan | Beat-Drop 25,6 s |
+| 15 | s15_want_to_love.mp3 (Aloboi – Want To Love, Just Raw) | Realization – "der Hustle beginnt" | Start 0 s (direkt) |

@@ -119,3 +119,8 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Shake bei Aufprall, Schock, Drop, Stempel; Whip-Pan (Reißschwenk) als Szenenwechsel; leichtes Kippen (tilt) bei Unruhe/Zweifel
 - Perspektiv-Wechsel nutzen: Draufsicht (schräg von oben) mit Raster von Tischen/Figuren, Spotlight-Kegel hebt EINE Person heraus
 - Bausteine in drafts/lib/core.js: K.camFX.drift/shake/punch/dolly/whip/tilt
+
+## Musik-Lautstärke (Vorschau)
+- Musik deutlich hörbar: Grundlautstärke ×2, nur leichtes Absenken unter der Stimme (ratio 2.5), Gesamt −13 LUFS
+- Neu mischen ohne Neu-Rendern: tools/remix.sh (Parameter je Video siehe Textdateien / musik.md)
+- TikTok-Tipp: Sound auf ca. 40–50 % statt 20–30 %

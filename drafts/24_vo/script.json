@@ -1,10 +1,6 @@
 {
- "voice": {
-  "am_liam": 0.62,
-  "am_puck": 0.38
- },
- "speed": 1.02,
- "sentence_pause": 0.6,
+ "voice": "am_liam",
+ "modes": 1,
  "duration": "auto",
  "tail": 2.8,
  "lines": [
@@ -14,24 +10,12 @@
    "parts": [
     {
      "text": "This is what it feels like when you finally make it.",
-     "pause": 0.8,
-     "pitches": [
-      0.98
-     ],
-     "gains": [
-      1.0
-     ],
-     "speed": 0.95
+     "mode": "quote"
     },
     {
      "text": "Look how far you've come.",
-     "pause": 0,
-     "pitches": [
-      1.04
-     ],
-     "gains": [
-      1.05
-     ]
+     "mode": "normal",
+     "pause": 0
     }
    ]
   },
@@ -43,84 +27,50 @@
    "parts": [
     {
      "text": "You breathe out.",
-     "pause": 0.9,
-     "pitches": [
-      0.95
-     ],
-     "gains": [
-      1.0
-     ],
-     "speed": 0.92
+     "mode": "quote"
     },
     {
      "text": "All the early mornings. All the no's. All the nights nobody saw.",
-     "pause": 0.9,
-     "pitches": [
-      0.98,
-      1.02,
-      0.96
-     ]
+     "mode": "story"
     },
     {
      "text": "And here's the strange part.",
-     "pause": 0.6,
-     "pitches": [
-      1.03
-     ],
-     "gains": [
-      1.05
-     ]
+     "mode": "normal",
+     "pause": 0.6
     },
     {
      "text": "It's not the money you remember. It's not the applause.",
-     "pause": 0.8,
-     "pitches": [
-      1.0,
-      1.03
-     ]
+     "mode": "normal"
     },
     {
      "text": "It's the version of you that refused to quit.",
-     "pause": 1.0,
-     "pitches": [
-      1.06
-     ],
-     "gains": [
-      1.2
-     ]
-    },
-    {
-     "text": "Success was never the finish line. It was who you became on the way there.",
-     "pause": 0.9,
-     "pitches": [
-      1.0,
-      1.05
-     ],
-     "gains": [
-      1,
-      1.1
-     ]
-    },
-    {
-     "text": "So keep going.",
-     "pause": 0.7,
-     "pitches": [
-      1.05
-     ],
+     "mode": "quote",
      "gains": [
       1.15
      ]
     },
     {
-     "text": "One day, you'll take that breath too.",
-     "pause": 0,
-     "pitches": [
-      0.97
+     "text": "Success was never the finish line. It was who you became on the way there.",
+     "mode": "quote",
+     "gains": [
+      1.05
+     ]
+    },
+    {
+     "text": "So keep going.",
+     "mode": "normal",
+     "gains": [
+      1.1
      ],
+     "pause": 0.7
+    },
+    {
+     "text": "One day, you'll take that breath too.",
+     "mode": "quote",
      "gains": [
       1.05
      ],
-     "speed": 0.95
+     "pause": 0
     }
    ]
   }

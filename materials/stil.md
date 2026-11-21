@@ -137,3 +137,9 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
   betonte Sätze lauter ("gains" 1.1–1.25); Ausrufezeichen bei Aufforderungen
 - Männerstimme = Mischung {"am_liam":0.62,"am_puck":0.38} + "confident"-Bearbeitung (tiefer, voller)
 - Zeiten automatisch: Abschnitt "at":"auto" (+ "min_at" für Musik-Wechsel), "duration":"auto"
+
+## Sprechweise – Update (Feedback zu 22–24)
+- KEINE künstliche Tonhöhen-Verschiebung mehr (klang unnatürlich) – Stimme pur (am_liam), Betonung nur über Tempo, Pausen, Satzzeichen, leichte Lautstärke
+- Tempo nach Inhalt ("modes"): quote = tiefgründig/Zitat → langsam (0.9) + lange Pausen (~1 s nach Satz, 1,2 s danach)
+  story = lange Erzählung → schneller (1.12) + kurze Pausen; normal dazwischen
+- Musik leiser: Grundlautstärke ×1.25 statt ×2, stärkeres Absenken unter der Stimme

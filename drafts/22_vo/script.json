@@ -1,10 +1,6 @@
 {
- "voice": {
-  "am_liam": 0.62,
-  "am_puck": 0.38
- },
- "speed": 1.02,
- "sentence_pause": 0.6,
+ "voice": "am_liam",
+ "modes": 1,
  "duration": "auto",
  "tail": 2.8,
  "lines": [
@@ -14,67 +10,35 @@
    "parts": [
     {
      "text": "Nobody is going to clap for you at the beginning.",
-     "pause": 0.9,
-     "pitches": [
-      1.0
-     ],
+     "mode": "quote",
      "gains": [
       1.1
-     ],
-     "speed": 0.97
+     ]
     },
     {
      "text": "When you start, it's quiet. No likes. No support. Just you, and an empty room.",
-     "pause": 0.8,
-     "pitches": [
-      0.98,
-      1.0,
-      1.03,
-      0.95
-     ]
+     "mode": "story"
     },
     {
-     "text": "Your friends don't get it. Your family asks when you'll get a real job?",
-     "pause": 0.8,
-     "pitches": [
-      1.0,
-      1.07
-     ],
-     "gains": [
-      1,
-      1.1
-     ]
+     "text": "Your friends don't get it. Your family asks when you'll get a real job.",
+     "mode": "story"
     },
     {
      "text": "Some days, you'll ask yourself if it's even worth it.",
-     "pause": 0.9,
-     "pitches": [
-      0.95
-     ],
-     "gains": [
-      0.95
-     ]
+     "mode": "normal"
     },
     {
-     "text": "Keep going anyway!",
-     "pause": 0.7,
-     "pitches": [
-      1.08
-     ],
+     "text": "Keep going anyway.",
+     "mode": "quote",
      "gains": [
-      1.2
+      1.15
      ],
-     "speed": 0.98
+     "pause": 0.6
     },
     {
      "text": "Even when it feels like nobody cares.",
-     "pause": 0,
-     "pitches": [
-      0.96
-     ],
-     "gains": [
-      0.95
-     ]
+     "mode": "normal",
+     "pause": 0
     }
    ]
   },
@@ -85,98 +49,65 @@
    "parts": [
     {
      "text": "And then one day, it hits you.",
-     "pause": 0.7,
-     "pitches": [
-      1.04
-     ],
-     "gains": [
-      1.1
-     ],
-     "speed": 0.96
-    },
-    {
-     "text": "They were never supposed to clap.",
-     "pause": 0.7,
-     "pitches": [
-      1.0
-     ],
+     "mode": "quote",
      "gains": [
       1.05
      ]
     },
     {
-     "text": "This was never their dream. It was yours!",
-     "pause": 0.9,
-     "pitches": [
-      1.0,
-      1.1
-     ],
-     "gains": [
-      1,
-      1.25
-     ]
+     "text": "They were never supposed to clap.",
+     "mode": "quote"
     },
     {
-     "text": "So stop waiting for applause.",
-     "pause": 0.6,
-     "pitches": [
-      1.03
-     ],
-     "gains": [
-      1.1
-     ]
-    },
-    {
-     "text": "Post the video anyway!",
-     "pause": 0.45,
-     "pitches": [
-      1.03
-     ],
-     "gains": [
-      1.1
-     ]
-    },
-    {
-     "text": "Write the page anyway!",
-     "pause": 0.45,
-     "pitches": [
-      1.06
-     ],
+     "text": "This was never their dream. It was yours.",
+     "mode": "quote",
      "gains": [
       1.15
      ]
     },
     {
-     "text": "Show up anyway!",
-     "pause": 0.9,
-     "pitches": [
-      1.1
-     ],
-     "gains": [
-      1.25
-     ]
-    },
-    {
-     "text": "One day, they will clap.",
-     "pause": 0.7,
-     "pitches": [
-      1.0
-     ],
-     "gains": [
-      1.0
-     ],
-     "speed": 0.97
-    },
-    {
-     "text": "But by then, you won't need it.",
-     "pause": 0,
-     "pitches": [
-      0.95
-     ],
+     "text": "So stop waiting for applause.",
+     "mode": "normal",
      "gains": [
       1.05
      ],
-     "speed": 0.93
+     "pause": 0.55
+    },
+    {
+     "text": "Post the video anyway.",
+     "mode": "story",
+     "gains": [
+      1.05
+     ],
+     "pause": 0.4
+    },
+    {
+     "text": "Write the page anyway.",
+     "mode": "story",
+     "gains": [
+      1.1
+     ],
+     "pause": 0.4
+    },
+    {
+     "text": "Show up anyway!",
+     "mode": "normal",
+     "gains": [
+      1.2
+     ],
+     "pause": 1.0
+    },
+    {
+     "text": "One day, they will clap.",
+     "mode": "quote"
+    },
+    {
+     "text": "But by then, you won't need it.",
+     "mode": "quote",
+     "gains": [
+      1.05
+     ],
+     "pause": 0
     }
    ]
   }

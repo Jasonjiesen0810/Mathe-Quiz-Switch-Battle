@@ -3,8 +3,8 @@
 <body>
 <script>
 /* DISGRACEMODE ab 0 – Spannungsaufbau, ab 29,65 s Tempo hoch ("der Plan ging auf") */
-const A=[0.15,4.03,7.74,10.89,16.35,19.7,22.51,25.19], B=[29.7,31.59,34.5,39.16,42.46];
-const DUR=46.4;
+constA=[0.15,4.53,7.86,11.1,16.1,19.15,22.22,25.63],B=[29.7,31.82,34.59,39.57,44.29];
+const DUR=48.4;
 const SW=29.65;
 window.VIDEO={DUR:DUR,seed:231,audio:"23_vo/mix.wav",
 HEADS:[
@@ -18,8 +18,8 @@ HEADS:[
  {a:A[7]-.05,b:SW-.1,lines:[["TOMORROW,","THE","CHOICE"],["COMES",{t:"AGAIN.",red:1}]]},
  {a:B[0]-.05,b:B[1]-.1,lines:[["MAKE","THE",{t:"RIGHT",gold:1}],["ONE","ONCE."]]},
  {a:B[1]-.05,b:B[2]-.1,lines:[["AGAIN."],[{t:"AND AGAIN.",mark:1}]]},
- {a:B[2]-.05,b:36.73,lines:[["A","WEEK:"],[{t:"A HABIT.",gold:1}]]},
- {a:36.83,b:B[3]-.1,lines:[["A","YEAR:"],[{t:"A DIFFERENT LIFE.",mark:1}]]},
+ {a:B[2]-.05,b:36.98,lines:[["A","WEEK:"],[{t:"A HABIT.",gold:1}]]},
+ {a:37.08,b:B[3]-.1,lines:[["A","YEAR:"],[{t:"A DIFFERENT LIFE.",mark:1}]]},
  {a:B[3]-.05,b:B[4]-.1,lines:[["ONE","DECISION."],["EVERY",{t:"MORNING.",gold:1}]]},
  {a:B[4]-.05,b:DUR-.5,lines:[[{t:"MAKE IT TOMORROW.",mark:1}]]},
 ],
@@ -89,7 +89,7 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K
  S.sleeper.setAttribute("transform",`translate(${Math.sin(t*2)*4},0)`);
  if(rm>0)op=1-rm;
  // choices
- const pairs=[A[3],A[3]+1.75,A[3]+3.6];
+ const pairs=[A[3],A[3]+1.6,A[3]+3.2];
  S.choices.forEach((c,i)=>{const k=win(t,pairs[i],A[4]-.05,.25,.25);c.g.setAttribute("opacity",k.toFixed(3));c.g.setAttribute("transform",`translate(540,${880+i*150})`);
    const pick=t>pairs[i]+.5;c.lr.setAttribute("stroke",pick?C.red:C.grey);c.lr.setAttribute("fill",pick?"rgba(255,69,58,.1)":"#0b0b0d");});
  if(sw(A[3],A[4])){op=1;o={x:540,y:GY,look:Math.sin((t-A[3])*4)*.8,droop:.2};}

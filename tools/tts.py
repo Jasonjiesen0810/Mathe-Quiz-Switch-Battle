@@ -69,16 +69,19 @@ def main():
         parts = line.get('parts') or [{'text': line['text']}]
         chunks, starts, pos = [], [], 0.0
         for p in parts:
+            MODES = {'quote': dict(speed=0.9, sp=0.95, pause=1.2), 'story': dict(speed=1.12, sp=0.28, pause=0.55), 'normal': dict(speed=1.02, sp=0.5, pause=0.8)}
+            m = MODES[p.get('mode', 'normal')] if script.get('modes') else {}
+            if m and 'pause' not in p: p['pause'] = m['pause']
             v = voice_of(k, p.get('voice', line.get('voice', script['voice'])))
-            sp = p.get('speed', line.get('speed', script.get('speed', 1.0)))
-            sents = split_sentences(p['text']) if script.get('sentence_pause') else [p['text']]
+            sp = p.get('speed', m.get('speed', line.get('speed', script.get('speed', 1.0))))
+            sents = split_sentences(p['text']) if (script.get('sentence_pause') or script.get('modes')) else [p['text']]
             pitches = p.get('pitches') or [p.get('pitch', 1.0)] * len(sents)
             gains = p.get('gains') or [p.get('gain', 1.0)] * len(sents)
             starts.append(round(line.get('at', 0) + pos, 2))
             for si, st in enumerate(sents):
                 a, sr = k.create(st, voice=v, speed=sp, lang='en-us')
                 a = pitch_shift(trim(a), pitches[min(si, len(pitches) - 1)]) * gains[min(si, len(gains) - 1)]
-                gap = script.get('sentence_pause', 0) if si < len(sents) - 1 else p.get('pause', 0)
+                gap = p.get('sp', m.get('sp', script.get('sentence_pause', 0))) if si < len(sents) - 1 else p.get('pause', 0)
                 pos += len(a) / sr + gap
                 chunks += [a, np.zeros(int(sr * gap), dtype=np.float32)]
         audio = np.concatenate(chunks)

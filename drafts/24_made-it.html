@@ -3,9 +3,10 @@
 <body>
 <script>
 /* Song 11 "worry" ab 0 – Highlight 6,82 s (Ausatmen) */
-const A=[0.15,3.22], B=[6.6,8.14,11.91,13.82,16.83,19.75,24.4,25.9];
+const A=[0.15,3.72], B=[6.6,8.64,14.57,16.63,20.92,24.11,29.41,31.23];
+const DUR=36.0;
 const HI=6.82;
-window.VIDEO={DUR:31,seed:241,audio:"24_vo/mix.wav",
+window.VIDEO={DUR:DUR,seed:241,audio:"24_vo/mix.wav",
 HEADS:[
  {a:-1,b:A[1]-.1,lines:[["THIS","IS","WHAT","IT"],["FEELS","LIKE","TO",{t:"MAKE",gold:1},{t:"IT.",gold:1}]]},
  {a:A[1]-.05,b:B[0]-.1,lines:[["LOOK","HOW","FAR"],["YOU'VE",{t:"COME.",gold:1}]]},
@@ -16,7 +17,7 @@ HEADS:[
  {a:B[4]-.05,b:B[5]-.1,lines:[["IT'S","THE","YOU","THAT"],[{t:"REFUSED TO QUIT.",mark:1}]]},
  {a:B[5]-.05,b:B[6]-.1,lines:[["NOT","THE","FINISH","LINE."],["WHO","YOU",{t:"BECAME.",gold:1}]]},
  {a:B[6]-.05,b:B[7]-.1,lines:[["SO","KEEP"],[{t:"GOING.",gold:1}]]},
- {a:B[7]-.05,b:30.5,lines:[["ONE","DAY,","YOU'LL","TAKE"],[{t:"THAT BREATH TOO.",mark:1}]]},
+ {a:B[7]-.05,b:DUR-.5,lines:[["ONE","DAY,","YOU'LL","TAKE"],[{t:"THAT BREATH TOO.",mark:1}]]},
 ],
 LABELS:[{a:B[1]+1.6,b:B[2]-.1,text:"The nights nobody saw."}],
 build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
@@ -69,7 +70,7 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K
  if(ck>0&&ck<1){S.cloud.setAttribute("opacity",(.6*clamp(ck*6)*(1-eIO(P(ck,.55,1)))).toFixed(3));S.cloud.setAttribute("transform",`translate(${600+ck*90},${790-ck*80}) scale(${(.15+.9*eOut(clamp(ck*3))).toFixed(3)})`);}else S.cloud.setAttribute("opacity",0);
  // memories along the trail (camera pans down)
  const pos=[[300,1250],[780,1500],[320,1780]];
- S.mems.forEach((m,i)=>{const at=B[1]+.3+i*1.15;const k=eBack(P(t,at,at+.4))*(1-eIO(P(t,B[2]-.2,B[2]+.2)));m.setAttribute("opacity",clamp(k).toFixed(3));m.setAttribute("transform",`translate(${pos[i][0]},${pos[i][1]}) rotate(${[-8,6,-4][i]}) scale(${(.7+.3*clamp(k)).toFixed(3)})`);});
+ S.mems.forEach((m,i)=>{const at=B[1]+.3+i*1.9;const k=eBack(P(t,at,at+.4))*(1-eIO(P(t,B[2]-.2,B[2]+.2)));m.setAttribute("opacity",clamp(k).toFixed(3));m.setAttribute("transform",`translate(${pos[i][0]},${pos[i][1]}) rotate(${[-8,6,-4][i]}) scale(${(.7+.3*clamp(k)).toFixed(3)})`);});
  // strange part: look down; money/applause float up and fade
  if(sw(B[2],B[4]))o={x:540,y:SUM,droop:.1,col:C.gold,look:.3,headTouch:sw(B[2],B[3])?eIO(P(t,B[2]+.3,B[2]+.7)):0};
  [[S.coin,B[3]+.2,400],[S.clap,B[3]+1.6,680]].forEach(([g,at,x])=>{const k=P(t,at,at+2.6);g.setAttribute("opacity",(k>0&&k<1?Math.min(1,k*5)*(1-P(k,.6,1)):0).toFixed(3));g.setAttribute("transform",`translate(${x},${960-k*300}) rotate(${k*30})`);});
@@ -84,9 +85,9 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K
  S.tapeL.setAttribute("d",`M300,${SUM-60} Q${430-sn*60},${SUM-60+sn*70} ${490-sn*120},${SUM-50+sn*140}`);S.tapeR.setAttribute("d",`M780,${SUM-60} Q${650+sn*60},${SUM-60+sn*70} ${590+sn*120},${SUM-50+sn*140}`);
  // keep going -> place for YOU
  if(t>=B[6]){const g=eIO(P(t,B[6]+.2,B[7]));o={x:lerp(540,625,g),y:SUM+(lerp(540,625,g)-540)*1.79,lean:.2,col:C.gold,droop:-.1,look:-1,raise:t>B[7]?.6:0};}
- const yk=win(t,B[7]+.1,31,.4,.6);S.you.setAttribute("opacity",(yk*(.7+.3*Math.sin(t*4))).toFixed(3));S.youT.setAttribute("opacity",yk.toFixed(3));
+ const yk=win(t,B[7]+.1,DUR,.4,.6);S.you.setAttribute("opacity",(yk*(.7+.3*Math.sin(t*4))).toFixed(3));S.youT.setAttribute("opacity",yk.toFixed(3));
  S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));S.fig.shadow.setAttribute("opacity",0);
- S.rays.setAttribute("opacity",(win(t,HI,B[1]+1,.1,.8)*.8+win(t,B[7],31,.3,.6)*.6).toFixed(3));S.rays.setAttribute("transform",`translate(540,880) rotate(${t*5})`);
+ S.rays.setAttribute("opacity",(win(t,HI,B[1]+1,.1,.8)*.8+win(t,B[7],DUR,.3,.6)*.6).toFixed(3));S.rays.setAttribute("transform",`translate(540,880) rotate(${t*5})`);
  // camera: start tight on summit, pull back, pan down the trail, rise back up
  const c=K.cam;
  if(t<A[1]){c.sc=lerp(1.35,1.2,eOut(P(t,0,A[1])));c.cx=560;c.cy=lerp(980,960,P(t,0,A[1]));}
@@ -94,7 +95,7 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K
  if(sw(B[1],B[2])){const k=eIO(P(t,B[1],B[2]));c.sc=lerp(.82,1.0,k);c.cy=lerp(1200,1650,k);c.cx=lerp(540,520,k);}
  if(sw(B[2],B[4])){const k=eIO(P(t,B[2],B[2]+1.2));c.sc=lerp(1.0,1.3,k);c.cy=lerp(1650,900,k);c.cx=540;}
  if(sw(B[4],B[6])){const k=eIO(P(t,B[4],B[5]));c.sc=lerp(1.3,.92,k);c.cy=lerp(900,1150,k);}
- if(t>=B[6]){const k=eIO(P(t,B[6],30.5));c.sc=lerp(.95,1.2,k);c.cy=lerp(1100,900,k);c.cx=lerp(540,600,k);}
+ if(t>=B[6]){const k=eIO(P(t,B[6],DUR-.5));c.sc=lerp(.95,1.2,k);c.cy=lerp(1100,900,k);c.cx=lerp(540,600,k);}
  camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.04,7);camFX.punch(t,c,[HI],.08,3);
  camFX.shake(t,c,[B[5]+.6],8,6);
  K.flash+=K.pulses(t,[HI],5,.25)+K.pulses(t,[B[7]],8,.2);

@@ -3,24 +3,26 @@
 <body>
 <script>
 /* Song 15 "Want To Love" ab 0 – Pausen ~4 s und ~20 s, dicht ab ~33 s, Schlag 0,5 s */
-const A=[0.4,3.25,7.43,11.22,14.04,15.76], B=[20.6,22.64,24.58,27.32,32.69,34.44];
+const A=[0.4,3.79,11.35,16.33,19.88,21.79], B=[25.31,27.58,29.9,33.87,36.22,38.0,39.7,41.6,43.62];
+const DUR=48.3;
 const BP=.5, B0=.5;
-window.VIDEO={DUR:39,seed:221,audio:"22_vo/mix.wav",
+window.VIDEO={DUR:DUR,seed:221,audio:"22_vo/mix.wav",
 HEADS:[
  {a:-1,b:A[1]-.1,lines:[[{t:"NOBODY",red:1},"WILL","CLAP"],["AT","THE","BEGINNING."]]},
  {a:A[1]-.05,b:A[2]-.1,lines:[["NO","LIKES.","NO","SUPPORT."],["JUST",{t:"YOU.",gold:1}]]},
  {a:A[2]-.05,b:A[3]-.1,lines:[["“WHEN","WILL","YOU","GET"],["A",{t:"REAL",red:1},{t:"JOB?”",red:1}]]},
  {a:A[3]-.05,b:A[4]-.1,lines:[["IS","IT","EVEN"],[{t:"WORTH",red:1},{t:"IT?",red:1}]]},
  {a:A[4]-.05,b:A[5]-.1,lines:[["KEEP","GOING"],[{t:"ANYWAY.",mark:1}]]},
- {a:A[5]-.05,b:19.9,lines:[["EVEN","WHEN","NOBODY"],["CARES."]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["EVEN","WHEN","NOBODY"],["CARES."]]},
  {a:B[0]-.05,b:B[1]-.1,lines:[["THEN","ONE","DAY,"],["IT",{t:"HITS",gold:1},{t:"YOU.",gold:1}]]},
  {a:B[1]-.05,b:B[2]-.1,lines:[["THEY","WERE","NEVER"],["SUPPOSED","TO",{t:"CLAP.",gold:1}]]},
  {a:B[2]-.05,b:B[3]-.1,lines:[["NOT","THEIR","DREAM."],[{t:"YOURS.",mark:1}]]},
- {a:B[3]-.05,b:29.2,lines:[["POST","IT"],[{t:"ANYWAY.",gold:1}]]},
- {a:29.3,b:30.9,lines:[["WRITE","IT"],[{t:"ANYWAY.",gold:1}]]},
- {a:31,b:B[4]-.1,lines:[["SHOW","UP"],[{t:"ANYWAY.",gold:1}]]},
- {a:B[4]-.05,b:B[5]-.1,lines:[["ONE","DAY,","THEY"],["WILL",{t:"CLAP.",gold:1}]]},
- {a:B[5]-.05,b:38.5,lines:[["BUT","YOU","WON'T"],[{t:"NEED IT.",mark:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["STOP","WAITING","FOR"],[{t:"APPLAUSE.",red:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["POST","IT"],[{t:"ANYWAY.",gold:1}]]},
+ {a:B[5]-.05,b:B[6]-.1,lines:[["WRITE","IT"],[{t:"ANYWAY.",gold:1}]]},
+ {a:B[6]-.05,b:B[7]-.1,lines:[["SHOW","UP"],[{t:"ANYWAY.",gold:1}]]},
+ {a:B[7]-.05,b:B[8]-.1,lines:[["ONE","DAY,","THEY"],["WILL",{t:"CLAP.",gold:1}]]},
+ {a:B[8]-.05,b:DUR-.5,lines:[["BUT","YOU","WON'T"],[{t:"NEED IT.",mark:1}]]},
 ],
 LABELS:[],
 build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
@@ -68,10 +70,10 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid,camFX}={...
  const beat=(a,b,d=9,e=1)=>grid(t,B0,BP,a,b,d,e);
  let o={x:540,y:GY},op=1;
  // auditorium (0–7.4, again 32.7+)
- const au=Math.max(win(t,-1,A[2]-.05,.01,.3),win(t,B[4]-.05,39,.2,.6));
+ const au=Math.max(win(t,-1,A[2]-.05,.01,.3),win(t,B[7]-.05,DUR,.2,.6));
  S.aud.setAttribute("opacity",au.toFixed(3));S.stage.setAttribute("opacity",au.toFixed(3));S.curtL.setAttribute("opacity",au.toFixed(3));S.curtR.setAttribute("opacity",au.toFixed(3));
- S.seats.forEach(s=>{const k=eBack(P(t,B[4]+.1+s.d*.9,B[4]+.4+s.d*.9));s.person.setAttribute("opacity",clamp(k).toFixed(3));
-   const clap=t>B[4]+.5?Math.abs(Math.sin(t*14+s.d*6)):0;s.hands.setAttribute("transform",`translate(0,${-clap*8}) scale(${1-.25*clap},1)`);});
+ S.seats.forEach(s=>{const k=eBack(P(t,B[7]+.1+s.d*.9,B[7]+.4+s.d*.9));s.person.setAttribute("opacity",clamp(k).toFixed(3));
+   const clap=t>B[7]+.5?Math.abs(Math.sin(t*14+s.d*6)):0;s.hands.setAttribute("transform",`translate(0,${-clap*8}) scale(${1-.25*clap},1)`);});
  S.clapX.x=820;S.clapX.y=980;K.popAt(S.clapX,t,1.4,A[1]-.1);
  if(t<A[1])o={x:540,y:GY,look:Math.sin(t*1.6)*.7,droop:.1+.2*eIO(P(t,1.5,3))};
  // lonely desk
@@ -86,22 +88,23 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid,camFX}={...
  const qk=win(t,A[3]+.4,A[4]-.05,.25,.25);S.q.setAttribute("opacity",qk.toFixed(3));S.q.setAttribute("transform",`translate(660,${1060+Math.sin(t*3)*8}) rotate(${Math.sin(t*2)*6})`);
  if(sw(A[4],A[5])){const up=eBack(P(t,A[4],A[4]+.5));o={x:540,y:GY,sit:1-clamp(up),droop:lerp(1,-.2,clamp(up)),raise:clamp(up)*.2};}
  if(sw(A[5],B[0])){const w=P(t,A[5],B[0]);o={x:lerp(380,700,w),y:GY,ph:w*12,stride:.8,droop:.25};}
- const hb=t>17.9&&t<B[0];const beatH=hb?Math.exp(-((t-17.9)%1.1)*6):0;S.heart.setAttribute("opacity",(hb?.4+.6*beatH:0).toFixed(3));S.heart.setAttribute("transform",`translate(540,900) scale(${1+.25*beatH})`);
+ const hb=t>A[5]+1.6&&t<B[0];const beatH=hb?Math.exp(-((t-A[5]-1.6)%1.1)*6):0;S.heart.setAttribute("opacity",(hb?.4+.6*beatH:0).toFixed(3));S.heart.setAttribute("transform",`translate(540,900) scale(${1+.25*beatH})`);
  // twist
- if(sw(B[0],B[3])){const lk=eIO(P(t,B[0],B[0]+.5));o={x:540,y:GY,droop:lerp(.1,-.45,lk),raise:sw(B[2],B[3])?eIO(P(t,B[2]+.8,B[2]+1.2))*.9:0,raiseL:0,col:K.mixHex(C.white,C.gold,eIO(P(t,B[2],B[2]+.8)))};}
- const dr=win(t,B[2]-.05,B[3]+.3,.3,.3);S.dream.setAttribute("opacity",dr.toFixed(3));S.dream.setAttribute("transform","translate(560,1080)");
- S.mine.x=820;S.mine.y=860;K.popAt(S.mine,t,B[2]+1.6,B[3]);
+ if(sw(B[0],B[4])){const lk=eIO(P(t,B[0],B[0]+.5));o={x:540,y:GY,droop:lerp(.1,-.45,lk),raise:sw(B[2],B[3])?eIO(P(t,B[2]+.8,B[2]+1.2))*.9:0,raiseL:0,col:K.mixHex(C.white,C.gold,eIO(P(t,B[2],B[2]+.8)))};}
+ const dr=win(t,B[2]-.05,B[4],.3,.3);S.dream.setAttribute("opacity",dr.toFixed(3));S.dream.setAttribute("transform","translate(560,1080)");
+ S.mine.x=820;S.mine.y=860;K.popAt(S.mine,t,B[2]+1.6,B[3]+.4);
  // hustle montage on the beat
- const mi=t<29.25?0:t<30.95?1:2;const mon=sw(B[3],B[4]-.05);
+ const mi=t<B[5]?0:t<B[6]?1:2;const mon=sw(B[4],B[7]-.05);
  S.icons.forEach((g,i)=>{g.setAttribute("opacity",mon&&i===mi?1:0);g.setAttribute("transform",`translate(${[700,720,700][i]},1100) scale(${1+.08*beat(B[3],B[4])}) rotate(${(i-1)*3})`);});
- S.counter.setAttribute("opacity",mon?1:0);S.counter.textContent="DAY "+(1+Math.floor(Math.max(0,t-B[3])*9.3));
+ S.counter.setAttribute("opacity",mon?1:0);S.counter.textContent="DAY "+(1+Math.floor(Math.max(0,t-B[4])*9.3));
+ if(sw(B[3],B[4]))o={x:540,y:GY,droop:-.3,raise:.2,raiseL:.2,col:C.gold};
  if(mon){o={x:300,y:GY,work:1,t,droop:-.1,lean:.1,raise:.2};}
  // end: crowd claps, he walks on
- if(t>=B[4]){const w=eIO(P(t,B[5]+.2,38.5));o={x:lerp(540,640,w),y:GY-0,ph:w*6,droop:-.25,look:t<B[5]?Math.sin(t*2)*.5:0,col:C.gold};}
+ if(t>=B[7]){const w=eIO(P(t,B[8]+.2,DUR-.5));o={x:lerp(540,640,w),y:GY-0,ph:w*6,droop:-.25,look:t<B[8]?Math.sin(t*2)*.5:0,col:C.gold};}
  S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
  S.spot.setAttribute("opacity",(win(t,-1,A[1],.01,.3)*.9+win(t,A[4],B[0],.2,.2)*.5).toFixed(3));
- S.spotG.setAttribute("opacity",(win(t,B[0],B[3],.05,.3)+win(t,B[4],39,.2,.6)).toFixed(3));
- S.rays.setAttribute("opacity",(win(t,B[0],B[1],.05,.5)*.8+win(t,B[5],39,.1,.6)*(.4+.6*beat(B[5],39,7))).toFixed(3));S.rays.setAttribute("transform",`translate(${o.x},${GY-160}) rotate(${t*8})`);
+ S.spotG.setAttribute("opacity",(win(t,B[0],B[4],.05,.3)+win(t,B[7],DUR,.2,.6)).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,B[0],B[1],.05,.5)*.8+win(t,B[8],DUR,.1,.6)*(.4+.6*beat(B[8],DUR,7))).toFixed(3));S.rays.setAttribute("transform",`translate(${o.x},${GY-160}) rotate(${t*8})`);
  K.ground.setAttribute("opacity",(au>.5?0:1)*K.endFade);
  // camera
  const c=K.cam;
@@ -110,12 +113,12 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid,camFX}={...
  if(sw(A[2],A[3])){c.sc=1.04;c.rot+=Math.sin((t-A[2])*1.3)*3;}
  if(sw(A[3],A[4]))camFX.dolly(t,c,A[3],A[4],{sc:1.25,cx:560,cy:1260});
  if(sw(A[5],B[0])){c.sc=lerp(1.0,1.18,eIO(P(t,A[5],B[0])));c.cx=lerp(400,700,P(t,A[5],B[0]));}
- if(sw(B[0],B[3])){c.sc=lerp(1.35,1.05,eOut(P(t,B[0],B[0]+1.2)));c.cy=1150;}
- if(sw(B[3],B[4])){c.sc=1.06;c.cx=520;}
- if(t>=B[4]){c.sc=lerp(.98,1.12,eIO(P(t,B[4],38.5)));c.cy=lerp(1350,1200,eIO(P(t,B[4],38.5)));}
- camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[B[0]],.18,5);c.sc+=beat(B[3],B[4],9)*.05;
- camFX.shake(t,c,[1.4,B[0],B[4]],16,6);camFX.whip(t,c,A[1],1);camFX.whip(t,c,A[2],-1);camFX.whip(t,c,B[3],1);camFX.whip(t,c,B[4],-1);camFX.tilt(t,c,A[3],A[5],-4);
- K.flash+=K.pulses(t,[B[0]],8,.55)+beat(B[3],B[4],14,2)*.05+K.pulses(t,[B[4],B[5]],10,.25,.25);
+ if(sw(B[0],B[4])){c.sc=lerp(1.35,1.05,eOut(P(t,B[0],B[0]+1.2)));c.cy=1150;}
+ if(sw(B[4],B[7])){c.sc=1.06;c.cx=520;}
+ if(t>=B[7]){c.sc=lerp(.98,1.12,eIO(P(t,B[7],DUR-.5)));c.cy=lerp(1350,1200,eIO(P(t,B[7],DUR-.5)));}
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[B[0]],.18,5);c.sc+=beat(B[4],B[7],9)*.05;
+ camFX.shake(t,c,[1.4,B[0],B[7]],16,6);camFX.whip(t,c,A[1],1);camFX.whip(t,c,A[2],-1);camFX.whip(t,c,B[4],1);camFX.whip(t,c,B[7],-1);camFX.tilt(t,c,A[3],A[5],-4);
+ K.flash+=K.pulses(t,[B[0]],8,.55)+beat(B[4],B[7],14,2)*.05+K.pulses(t,[B[7],B[8]],10,.25,.25);
  K.dim=win(t,A[5],B[0],.6,.05)*.7+win(t,A[3],A[4],.3,.3)*.4;
 },
 };

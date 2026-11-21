@@ -130,3 +130,10 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Mann: am_liam "selbstbewusst" (ab Video 22): Tonhöhe −4,5 %, mehr Bass, schneller (speed 1.02), kurze Pausen, keine "…"
   → im VO-Ordner Datei "confident" anlegen, dann wendet tools/finish.sh die Bearbeitung an
 - Abwechseln zwischen Videos
+
+## Sprechweise (ab Video 22 überarbeitet)
+- NICHT wie eine Vorlesung: nach JEDEM Satz ~0,6 s Pause ("sentence_pause"), nach einem Gedanken 0,7–1,0 s
+- Engagiert statt monoton: Tonhöhe pro Satz variieren ("pitches"): Fragen/Höhepunkte 1.05–1.10, ruhige Sätze 0.95–0.98;
+  betonte Sätze lauter ("gains" 1.1–1.25); Ausrufezeichen bei Aufforderungen
+- Männerstimme = Mischung {"am_liam":0.62,"am_puck":0.38} + "confident"-Bearbeitung (tiefer, voller)
+- Zeiten automatisch: Abschnitt "at":"auto" (+ "min_at" für Musik-Wechsel), "duration":"auto"

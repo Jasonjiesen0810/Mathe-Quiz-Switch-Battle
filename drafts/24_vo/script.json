@@ -1,7 +1,12 @@
 {
- "voice": "am_liam",
+ "voice": {
+  "am_liam": 0.62,
+  "am_puck": 0.38
+ },
  "speed": 1.02,
- "duration": 34,
+ "sentence_pause": 0.6,
+ "duration": "auto",
+ "tail": 2.8,
  "lines": [
   {
    "id": "a",
@@ -9,53 +14,113 @@
    "parts": [
     {
      "text": "This is what it feels like when you finally make it.",
-     "pause": 0.3,
-     "speed": 0.96
+     "pause": 0.8,
+     "pitches": [
+      0.98
+     ],
+     "gains": [
+      1.0
+     ],
+     "speed": 0.95
     },
     {
      "text": "Look how far you've come.",
-     "pause": 0
+     "pause": 0,
+     "pitches": [
+      1.04
+     ],
+     "gains": [
+      1.05
+     ]
     }
    ]
   },
   {
    "id": "b",
-   "at": 6.6,
+   "at": "auto",
+   "gap": 0.8,
+   "min_at": 6.6,
    "parts": [
     {
      "text": "You breathe out.",
-     "pause": 0.3,
-     "speed": 0.95
+     "pause": 0.9,
+     "pitches": [
+      0.95
+     ],
+     "gains": [
+      1.0
+     ],
+     "speed": 0.92
     },
     {
      "text": "All the early mornings. All the no's. All the nights nobody saw.",
-     "pause": 0.35
+     "pause": 0.9,
+     "pitches": [
+      0.98,
+      1.02,
+      0.96
+     ]
     },
     {
      "text": "And here's the strange part.",
-     "pause": 0.2
+     "pause": 0.6,
+     "pitches": [
+      1.03
+     ],
+     "gains": [
+      1.05
+     ]
     },
     {
      "text": "It's not the money you remember. It's not the applause.",
-     "pause": 0.25
+     "pause": 0.8,
+     "pitches": [
+      1.0,
+      1.03
+     ]
     },
     {
      "text": "It's the version of you that refused to quit.",
-     "pause": 0.4,
-     "speed": 0.97
+     "pause": 1.0,
+     "pitches": [
+      1.06
+     ],
+     "gains": [
+      1.2
+     ]
     },
     {
-     "text": "Because success was never the finish line. It was who you became on the way there.",
-     "pause": 0.35
+     "text": "Success was never the finish line. It was who you became on the way there.",
+     "pause": 0.9,
+     "pitches": [
+      1.0,
+      1.05
+     ],
+     "gains": [
+      1,
+      1.1
+     ]
     },
     {
      "text": "So keep going.",
-     "pause": 0.25
+     "pause": 0.7,
+     "pitches": [
+      1.05
+     ],
+     "gains": [
+      1.15
+     ]
     },
     {
      "text": "One day, you'll take that breath too.",
      "pause": 0,
-     "speed": 0.97
+     "pitches": [
+      0.97
+     ],
+     "gains": [
+      1.05
+     ],
+     "speed": 0.95
     }
    ]
   }

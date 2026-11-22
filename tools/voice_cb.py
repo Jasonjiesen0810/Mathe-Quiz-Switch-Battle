@@ -56,7 +56,7 @@ def main():
     m = ChatterboxTTS.from_pretrained(device='cpu')
     sr = m.sr
     ref = script.get('ref')
-    durs, clips, prev_end = {}, [], 0.0
+    durs, clips, prev_end, tags = {}, [], 0.0, {}
     for line in script['lines']:
         if line.get('at') == 'auto':
             line['at'] = round(max(prev_end + line.get('gap', 0.8), line.get('min_at', 0)), 2)
@@ -68,6 +68,7 @@ def main():
             if before:
                 chunks.append(np.zeros(int(sr * before), np.float32)); pos += before
             starts.append(round(line['at'] + pos, 2))
+            if p.get('tag'): tags[p['tag']] = starts[-1]
             w = m.generate(p['text'], audio_prompt_path=ref, exaggeration=ex, cfg_weight=cfg, temperature=temp)
             a = trim(w.squeeze(0).numpy().astype(np.float32))
             a = fx(a, sr, p.get('speed', sp), p.get('pitch', pt)) * p.get('gain', g)
@@ -86,6 +87,7 @@ def main():
     if dur == 'auto':
         dur = round(prev_end + script.get('tail', 2.8), 1)
     durs['_duration'] = dur
+    durs['_tags'] = tags
     json.dump(durs, open(os.path.join(out, 'durations.json'), 'w'), indent=1)
     mix = np.zeros(int(sr * dur), np.float32)
     for at, a in clips:

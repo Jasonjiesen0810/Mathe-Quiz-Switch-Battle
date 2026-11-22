@@ -3,26 +3,33 @@
 <body>
 <script>
 /* Song 15 "Want To Love" ab 0 – Pausen ~4 s und ~20 s, dicht ab ~33 s, Schlag 0,5 s */
-const A=[0.4,4.24,10.64,15.21,18.53,20.69], B=[24.19,27.3,30.46,35.76,38.24,40.1,41.91,44.13,47.07];
-const DUR=51.8;
+const NA=[0.3, 2.52, 4.45, 6.69, 8.96, 12.58, 15.58], NB=[16.58, 17.84, 19.54, 21.42, 23.23, 25.26, 27.26, 28.71, 31.07, 33.45, 36.36, 38.76, 40.56, 42.74];
+/* alte Szenen-Rollen auf neue Sätze abbilden */
+const A=[NA[0],NA[2],NA[4],NA[5],NB[0]-.6,NB[0]-.3], B=[NB[0],NB[2],NB[4],NB[6],NB[7],(NB[7]+NB[8])/2,NB[8],NB[9],NB[12]];
+const DUR=47.2;
 const BP=.5, B0=.5;
 window.VIDEO={DUR:DUR,seed:221,audio:"22_vo/mix.wav",
 HEADS:[
- {a:-1,b:A[1]-.1,lines:[[{t:"NOBODY",red:1},"WILL","CLAP"],["AT","THE","BEGINNING."]]},
- {a:A[1]-.05,b:A[2]-.1,lines:[["NO","LIKES.","NO","SUPPORT."],["JUST",{t:"YOU.",gold:1}]]},
- {a:A[2]-.05,b:A[3]-.1,lines:[["“WHEN","WILL","YOU","GET"],["A",{t:"REAL",red:1},{t:"JOB?”",red:1}]]},
- {a:A[3]-.05,b:A[4]-.1,lines:[["IS","IT","EVEN"],[{t:"WORTH",red:1},{t:"IT?",red:1}]]},
- {a:A[4]-.05,b:A[5]-.1,lines:[["KEEP","GOING"],[{t:"ANYWAY.",mark:1}]]},
- {a:A[5]-.05,b:B[0]-.1,lines:[["EVEN","WHEN","NOBODY"],["CARES."]]},
- {a:B[0]-.05,b:B[1]-.1,lines:[["THEN","ONE","DAY,"],["IT",{t:"HITS",gold:1},{t:"YOU.",gold:1}]]},
- {a:B[1]-.05,b:B[2]-.1,lines:[["THEY","WERE","NEVER"],["SUPPOSED","TO",{t:"CLAP.",gold:1}]]},
- {a:B[2]-.05,b:B[3]-.1,lines:[["NOT","THEIR","DREAM."],[{t:"YOURS.",mark:1}]]},
- {a:B[3]-.05,b:B[4]-.1,lines:[["STOP","WAITING","FOR"],[{t:"APPLAUSE.",red:1}]]},
- {a:B[4]-.05,b:B[5]-.1,lines:[["POST","IT"],[{t:"ANYWAY.",gold:1}]]},
- {a:B[5]-.05,b:B[6]-.1,lines:[["WRITE","IT"],[{t:"ANYWAY.",gold:1}]]},
- {a:B[6]-.05,b:B[7]-.1,lines:[["SHOW","UP"],[{t:"ANYWAY.",gold:1}]]},
- {a:B[7]-.05,b:B[8]-.1,lines:[["ONE","DAY,","THEY"],["WILL",{t:"CLAP.",gold:1}]]},
- {a:B[8]-.05,b:DUR-.5,lines:[["BUT","YOU","WON'T"],[{t:"NEED IT.",mark:1}]]},
+ {a:-1,b:NA[1]-.1,lines:[[{t:"NOBODY",red:1},"WILL"],["CLAP","FOR","YOU."]]},
+ {a:NA[1]-.05,b:NA[2]-.1,lines:[["NOT","AT","THE"],["BEGINNING."]]},
+ {a:NA[2]-.05,b:NA[3]-.1,lines:[["YOU","POST."],["NOBODY",{t:"WATCHES.",red:1}]]},
+ {a:NA[3]-.05,b:NA[4]-.1,lines:[["YOU","WORK","LATE."],["NOBODY",{t:"NOTICES.",red:1}]]},
+ {a:NA[4]-.05,b:NA[5]-.1,lines:[["YOU","SHARE","YOUR","PLAN…"],["THEY",{t:"LAUGH.",red:1}]]},
+ {a:NA[5]-.05,b:NA[6]-.1,lines:[["ONE","NIGHT,"],["YOU","LIE","AWAKE…"]]},
+ {a:NA[6]-.05,b:NB[0]-.1,lines:[["MAYBE","THEY'RE"],[{t:"RIGHT?",red:1}]]},
+ {a:NB[0]-.05,b:NB[1]-.1,lines:[["BUT","HERE'S","THE"],[{t:"THING.",gold:1}]]},
+ {a:NB[1]-.05,b:NB[2]-.1,lines:[["THEY'RE"],[{t:"NOT.",mark:1}]]},
+ {a:NB[2]-.05,b:NB[3]-.1,lines:[["THEY","WERE","NEVER"],["SUPPOSED","TO",{t:"CLAP.",gold:1}]]},
+ {a:NB[3]-.05,b:NB[4]-.1,lines:[["THEY","CAN'T","SEE"],["WHAT",{t:"YOU",gold:1},"SEE."]]},
+ {a:NB[4]-.05,b:NB[5]-.1,lines:[["NOT","THEIR"],["DREAM."]]},
+ {a:NB[5]-.05,b:NB[6]-.1,lines:[[{t:"YOURS.",mark:1}]]},
+ {a:NB[6]-.05,b:NB[7]-.1,lines:[["DO","IT"],[{t:"QUIETLY.",gold:1}]]},
+ {a:NB[7]-.05,b:NB[8]-.1,lines:[["POST","THE","VIDEO."],["WRITE","THE",{t:"PAGE.",gold:1}]]},
+ {a:NB[8]-.05,b:NB[9]-.1,lines:[["SHOW","UP","WHEN"],[{t:"NOBODY'S",gold:1},{t:"WATCHING.",gold:1}]]},
+ {a:NB[9]-.05,b:NB[11]-.1,lines:[["ONE","DAY,","THEY'LL","ASK"],[{t:"HOW",gold:1},{t:"YOU",gold:1},{t:"DID",gold:1},{t:"IT.",gold:1}]]},
+ {a:NB[11]-.05,b:NB[12]-.1,lines:[["AND","YOU'LL"],[{t:"REALIZE…",gold:1}]]},
+ {a:NB[12]-.05,b:NB[13]-.1,lines:[["YOU","NEVER","NEEDED"],["THEIR",{t:"APPLAUSE.",red:1}]]},
+ {a:NB[13]-.05,b:DUR-.5,lines:[["ONLY"],[{t:"YOUR OWN.",mark:1}]]},
 ],
 LABELS:[],
 build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};

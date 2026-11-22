@@ -1,0 +1,105 @@
+{
+ "ref": "materials/tts/ref_liam.wav",
+ "duration": "auto",
+ "seed": 11,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "This is what it feels like... when you finally make it.",
+     "dir": "calm",
+     "speed": 0.93,
+     "pitch": -0.5,
+     "pause": 0.6,
+     "tag": "A0"
+    },
+    {
+     "text": "Look how far you've come.",
+     "dir": "soft",
+     "pitch": 0.5,
+     "pause": 0,
+     "tag": "A1"
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.6,
+   "min_at": 6.6,
+   "parts": [
+    {
+     "text": "You breathe out.",
+     "dir": "soft",
+     "speed": 0.9,
+     "pause": 0.9,
+     "tag": "B0"
+    },
+    {
+     "text": "All the early mornings. All the people who said no. All the nights nobody saw.",
+     "dir": "story",
+     "pause": 0.9,
+     "tag": "B1"
+    },
+    {
+     "text": "And here's the strange part.",
+     "dir": "normal",
+     "pitch": 0.7,
+     "pause": 0.6,
+     "tag": "B2"
+    },
+    {
+     "text": "It's not the money you remember.",
+     "dir": "calm",
+     "pause": 0.4,
+     "tag": "B3"
+    },
+    {
+     "text": "It's not the applause.",
+     "dir": "calm",
+     "pause": 0.7
+    },
+    {
+     "text": "It's the version of you... that refused to quit.",
+     "dir": "intense",
+     "ex": 0.7,
+     "pitch": -1,
+     "speed": 0.9,
+     "pause": 0.9,
+     "tag": "B4"
+    },
+    {
+     "text": "Success was never the finish line.",
+     "dir": "calm",
+     "pause": 0.4,
+     "tag": "B5"
+    },
+    {
+     "text": "It was who you became... on the way there.",
+     "dir": "intense",
+     "ex": 0.65,
+     "pitch": -0.8,
+     "speed": 0.92,
+     "pause": 0.9
+    },
+    {
+     "text": "So keep going.",
+     "dir": "normal",
+     "pitch": -0.5,
+     "pause": 0.6,
+     "tag": "B6"
+    },
+    {
+     "text": "One day... you'll take that breath too.",
+     "dir": "soft",
+     "speed": 0.92,
+     "pitch": -0.5,
+     "pause": 0,
+     "tag": "B7"
+    }
+   ]
+  }
+ ]
+}

@@ -147,3 +147,11 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 ## Figur – Arme (Feedback)
 - Stehen: beide Arme hängen locker nach unten (nicht einer vorne, einer hinten)
 - Gehen/Rennen: Arme schwingen gegengleich zu den Beinen, beim Rennen stärker und angewinkelt
+
+## Stimme – FINAL (ab Video 22): Chatterbox, Fassung B "Erzähler"
+- Werkzeug: tools/voice_cb.py (Chatterbox, MIT-Lizenz), Studio-Klang tools/studio_chain.txt (Datei "studio" im VO-Ordner)
+- Mann = Klon von Liam (materials/tts/ref_liam.wav), Frau = Klon von Bella (materials/tts/ref_bella.wav) – abwechseln
+- Stil B: intim, gesprächig, direkt zu EINER Person; feine Tonhöhe (Aussage tiefer, Frage höher, Satzende fällt),
+  wichtige Sätze langsamer + Pause davor/danach, Erzählung schneller; keine Schreie, kein Theater
+- Text im viralen Stil: konkrete Szenen ("you'll post, and nobody watches"), Bruch ("But here's the thing."), merkbarer Schluss
+- Jeder Satz mit Regie: dir (soft/calm/normal/story/intense), speed, pitch (Halbtöne), pause, tag (Szenen-Anker fürs Video)

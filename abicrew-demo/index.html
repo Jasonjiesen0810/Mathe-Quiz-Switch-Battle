@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABI CREW NRW · Partys ab 16 in Düsseldorf</title>
+<meta name="description" content="ABI CREW NRW – Partys ab 16 in Düsseldorf. Alle Termine, Tickets und Infos zum Einlass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#09090c;
+    --ink:#131318;
+    --line:#26262e;
+    --pink:#ff2ea6;
+    --pink-2:#ff63bd;
+    --yellow:#ffe14d;
+    --white:#ffffff;
+    --grey:#a6a6b3;
+    --poster:"Anton","Impact","Arial Narrow",sans-serif;
+    --body:"Archivo",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+  .poster{font-family:var(--poster);text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+  .slant{display:inline-block;transform:skewX(-10deg)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:800 16px/1 var(--body);text-transform:uppercase;
+    letter-spacing:.04em;text-decoration:none;padding:18px 26px;border:2px solid var(--pink);background:var(--pink);color:#fff;cursor:pointer;
+    transform:skewX(-8deg);transition:background .15s,color .15s,box-shadow .15s}
+  .btn > *{transform:skewX(8deg)}
+  .btn:hover{background:#fff;border-color:#fff;color:var(--black);box-shadow:6px 6px 0 var(--pink)}
+  .btn.ghost{background:transparent;border-color:#fff}
+  .btn.ghost:hover{background:#fff;color:var(--black)}
+  .btn.off{background:var(--line);border-color:var(--line);color:var(--grey);pointer-events:none}
+
+  /* header */
+  header{position:sticky;top:0;z-index:30;background:rgba(9,9,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;gap:30px;height:66px}
+  .logo{font:400 30px/1 var(--poster);color:var(--pink);text-decoration:none;transform:skewX(-12deg);margin-right:auto;letter-spacing:.02em}
+  .logo small{font:800 11px var(--body);color:#fff;letter-spacing:.2em;margin-left:6px;vertical-align:middle}
+  nav{display:flex;gap:26px}
+  nav a{text-decoration:none;font-weight:600;font-size:15px;color:#ddd}
+  nav a:hover{color:var(--pink)}
+  header .btn{padding:12px 18px;font-size:14px}
+
+  /* hero */
+  .hero{position:relative;padding:56px 0 70px;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:900px;height:900px;left:50%;top:-420px;transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(255,46,166,.28),transparent 62%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;position:relative}
+  .hero-flyer{position:relative;transform:rotate(-2deg)}
+  .hero-flyer img,.hero-flyer .cover{width:100%;aspect-ratio:16/9;object-fit:cover;border:3px solid #fff;box-shadow:14px 14px 0 var(--pink)}
+  .sticker{position:absolute;background:var(--yellow);color:var(--black);font:400 22px/1 var(--poster);text-transform:uppercase;padding:10px 14px;
+    transform:rotate(6deg);right:-14px;top:-18px;box-shadow:4px 4px 0 var(--black)}
+  .label{font:400 22px/1 var(--poster);color:var(--pink);text-transform:uppercase;letter-spacing:.04em}
+  .hero h1{font-size:clamp(46px,6.4vw,88px);margin:10px 0 22px}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:17px;margin-bottom:26px}
+  .facts b{font-weight:800}
+  .facts span{color:#ddd}
+  .countdown{display:flex;gap:10px;margin-bottom:30px}
+  .countdown div{background:var(--ink);border:1px solid var(--line);min-width:74px;padding:10px 8px;text-align:center}
+  .countdown b{display:block;font:400 38px/1 var(--poster)}
+  .countdown small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+  .hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+
+  /* marquee */
+  .marquee-clip{overflow:hidden;padding:12px 0}
+  .marquee{background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;border-block:3px solid var(--black);transform:rotate(-1.2deg);margin:10px -20px}
+  .marquee div{display:inline-block;font:400 26px/1 var(--poster);text-transform:uppercase;padding:14px 0;animation:ticker 32s linear infinite}
+  .marquee span{margin:0 22px}
+  .marquee i{font-style:normal;color:var(--black)}
+  @keyframes ticker{to{transform:translateX(-50%)}}
+
+  /* sections */
+  section{padding:90px 0}
+  .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:12px}
+  .sec-title em{font-style:normal;color:var(--pink)}
+  .sec-sub{color:var(--grey);font-size:18px;max-width:620px;margin-bottom:44px}
+
+  /* party cards */
+  .parties{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .party{background:var(--ink);border:1px solid var(--line);display:grid;grid-template-rows:auto 1fr;position:relative;transition:transform .2s,border-color .2s}
+  .party:hover{transform:translateY(-4px);border-color:var(--pink)}
+  .party .img{position:relative;overflow:hidden}
+  .party img,.party .cover{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .party .sticker{font-size:17px;right:10px;top:10px;transform:rotate(4deg)}
+  .party .body{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:22px 22px 24px}
+  .date{background:#fff;color:var(--black);text-align:center;padding:10px 12px;min-width:78px;align-self:start;transform:skewX(-6deg)}
+  .date b{display:block;font:400 40px/1 var(--poster)}
+  .date span{font:800 13px/1.3 var(--body);text-transform:uppercase;letter-spacing:.06em}
+  .party h3{font-size:30px;margin-bottom:8px}
+  .party p.meta{color:#ddd;font-size:15px;margin-bottom:6px}
+  .party p.desc{color:var(--grey);font-size:14.5px;margin:10px 0 18px}
+  .party .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .party .price{font:400 26px/1 var(--poster)}
+  .party .price small{font:600 13px var(--body);color:var(--grey);margin-right:4px;text-transform:none}
+  .party .btn{padding:14px 20px;font-size:14px}
+  .soldout{position:absolute;inset:0;display:grid;place-items:center;background:rgba(9,9,12,.6)}
+  .soldout span{font:400 44px/1 var(--poster);border:4px solid var(--pink);color:var(--pink);padding:8px 18px;transform:rotate(-8deg);text-transform:uppercase}
+  .cover{display:grid;place-items:center;text-align:center;padding:20px;background:
+      radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 40%),linear-gradient(135deg,var(--c1,#ff2ea6),var(--c2,#5b2bff))}
+  .cover b{font:400 clamp(28px,4vw,48px)/.95 var(--poster);text-transform:uppercase;transform:skewX(-10deg);text-shadow:4px 4px 0 rgba(0,0,0,.35)}
+  .cover small{display:block;font:800 13px var(--body);letter-spacing:.2em;margin-top:10px}
+  .empty{border:2px dashed var(--line);padding:40px;text-align:center;color:var(--grey);grid-column:1/-1}
+
+  .past{margin-top:70px}
+  .past h3{font-size:34px;margin-bottom:20px;color:var(--grey)}
+  .past-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .past-grid figure{position:relative}
+  .past-grid img,.past-grid .cover{width:100%;aspect-ratio:16/9;object-fit:cover;filter:grayscale(1) brightness(.6)}
+  .past-grid figcaption{position:absolute;left:10px;bottom:8px;font:400 20px/1 var(--poster);text-transform:uppercase}
+  .past-grid figcaption small{display:block;font:600 12px var(--body);color:#ccc;text-transform:none}
+
+  /* ab 16 */
+  .u18{background:#fff;color:var(--black)}
+  .u18 .sec-sub{color:#55555f}
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--black)}
+  .rule{padding:30px 28px;border-right:3px solid var(--black)}
+  .rule:last-child{border-right:0}
+  .rule .num{font:400 64px/1 var(--poster);color:var(--pink);display:block;margin-bottom:10px}
+  .rule h3{font:400 28px/1 var(--poster);text-transform:uppercase;margin-bottom:10px}
+  .rule p{color:#3a3a44;font-size:15.5px}
+  .mutti{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:34px;padding:28px 30px;background:var(--black);color:#fff}
+  .mutti h3{font:400 34px/1 var(--poster);text-transform:uppercase}
+  .mutti p{color:var(--grey);margin-top:6px;max-width:560px}
+
+  /* faq */
+  .faq{max-width:860px}
+  details{border-bottom:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:800 19px/1.3 var(--body)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font:400 34px/1 var(--poster);color:var(--pink);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--grey);padding:0 40px 22px 0}
+
+  /* insta */
+  .insta{background:var(--pink);text-align:center;padding:80px 0}
+  .insta .poster{font-size:clamp(48px,9vw,130px)}
+  .insta p{font-size:19px;margin:14px 0 30px}
+  .insta .btn{background:var(--black);border-color:var(--black)}
+  .insta .btn:hover{background:#fff;border-color:#fff;color:var(--black);box-shadow:6px 6px 0 var(--black)}
+
+  footer{padding:50px 0 40px;color:var(--grey);font-size:14px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  footer .logo{font-size:26px;display:inline-block;margin-bottom:10px}
+  footer a{color:#ddd}
+
+  /* demo date tool (only for presenting the auto-hide feature) */
+  .demo{position:fixed;left:14px;bottom:14px;z-index:60;background:var(--yellow);color:var(--black);padding:10px 12px;font:600 13px var(--body);
+    display:flex;gap:8px;align-items:center;box-shadow:4px 4px 0 var(--pink)}
+  .demo input{font:600 13px var(--body);padding:4px 6px;border:1px solid #000}
+  .demo button{font:800 12px var(--body);background:var(--black);color:#fff;border:0;padding:6px 8px;cursor:pointer}
+
+  @media (max-width:900px){
+    nav{display:none}
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hero{padding-top:34px}
+    .parties{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
+    .rule{border-right:0;border-bottom:3px solid var(--black)}
+    .rule:last-child{border-bottom:0}
+    .past-grid{grid-template-columns:1fr 1fr}
+    .countdown div{min-width:0;flex:1}
+    .demo{left:8px;right:8px;bottom:8px;flex-wrap:wrap}
+  }
+  @media (max-width:480px){
+    .party .body{grid-template-columns:1fr}
+    .date{justify-self:start}
+    .hero .actions .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){.marquee div{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">ABI CREW <small>NRW</small></a>
+    <nav>
+      <a href="#partys">Partys</a>
+      <a href="#ab16">Ab 16</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <a class="btn" href="#partys"><span>Tickets</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero" style="padding-bottom:60px"></section>
+  <div class="marquee-clip"><div class="marquee" aria-hidden="true"><div id="ticker"></div></div></div>
+
+  <section id="partys">
+    <div class="wrap">
+      <h2 class="poster sec-title"><span class="slant">Alle <em>Partys</em></span></h2>
+      <p class="sec-sub">Alle kommenden Partys von ABI CREW. Tickets gibt es online, die Partys sind oft ausverkauft.</p>
+      <div class="parties" id="list"></div>
+      <div class="past" id="past"></div>
+    </div>
+  </section>
+
+  <section class="u18" id="ab16">
+    <div class="wrap">
+      <h2 class="poster sec-title"><span class="slant">Party ab <em>16</em></span></h2>
+      <p class="sec-sub">Das Wichtigste zum Einlass, damit am Abend alles glatt läuft. Am besten auch den Eltern schicken.</p>
+      <div class="rules">
+        <div class="rule"><span class="num">01</span><h3>Ausweis dabei</h3><p>Einlass ab 16 Jahren. Bringt euren Personalausweis oder Reisepass im Original mit. Ohne gültigen Ausweis kein Einlass.</p></div>
+        <div class="rule"><span class="num">02</span><h3>Unter 18: bis 24 Uhr</h3><p>Mit 16 und 17 dürft ihr nach dem Jugendschutzgesetz ohne Begleitung bis Mitternacht bleiben. Wer länger bleiben will, braucht eine volljährige Begleitperson mit Muttizettel.</p></div>
+        <div class="rule"><span class="num">03</span><h3>Kein harter Alkohol</h3><p>Unter 18 gibt es nur Bier, Wein und Sekt. Spirituosen und Mischgetränke mit Schnaps erst ab 18.</p></div>
+      </div>
+      <div class="mutti">
+        <div>
+          <h3>Muttizettel</h3>
+          <p>Ausfüllen, von den Eltern unterschreiben lassen und zusammen mit einer Ausweiskopie der Eltern mitbringen. Die Begleitperson muss volljährig sein.</p>
+        </div>
+        <a class="btn" href="#" id="muttiLink"><span>Muttizettel (PDF)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2 class="poster sec-title"><span class="slant">Fragen?</span></h2>
+      <div class="faq">
+        <details><summary>Wie bekomme ich mein Ticket?</summary><p>Ihr kauft das Ticket online über unseren Ticketpartner ticket.io und bekommt es per E-Mail. Am Einlass zeigt ihr einfach den QR-Code auf dem Handy.</p></details>
+        <details><summary>Was ist das 5er-Gruppenticket?</summary><p>Fünf Tickets auf einmal und dafür etwas günstiger pro Person. Perfekt, wenn ihr mit eurer Clique kommt.</p></details>
+        <details><summary>Was bedeutet „Skip The Line“?</summary><p>Mit diesem Ticket kommt ihr schneller rein und spart euch das lange Anstehen am Einlass.</p></details>
+        <details><summary>Gibt es eine Abendkasse?</summary><p>Unsere Partys sind meistens ausverkauft. Holt euch die Tickets lieber vorher online, dann seid ihr sicher dabei.</p></details>
+        <details><summary>Was ist, wenn ich krank werde?</summary><p>Beim Ticketkauf könnt ihr eine Ticketversicherung abschließen. Dann bekommt ihr den Ticketpreis zurück, wenn ihr zum Beispiel krank werdet.</p></details>
+        <details><summary>Wo erfahre ich von neuen Partys?</summary><p>Neue Partys kündigen wir zuerst auf Instagram an: @abicrew_nrw. Hier auf der Seite stehen sie dann auch sofort.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="insta">
+    <div class="wrap">
+      <div class="poster"><span class="slant">@abicrew_nrw</span></div>
+      <p>Flyer, Gewinnspiele und Videos von der letzten Party.</p>
+      <a class="btn" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><span>Auf Instagram folgen</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#top">ABI CREW <small>NRW</small></a>
+      <p>Veranstalter: ABI CREW, Jan Richter<br>Kölner Str. 226, 41468 Neuss</p>
+    </div>
+    <div>
+      <p>Tickets über ticket.io<br><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="demo" id="demo">
+  Demo: Datum testen <input type="date" id="demoDate"> <button type="button" id="demoReset">Heute</button>
+</div>
+
+<script>
+/* =========================================================
+   PARTYS – hier neue Partys eintragen.
+   Vergangene Partys verschwinden automatisch aus der Liste
+   (nach "ende", am Morgen nach der Party) und landen unten
+   bei "Vergangene Partys".
+   ========================================================= */
+const SHOP = "https://abicrewnrw.ticket.io/?lang=de";
+
+const PARTIES = [
+  {
+    name: "Flynn’s Birthday Bash",
+    datum: "2026-11-27", einlass: "19:00", ende: "03:00",
+    club: "Nachtresidenz Düsseldorf",
+    preis: 11,
+    flyer: "flyer/flynn.jpg",
+    text: "Unser Junior-Chef Flynn feiert Geburtstag und ihr feiert mit. Free Drinks, Birthday-Specials, Überraschungen und eine riesige Konfetti-Show.",
+    tickets: "https://abicrewnrw.ticket.io/tzgFLppd/?lang=de",
+    // optional: sticker: "Nur noch wenige Tickets",  ausverkauft: true,
+  },
+  {
+    name: "Après Ski Party",
+    datum: "2026-12-04", einlass: "19:00", ende: "03:00",
+    club: "Mahiki Club Düsseldorf",
+    preis: 9,
+    flyer: "flyer/apresski.jpg",
+    text: "Düsseldorfs größte 16+ Après Ski Party ist zurück. Wie jedes Jahr im Mahiki, mit Stimmung, Eskalation und ABI CREW Specials.",
+    tickets: SHOP,
+    farben: ["#38b6ff", "#1b2a6b"],
+  },
+  {
+    name: "Jan’s Birthday Bash",
+    datum: "2026-12-18", einlass: "19:00", ende: "03:00",
+    club: "Nachtresidenz Düsseldorf",
+    preis: 7,
+    flyer: "flyer/jan.jpg",
+    text: "Das große Finale 2026. Die letzte ABI CREW Party des Jahres mit Free Drinks, Konfetti-Show und Specials. Letztes Jahr war sie ausverkauft.",
+    tickets: SHOP,
+  },
+  {
+    name: "My Best Year 2027",
+    datum: "2027-01-08", einlass: "19:00", ende: "03:00",
+    club: "Nachtresidenz Düsseldorf",
+    preis: 1,
+    flyer: "flyer/bestyear.jpg",
+    text: "2027 startet direkt mit einer XXL-Party. Die erste ABI CREW Party im neuen Jahr – je früher ihr Tickets holt, desto günstiger.",
+    tickets: SHOP,
+    farben: ["#e8b84a", "#3a2a10"],
+  },
+  {
+    name: "Karneval XXL",
+    datum: "2027-02-05", einlass: "19:00", ende: "03:00",
+    club: "Nachtresidenz Düsseldorf",
+    preis: 1,
+    flyer: "",
+    text: "Karneval mit ABI CREW in der Nachtresidenz. Kostüm an und los!",
+    tickets: SHOP,
+    farben: ["#ff2ea6", "#ffb800"],
+  },
+];
+
+/* ---------- Ab hier nichts ändern ---------- */
+const $ = s => document.querySelector(s);
+const WD = ["SO","MO","DI","MI","DO","FR","SA"];
+const MON = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+
+const startOf = p => new Date(`${p.datum}T${p.einlass}:00`);
+const endOf = p => { // Ende am nächsten Morgen, wenn die Endzeit vor dem Einlass liegt
+  const e = new Date(`${p.datum}T${p.ende || "04:00"}:00`);
+  if (e <= startOf(p)) e.setDate(e.getDate() + 1);
+  return e;
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const euro = n => n.toLocaleString("de-DE", { minimumFractionDigits: n % 1 ? 2 : 0 }) + " €";
+
+function cover(p) {
+  const [c1, c2] = p.farben || ["#ff2ea6", "#5b2bff"];
+  return `<div class="cover" style="--c1:${c1};--c2:${c2}"><div><b>${esc(p.name)}</b><small>ABI CREW · 16+</small></div></div>`;
+}
+function img(p) {
+  if (!p.flyer) return cover(p);
+  // Fällt auf ein generiertes Cover zurück, wenn der Flyer fehlt
+  return `<img src="${esc(p.flyer)}" alt="Flyer ${esc(p.name)}" loading="lazy" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(cover(p))}')">`;
+}
+function dateBox(p) {
+  const d = startOf(p);
+  return `<div class="date"><span>${WD[d.getDay()]}</span><b>${d.getDate()}</b><span>${MON[d.getMonth()]}</span></div>`;
+}
+function ticketBtn(p, label = "Tickets") {
+  return p.ausverkauft ? `<span class="btn off"><span>Ausverkauft</span></span>`
+    : `<a class="btn" href="${esc(p.tickets || SHOP)}" target="_blank" rel="noopener"><span>${label} →</span></a>`;
+}
+
+let now = new Date();
+let timer;
+
+function render() {
+  const sorted = [...PARTIES].sort((a, b) => startOf(a) - startOf(b));
+  const upcoming = sorted.filter(p => endOf(p) > now);
+  const past = sorted.filter(p => endOf(p) <= now).reverse();
+  const next = upcoming[0];
+
+  // Hero: nächste Party
+  const hero = $("#hero");
+  if (next) {
+    const d = startOf(next);
+    hero.innerHTML = `<div class="wrap">
+      <div class="hero-flyer">${img(next)}${next.sticker ? `<div class="sticker">${esc(next.sticker)}</div>` : ""}</div>
+      <div>
+        <div class="label">Nächste Party</div>
+        <h1 class="poster"><span class="slant">${esc(next.name)}</span></h1>
+        <div class="facts">
+          <b>Wann</b><span>${WD[d.getDay()].charAt(0) + WD[d.getDay()].slice(1).toLowerCase()}, ${d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" })} · Einlass ${next.einlass} Uhr</span>
+          <b>Wo</b><span>${esc(next.club)}</span>
+          <b>Tickets</b><span>ab ${euro(next.preis)} · Einlass ab 16</span>
+        </div>
+        <div class="countdown" id="cd"></div>
+        <div class="actions">${ticketBtn(next, "Tickets sichern")}<a class="btn ghost" href="#partys"><span>Alle Partys</span></a></div>
+      </div>
+    </div>`;
+  } else {
+    hero.innerHTML = `<div class="wrap" style="display:block"><div class="label">Bald geht's weiter</div>
+      <h1 class="poster"><span class="slant">Neue Partys kommen</span></h1>
+      <div class="actions"><a class="btn" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><span>Auf Instagram folgen</span></a></div></div>`;
+  }
+
+  // Laufband
+  const items = upcoming.map(p => `<span>${esc(p.name)}</span><i>✦</i><span>${startOf(p).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" })}</span><i>✦</i>`).join("") || `<span>Neue Partys kommen bald</span><i>✦</i>`;
+  $("#ticker").innerHTML = items.repeat(4) + items.repeat(4);
+
+  // Liste
+  $("#list").innerHTML = upcoming.length ? upcoming.map(p => `
+    <article class="party">
+      <div class="img">${img(p)}${p.sticker ? `<div class="sticker">${esc(p.sticker)}</div>` : ""}${p.ausverkauft ? `<div class="soldout"><span>Ausverkauft</span></div>` : ""}</div>
+      <div class="body">
+        ${dateBox(p)}
+        <div>
+          <h3 class="poster">${esc(p.name)}</h3>
+          <p class="meta">${esc(p.club)} · Einlass ${p.einlass} Uhr · 16+</p>
+          <p class="desc">${esc(p.text || "")}</p>
+          <div class="row"><span class="price poster"><small>ab</small>${euro(p.preis)}</span>${ticketBtn(p)}</div>
+        </div>
+      </div>
+    </article>`).join("") : `<div class="empty">Gerade sind keine Partys geplant. Folgt uns auf Instagram, dann verpasst ihr die nächste nicht.</div>`;
+
+  // Vergangene Partys
+  $("#past").innerHTML = past.length ? `<h3 class="poster">Vergangene Partys</h3><div class="past-grid">${past.slice(0, 8).map(p => `
+    <figure>${img(p)}<figcaption>${esc(p.name)}<small>${startOf(p).toLocaleDateString("de-DE")} · ${esc(p.club)}</small></figcaption></figure>`).join("")}</div>` : "";
+
+  // Countdown
+  clearInterval(timer);
+  if (next) {
+    const tick = () => {
+      const ms = Math.max(0, startOf(next) - (simulated ? now : new Date()));
+      const t = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+      $("#cd").innerHTML = (ms === 0 ? [["Heute", "Party"]] : [[t[0], "Tage"], [t[1], "Std"], [t[2], "Min"], [t[3], "Sek"]])
+        .map(([v, l]) => `<div><b>${typeof v === "number" ? String(v).padStart(2, "0") : v}</b><small>${l}</small></div>`).join("");
+    };
+    tick(); timer = setInterval(tick, 1000);
+  }
+}
+
+/* Demo: Datum simulieren, um zu zeigen, dass alte Partys automatisch verschwinden */
+let simulated = false;
+const demoDate = $("#demoDate");
+const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+demoDate.value = iso(now);
+demoDate.addEventListener("change", () => { if (!demoDate.value) return; simulated = true; now = new Date(`${demoDate.value}T20:00:00`); render(); });
+$("#demoReset").addEventListener("click", () => { simulated = false; now = new Date(); demoDate.value = iso(now); render(); });
+$("#muttiLink").addEventListener("click", e => { e.preventDefault(); alert("Demo: Hier kommt das Muttizettel-PDF von ABI CREW hin."); });
+
+render();
+</script>
+</body>
+</html>

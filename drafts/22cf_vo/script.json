@@ -1,0 +1,148 @@
+{
+ "ref": "materials/tts/ref_bella.wav",
+ "duration": "auto",
+ "seed": 11,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Nobody is going to clap for you.",
+     "dir": "normal",
+     "pitch": -0.6,
+     "pause": 0.45
+    },
+    {
+     "text": "Not at the beginning.",
+     "dir": "soft",
+     "pitch": -1,
+     "speed": 0.95,
+     "pause": 0.9
+    },
+    {
+     "text": "You'll post, and nobody watches.",
+     "dir": "story",
+     "pause": 0.3
+    },
+    {
+     "text": "You'll work late, and nobody notices.",
+     "dir": "story",
+     "pause": 0.3
+    },
+    {
+     "text": "You'll tell people your plan... and they'll laugh.",
+     "dir": "calm",
+     "pitch": -0.5,
+     "pause": 0.9
+    },
+    {
+     "text": "And one night, you'll lie in bed and think...",
+     "dir": "soft",
+     "speed": 0.95,
+     "pause": 0.35
+    },
+    {
+     "text": "maybe they're right?",
+     "dir": "soft",
+     "pitch": 0.8,
+     "speed": 0.92,
+     "pause": 1.2
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.2,
+   "parts": [
+    {
+     "text": "But here's the thing.",
+     "dir": "normal",
+     "pitch": 0.6,
+     "pause": 0.4
+    },
+    {
+     "text": "They're not.",
+     "dir": "intense",
+     "ex": 0.7,
+     "pitch": -1,
+     "speed": 0.9,
+     "pause": 0.9
+    },
+    {
+     "text": "They were never supposed to clap.",
+     "dir": "calm",
+     "pause": 0.4
+    },
+    {
+     "text": "They can't see what you see.",
+     "dir": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "This was never their dream.",
+     "dir": "calm",
+     "speed": 0.94,
+     "pause": 0.45
+    },
+    {
+     "text": "It's yours.",
+     "dir": "intense",
+     "ex": 0.75,
+     "pitch": -1.2,
+     "speed": 0.88,
+     "pause": 1.0
+    },
+    {
+     "text": "So do it quietly.",
+     "dir": "soft",
+     "pause": 0.4
+    },
+    {
+     "text": "Post the video. Write the page.",
+     "dir": "story",
+     "pause": 0.3
+    },
+    {
+     "text": "Show up when nobody's watching.",
+     "dir": "normal",
+     "pitch": -0.4,
+     "pause": 0.9
+    },
+    {
+     "text": "And one day, the same people who laughed...",
+     "dir": "calm",
+     "pause": 0.35
+    },
+    {
+     "text": "will ask you how you did it?",
+     "dir": "normal",
+     "pitch": 1,
+     "pause": 1.0
+    },
+    {
+     "text": "And you'll realize something.",
+     "dir": "soft",
+     "speed": 0.95,
+     "pause": 0.5
+    },
+    {
+     "text": "You never needed their applause.",
+     "dir": "intense",
+     "ex": 0.7,
+     "pitch": -0.6,
+     "speed": 0.92,
+     "pause": 0.55
+    },
+    {
+     "text": "You only needed your own.",
+     "dir": "calm",
+     "pitch": -1,
+     "speed": 0.88,
+     "pause": 0
+    }
+   ]
+  }
+ ]
+}

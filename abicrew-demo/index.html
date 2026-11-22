@@ -4,246 +4,422 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ABI CREW NRW · Partys ab 16 in Düsseldorf</title>
-<meta name="description" content="ABI CREW NRW – Partys ab 16 in Düsseldorf. Alle Termine, Tickets und Infos zum Einlass.">
+<meta name="description" content="ABI CREW NRW – die Partys ab 16 in Düsseldorf. Alle Termine, Tickets und Infos zum Einlass.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800;900&family=Italiana&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black:#09090c;
-    --ink:#131318;
-    --line:#26262e;
+    --bg:#060608;
+    --panel:#0e0e13;
+    --panel-2:#15151c;
+    --line:rgba(255,255,255,.09);
     --pink:#ff2ea6;
-    --pink-2:#ff63bd;
-    --yellow:#ffe14d;
-    --white:#ffffff;
-    --grey:#a6a6b3;
+    --pink-hot:#ff4fd0;
+    --violet:#8a3dff;
+    --gold:#f3c969;
+    --gold-2:#c8933a;
+    --white:#fff;
+    --grey:#a3a3b2;
     --poster:"Anton","Impact","Arial Narrow",sans-serif;
     --body:"Archivo",system-ui,sans-serif;
+    --lux:"Italiana",serif;
+    --chrome:linear-gradient(180deg,#ffffff 0%,#ffe3f4 38%,#ff7ccc 50%,#ffffff 58%,#ffd1ec 100%);
+    --goldgrad:linear-gradient(180deg,#fff4cf 0%,#f3c969 45%,#b9822c 55%,#ffe6a3 100%);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:70px}
-  body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   img{display:block;max-width:100%}
   a{color:inherit}
-  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
-  .poster{font-family:var(--poster);text-transform:uppercase;letter-spacing:.01em;line-height:.92}
-  .slant{display:inline-block;transform:skewX(-10deg)}
+  .wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+  .poster{font-family:var(--poster);text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+  .slant{display:inline-block;transform:skewX(-9deg)}
+  .chrome{background:var(--chrome);background-size:100% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 22px rgba(255,46,166,.45));animation:shine 5s ease-in-out infinite}
+  .goldtext{background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  @keyframes shine{0%,100%{background-position:0 0}50%{background-position:0 100%}}
+  .lux{font-family:var(--lux);letter-spacing:.32em;text-transform:uppercase}
 
-  /* buttons */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font:800 16px/1 var(--body);text-transform:uppercase;
-    letter-spacing:.04em;text-decoration:none;padding:18px 26px;border:2px solid var(--pink);background:var(--pink);color:#fff;cursor:pointer;
-    transform:skewX(-8deg);transition:background .15s,color .15s,box-shadow .15s}
-  .btn > *{transform:skewX(8deg)}
-  .btn:hover{background:#fff;border-color:#fff;color:var(--black);box-shadow:6px 6px 0 var(--pink)}
-  .btn.ghost{background:transparent;border-color:#fff}
-  .btn.ghost:hover{background:#fff;color:var(--black)}
-  .btn.off{background:var(--line);border-color:var(--line);color:var(--grey);pointer-events:none}
+  /* ---------- Buttons ---------- */
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;overflow:hidden;
+    font:900 15px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;cursor:pointer;
+    padding:20px 30px;border:0;border-radius:4px;transition:transform .2s,box-shadow .25s}
+  .btn-hot{background:linear-gradient(100deg,var(--pink) 0%,var(--pink-hot) 50%,var(--violet) 100%);
+    box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 12px 40px -8px rgba(255,46,166,.75)}
+  .btn-hot::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;transform:skewX(-20deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sweep 3.2s ease-in-out infinite}
+  @keyframes sweep{0%{left:-60%}55%,100%{left:130%}}
+  .btn-hot:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 0 1px rgba(255,255,255,.3) inset,0 18px 50px -6px rgba(255,46,166,.95)}
+  .btn-gold{background:transparent;color:var(--gold);box-shadow:inset 0 0 0 1.5px var(--gold)}
+  .btn-gold:hover{background:var(--gold);color:#120d04;transform:translateY(-2px)}
+  .btn-off{background:#222;color:#777;pointer-events:none}
+  .btn svg{width:18px;height:18px}
 
-  /* header */
-  header{position:sticky;top:0;z-index:30;background:rgba(9,9,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  header .wrap{display:flex;align-items:center;gap:30px;height:66px}
-  .logo{font:400 30px/1 var(--poster);color:var(--pink);text-decoration:none;transform:skewX(-12deg);margin-right:auto;letter-spacing:.02em}
-  .logo small{font:800 11px var(--body);color:#fff;letter-spacing:.2em;margin-left:6px;vertical-align:middle}
-  nav{display:flex;gap:26px}
-  nav a{text-decoration:none;font-weight:600;font-size:15px;color:#ddd}
-  nav a:hover{color:var(--pink)}
-  header .btn{padding:12px 18px;font-size:14px}
+  /* ---------- Header ---------- */
+  header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.solid{background:rgba(6,6,8,.78);backdrop-filter:blur(16px) saturate(160%);border-color:var(--line)}
+  header .wrap{display:flex;align-items:center;gap:30px;height:74px}
+  .logo{font:400 30px/1 var(--poster);color:var(--pink);text-decoration:none;transform:skewX(-12deg);margin-right:auto;
+    text-shadow:0 0 18px rgba(255,46,166,.8),0 0 2px #fff}
+  .logo sup{font:900 10px var(--body);color:#fff;letter-spacing:.22em;margin-left:6px;text-shadow:none;vertical-align:8px}
+  nav{display:flex;gap:28px}
+  nav a{text-decoration:none;font-weight:600;font-size:14.5px;color:#d8d8e0;position:relative}
+  nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--pink);box-shadow:0 0 10px var(--pink);transform:scaleX(0);transition:transform .25s}
+  nav a:hover::after{transform:scaleX(1)}
+  .live{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#e8e8ef;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+  .live i{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 0 rgba(255,46,166,.7);animation:ping 1.6s infinite}
+  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(255,46,166,0)}100%{box-shadow:0 0 0 0 rgba(255,46,166,0)}}
+  header .btn{padding:14px 20px;font-size:13px}
 
-  /* hero */
-  .hero{position:relative;padding:56px 0 70px;overflow:hidden}
-  .hero::before{content:"";position:absolute;width:900px;height:900px;left:50%;top:-420px;transform:translateX(-50%);
-    background:radial-gradient(circle,rgba(255,46,166,.28),transparent 62%);pointer-events:none}
-  .hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;position:relative}
-  .hero-flyer{position:relative;transform:rotate(-2deg)}
-  .hero-flyer img,.hero-flyer .cover{width:100%;aspect-ratio:16/9;object-fit:cover;border:3px solid #fff;box-shadow:14px 14px 0 var(--pink)}
-  .sticker{position:absolute;background:var(--yellow);color:var(--black);font:400 22px/1 var(--poster);text-transform:uppercase;padding:10px 14px;
-    transform:rotate(6deg);right:-14px;top:-18px;box-shadow:4px 4px 0 var(--black)}
-  .label{font:400 22px/1 var(--poster);color:var(--pink);text-transform:uppercase;letter-spacing:.04em}
-  .hero h1{font-size:clamp(46px,6.4vw,88px);margin:10px 0 22px}
-  .facts{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:17px;margin-bottom:26px}
-  .facts b{font-weight:800}
-  .facts span{color:#ddd}
-  .countdown{display:flex;gap:10px;margin-bottom:30px}
-  .countdown div{background:var(--ink);border:1px solid var(--line);min-width:74px;padding:10px 8px;text-align:center}
-  .countdown b{display:block;font:400 38px/1 var(--poster)}
-  .countdown small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
-  .hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate;padding:110px 0 80px}
+  .hero-bg{position:absolute;inset:-60px;z-index:-3;background-size:cover;background-position:center;filter:blur(50px) saturate(1.4) brightness(.45);transform:scale(1.15)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-2;
+    background:radial-gradient(70% 60% at 70% 40%,transparent 0%,rgba(6,6,8,.55) 60%,var(--bg) 100%),
+               linear-gradient(180deg,rgba(6,6,8,.3),rgba(6,6,8,0) 30%,rgba(6,6,8,0) 70%,var(--bg))}
+  .beams{position:absolute;inset:0;z-index:-1;pointer-events:none;mix-blend-mode:screen}
+  .beams span{position:absolute;bottom:-20%;width:46vw;height:140vh;transform-origin:50% 100%;opacity:.55;filter:blur(8px)}
+  .beams span:nth-child(1){left:-4%;background:conic-gradient(from 180deg at 50% 100%,transparent 47%,rgba(255,46,166,.55) 50%,transparent 53%);animation:beamL 7s ease-in-out infinite}
+  .beams span:nth-child(2){right:-4%;background:conic-gradient(from 180deg at 50% 100%,transparent 47%,rgba(138,61,255,.55) 50%,transparent 53%);animation:beamR 8s ease-in-out infinite}
+  .beams span:nth-child(3){left:27%;background:conic-gradient(from 180deg at 50% 100%,transparent 48%,rgba(243,201,105,.4) 50%,transparent 52%);animation:beamL 10s ease-in-out infinite reverse}
+  @keyframes beamL{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(18deg)}}
+  @keyframes beamR{0%,100%{transform:rotate(26deg)}50%{transform:rotate(-20deg)}}
+  #confetti{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font:900 13px var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .eyebrow b{background:var(--pink);color:#fff;padding:5px 9px;border-radius:3px;letter-spacing:.1em;box-shadow:0 0 18px rgba(255,46,166,.8)}
+  .hero h1{font-size:clamp(54px,7.4vw,112px);margin-bottom:26px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;font-weight:600;font-size:14.5px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+  .chip svg{width:16px;height:16px;color:var(--pink)}
+  .chip.gold{color:var(--gold);border-color:rgba(243,201,105,.4)}
+  .countdown{display:flex;gap:12px;margin-bottom:34px}
+  .cd{position:relative;width:88px;padding:14px 0 10px;text-align:center;border-radius:10px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
+  .cd::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.45)}
+  .cd b{display:block;font:400 44px/1 var(--poster)}
+  .cd b.flip{animation:flip .45s ease}
+  @keyframes flip{0%{transform:translateY(-35%);opacity:0}100%{transform:none;opacity:1}}
+  .cd small{font-size:10.5px;font-weight:800;letter-spacing:.2em;color:var(--grey)}
+  .actions{display:flex;flex-wrap:wrap;gap:14px}
+  .flyer3d{perspective:1200px}
+  .flyer-card{position:relative;transform-style:preserve-3d;transition:transform .2s ease-out;border-radius:10px}
+  .flyer-card img,.flyer-card .cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.2),0 0 80px -10px rgba(255,46,166,.6)}
+  .flyer-card::after{content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;mix-blend-mode:overlay;
+    background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 60%);background-size:250% 100%;background-position:var(--sx,100%) 0}
+  .flyer-reflect{height:60px;margin-top:6px;border-radius:10px;opacity:.25;filter:blur(6px);transform:scaleY(-1);
+    background-size:cover;background-position:bottom;-webkit-mask-image:linear-gradient(to top,#000,transparent)}
+  .hero .tag{position:absolute;left:-18px;bottom:-18px;transform:translateZ(60px) rotate(-6deg);background:var(--goldgrad);color:#1a1205;
+    font:400 22px/1 var(--poster);padding:12px 16px;border-radius:4px;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 
-  /* marquee */
-  .marquee-clip{overflow:hidden;padding:12px 0}
-  .marquee{background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;border-block:3px solid var(--black);transform:rotate(-1.2deg);margin:10px -20px}
-  .marquee div{display:inline-block;font:400 26px/1 var(--poster);text-transform:uppercase;padding:14px 0;animation:ticker 32s linear infinite}
-  .marquee span{margin:0 22px}
-  .marquee i{font-style:normal;color:var(--black)}
+  /* ---------- Tapes ---------- */
+  .tapes{position:relative;height:150px;overflow:hidden;margin:-30px 0 10px}
+  .tape{position:absolute;left:-5%;right:-5%;white-space:nowrap;overflow:hidden;border-block:2px solid rgba(0,0,0,.5)}
+  .tape div{display:inline-block;font:400 28px/1 var(--poster);text-transform:uppercase;padding:15px 0;animation:ticker 40s linear infinite}
+  .tape span{margin:0 20px}
+  .tape i{font-style:normal}
+  .tape.a{top:30px;background:linear-gradient(90deg,var(--pink),var(--pink-hot),var(--violet));transform:rotate(-2.2deg);box-shadow:0 0 50px rgba(255,46,166,.45);z-index:2}
+  .tape.a i{color:#1a0010}
+  .tape.b{top:58px;background:#0b0b0f;color:var(--gold);transform:rotate(2deg);border-color:rgba(243,201,105,.35)}
+  .tape.b div{animation-direction:reverse;animation-duration:55s}
   @keyframes ticker{to{transform:translateX(-50%)}}
 
-  /* sections */
-  section{padding:90px 0}
-  .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:12px}
-  .sec-title em{font-style:normal;color:var(--pink)}
-  .sec-sub{color:var(--grey);font-size:18px;max-width:620px;margin-bottom:44px}
+  /* ---------- Sections ---------- */
+  section{padding:100px 0;position:relative}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+  .head h2{font-size:clamp(50px,6.6vw,96px)}
+  .head p{color:var(--grey);font-size:17px;max-width:420px}
 
-  /* party cards */
-  .parties{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-  .party{background:var(--ink);border:1px solid var(--line);display:grid;grid-template-rows:auto 1fr;position:relative;transition:transform .2s,border-color .2s}
-  .party:hover{transform:translateY(-4px);border-color:var(--pink)}
-  .party .img{position:relative;overflow:hidden}
-  .party img,.party .cover{width:100%;aspect-ratio:16/9;object-fit:cover}
-  .party .sticker{font-size:17px;right:10px;top:10px;transform:rotate(4deg)}
-  .party .body{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:22px 22px 24px}
-  .date{background:#fff;color:var(--black);text-align:center;padding:10px 12px;min-width:78px;align-self:start;transform:skewX(-6deg)}
-  .date b{display:block;font:400 40px/1 var(--poster)}
-  .date span{font:800 13px/1.3 var(--body);text-transform:uppercase;letter-spacing:.06em}
-  .party h3{font-size:30px;margin-bottom:8px}
-  .party p.meta{color:#ddd;font-size:15px;margin-bottom:6px}
-  .party p.desc{color:var(--grey);font-size:14.5px;margin:10px 0 18px}
-  .party .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .party .price{font:400 26px/1 var(--poster)}
-  .party .price small{font:600 13px var(--body);color:var(--grey);margin-right:4px;text-transform:none}
-  .party .btn{padding:14px 20px;font-size:14px}
-  .soldout{position:absolute;inset:0;display:grid;place-items:center;background:rgba(9,9,12,.6)}
-  .soldout span{font:400 44px/1 var(--poster);border:4px solid var(--pink);color:var(--pink);padding:8px 18px;transform:rotate(-8deg);text-transform:uppercase}
+  /* ---------- Ticket cards ---------- */
+  .tickets{display:grid;gap:26px;perspective:1600px}
+  .ticket{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.25fr) 210px;border-radius:14px;
+    background:linear-gradient(135deg,#17171f,#0e0e13);border:1px solid var(--line);transform-style:preserve-3d;transition:transform .15s ease-out,border-color .3s,box-shadow .3s;
+    --mx:50%;--my:50%}
+  .ticket:hover{border-color:rgba(255,46,166,.55);box-shadow:0 30px 80px -30px rgba(255,46,166,.55)}
+  .ticket::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+    background:radial-gradient(500px circle at var(--mx) var(--my),rgba(255,79,208,.16),transparent 45%),
+               linear-gradient(115deg,transparent 35%,rgba(120,255,240,.07) 45%,rgba(255,79,208,.09) 55%,transparent 65%)}
+  .ticket:hover::before{opacity:1}
+  .t-img{position:relative;overflow:hidden;border-radius:14px 0 0 14px}
+  .t-img img,.t-img .cover{width:100%;height:100%;min-height:230px;object-fit:cover;transition:transform .6s}
+  .ticket:hover .t-img img{transform:scale(1.05)}
+  .t-badge{position:absolute;top:14px;left:14px;font:900 11px var(--body);letter-spacing:.16em;text-transform:uppercase;padding:7px 10px;border-radius:3px;
+    background:rgba(0,0,0,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2)}
+  .t-badge.hot{background:var(--pink);border-color:transparent;box-shadow:0 0 20px rgba(255,46,166,.8)}
+  .t-main{padding:28px 30px;display:flex;flex-direction:column;gap:10px}
+  .t-main h3{font-size:clamp(30px,3vw,42px)}
+  .t-line{display:flex;flex-wrap:wrap;gap:8px 18px;color:#d8d8e2;font-size:14.5px;font-weight:500}
+  .t-line span{display:inline-flex;align-items:center;gap:7px}
+  .t-line svg{width:15px;height:15px;color:var(--pink)}
+  .t-main p{color:var(--grey);font-size:14.5px;margin-top:4px}
+  .t-stub{position:relative;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;gap:14px;
+    border-left:2px dashed rgba(255,255,255,.16)}
+  .t-stub::before,.t-stub::after{content:"";position:absolute;left:-13px;width:24px;height:24px;border-radius:50%;background:var(--bg)}
+  .t-stub::before{top:-13px;box-shadow:inset 0 -1px 0 var(--line)}
+  .t-stub::after{bottom:-13px;box-shadow:inset 0 1px 0 var(--line)}
+  .t-date small{display:block;font:900 12px var(--body);letter-spacing:.24em;color:var(--pink)}
+  .t-date b{display:block;font:400 64px/.95 var(--poster)}
+  .t-date span{font:800 13px var(--body);letter-spacing:.2em;text-transform:uppercase;color:#ddd}
+  .t-price{font:400 34px/1 var(--poster)}
+  .t-price small{display:block;font:700 11px var(--body);letter-spacing:.2em;color:var(--grey);margin-bottom:4px}
+  .barcode{width:130px;height:30px;opacity:.55;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 4px,#fff 4px 5px,transparent 5px 8px,#fff 8px 11px,transparent 11px 12px)}
+  .t-stub .btn{width:100%;padding:16px 10px;font-size:13px}
+  .soldout{position:absolute;inset:0;display:grid;place-items:center;background:rgba(6,6,8,.55)}
+  .soldout span{font:400 46px/1 var(--poster);color:var(--pink);border:4px solid var(--pink);padding:6px 16px;transform:rotate(-8deg);text-shadow:0 0 18px var(--pink)}
   .cover{display:grid;place-items:center;text-align:center;padding:20px;background:
-      radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 40%),linear-gradient(135deg,var(--c1,#ff2ea6),var(--c2,#5b2bff))}
-  .cover b{font:400 clamp(28px,4vw,48px)/.95 var(--poster);text-transform:uppercase;transform:skewX(-10deg);text-shadow:4px 4px 0 rgba(0,0,0,.35)}
-  .cover small{display:block;font:800 13px var(--body);letter-spacing:.2em;margin-top:10px}
-  .empty{border:2px dashed var(--line);padding:40px;text-align:center;color:var(--grey);grid-column:1/-1}
+      radial-gradient(circle at 25% 20%,rgba(255,255,255,.35),transparent 40%),linear-gradient(135deg,var(--c1,#ff2ea6),var(--c2,#5b2bff))}
+  .cover b{font:400 clamp(30px,3.6vw,50px)/.92 var(--poster);text-transform:uppercase;transform:skewX(-9deg);text-shadow:4px 4px 0 rgba(0,0,0,.3)}
+  .cover small{display:block;font:900 12px var(--body);letter-spacing:.24em;margin-top:12px}
+  .empty{border:1px dashed var(--line);padding:50px;text-align:center;color:var(--grey);border-radius:14px}
 
-  .past{margin-top:70px}
-  .past h3{font-size:34px;margin-bottom:20px;color:var(--grey)}
-  .past-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .past-grid figure{position:relative}
-  .past-grid img,.past-grid .cover{width:100%;aspect-ratio:16/9;object-fit:cover;filter:grayscale(1) brightness(.6)}
-  .past-grid figcaption{position:absolute;left:10px;bottom:8px;font:400 20px/1 var(--poster);text-transform:uppercase}
-  .past-grid figcaption small{display:block;font:600 12px var(--body);color:#ccc;text-transform:none}
+  .past{margin-top:80px}
+  .past h3{font-size:40px;margin-bottom:22px;color:#8a8a96}
+  .past-row{display:flex;gap:16px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+  .past-row figure{flex:0 0 260px;scroll-snap-align:start;position:relative;border-radius:10px;overflow:hidden}
+  .past-row img,.past-row .cover{width:100%;aspect-ratio:16/9;object-fit:cover;filter:grayscale(1) brightness(.55);transition:filter .4s}
+  .past-row figure:hover img{filter:none}
+  .past-row figcaption{position:absolute;left:12px;bottom:10px;font:400 20px/1 var(--poster);text-transform:uppercase}
+  .past-row figcaption small{display:block;font:600 12px var(--body);color:#ccc;text-transform:none;margin-top:3px}
 
-  /* ab 16 */
-  .u18{background:#fff;color:var(--black)}
-  .u18 .sec-sub{color:#55555f}
-  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--black)}
-  .rule{padding:30px 28px;border-right:3px solid var(--black)}
-  .rule:last-child{border-right:0}
-  .rule .num{font:400 64px/1 var(--poster);color:var(--pink);display:block;margin-bottom:10px}
-  .rule h3{font:400 28px/1 var(--poster);text-transform:uppercase;margin-bottom:10px}
-  .rule p{color:#3a3a44;font-size:15.5px}
-  .mutti{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:34px;padding:28px 30px;background:var(--black);color:#fff}
-  .mutti h3{font:400 34px/1 var(--poster);text-transform:uppercase}
-  .mutti p{color:var(--grey);margin-top:6px;max-width:560px}
+  /* ---------- Ticket tiers ---------- */
+  .tiers-sec{background:radial-gradient(60% 50% at 50% 0%,rgba(138,61,255,.18),transparent 70%)}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tier{position:relative;border-radius:18px;padding:34px 30px 30px;overflow:hidden;min-height:330px;display:flex;flex-direction:column;
+    background:linear-gradient(160deg,#1a1a23,#0d0d12);border:1px solid var(--line)}
+  .tier::after{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-90px;border-radius:50%;filter:blur(50px);opacity:.55;background:var(--glow,#ff2ea6)}
+  .tier .lux{font-size:13px;color:var(--grey)}
+  .tier h3{font-size:44px;margin:10px 0 14px}
+  .tier p{color:#c9c9d4;font-size:15px;flex:1}
+  .tier .price{font:400 54px/1 var(--poster);margin-top:24px}
+  .tier .price small{font:700 13px var(--body);color:var(--grey);letter-spacing:.08em}
+  .tier.chrome-c{--glow:#9ad7ff;background:linear-gradient(160deg,#20222b,#0d0d12)}
+  .tier.gold-c{--glow:#f3c969;border-color:rgba(243,201,105,.45);box-shadow:0 0 60px -20px rgba(243,201,105,.5)}
+  .tier .ribbon{position:absolute;top:18px;right:-34px;transform:rotate(35deg);background:var(--goldgrad);color:#1a1205;font:900 11px var(--body);letter-spacing:.18em;padding:7px 40px;z-index:1}
+  .tiers-note{color:var(--grey);font-size:13.5px;margin-top:18px}
 
-  /* faq */
-  .faq{max-width:860px}
-  details{border-bottom:1px solid var(--line)}
-  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:800 19px/1.3 var(--body)}
+  /* ---------- Ab 16 ---------- */
+  .u18{background:linear-gradient(180deg,transparent,rgba(255,46,166,.06) 40%,transparent)}
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rule{border-radius:16px;padding:30px;background:rgba(255,255,255,.03);border:1px solid var(--line);position:relative;overflow:hidden}
+  .rule .n{font:400 90px/1 var(--poster);position:absolute;right:16px;top:6px;color:transparent;-webkit-text-stroke:1.5px rgba(255,46,166,.45)}
+  .rule .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(255,46,166,.12);color:var(--pink);margin-bottom:18px}
+  .rule .ico svg{width:24px;height:24px}
+  .rule h3{font:400 30px/1 var(--poster);text-transform:uppercase;margin-bottom:10px}
+  .rule p{color:#c4c4cf;font-size:15px}
+  .mutti{margin-top:22px;border-radius:16px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    background:linear-gradient(100deg,rgba(255,46,166,.18),rgba(138,61,255,.14));border:1px solid rgba(255,46,166,.35)}
+  .mutti h3{font:400 38px/1 var(--poster);text-transform:uppercase}
+  .mutti p{color:#ddd;margin-top:8px;max-width:600px}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  details{border-radius:12px;background:rgba(255,255,255,.035);border:1px solid var(--line);transition:border-color .2s,background .2s}
+  details[open]{border-color:rgba(255,46,166,.45);background:rgba(255,46,166,.06)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font:800 17px/1.3 var(--body)}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font:400 34px/1 var(--poster);color:var(--pink);transition:transform .2s}
-  details[open] summary::after{transform:rotate(45deg)}
-  details p{color:var(--grey);padding:0 40px 22px 0}
+  summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:400 22px/1 var(--body);background:rgba(255,255,255,.08);transition:transform .25s,background .25s}
+  details[open] summary::after{transform:rotate(45deg);background:var(--pink)}
+  details p{color:#c4c4cf;padding:0 22px 20px;font-size:15px}
 
-  /* insta */
-  .insta{background:var(--pink);text-align:center;padding:80px 0}
-  .insta .poster{font-size:clamp(48px,9vw,130px)}
-  .insta p{font-size:19px;margin:14px 0 30px}
-  .insta .btn{background:var(--black);border-color:var(--black)}
-  .insta .btn:hover{background:#fff;border-color:#fff;color:var(--black);box-shadow:6px 6px 0 var(--black)}
+  /* ---------- Insta ---------- */
+  .insta{overflow:hidden;padding:110px 0}
+  .insta .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .insta h2{font-size:clamp(40px,5vw,76px);margin:12px 0 18px;white-space:nowrap}
+  .insta p{color:#cfcfd8;font-size:18px;margin-bottom:30px;max-width:460px}
+  .stack{position:relative;height:420px}
+  .stack .post{position:absolute;width:62%;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.15);transition:transform .4s}
+  .stack .post img,.stack .post .cover{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .stack .post:nth-child(1){left:0;top:40px;transform:rotate(-9deg)}
+  .stack .post:nth-child(2){left:19%;top:0;transform:rotate(2deg);z-index:2}
+  .stack .post:nth-child(3){right:0;top:60px;transform:rotate(10deg)}
+  .stack:hover .post:nth-child(1){transform:rotate(-14deg) translateX(-20px)}
+  .stack:hover .post:nth-child(3){transform:rotate(15deg) translateX(20px)}
 
-  footer{padding:50px 0 40px;color:var(--grey);font-size:14px;border-top:1px solid var(--line)}
+  footer{border-top:1px solid var(--line);padding:56px 0 44px;color:var(--grey);font-size:14px}
   footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-  footer .logo{font-size:26px;display:inline-block;margin-bottom:10px}
+  footer .logo{display:inline-block;margin-bottom:12px}
   footer a{color:#ddd}
 
-  /* demo date tool (only for presenting the auto-hide feature) */
-  .demo{position:fixed;left:14px;bottom:14px;z-index:60;background:var(--yellow);color:var(--black);padding:10px 12px;font:600 13px var(--body);
-    display:flex;gap:8px;align-items:center;box-shadow:4px 4px 0 var(--pink)}
-  .demo input{font:600 13px var(--body);padding:4px 6px;border:1px solid #000}
-  .demo button{font:800 12px var(--body);background:var(--black);color:#fff;border:0;padding:6px 8px;cursor:pointer}
+  /* cursor glow */
+  .glow{position:fixed;width:480px;height:480px;margin:-240px 0 0 -240px;border-radius:50%;pointer-events:none;z-index:1;
+    background:radial-gradient(circle,rgba(255,46,166,.10),transparent 60%);transition:opacity .3s;opacity:0}
 
-  @media (max-width:900px){
-    nav{display:none}
-    .hero .wrap{grid-template-columns:1fr;gap:40px}
-    .hero{padding-top:34px}
-    .parties{grid-template-columns:1fr}
-    .rules{grid-template-columns:1fr}
-    .rule{border-right:0;border-bottom:3px solid var(--black)}
-    .rule:last-child{border-bottom:0}
-    .past-grid{grid-template-columns:1fr 1fr}
-    .countdown div{min-width:0;flex:1}
-    .demo{left:8px;right:8px;bottom:8px;flex-wrap:wrap}
+  /* reveal */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* demo date tool (nur zum Vorführen, vor dem Livegang entfernen) */
+  .demo{position:fixed;left:14px;bottom:14px;z-index:90;background:var(--gold);color:#120d04;padding:9px 12px;font:700 12.5px var(--body);border-radius:6px;
+    display:flex;gap:8px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .demo input{font:600 12.5px var(--body);padding:3px 6px;border:1px solid #000;border-radius:3px}
+  .demo button{font:800 11.5px var(--body);background:#120d04;color:#fff;border:0;padding:6px 8px;border-radius:3px;cursor:pointer}
+
+  @media (max-width:1000px){
+    nav,.live{display:none}
+    .hero .wrap{grid-template-columns:1fr;gap:46px}
+    .hero{padding-top:100px}
+    .ticket{grid-template-columns:1fr}
+    .t-img{border-radius:14px 14px 0 0}
+    .t-img img,.t-img .cover{min-height:0;aspect-ratio:16/9}
+    .t-stub{border-left:0;border-top:2px dashed rgba(255,255,255,.16);flex-direction:row;flex-wrap:wrap;justify-content:space-between;text-align:left}
+    .t-stub::before,.t-stub::after{top:-13px;left:auto}
+    .t-stub::before{left:-13px}.t-stub::after{right:-13px;bottom:auto}
+    .t-stub .barcode{display:none}
+    .t-stub .btn{width:100%}
+    .tiers,.rules,.faq{grid-template-columns:1fr}
+    .insta .wrap{grid-template-columns:1fr}
+    .stack{height:340px}
   }
-  @media (max-width:480px){
-    .party .body{grid-template-columns:1fr}
-    .date{justify-self:start}
+  @media (max-width:520px){
+    .cd{width:auto;flex:1}
+    .cd b{font-size:36px}
     .hero .actions .btn{width:100%}
+    .demo{left:8px;right:8px;bottom:8px;flex-wrap:wrap}
+    .tape div{font-size:22px}
   }
-  @media (prefers-reduced-motion:reduce){.marquee div{animation:none}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+  }
 </style>
 </head>
 <body>
 
-<header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 8a2 2 0 0 0 0 4v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a2 2 0 0 1 0-4V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zM14 4v13"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 6h18v12H3zM8 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM5 17c.6-1.5 1.7-2 3-2s2.4.5 3 2M14 10h4M14 13h3"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-glass" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v7M8 21h8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 4h16v16H4zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17 6.5v.01"/></symbol>
+</svg>
+
+<div class="glow" id="glow"></div>
+
+<header id="header">
   <div class="wrap">
-    <a class="logo" href="#top">ABI CREW <small>NRW</small></a>
+    <a class="logo" href="#top">ABI CREW<sup>NRW</sup></a>
     <nav>
       <a href="#partys">Partys</a>
+      <a href="#tickets">Tickets</a>
       <a href="#ab16">Ab 16</a>
       <a href="#faq">FAQ</a>
-      <a href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener">Instagram</a>
     </nav>
-    <a class="btn" href="#partys"><span>Tickets</span></a>
+    <div class="live" id="live"><i></i><span>Nächste Party</span></div>
+    <a class="btn btn-hot" href="#partys"><span>Tickets</span></a>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero" id="hero" style="padding-bottom:60px"></section>
-  <div class="marquee-clip"><div class="marquee" aria-hidden="true"><div id="ticker"></div></div></div>
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="beams" aria-hidden="true"><span></span><span></span><span></span></div>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <div class="wrap" id="heroInner"></div>
+  </section>
+
+  <div class="tapes" aria-hidden="true">
+    <div class="tape a"><div id="tapeA"></div></div>
+    <div class="tape b"><div id="tapeB"></div></div>
+  </div>
 
   <section id="partys">
     <div class="wrap">
-      <h2 class="poster sec-title"><span class="slant">Alle <em>Partys</em></span></h2>
-      <p class="sec-sub">Alle kommenden Partys von ABI CREW. Tickets gibt es online, die Partys sind oft ausverkauft.</p>
-      <div class="parties" id="list"></div>
+      <div class="head rv">
+        <h2 class="poster"><span class="slant chrome">Alle Partys</span></h2>
+        <p>Alle kommenden Nächte von ABI CREW in Düsseldorf. Die Partys sind oft schnell ausverkauft, also lieber früh zuschlagen.</p>
+      </div>
+      <div class="tickets" id="list"></div>
       <div class="past" id="past"></div>
+    </div>
+  </section>
+
+  <section class="tiers-sec" id="tickets">
+    <div class="wrap">
+      <div class="head rv">
+        <h2 class="poster"><span class="slant">Wähl dein <span class="goldtext">Ticket</span></span></h2>
+        <p>Allein, mit der Clique oder ganz ohne Warten: Für jede Party gibt es verschiedene Tickets.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier rv">
+          <span class="lux">Classic</span>
+          <h3 class="poster">Standard</h3>
+          <p>Dein Ticket für die Nacht. Je früher du kaufst, desto günstiger. Die Preise steigen mit jeder Ticket-Phase.</p>
+          <div class="price">12 € <small>z. B. letzte Phase</small></div>
+        </div>
+        <div class="tier chrome-c rv">
+          <span class="lux">Squad</span>
+          <h3 class="poster">5er Gruppe</h3>
+          <p>Fünf Tickets auf einmal und dafür günstiger pro Person. Perfekt, wenn die ganze Clique mitkommt.</p>
+          <div class="price">11 € <small>pro Person</small></div>
+        </div>
+        <div class="tier gold-c rv">
+          <div class="ribbon">VIP</div>
+          <span class="lux">Fast Lane</span>
+          <h3 class="poster goldtext">Skip The Line</h3>
+          <p>Vorbei an der Schlange und direkt rein. Für alle, die keine Minute der Party verpassen wollen.</p>
+          <div class="price goldtext">20 €</div>
+        </div>
+      </div>
+      <p class="tiers-note">Beispielpreise von Flynn’s Birthday Bash. Preise und Ticketarten sind je Party unterschiedlich.</p>
     </div>
   </section>
 
   <section class="u18" id="ab16">
     <div class="wrap">
-      <h2 class="poster sec-title"><span class="slant">Party ab <em>16</em></span></h2>
-      <p class="sec-sub">Das Wichtigste zum Einlass, damit am Abend alles glatt läuft. Am besten auch den Eltern schicken.</p>
-      <div class="rules">
-        <div class="rule"><span class="num">01</span><h3>Ausweis dabei</h3><p>Einlass ab 16 Jahren. Bringt euren Personalausweis oder Reisepass im Original mit. Ohne gültigen Ausweis kein Einlass.</p></div>
-        <div class="rule"><span class="num">02</span><h3>Unter 18: bis 24 Uhr</h3><p>Mit 16 und 17 dürft ihr nach dem Jugendschutzgesetz ohne Begleitung bis Mitternacht bleiben. Wer länger bleiben will, braucht eine volljährige Begleitperson mit Muttizettel.</p></div>
-        <div class="rule"><span class="num">03</span><h3>Kein harter Alkohol</h3><p>Unter 18 gibt es nur Bier, Wein und Sekt. Spirituosen und Mischgetränke mit Schnaps erst ab 18.</p></div>
+      <div class="head rv">
+        <h2 class="poster"><span class="slant">Party ab <span style="color:var(--pink);text-shadow:0 0 30px rgba(255,46,166,.7)">16</span></span></h2>
+        <p>Damit am Einlass alles glatt läuft. Am besten auch den Eltern schicken.</p>
       </div>
-      <div class="mutti">
+      <div class="rules">
+        <div class="rule rv"><span class="n">01</span><div class="ico"><svg><use href="#i-id"/></svg></div><h3>Ausweis dabei</h3><p>Einlass ab 16. Personalausweis oder Reisepass im Original mitbringen, ohne gültigen Ausweis kein Einlass.</p></div>
+        <div class="rule rv"><span class="n">02</span><div class="ico"><svg><use href="#i-moon"/></svg></div><h3>Unter 18: bis 24 Uhr</h3><p>Mit 16 und 17 dürft ihr laut Jugendschutzgesetz ohne Begleitung bis Mitternacht bleiben. Länger nur mit volljähriger Begleitperson und Muttizettel.</p></div>
+        <div class="rule rv"><span class="n">03</span><div class="ico"><svg><use href="#i-glass"/></svg></div><h3>Kein harter Alkohol</h3><p>Unter 18 gibt es nur Bier, Wein und Sekt. Spirituosen und Longdrinks erst ab 18.</p></div>
+      </div>
+      <div class="mutti rv">
         <div>
           <h3>Muttizettel</h3>
-          <p>Ausfüllen, von den Eltern unterschreiben lassen und zusammen mit einer Ausweiskopie der Eltern mitbringen. Die Begleitperson muss volljährig sein.</p>
+          <p>Ausfüllen, von den Eltern unterschreiben lassen und mit einer Ausweiskopie der Eltern mitbringen. Die Begleitperson muss volljährig sein.</p>
         </div>
-        <a class="btn" href="#" id="muttiLink"><span>Muttizettel (PDF)</span></a>
+        <a class="btn btn-hot" href="#" id="muttiLink"><span>Muttizettel herunterladen</span></a>
       </div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap">
-      <h2 class="poster sec-title"><span class="slant">Fragen?</span></h2>
-      <div class="faq">
-        <details><summary>Wie bekomme ich mein Ticket?</summary><p>Ihr kauft das Ticket online über unseren Ticketpartner ticket.io und bekommt es per E-Mail. Am Einlass zeigt ihr einfach den QR-Code auf dem Handy.</p></details>
-        <details><summary>Was ist das 5er-Gruppenticket?</summary><p>Fünf Tickets auf einmal und dafür etwas günstiger pro Person. Perfekt, wenn ihr mit eurer Clique kommt.</p></details>
-        <details><summary>Was bedeutet „Skip The Line“?</summary><p>Mit diesem Ticket kommt ihr schneller rein und spart euch das lange Anstehen am Einlass.</p></details>
+      <div class="head rv">
+        <h2 class="poster"><span class="slant chrome">Fragen?</span></h2>
+        <p>Alles, was ihr vor der Party wissen müsst.</p>
+      </div>
+      <div class="faq rv">
+        <details><summary>Wie bekomme ich mein Ticket?</summary><p>Ihr kauft online über unseren Ticketpartner ticket.io und bekommt das Ticket per E-Mail. Am Einlass einfach den QR-Code auf dem Handy zeigen.</p></details>
         <details><summary>Gibt es eine Abendkasse?</summary><p>Unsere Partys sind meistens ausverkauft. Holt euch die Tickets lieber vorher online, dann seid ihr sicher dabei.</p></details>
-        <details><summary>Was ist, wenn ich krank werde?</summary><p>Beim Ticketkauf könnt ihr eine Ticketversicherung abschließen. Dann bekommt ihr den Ticketpreis zurück, wenn ihr zum Beispiel krank werdet.</p></details>
-        <details><summary>Wo erfahre ich von neuen Partys?</summary><p>Neue Partys kündigen wir zuerst auf Instagram an: @abicrew_nrw. Hier auf der Seite stehen sie dann auch sofort.</p></details>
+        <details><summary>Was ist das 5er-Gruppenticket?</summary><p>Fünf Tickets in einer Buchung, dafür günstiger pro Person. Ideal für die ganze Clique.</p></details>
+        <details><summary>Was ist, wenn ich krank werde?</summary><p>Beim Kauf könnt ihr eine Ticketversicherung dazubuchen. Dann gibt es den Ticketpreis zurück, wenn ihr zum Beispiel krank werdet.</p></details>
+        <details><summary>Was bedeutet „Skip The Line“?</summary><p>Mit diesem Ticket kommt ihr schneller rein und spart euch das Anstehen am Einlass.</p></details>
+        <details><summary>Wo erfahre ich von neuen Partys?</summary><p>Neue Partys gibt es zuerst auf Instagram bei @abicrew_nrw. Hier auf der Seite stehen sie dann auch sofort.</p></details>
       </div>
     </div>
   </section>
 
   <section class="insta">
     <div class="wrap">
-      <div class="poster"><span class="slant">@abicrew_nrw</span></div>
-      <p>Flyer, Gewinnspiele und Videos von der letzten Party.</p>
-      <a class="btn" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><span>Auf Instagram folgen</span></a>
+      <div class="rv">
+        <span class="eyebrow">Folgt uns</span>
+        <h2 class="poster"><span class="slant chrome">@abicrew_nrw</span></h2>
+        <p>Neue Flyer, Gewinnspiele, Ticket-Drops und die Videos von der letzten Nacht.</p>
+        <a class="btn btn-hot" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg><span>Auf Instagram folgen</span></a>
+      </div>
+      <div class="stack rv" id="stack"></div>
     </div>
   </section>
 </main>
@@ -251,25 +427,23 @@
 <footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="#top">ABI CREW <small>NRW</small></a>
+      <a class="logo" href="#top">ABI CREW<sup>NRW</sup></a>
       <p>Veranstalter: ABI CREW, Jan Richter<br>Kölner Str. 226, 41468 Neuss</p>
     </div>
-    <div>
+    <div style="text-align:right">
       <p>Tickets über ticket.io<br><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
     </div>
   </div>
 </footer>
 
-<div class="demo" id="demo">
-  Demo: Datum testen <input type="date" id="demoDate"> <button type="button" id="demoReset">Heute</button>
-</div>
+<div class="demo" id="demo">Demo: Datum testen <input type="date" id="demoDate"> <button type="button" id="demoReset">Heute</button></div>
 
 <script>
 /* =========================================================
    PARTYS – hier neue Partys eintragen.
-   Vergangene Partys verschwinden automatisch aus der Liste
-   (nach "ende", am Morgen nach der Party) und landen unten
-   bei "Vergangene Partys".
+   Vergangene Partys verschwinden automatisch (am Morgen nach
+   der Party) und landen unten bei "Vergangene Partys".
+   Optional pro Party:  badge: "Fast ausverkauft",  ausverkauft: true
    ========================================================= */
 const SHOP = "https://abicrewnrw.ticket.io/?lang=de";
 
@@ -282,7 +456,6 @@ const PARTIES = [
     flyer: "flyer/flynn.jpg",
     text: "Unser Junior-Chef Flynn feiert Geburtstag und ihr feiert mit. Free Drinks, Birthday-Specials, Überraschungen und eine riesige Konfetti-Show.",
     tickets: "https://abicrewnrw.ticket.io/tzgFLppd/?lang=de",
-    // optional: sticker: "Nur noch wenige Tickets",  ausverkauft: true,
   },
   {
     name: "Après Ski Party",
@@ -300,7 +473,7 @@ const PARTIES = [
     club: "Nachtresidenz Düsseldorf",
     preis: 7,
     flyer: "flyer/jan.jpg",
-    text: "Das große Finale 2026. Die letzte ABI CREW Party des Jahres mit Free Drinks, Konfetti-Show und Specials. Letztes Jahr war sie ausverkauft.",
+    text: "Das große Finale 2026: die letzte ABI CREW Party des Jahres mit Free Drinks, Konfetti-Show und Specials. Letztes Jahr ausverkauft.",
     tickets: SHOP,
   },
   {
@@ -327,17 +500,13 @@ const PARTIES = [
 
 /* ---------- Ab hier nichts ändern ---------- */
 const $ = s => document.querySelector(s);
-const WD = ["SO","MO","DI","MI","DO","FR","SA"];
+const WD = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
 const MON = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
-
 const startOf = p => new Date(`${p.datum}T${p.einlass}:00`);
-const endOf = p => { // Ende am nächsten Morgen, wenn die Endzeit vor dem Einlass liegt
-  const e = new Date(`${p.datum}T${p.ende || "04:00"}:00`);
-  if (e <= startOf(p)) e.setDate(e.getDate() + 1);
-  return e;
-};
+const endOf = p => { const e = new Date(`${p.datum}T${p.ende || "04:00"}:00`); if (e <= startOf(p)) e.setDate(e.getDate() + 1); return e; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
 const euro = n => n.toLocaleString("de-DE", { minimumFractionDigits: n % 1 ? 2 : 0 }) + " €";
+const icon = id => `<svg><use href="#i-${id}"/></svg>`;
 
 function cover(p) {
   const [c1, c2] = p.farben || ["#ff2ea6", "#5b2bff"];
@@ -345,20 +514,14 @@ function cover(p) {
 }
 function img(p) {
   if (!p.flyer) return cover(p);
-  // Fällt auf ein generiertes Cover zurück, wenn der Flyer fehlt
-  return `<img src="${esc(p.flyer)}" alt="Flyer ${esc(p.name)}" loading="lazy" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(cover(p))}')">`;
-}
-function dateBox(p) {
-  const d = startOf(p);
-  return `<div class="date"><span>${WD[d.getDay()]}</span><b>${d.getDate()}</b><span>${MON[d.getMonth()]}</span></div>`;
+  return `<img src="${esc(p.flyer)}" alt="Flyer ${esc(p.name)}" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(cover(p))}')">`;
 }
 function ticketBtn(p, label = "Tickets") {
-  return p.ausverkauft ? `<span class="btn off"><span>Ausverkauft</span></span>`
-    : `<a class="btn" href="${esc(p.tickets || SHOP)}" target="_blank" rel="noopener"><span>${label} →</span></a>`;
+  return p.ausverkauft ? `<span class="btn btn-off">Ausverkauft</span>`
+    : `<a class="btn btn-hot" href="${esc(p.tickets || SHOP)}" target="_blank" rel="noopener"><span>${label}</span>${icon("arrow")}</a>`;
 }
 
-let now = new Date();
-let timer;
+let now = new Date(), simulated = false, timer;
 
 function render() {
   const sorted = [...PARTIES].sort((a, b) => startOf(a) - startOf(b));
@@ -366,68 +529,148 @@ function render() {
   const past = sorted.filter(p => endOf(p) <= now).reverse();
   const next = upcoming[0];
 
-  // Hero: nächste Party
-  const hero = $("#hero");
+  /* Hero */
+  $("#heroBg").style.backgroundImage = next && next.flyer ? `url("${next.flyer}")` : "linear-gradient(135deg,#ff2ea6,#5b2bff)";
   if (next) {
     const d = startOf(next);
-    hero.innerHTML = `<div class="wrap">
-      <div class="hero-flyer">${img(next)}${next.sticker ? `<div class="sticker">${esc(next.sticker)}</div>` : ""}</div>
+    $("#heroInner").innerHTML = `
       <div>
-        <div class="label">Nächste Party</div>
-        <h1 class="poster"><span class="slant">${esc(next.name)}</span></h1>
-        <div class="facts">
-          <b>Wann</b><span>${WD[d.getDay()].charAt(0) + WD[d.getDay()].slice(1).toLowerCase()}, ${d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" })} · Einlass ${next.einlass} Uhr</span>
-          <b>Wo</b><span>${esc(next.club)}</span>
-          <b>Tickets</b><span>ab ${euro(next.preis)} · Einlass ab 16</span>
+        <span class="eyebrow"><b>16+</b> Nächste Party</span>
+        <h1 class="poster"><span class="slant chrome">${esc(next.name)}</span></h1>
+        <div class="meta-row">
+          <span class="chip">${icon("cal")}${WD[d.getDay()]}, ${d.toLocaleDateString("de-DE")}</span>
+          <span class="chip">${icon("clock")}Einlass ${next.einlass} Uhr</span>
+          <span class="chip">${icon("pin")}${esc(next.club)}</span>
+          <span class="chip gold">${icon("ticket")}ab ${euro(next.preis)}</span>
         </div>
         <div class="countdown" id="cd"></div>
-        <div class="actions">${ticketBtn(next, "Tickets sichern")}<a class="btn ghost" href="#partys"><span>Alle Partys</span></a></div>
+        <div class="actions">${ticketBtn(next, "Tickets sichern")}<a class="btn btn-gold" href="#partys">Alle Partys</a></div>
       </div>
-    </div>`;
+      <div class="flyer3d">
+        <div class="flyer-card" id="flyerCard">${img(next)}${next.badge ? `<div class="tag">${esc(next.badge)}</div>` : ""}</div>
+        ${next.flyer ? `<div class="flyer-reflect" style="background-image:url('${esc(next.flyer)}')"></div>` : ""}
+      </div>`;
+    const days = Math.ceil((startOf(next) - now) / 864e5);
+    $("#live span").textContent = days <= 0 ? "Heute Party!" : days === 1 ? "Morgen Party!" : `Nächste Party in ${days} Tagen`;
+    tilt($("#flyerCard"), 10);
   } else {
-    hero.innerHTML = `<div class="wrap" style="display:block"><div class="label">Bald geht's weiter</div>
-      <h1 class="poster"><span class="slant">Neue Partys kommen</span></h1>
-      <div class="actions"><a class="btn" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><span>Auf Instagram folgen</span></a></div></div>`;
+    $("#heroInner").innerHTML = `<div><span class="eyebrow">Bald geht's weiter</span><h1 class="poster"><span class="slant chrome">Neue Partys kommen</span></h1>
+      <div class="actions"><a class="btn btn-hot" href="https://www.instagram.com/abicrew_nrw/" target="_blank" rel="noopener"><span>Auf Instagram folgen</span></a></div></div>`;
+    $("#live span").textContent = "Neue Partys bald";
   }
 
-  // Laufband
-  const items = upcoming.map(p => `<span>${esc(p.name)}</span><i>✦</i><span>${startOf(p).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" })}</span><i>✦</i>`).join("") || `<span>Neue Partys kommen bald</span><i>✦</i>`;
-  $("#ticker").innerHTML = items.repeat(4) + items.repeat(4);
+  /* Tapes */
+  const a = (upcoming.length ? upcoming : [{ name: "Neue Partys kommen bald", datum: "" }])
+    .map(p => `<span>${esc(p.name)}</span><i>✦</i>${p.datum ? `<span>${startOf(p).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" })}</span><i>✦</i>` : ""}`).join("");
+  $("#tapeA").innerHTML = a.repeat(4) + a.repeat(4);
+  const b = `<span>ABI CREW NRW</span><i>✦</i><span>16+</span><i>✦</i><span>Düsseldorf</span><i>✦</i><span>Sold Out Alarm</span><i>✦</i>`;
+  $("#tapeB").innerHTML = b.repeat(5) + b.repeat(5);
 
-  // Liste
-  $("#list").innerHTML = upcoming.length ? upcoming.map(p => `
-    <article class="party">
-      <div class="img">${img(p)}${p.sticker ? `<div class="sticker">${esc(p.sticker)}</div>` : ""}${p.ausverkauft ? `<div class="soldout"><span>Ausverkauft</span></div>` : ""}</div>
-      <div class="body">
-        ${dateBox(p)}
-        <div>
-          <h3 class="poster">${esc(p.name)}</h3>
-          <p class="meta">${esc(p.club)} · Einlass ${p.einlass} Uhr · 16+</p>
-          <p class="desc">${esc(p.text || "")}</p>
-          <div class="row"><span class="price poster"><small>ab</small>${euro(p.preis)}</span>${ticketBtn(p)}</div>
-        </div>
+  /* Ticket list */
+  $("#list").innerHTML = upcoming.length ? upcoming.map((p, i) => {
+    const d = startOf(p);
+    return `<article class="ticket rv">
+      <div class="t-img">${img(p)}${p.badge ? `<span class="t-badge hot">${esc(p.badge)}</span>` : i === 0 ? `<span class="t-badge hot">Als Nächstes</span>` : `<span class="t-badge">16+</span>`}
+        ${p.ausverkauft ? `<div class="soldout"><span>Ausverkauft</span></div>` : ""}</div>
+      <div class="t-main">
+        <h3 class="poster"><span class="slant">${esc(p.name)}</span></h3>
+        <div class="t-line"><span>${icon("pin")}${esc(p.club)}</span><span>${icon("clock")}Einlass ${p.einlass} Uhr</span><span>${icon("id")}ab 16</span></div>
+        <p>${esc(p.text || "")}</p>
       </div>
-    </article>`).join("") : `<div class="empty">Gerade sind keine Partys geplant. Folgt uns auf Instagram, dann verpasst ihr die nächste nicht.</div>`;
+      <div class="t-stub">
+        <div class="t-date"><small>${WD[d.getDay()].slice(0, 2).toUpperCase()}</small><b>${String(d.getDate()).padStart(2, "0")}</b><span>${MON[d.getMonth()]} ${d.getFullYear()}</span></div>
+        <div class="t-price"><small>Tickets ab</small><span class="goldtext">${euro(p.preis)}</span></div>
+        <div class="barcode"></div>
+        ${ticketBtn(p)}
+      </div>
+    </article>`;
+  }).join("") : `<div class="empty">Gerade sind keine Partys geplant. Folgt uns auf Instagram, dann verpasst ihr die nächste nicht.</div>`;
 
-  // Vergangene Partys
-  $("#past").innerHTML = past.length ? `<h3 class="poster">Vergangene Partys</h3><div class="past-grid">${past.slice(0, 8).map(p => `
+  /* Past */
+  $("#past").innerHTML = past.length ? `<h3 class="poster">Vergangene Partys</h3><div class="past-row">${past.slice(0, 10).map(p => `
     <figure>${img(p)}<figcaption>${esc(p.name)}<small>${startOf(p).toLocaleDateString("de-DE")} · ${esc(p.club)}</small></figcaption></figure>`).join("")}</div>` : "";
 
-  // Countdown
+  /* Insta stack */
+  const pics = sorted.filter(p => p.flyer).slice(0, 3);
+  $("#stack").innerHTML = (pics.length ? pics : sorted.slice(0, 3)).map(p => `<div class="post">${img(p)}</div>`).join("");
+
+  document.querySelectorAll(".ticket").forEach(t => tilt(t, 3, true));
+  observeReveal();
+
+  /* Countdown */
   clearInterval(timer);
   if (next) {
+    const prev = [];
     const tick = () => {
-      const ms = Math.max(0, startOf(next) - (simulated ? now : new Date()));
-      const t = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
-      $("#cd").innerHTML = (ms === 0 ? [["Heute", "Party"]] : [[t[0], "Tage"], [t[1], "Std"], [t[2], "Min"], [t[3], "Sek"]])
-        .map(([v, l]) => `<div><b>${typeof v === "number" ? String(v).padStart(2, "0") : v}</b><small>${l}</small></div>`).join("");
+      const ref = simulated ? now : new Date();
+      const ms = Math.max(0, startOf(next) - ref);
+      const vals = ms === 0 ? null : [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+      if (!vals) { $("#cd").innerHTML = `<div class="cd" style="width:auto;padding:14px 22px"><b>Heute</b><small>Party</small></div>`; return; }
+      const labels = ["Tage", "Std", "Min", "Sek"];
+      if (!$("#cd").children.length) $("#cd").innerHTML = labels.map(l => `<div class="cd"><b></b><small>${l}</small></div>`).join("");
+      [...$("#cd").querySelectorAll("b")].forEach((b, i) => {
+        const v = String(vals[i]).padStart(2, "0");
+        if (prev[i] !== v) { b.textContent = v; b.classList.remove("flip"); void b.offsetWidth; b.classList.add("flip"); prev[i] = v; }
+      });
     };
     tick(); timer = setInterval(tick, 1000);
   }
 }
 
-/* Demo: Datum simulieren, um zu zeigen, dass alte Partys automatisch verschwinden */
-let simulated = false;
+/* 3D tilt + holographic light */
+function tilt(el, max, light) {
+  if (!el || matchMedia("(hover: none)").matches) return;
+  el.addEventListener("mousemove", e => {
+    const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.style.transform = `rotateY(${(x - .5) * max}deg) rotateX(${(.5 - y) * max}deg)`;
+    el.style.setProperty("--mx", `${x * 100}%`); el.style.setProperty("--my", `${y * 100}%`); el.style.setProperty("--sx", `${(1 - x) * 100}%`);
+  });
+  el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+}
+
+/* Reveal on scroll */
+let io;
+function observeReveal() {
+  io = io || new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+}
+
+/* Header + cursor glow */
+const header = $("#header");
+addEventListener("scroll", () => header.classList.toggle("solid", scrollY > 30), { passive: true });
+const glow = $("#glow");
+if (matchMedia("(hover: hover)").matches) {
+  addEventListener("pointermove", e => { glow.style.opacity = 1; glow.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; });
+  glow.style.left = glow.style.top = "0";
+}
+
+/* Confetti */
+(() => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = $("#confetti"), g = c.getContext("2d"), hero = $("#hero");
+  const colors = ["#ff2ea6", "#ff4fd0", "#f3c969", "#ffffff", "#8a3dff", "#ffe6a3"];
+  let W, H, parts = [], run = true;
+  const resize = () => { const dpr = Math.min(devicePixelRatio, 2); W = hero.clientWidth; H = hero.clientHeight; c.width = W * dpr; c.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  resize(); addEventListener("resize", resize);
+  const n = innerWidth < 700 ? 45 : 90;
+  for (let i = 0; i < n; i++) parts.push({ x: Math.random() * W, y: Math.random() * H, w: 5 + Math.random() * 7, h: 3 + Math.random() * 5,
+    vy: .4 + Math.random() * 1.1, vx: -.3 + Math.random() * .6, r: Math.random() * 6, vr: -.06 + Math.random() * .12, s: Math.random() * 6, col: colors[i % colors.length] });
+  new IntersectionObserver(([e]) => run = e.isIntersecting).observe(hero);
+  (function loop() {
+    if (run) {
+      g.clearRect(0, 0, W, H);
+      for (const p of parts) {
+        p.y += p.vy; p.x += p.vx + Math.sin((p.y + p.s * 50) / 40) * .3; p.r += p.vr;
+        if (p.y > H + 10) { p.y = -10; p.x = Math.random() * W; }
+        g.save(); g.translate(p.x, p.y); g.rotate(p.r); g.scale(1, Math.cos(p.r * 1.7));
+        g.fillStyle = p.col; g.globalAlpha = .85; g.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); g.restore();
+      }
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* Demo: Datum simulieren */
 const demoDate = $("#demoDate");
 const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 demoDate.value = iso(now);

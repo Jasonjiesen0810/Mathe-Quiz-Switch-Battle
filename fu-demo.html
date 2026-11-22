@@ -279,6 +279,43 @@
   .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
   .rv.in{opacity:1;transform:none}
 
+  /* 3D tour */
+  .tour-sec{background:var(--jade-950);color:#fff}
+  .tour-sec .head p{color:var(--mint)}
+  .tour{position:relative;height:min(74vh,720px);min-height:420px;border-radius:20px;overflow:hidden;
+    background:radial-gradient(120% 90% at 50% 30%,#1d3a34 0%,#0f201d 60%,#0a1715 100%);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(217,178,106,.25);touch-action:none;user-select:none}
+  .tour canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+  .tour canvas:active{cursor:grabbing}
+  .tour-load{position:absolute;inset:0;display:grid;place-items:center;color:var(--mint);font-size:15px;letter-spacing:.1em;transition:opacity .6s}
+  .tour-load.done{opacity:0;pointer-events:none}
+  .tour-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .pin{position:absolute;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid #fff;
+    background:var(--red);color:#fff;font:700 13px/1 var(--sans);cursor:pointer;pointer-events:auto;
+    box-shadow:0 6px 14px -4px rgba(0,0,0,.6);transition:transform .2s,background .2s;will-change:transform}
+  .pin:hover,.pin.sel{background:var(--gold);color:var(--jade-950);z-index:2}
+  .zone{position:absolute;left:0;top:0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+    text-shadow:0 2px 8px rgba(0,0,0,.9);white-space:nowrap;transform:translate(-50%,-50%);will-change:transform}
+  .tour-ui{position:absolute;display:flex;gap:8px;z-index:3}
+  .tour-ui.tl{top:16px;left:16px}
+  .tour-ui.br{bottom:16px;right:16px;flex-direction:column}
+  .tour-ui button{border:0;cursor:pointer;font:700 14px/1 var(--sans);color:#fff;background:rgba(12,29,26,.82);backdrop-filter:blur(6px);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);border-radius:999px;padding:11px 16px;transition:background .2s}
+  .tour-ui button:hover{background:rgba(31,63,57,.95)}
+  .tour-ui button[aria-pressed=true]{background:var(--gold);color:var(--jade-950)}
+  .tour-ui.br button{width:44px;height:44px;padding:0;font-size:20px;border-radius:12px}
+  .tour-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:13px;color:#d6e2db;background:rgba(12,29,26,.75);
+    padding:9px 16px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:opacity .5s;z-index:2}
+  .tour-card{position:absolute;left:16px;bottom:16px;width:min(320px,calc(100% - 92px));background:var(--paper);color:var(--ink);border-radius:16px;
+    padding:20px 20px 18px;box-shadow:0 20px 50px -15px rgba(0,0,0,.8);z-index:4;transform:translateY(12px);opacity:0;pointer-events:none;transition:all .3s}
+  .tour-card.open{transform:none;opacity:1;pointer-events:auto}
+  .tour-card b{font:800 22px/1.2 var(--serif);display:block}
+  .tour-card .meta{font-size:13px;font-weight:700;color:var(--red);letter-spacing:.04em;margin:2px 0 8px;display:block}
+  .tour-card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
+  .tour-card .btn{width:100%;padding:14px 18px;font-size:15px}
+  .tour-card .close{position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;cursor:pointer;color:var(--ink-soft)}
+  .tour-note{text-align:center;font-size:13px;color:#7f968c;margin-top:16px}
+
   /* ---------- Responsive ---------- */
   @media (max-width:980px){
     .nav,.header .call{display:none}
@@ -346,6 +383,7 @@
       <li><a href="#story">Über uns</a></li>
       <li><a href="#menu">Speisekarte</a></li>
       <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#tour">3D-Rundgang</a></li>
       <li><a href="#visit">Öffnungszeiten</a></li>
       <li><a href="#visit">Anfahrt</a></li>
     </ul></nav>
@@ -487,6 +525,38 @@
   <img alt="">
   <button class="next" aria-label="Weiter">›</button>
 </div>
+
+<!-- ================= 3D tour ================= -->
+<section class="tour-sec" id="tour">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="jp">店内</span>
+      <h2 style="color:#fff">Schaut euch um</h2>
+      <p>Dreht unser Restaurant in 3D, sucht euch einen Lieblingsplatz aus und fragt ihn direkt an.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="tour rv" id="tourBox">
+      <div class="tour-load" id="tourLoad">Raum wird aufgebaut …</div>
+      <div class="tour-layer" id="tourLayer"></div>
+      <div class="tour-ui tl">
+        <button type="button" data-mode="evening" aria-pressed="true">🌙 Abend</button>
+        <button type="button" data-mode="day" aria-pressed="false">☀️ Tag</button>
+      </div>
+      <div class="tour-ui br">
+        <button type="button" data-zoom="in" aria-label="Hineinzoomen">+</button>
+        <button type="button" data-zoom="out" aria-label="Herauszoomen">−</button>
+        <button type="button" data-zoom="reset" aria-label="Ansicht zurücksetzen">⟲</button>
+      </div>
+      <div class="tour-hint" id="tourHint">Ziehen zum Drehen · Tisch antippen</div>
+      <div class="tour-card" id="tourCard">
+        <button class="close" type="button" aria-label="Schließen">×</button>
+        <b></b><span class="meta"></span><p></p>
+        <a class="btn btn-red" href="#reserve"><svg><use href="#i-cal"/></svg>Diesen Tisch anfragen</a>
+      </div>
+    </div>
+    <p class="tour-note">Stilisierte 3D-Ansicht, nach Fotos nachempfunden – die echte Tischanordnung kann abweichen.</p>
+  </div>
+</section>
 
 <!-- ================= Reservation ================= -->
 <section class="reserve" id="reserve">
@@ -811,6 +881,513 @@ const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
 $("#year").textContent = new Date().getFullYear();
+</script>
+
+<!-- ================= 3D dollhouse tour ================= -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+const tourEl = document.getElementById('tourBox');
+
+// Load three.js only when the tour comes near the viewport
+const lazy = new IntersectionObserver(async ([e]) => {
+  if (!e.isIntersecting) return;
+  lazy.disconnect();
+  try { await initTour(); }
+  catch (err) { console.error(err); document.getElementById('tourLoad').textContent = '3D-Ansicht konnte nicht geladen werden.'; }
+}, { rootMargin: '400px' });
+lazy.observe(tourEl);
+
+async function initTour() {
+  const [THREE, { OrbitControls }, { RoomEnvironment }] = await Promise.all([
+    import('three'),
+    import('three/addons/controls/OrbitControls.js'),
+    import('three/addons/environments/RoomEnvironment.js'),
+  ]);
+
+  /* ---------- Renderer / scene ---------- */
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  tourEl.prepend(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
+  const HOME = { cam: new THREE.Vector3(10.5, 12, 15.5), target: new THREE.Vector3(0, 0.4, 0.6) };
+  camera.position.copy(HOME.cam);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.copy(HOME.target);
+  controls.enableDamping = true; controls.dampingFactor = 0.07;
+  controls.enablePan = false;
+  controls.minDistance = 5; controls.maxDistance = 32;
+  controls.minPolarAngle = 0.25; controls.maxPolarAngle = 1.28;
+  controls.autoRotate = true; controls.autoRotateSpeed = 0.45;
+  controls.rotateSpeed = 0.7;
+
+  /* ---------- Procedural textures ---------- */
+  const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const canvasTex = (c, rep) => {
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    if (rep) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(...rep); }
+    return t;
+  };
+  function flower(g, x, y, r, col) {
+    g.fillStyle = col;
+    for (let i = 0; i < 5; i++) {
+      const a = i / 5 * Math.PI * 2;
+      g.beginPath(); g.ellipse(x + Math.cos(a) * r * .55, y + Math.sin(a) * r * .55, r * .55, r * .4, a, 0, Math.PI * 2); g.fill();
+    }
+    g.fillStyle = '#d9788d'; g.beginPath(); g.arc(x, y, r * .28, 0, Math.PI * 2); g.fill();
+  }
+  // Wall with painted cherry-blossom trees, like in the restaurant
+  function mural(wm, hm, seed) {
+    const ppm = 150, c = document.createElement('canvas');
+    c.width = Math.min(4096, Math.round(wm * ppm)); c.height = Math.round(hm * ppm);
+    const g = c.getContext('2d'), R = rng(seed), W = c.width, H = c.height;
+    const bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#173630'); bg.addColorStop(1, '#1f453c');
+    g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    const spots = Math.max(2, Math.round(wm / 2));
+    for (let i = 0; i < spots; i++) { // light pools from ceiling spots
+      const x = (i + .5) / spots * W, rg = g.createRadialGradient(x, H * .05, 0, x, H * .05, H * .75);
+      rg.addColorStop(0, 'rgba(150,200,170,.28)'); rg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = rg; g.fillRect(0, 0, W, H);
+    }
+    g.lineCap = 'round'; g.strokeStyle = '#2b211d';
+    const branch = (x, y, a, len, w, d) => {
+      const x2 = x + Math.cos(a) * len, y2 = y + Math.sin(a) * len;
+      g.lineWidth = w; g.beginPath(); g.moveTo(x, y);
+      g.quadraticCurveTo((x + x2) / 2 + (R() - .5) * len * .5, (y + y2) / 2 + (R() - .5) * len * .5, x2, y2); g.stroke();
+      if (d <= 2) for (let i = 0; i < 7 + R() * 9; i++) {
+        const rr = len * .55 * R(), aa = R() * Math.PI * 2;
+        flower(g, x2 + Math.cos(aa) * rr, y2 + Math.sin(aa) * rr, H * (.012 + R() * .012), R() < .7 ? '#f4efe9' : '#f1c4cd');
+      }
+      if (d > 0) {
+        const n = d > 3 ? 2 : 2 + (R() < .5);
+        for (let k = 0; k < n; k++) {
+          let na = a + (k - (n - 1) / 2) * .9 + (R() - .5) * .8;
+          na = -Math.PI / 2 + (na + Math.PI / 2) * 1.15; // spread towards horizontal
+          branch(x2, y2, na, len * (.6 + R() * .2), w * .62, d - 1);
+        }
+      }
+    };
+    const trees = Math.max(1, Math.round(wm / 4.5));
+    for (let i = 0; i < trees; i++) branch((i + .3 + R() * .4) / trees * W, H * 1.05, -Math.PI / 2 + (R() - .5) * .5, H * .38, H * .05, 5);
+    for (let i = 0; i < wm * 6; i++) flower(g, R() * W, R() * H * .75, H * .01, 'rgba(244,239,233,.8)');
+    return canvasTex(c);
+  }
+  function marble() {
+    const c = document.createElement('canvas'); c.width = c.height = 1024;
+    const g = c.getContext('2d'), R = rng(7);
+    g.fillStyle = '#2c302f'; g.fillRect(0, 0, 1024, 1024);
+    for (let i = 0; i < 60; i++) {
+      g.strokeStyle = `rgba(${R() < .5 ? '210,215,210' : '20,22,22'},${(.05 + R() * .14).toFixed(2)})`;
+      g.lineWidth = .6 + R() * 2.4; g.beginPath();
+      let x = R() * 1024, y = R() * 1024, a = R() * 6.28; g.moveTo(x, y);
+      for (let s = 0; s < 40; s++) { a += (R() - .5) * .9; x += Math.cos(a) * 18; y += Math.sin(a) * 18; g.lineTo(x, y); }
+      g.stroke();
+    }
+    return canvasTex(c, [2, 5]);
+  }
+  function tiles() {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    const g = c.getContext('2d'); g.fillStyle = '#eceee8'; g.fillRect(0, 0, 256, 256);
+    g.strokeStyle = '#c8ccc4'; g.lineWidth = 3;
+    for (let y = 0; y <= 256; y += 32) { g.beginPath(); g.moveTo(0, y); g.lineTo(256, y); g.stroke(); }
+    for (let x = 0; x <= 256; x += 64) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, 256); g.stroke(); }
+    return canvasTex(c, [2, 6]);
+  }
+  function channels() { // tufted leather banquette
+    const c = document.createElement('canvas'); c.width = 256; c.height = 64;
+    const g = c.getContext('2d'); g.fillStyle = '#1e4a3f'; g.fillRect(0, 0, 256, 64);
+    for (let x = 0; x < 256; x += 32) {
+      const gr = g.createLinearGradient(x, 0, x + 32, 0);
+      gr.addColorStop(0, 'rgba(0,0,0,.35)'); gr.addColorStop(.5, 'rgba(255,255,255,.08)'); gr.addColorStop(1, 'rgba(0,0,0,.35)');
+      g.fillStyle = gr; g.fillRect(x, 0, 32, 64);
+    }
+    return canvasTex(c, [12, 1]);
+  }
+  const glowTex = (() => {
+    const c = document.createElement('canvas'); c.width = c.height = 128;
+    const g = c.getContext('2d'), rg = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+    rg.addColorStop(0, 'rgba(255,230,180,1)'); rg.addColorStop(.25, 'rgba(255,190,110,.45)'); rg.addColorStop(1, 'rgba(255,170,80,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, 128, 128);
+    return new THREE.CanvasTexture(c);
+  })();
+
+  /* ---------- Materials ---------- */
+  const M = {
+    oak: new THREE.MeshStandardMaterial({ color: 0xb87a40, roughness: .5 }),
+    ply: new THREE.MeshStandardMaterial({ color: 0xd7a267, roughness: .6 }),
+    darkWood: new THREE.MeshStandardMaterial({ color: 0x3a2a20, roughness: .6 }),
+    black: new THREE.MeshStandardMaterial({ color: 0x161616, roughness: .45, metalness: .6 }),
+    brass: new THREE.MeshStandardMaterial({ color: 0xcfa45c, roughness: .28, metalness: 1 }),
+    leather: new THREE.MeshStandardMaterial({ color: 0xffffff, map: channels(), roughness: .42 }),
+    leatherPlain: new THREE.MeshStandardMaterial({ color: 0x173d33, roughness: .5 }),
+    velvet: new THREE.MeshStandardMaterial({ color: 0x1b5a45, roughness: .95 }),
+    wall: new THREE.MeshStandardMaterial({ color: 0x1b3d35, roughness: .85 }),
+    wallEdge: new THREE.MeshStandardMaterial({ color: 0x12292a, roughness: .9 }),
+    tile: new THREE.MeshStandardMaterial({ map: tiles(), roughness: .35 }),
+    floor: new THREE.MeshStandardMaterial({ map: marble(), roughness: .32, metalness: .1 }),
+    frame: new THREE.MeshStandardMaterial({ color: 0x174a3b, roughness: .5 }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0xcfe8e0, roughness: .05, transparent: true, opacity: .18, depthWrite: false }),
+    wax: new THREE.MeshStandardMaterial({ color: 0xf6eedd, emissive: 0xffd9a0, emissiveIntensity: .35, roughness: .8 }),
+    plinth: new THREE.MeshStandardMaterial({ color: 0x0f2220, roughness: .9 }),
+    pavement: new THREE.MeshStandardMaterial({ color: 0x6b6e6a, roughness: .95 }),
+    red: new THREE.MeshStandardMaterial({ color: 0xc8372d, roughness: .7, side: THREE.DoubleSide }),
+    kitchen: new THREE.MeshStandardMaterial({ color: 0xf3f1e8, emissive: 0xf6f0dc, emissiveIntensity: .9 }),
+  };
+
+  /* ---------- Helpers ---------- */
+  const room = new THREE.Group(); scene.add(room);
+  const glows = [];
+  const add = (geo, mat, x, y, z, p = room) => {
+    const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z);
+    m.castShadow = true; m.receiveShadow = true; p.add(m); return m;
+  };
+  const box = (w, h, d, mat, x, y, z, p) => add(new THREE.BoxGeometry(w, h, d), mat, x, y + h / 2, z, p); // y = bottom
+  const glow = (x, y, z, s, p = room) => {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+    sp.position.set(x, y, z); sp.scale.setScalar(s); sp.userData.base = s; p.add(sp); glows.push(sp); return sp;
+  };
+  const legGeo = new THREE.CylinderGeometry(.015, .015, .44, 6);
+  function chair(x, z, rot, mat = M.ply, p = room) {
+    const c = new THREE.Group(); c.position.set(x, 0, z); c.rotation.y = rot; p.add(c);
+    box(.42, .03, .42, mat, 0, .44, .02, c);
+    box(.42, .3, .025, mat, 0, .5, -.2, c).rotation.x = -.12;
+    for (const [lx, lz] of [[-.18, -.17], [.18, -.17], [-.18, .19], [.18, .19]]) add(legGeo, mat, lx, .22, lz, c);
+  }
+  function candle(x, y, z) {
+    add(new THREE.CylinderGeometry(.04, .04, .13, 12), M.wax, x, y + .065, z);
+    glow(x, y + .17, z, .45);
+  }
+  const H = 3.2, HX = 3, HZ = 7; // room: 6 m wide, 14 m deep, 3.2 m high
+
+  /* ---------- Floor & plinth ---------- */
+  box(6.4, .3, 14.4, M.plinth, 0, -.3, 0);
+  add(new THREE.PlaneGeometry(6, 14), M.floor, 0, .002, 0).rotation.x = -Math.PI / 2;
+  box(8, .22, 3.6, M.pavement, 0, -.22, 9.2);
+
+  /* ---------- Walls with dollhouse cut-away ---------- */
+  const walls = [];
+  function wall({ w, d, x, z, inner, innerMat, outside, ledge = .55, extra = [] }) {
+    const mats = Array(6).fill(0).map(() => M.wall.clone());
+    mats[inner] = innerMat;
+    const g = new THREE.Group(); room.add(g);
+    box(w, H, d, mats, x, 0, z, g);
+    // short ledge that stays when the wall is faded out
+    box(w + (w < d ? .01 : 0), ledge, d + (d < w ? .01 : 0), M.wallEdge, x, 0, z);
+    extra.forEach(o => g.add(o));
+    const all = new Set();
+    g.traverse(o => { if (o.material) [].concat(o.material).forEach(m => all.add(m)); });
+    walls.push({ g, mats: [...all], outside, op: 1 });
+  }
+  const muralMat = (w, seed, mirror) => new THREE.MeshStandardMaterial({
+    map: mural(w, H, seed), roughness: mirror ? .18 : .85, metalness: mirror ? .55 : 0 });
+  wall({ w: .15, d: 14.3, x: -HX - .075, z: 0, inner: 0, innerMat: muralMat(14, 11), outside: d => d.x < -.25 });
+  wall({ w: .15, d: 14.3, x: HX + .075, z: 0, inner: 1, innerMat: muralMat(14, 29, true), outside: d => d.x > .25 });
+
+  // Back wall with kitchen pass
+  const backExtra = [];
+  { const pass = new THREE.Mesh(new THREE.PlaneGeometry(1.7, .95), M.kitchen); pass.position.set(1.9, 1.7, -HZ + .01); backExtra.push(pass);
+    const fr = new THREE.Mesh(new THREE.BoxGeometry(1.8, .06, .08), M.darkWood); fr.position.set(1.9, 1.2, -HZ + .04); backExtra.push(fr); }
+  wall({ w: 6.3, d: .15, x: 0, z: -HZ - .075, inner: 4, innerMat: muralMat(6, 47), outside: d => d.z < -.25, extra: backExtra });
+
+  // Front: shop window, door and red awning
+  {
+    const g = new THREE.Group(); room.add(g);
+    const fx = (w, h, x, y) => box(w, h, .12, M.frame, x, y, HZ + .03, g);
+    fx(6.15, .12, 0, .5); fx(6.15, .6, 0, 2.6); fx(.12, 2.2, -3, .5); fx(.12, 2.2, -.6, .5); fx(.14, 2.6, 1.8, 0); fx(.12, 2.6, 3, 0);
+    const gl = new THREE.Mesh(new THREE.PlaneGeometry(4.8, 2.1), M.glass); gl.position.set(-.6, 1.55, HZ + .03); g.add(gl);
+    const dg = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 2.5), M.glass); dg.position.set(2.4, 1.3, HZ + .03); g.add(dg);
+    // round "Fu" logo on the glass
+    const lc = document.createElement('canvas'); lc.width = lc.height = 256; const lg = lc.getContext('2d');
+    lg.fillStyle = '#c8372d'; lg.beginPath(); lg.arc(128, 128, 120, 0, 7); lg.fill();
+    lg.fillStyle = '#fff'; lg.font = 'bold 120px Georgia,serif'; lg.textAlign = 'center'; lg.textBaseline = 'middle'; lg.fillText('Fu', 128, 136);
+    const logo = new THREE.Mesh(new THREE.CircleGeometry(.45, 48), new THREE.MeshBasicMaterial({ map: canvasTex(lc), transparent: true }));
+    logo.position.set(-.6, 1.9, HZ + .1); g.add(logo);
+    const aw = new THREE.Mesh(new THREE.PlaneGeometry(6.2, 1.5), M.red); aw.position.set(0, 2.85, HZ + .7); aw.rotation.x = -1.05; g.add(aw);
+    box(4.8, .5, .14, M.wallEdge, -.6, 0, HZ + .03); // ledge under window
+    const all = new Set(); g.traverse(o => { if (o.material) [].concat(o.material).forEach(m => all.add(m)); });
+    walls.push({ g, mats: [...all], outside: d => d.z > -.2, op: 1 });
+  }
+
+  /* ---------- Window bench (Fensterbank) ---------- */
+  box(4.7, .42, .6, M.velvet, -.6, 0, 6.62);
+  box(4.7, .05, .62, M.oak, -.6, .42, 6.62);
+  for (let x = -2.75; x < 1.6; x += .48) {
+    box(.44, .08, .5, M.velvet, x + .22, .47, 6.6);
+    box(.44, .38, .1, M.velvet, x + .22, .55, 6.86).rotation.x = -.15;
+  }
+  box(.5, .2, .4, M.darkWood, -.6, .55, 6.55); // little tray table
+
+  /* ---------- Banquettes ---------- */
+  function banquette(x, z0, z1, side) {
+    const len = z0 - z1, zc = (z0 + z1) / 2;
+    box(.55, .44, len, M.leatherPlain, x, 0, zc);
+    const back = box(.13, .62, len, M.leather, x - side * .24, .44, zc);
+    back.rotation.z = side * .06;
+  }
+  banquette(-HX + .3, 4.4, -3.7, 1);
+  banquette(HX - .3, 3.6, -1.9, -1);
+
+  /* ---------- Tiled pillar, counter, shelves ---------- */
+  box(1.0, H, 1.2, M.tile, .7, 0, -3.8);
+  box(2.6, 1.05, .55, M.darkWood, 1.7, 0, -5.9);
+  box(2.7, .05, .65, M.oak, 1.7, 1.05, -5.9);
+  box(1.4, .05, .25, M.oak, -.1, 1.55, -HZ + .14);
+  const bottleMats = [0x2f6b4f, 0x8a3a2c, 0xd9c48a, 0x3b5a7a].map(c => new THREE.MeshStandardMaterial({ color: c, roughness: .2, metalness: .1 }));
+  for (let i = 0; i < 9; i++) add(new THREE.CylinderGeometry(.035, .04, .28, 10), bottleMats[i % 4], -.7 + i * .15, 1.74, -HZ + .14);
+  box(1.2, .9, .5, M.darkWood, -2.3, 0, -6.6); // service station
+  box(.6, .02, .4, M.wax, -2.3, .9, -6.6);
+
+  /* ---------- Brass chandeliers ---------- */
+  function chandelier(x, z) {
+    const g = new THREE.Group(); g.position.set(x, 0, z); room.add(g);
+    add(new THREE.CylinderGeometry(.012, .012, .9, 6), M.brass, 0, H - .45, 0, g);
+    const R = rng(Math.round(x * 100 + z * 10) + 99);
+    for (let i = 0; i < 9; i++) {
+      const y = 2.35 + R() * .35, a = R() * Math.PI * 2, len = .35 + R() * .3, tilt = (R() - .5) * .8;
+      const dir = new THREE.Vector3(Math.cos(a), tilt, Math.sin(a)).normalize();
+      const arm = add(new THREE.CylinderGeometry(.008, .008, len, 5), M.brass, 0, 0, 0, g);
+      arm.position.set(dir.x * len / 2, y + dir.y * len / 2, dir.z * len / 2);
+      arm.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+      add(new THREE.SphereGeometry(.035, 10, 8), M.wax, dir.x * len, y + dir.y * len, dir.z * len, g);
+      glow(dir.x * len, y + dir.y * len, dir.z * len, .55, g);
+    }
+    const L = new THREE.PointLight(0xffc98a, 10, 9, 1.6); L.position.set(0, 2.4, 0); g.add(L);
+    return L;
+  }
+  const lamps = [chandelier(-.1, 2.0), chandelier(-.1, -1.2)];
+  const passLight = new THREE.PointLight(0xfff2d8, 4, 5, 1.8); passLight.position.set(1.9, 1.8, -6.2); room.add(passLight);
+
+  /* ---------- Tables (data drives pins + reservation) ---------- */
+  const ZONES = {
+    window: ['Fensterbank', 'Gemütlich auf Kissen am großen Schaufenster – mit Blick auf die Straße.'],
+    bench: ['Polsterbank', 'Auf der grünen Lederbank direkt unter den Kirschblüten-Wandbildern.'],
+    mirror: ['Spiegelseite', 'Lange Tische an der Spiegelwand – ideal für Gruppen und Familien.'],
+    center: ['Raummitte', 'Mitten im Geschehen, direkt unter den Messing-Leuchtern.'],
+    terrace: ['Terrasse', 'Draußen zwischen Blumenkästen – bei gutem Wetter.'],
+  };
+  const TABLES = [
+    { id: 1, zone: 'window', x: -1.9, z: 5.85, w: 1.2, d: .7, seats: 4 },
+    { id: 2, zone: 'window', x: .55, z: 5.85, w: 1.2, d: .7, seats: 4 },
+    { id: 3, zone: 'bench', x: -2.08, z: 3.6, w: .72, d: 1.1, seats: 4 },
+    { id: 4, zone: 'bench', x: -2.08, z: 2.0, w: .72, d: 1.1, seats: 4 },
+    { id: 5, zone: 'bench', x: -2.08, z: .4, w: .72, d: 1.1, seats: 4 },
+    { id: 6, zone: 'bench', x: -2.08, z: -1.2, w: .72, d: 1.1, seats: 4 },
+    { id: 7, zone: 'bench', x: -2.08, z: -2.8, w: .72, d: 1.1, seats: 4 },
+    { id: 8, zone: 'mirror', x: 2.08, z: 2.6, w: .72, d: 1.4, seats: 5 },
+    { id: 9, zone: 'mirror', x: 2.08, z: .8, w: .72, d: 1.4, seats: 5 },
+    { id: 10, zone: 'mirror', x: 2.08, z: -1.0, w: .72, d: 1.4, seats: 5 },
+    { id: 11, zone: 'center', x: -.15, z: 3.4, w: .8, d: .8, seats: 4 },
+    { id: 12, zone: 'center', x: -.15, z: 1.1, w: .8, d: .8, seats: 4 },
+    { id: 13, zone: 'center', x: -.15, z: -1.4, w: .8, d: .8, seats: 4 },
+    { id: 14, zone: 'terrace', x: -1.7, z: 8.6, r: .35, seats: 2 },
+    { id: 15, zone: 'terrace', x: .7, z: 8.6, r: .35, seats: 2 },
+  ];
+  const ring = new THREE.Mesh(new THREE.RingGeometry(.75, .9, 48), new THREE.MeshBasicMaterial({ color: 0xd9b26a, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+  ring.rotation.x = -Math.PI / 2; ring.position.y = .02; room.add(ring);
+
+  for (const t of TABLES) {
+    if (t.r) { // round bistro table on the terrace
+      add(new THREE.CylinderGeometry(t.r, t.r, .03, 28), M.black, t.x, .74, t.z);
+      add(new THREE.CylinderGeometry(.03, .03, .72, 8), M.black, t.x, .37, t.z);
+      chair(t.x - .55, t.z, Math.PI / 2, M.ply); chair(t.x + .55, t.z, -Math.PI / 2, M.ply);
+      glow(t.x, .92, t.z, .35);
+    } else {
+      box(t.w, .04, t.d, M.oak, t.x, .72, t.z);
+      add(new THREE.CylinderGeometry(.035, .035, .72, 8), M.black, t.x, .36, t.z);
+      box(.5, .02, .5, M.black, t.x, 0, t.z);
+      candle(t.x, .76, t.z);
+      if (t.zone === 'window') { chair(t.x - .3, t.z - .62, 0); chair(t.x + .3, t.z - .62, 0); }
+      if (t.zone === 'bench') { chair(t.x + .68, t.z - .27, -Math.PI / 2); chair(t.x + .68, t.z + .27, -Math.PI / 2); }
+      if (t.zone === 'mirror') { for (const dz of [-.42, 0, .42]) chair(t.x - .68, t.z + dz, Math.PI / 2); }
+      if (t.zone === 'center') { chair(t.x - .2, t.z - .6, 0); chair(t.x + .2, t.z - .6, 0); chair(t.x - .2, t.z + .6, Math.PI); chair(t.x + .2, t.z + .6, Math.PI); }
+    }
+    t.pos = new THREE.Vector3(t.x, 1.15, t.z);
+  }
+
+  // Terrace planters with flowers
+  const flowerMats = [0xf2a7c3, 0xffffff, 0xf3d46b, 0xd9475f].map(c => new THREE.MeshStandardMaterial({ color: c, roughness: .8 }));
+  const leaf = new THREE.MeshStandardMaterial({ color: 0x3f7a45, roughness: .9 });
+  for (const px of [-2.4, 1.6]) {
+    box(1.8, .45, .45, M.oak, px, 0, 10.2);
+    const R = rng(px * 100 + 500);
+    for (let i = 0; i < 26; i++) {
+      const fx = px - .8 + R() * 1.6, fz = 10.05 + R() * .3;
+      add(new THREE.SphereGeometry(.07 + R() * .04, 8, 6), R() < .3 ? leaf : flowerMats[i % 4], fx, .5 + R() * .12, fz);
+    }
+  }
+
+  /* ---------- Lights ---------- */
+  const hemi = new THREE.HemisphereLight(0xd9ece3, 0x2a2620, .6); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xfff1dc, .6);
+  sun.position.set(7, 14, 11); sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left: -10, right: 10, top: 10, bottom: -10, near: 1, far: 40 });
+  sun.shadow.bias = -.0005; sun.shadow.normalBias = .02;
+  scene.add(sun);
+
+  /* ---------- Day / evening ---------- */
+  const MODES = {
+    evening: { hemi: .55, sun: .45, lamp: 11, pass: 4, glow: 1, env: .35, exp: 1.0 },
+    day: { hemi: 2.2, sun: 3.2, lamp: 2.5, pass: 2, glow: .3, env: 1.1, exp: 1.12 },
+  };
+  let mode = MODES.evening;
+  const envMats = new Set();
+  scene.traverse(o => { if (o.material) [].concat(o.material).forEach(m => { if ('envMapIntensity' in m) envMats.add(m); }); });
+  function setMode(key) {
+    mode = MODES[key];
+    hemi.intensity = mode.hemi; sun.intensity = mode.sun;
+    lamps.forEach(l => l.intensity = mode.lamp); passLight.intensity = mode.pass;
+    glows.forEach(s => { s.material.opacity = mode.glow; s.scale.setScalar(s.userData.base * (.6 + .4 * mode.glow)); });
+    envMats.forEach(m => m.envMapIntensity = mode.env);
+    renderer.toneMappingExposure = mode.exp;
+    tourEl.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === key));
+  }
+  setMode('evening');
+  tourEl.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+
+  /* ---------- HTML pins & zone labels ---------- */
+  const layer = document.getElementById('tourLayer');
+  for (const t of TABLES) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'pin'; b.textContent = t.id; b.setAttribute('aria-label', `Tisch ${t.id}`);
+    b.addEventListener('click', ev => { ev.stopPropagation(); select(t); });
+    layer.appendChild(b); t.el = b;
+  }
+  const LABELS = [['Küche', 1.9, 2.5, -6.4], ['Eingang', 2.4, .3, 7.6], ['Terrasse', -.5, .3, 9.9], ['Theke', 1.7, 1.4, -5.9]].map(([txt, x, y, z]) => {
+    const el = document.createElement('span'); el.className = 'zone'; el.textContent = txt; layer.appendChild(el);
+    return { el, pos: new THREE.Vector3(x, y, z) };
+  });
+
+  /* ---------- Table selection ---------- */
+  const card = document.getElementById('tourCard'), hint = document.getElementById('tourHint');
+  let selected = null, goal = null;
+  function flyTo(target, dist) {
+    const dir = camera.position.clone().sub(controls.target).normalize();
+    goal = { target: target.clone(), cam: target.clone().add(dir.multiplyScalar(dist)) };
+    controls.autoRotate = false;
+  }
+  function select(t) {
+    selected = t;
+    TABLES.forEach(x => x.el.classList.toggle('sel', x === t));
+    const [zn, desc] = ZONES[t.zone];
+    card.querySelector('b').textContent = `Tisch ${t.id}`;
+    card.querySelector('.meta').textContent = `${zn} · bis ${t.seats} Personen`;
+    card.querySelector('p').textContent = desc;
+    card.classList.add('open'); hint.style.opacity = 0;
+    ring.position.set(t.x, .02, t.z); ring.material.opacity = .9;
+    flyTo(new THREE.Vector3(t.x, .6, t.z), 7.5);
+  }
+  function deselect() {
+    selected = null; card.classList.remove('open');
+    TABLES.forEach(x => x.el.classList.remove('sel')); ring.material.opacity = 0;
+  }
+  card.querySelector('.close').addEventListener('click', deselect);
+  card.querySelector('.btn').addEventListener('click', () => {
+    if (!selected) return;
+    const note = document.getElementById('note');
+    const wish = `Wunschtisch: Tisch ${selected.id} (${ZONES[selected.zone][0]})`;
+    note.value = note.value.replace(/Wunschtisch:[^\n]*\n?/, '');
+    note.value = wish + (note.value ? '\n' + note.value : '');
+  });
+
+  // click on a table top in the canvas (besides the pins)
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  let down = null;
+  renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 6) return;
+    const r = renderer.domElement.getBoundingClientRect();
+    ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hit = ray.intersectObject(room, true)[0];
+    if (!hit) return deselect();
+    let best = null, bd = 1.1;
+    for (const t of TABLES) { const d = Math.hypot(hit.point.x - t.x, hit.point.z - t.z); if (d < bd) { bd = d; best = t; } }
+    best ? select(best) : deselect();
+  });
+
+  /* ---------- Controls: zoom buttons, wheel only after click ---------- */
+  controls.addEventListener('start', () => { controls.autoRotate = false; goal = null; hint.style.opacity = 0; });
+  let wheelOk = false;
+  tourEl.addEventListener('pointerdown', () => wheelOk = true);
+  tourEl.addEventListener('pointerleave', () => wheelOk = false);
+  tourEl.addEventListener('wheel', e => { if (!wheelOk) e.stopPropagation(); }, { capture: true });
+  tourEl.querySelectorAll('[data-zoom]').forEach(b => b.addEventListener('click', () => {
+    const z = b.dataset.zoom;
+    if (z === 'reset') { deselect(); goal = { target: HOME.target.clone(), cam: HOME.cam.clone() }; return; }
+    const dist = camera.position.distanceTo(controls.target) * (z === 'in' ? .7 : 1.4);
+    flyTo(controls.target, THREE.MathUtils.clamp(dist, controls.minDistance, controls.maxDistance));
+  }));
+
+  /* ---------- Resize & loop ---------- */
+  function resize() {
+    const w = tourEl.clientWidth, h = tourEl.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    camera.fov = w < 600 ? 50 : 38; camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(tourEl); resize();
+
+  let running = true;
+  new IntersectionObserver(es => { running = es[es.length - 1].isIntersecting; }).observe(tourEl);
+  const v = new THREE.Vector3(), camPos = new THREE.Vector3();
+  let last = performance.now();
+  renderer.setAnimationLoop(now => {
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    if (!running) return;
+    if (goal) {
+      const k = 1 - Math.exp(-dt * 3.5);
+      controls.target.lerp(goal.target, k); camera.position.lerp(goal.cam, k);
+      if (camera.position.distanceTo(goal.cam) < .02) goal = null;
+    }
+    controls.update();
+
+    // fade walls that stand between camera and room
+    camPos.copy(camera.position).sub(controls.target).normalize();
+    for (const w of walls) {
+      const to = w.outside(camPos) ? 0 : 1;
+      w.op += (to - w.op) * (1 - Math.exp(-dt * 8));
+      const vis = w.op > .02;
+      w.g.visible = vis;
+      for (const m of w.mats) {
+        if (m === M.glass) continue;
+        m.transparent = w.op < .99; m.opacity = w.op; m.depthWrite = w.op > .99;
+      }
+    }
+
+    // candle flicker
+    const tt = now / 1000;
+    glows.forEach((s, i) => { s.material.opacity = mode.glow * (.85 + Math.sin(tt * 9 + i * 1.7) * .08 + Math.sin(tt * 23 + i) * .05); });
+
+    // pins & labels
+    const w = tourEl.clientWidth, h = tourEl.clientHeight;
+    for (const t of TABLES) {
+      v.copy(t.pos).project(camera);
+      const on = v.z < 1 && Math.abs(v.x) < 1.05 && Math.abs(v.y) < 1.05;
+      t.el.style.display = on ? '' : 'none';
+      if (on) t.el.style.transform = `translate(${(v.x + 1) / 2 * w}px,${(1 - v.y) / 2 * h}px)`;
+    }
+    for (const l of LABELS) {
+      v.copy(l.pos).project(camera);
+      l.el.style.transform = `translate(${(v.x + 1) / 2 * w}px,${(1 - v.y) / 2 * h}px) translate(-50%,-50%)`;
+    }
+
+    renderer.render(scene, camera);
+  });
+  document.getElementById('tourLoad').classList.add('done');
+}
 </script>
 </body>
 </html>

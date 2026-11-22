@@ -143,3 +143,7 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
 - Tempo nach Inhalt ("modes"): quote = tiefgründig/Zitat → langsam (0.9) + lange Pausen (~1 s nach Satz, 1,2 s danach)
   story = lange Erzählung → schneller (1.12) + kurze Pausen; normal dazwischen
 - Musik leiser: Grundlautstärke ×1.25 statt ×2, stärkeres Absenken unter der Stimme
+
+## Figur – Arme (Feedback)
+- Stehen: beide Arme hängen locker nach unten (nicht einer vorne, einer hinten)
+- Gehen/Rennen: Arme schwingen gegengleich zu den Beinen, beim Rennen stärker und angewinkelt

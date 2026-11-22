@@ -110,8 +110,13 @@ function makeFig(parent){
       return [hip,k,f];});
     const hx=neck[0]+(droop*16+look*12+lean*12)*s, hy=neck[1]-(50-droop*14)*s;
     const sh=[neck[0],neck[1]+20*s];const rs=Math.sin(ph)*run;
-    const arm=(side,raise)=>{let a=side<0?lerp(Math.PI/2+.38,-Math.PI+Math.PI/5.2,raise):lerp(Math.PI/2-.38,-Math.PI/5.2,raise);a+=side*rs*.9*-1;
-      let e=[sh[0]+Math.cos(a+side*.12)*55*s,sh[1]+Math.sin(a+side*.12)*55*s],h=[sh[0]+Math.cos(a)*104*s,sh[1]+Math.sin(a)*104*s];
+    /* Arme: im Stehen hängen beide locker nach unten; beim Gehen/Rennen schwingen sie gegengleich zu den Beinen */
+    const walkSw=(o.stride||1)*Math.min(1,Math.abs(ph)>0.001?1:0)*(o.sit?0:1);
+    const arm=(side,raise)=>{const hang=Math.PI/2+side*-.07*face;
+      const swing=Math.sin(ph+(side<0?0:Math.PI))*(.42*walkSw*(1-run)+.95*run);
+      let a=side<0?lerp(hang,-Math.PI+Math.PI/5.2,raise):lerp(hang,-Math.PI/5.2,raise);a-=swing*face*(1-raise);
+      const bend=.18+.25*run+.1*Math.max(0,swing*face);
+      let e=[sh[0]+Math.cos(a+bend*face)*55*s,sh[1]+Math.sin(a+bend*face)*55*s],h=[sh[0]+Math.cos(a-bend*.4*face)*104*s,sh[1]+Math.sin(a-bend*.4*face)*104*s];
       const mix=(k,E,H)=>{if(!k)return;e=[lerp(e[0],E[0],k),lerp(e[1],E[1],k)];h=[lerp(h[0],H[0],k),lerp(h[1],H[1],k)];};
       mix(o.cover||0,[sh[0]+side*48*s,sh[1]+30*s],[hx+side*12*s,hy+6*s]);
       mix(o.work||0,[sh[0]+40*s,sh[1]+50*s],[sh[0]+95*s,sh[1]+40*s+Math.sin((o.t||0)*20+side)*8*s]);

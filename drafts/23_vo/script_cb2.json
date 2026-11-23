@@ -1,0 +1,147 @@
+{
+ "ref": "materials/tts/ref_bella.wav",
+ "duration": "auto",
+ "seed": 11,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.15,
+   "parts": [
+    {
+     "text": "You're one decision away from a completely different life.",
+     "dir": "normal",
+     "tag": "A0",
+     "pitch": -0.5,
+     "pause": 0.5
+    },
+    {
+     "text": "And it's not a big one.",
+     "dir": "soft",
+     "tag": "A1",
+     "pitch": 0.6,
+     "pause": 0.3
+    },
+    {
+     "text": "It's not quitting your job.",
+     "dir": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "It's the tiny decision you make every morning.",
+     "dir": "calm",
+     "tag": "A2",
+     "speed": 0.96,
+     "pause": 0.5
+    },
+    {
+     "text": "Snooze... or stand up?",
+     "dir": "normal",
+     "tag": "A3",
+     "pitch": 0.7,
+     "pause": 0.25
+    },
+    {
+     "text": "Scroll... or start?",
+     "dir": "normal",
+     "pitch": 0.8,
+     "pause": 0.25
+    },
+    {
+     "text": "Later... or now?",
+     "dir": "normal",
+     "pitch": 1.0,
+     "pause": 0.6
+    },
+    {
+     "text": "Most people choose wrong. Every single day.",
+     "dir": "calm",
+     "tag": "A4",
+     "pitch": -0.5,
+     "pause": 0.5
+    },
+    {
+     "text": "And that's what makes it dangerous.",
+     "dir": "intense",
+     "tag": "A5",
+     "ex": 0.7,
+     "pitch": -1,
+     "speed": 0.92,
+     "pause": 0.6
+    },
+    {
+     "text": "Your life is just your mornings, added together.",
+     "dir": "calm",
+     "tag": "A6",
+     "pause": 0.6
+    },
+    {
+     "text": "Tomorrow, the alarm rings again.",
+     "dir": "soft",
+     "tag": "A7",
+     "pitch": -0.5,
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.6,
+   "min_at": 29.7,
+   "parts": [
+    {
+     "text": "And this time...",
+     "dir": "soft",
+     "pause": 0.3,
+     "tag": "B0"
+    },
+    {
+     "text": "you get up.",
+     "dir": "intense",
+     "ex": 0.75,
+     "pitch": -1,
+     "speed": 0.9,
+     "pause": 0.7
+    },
+    {
+     "text": "Then again. And again.",
+     "dir": "story",
+     "pause": 0.7,
+     "tag": "B1"
+    },
+    {
+     "text": "After a week, it's a habit.",
+     "dir": "normal",
+     "pause": 0.5,
+     "tag": "B2"
+    },
+    {
+     "text": "After a year...",
+     "dir": "calm",
+     "pause": 0.3
+    },
+    {
+     "text": "it's a different life.",
+     "dir": "intense",
+     "ex": 0.7,
+     "pitch": -1,
+     "speed": 0.9,
+     "pause": 0.9
+    },
+    {
+     "text": "One decision. Every morning.",
+     "dir": "calm",
+     "pause": 0.7,
+     "tag": "B3"
+    },
+    {
+     "text": "Make it tomorrow.",
+     "dir": "normal",
+     "pitch": -0.8,
+     "pause": 0,
+     "tag": "B4"
+    }
+   ]
+  }
+ ]
+}

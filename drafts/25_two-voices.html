@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Two Voices</title></head>
+<body>
+<script>
+/* Song 12 INSONAMIA ab 0 – dunkel, Kampf */
+const T=[0.3,5.41,10.48,12.5,15.96,18.1,21.78,25.27,29.12,32.44,34.49,38.44,40.37];
+const DUR=44.5;
+window.VIDEO={DUR,seed:251,audio:"25_vo/mix.wav",
+HEADS:[
+ {a:-1,b:T[1]-.1,lines:[["WHAT","YOU","WANT",{t:"NOW",red:1}],["VS.","WHAT","YOU","WANT",{t:"MOST.",gold:1}]]},
+ {a:T[1]-.05,b:T[2]-.1,lines:[["RIGHT","NOW,","YOU","WANT"],[{t:"COMFORT.",red:1}]]},
+ {a:T[2]-.05,b:T[3]-.1,lines:[["THAT","VOICE","IS"],[{t:"LOUD.",red:1}]]},
+ {a:T[3]-.05,b:T[4]-.1,lines:[["IT","ALWAYS","HAS","A"],[{t:"REASON.",red:1}]]},
+ {a:T[4]-.05,b:T[5]-.1,lines:[["BUT","THERE'S"],["ANOTHER",{t:"VOICE.",gold:1}]]},
+ {a:T[5]-.05,b:T[6]-.1,lines:[["IT","DOESN'T","SHOUT."],["IT",{t:"WHISPERS.",gold:1}]]},
+ {a:T[6]-.05,b:T[7]-.1,lines:[["THE","PERSON","YOU"],[{t:"COULD BECOME.",mark:1}]]},
+ {a:T[7]-.05,b:T[8]-.1,lines:[["BOTH","ASK","FOR","THE"],["SAME",{t:"HOUR.",gold:1}]]},
+ {a:T[8]-.05,b:T[9]-.1,lines:[["YOU","CHOOSE"],["WHO",{t:"GETS",gold:1},{t:"IT.",gold:1}]]},
+ {a:T[9]-.05,b:T[10]-.1,lines:[["TURN","THE","LOUD","ONE"],[{t:"DOWN.",gold:1}]]},
+ {a:T[10]-.05,b:T[11]-.1,lines:[["CLOSE","THE","APP."],["ONE","MORE",{t:"HOUR.",gold:1}]]},
+ {a:T[11]-.05,b:T[12]-.1,lines:[["NOT","BECAUSE","IT"],["FEELS",{t:"GOOD.",red:1}]]},
+ {a:T[12]-.05,b:DUR-.5,lines:[["BECAUSE","YOU","WANT","IT"],[{t:"MOST.",mark:1}]]},
+],
+LABELS:[{a:T[1]+1.4,b:T[2]-.1,text:"Your bed. Your phone. One more episode."},{a:T[3]+1.2,b:T[4]-.1,text:"It never gets tired."},{a:T[10]+1.6,b:T[11]-.1,text:"Open the notebook."}],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spotR=K.spot(260);S.spotG=K.spot(820,1);S.rays=K.raysG(540,1000);
+ /* left: NOW world (bed + phone, red), right: MOST world (mountain + flag, gold) */
+ S.now=el("g",{},scene);
+ el("rect",{x:110,y:1290,width:300,height:110,rx:20,fill:"#141418",stroke:C.red,"stroke-width":4},S.now);el("rect",{x:120,y:1250,width:90,height:50,rx:16,fill:"#20202a",stroke:"#55303a","stroke-width":3},S.now);
+ el("line",{x1:120,y1:1400,x2:120,y2:1440,stroke:C.red,"stroke-width":6},S.now);el("line",{x1:400,y1:1400,x2:400,y2:1440,stroke:C.red,"stroke-width":6},S.now);
+ const ph=el("g",{transform:"translate(330,1180) rotate(-12)"},S.now);el("rect",{x:-34,y:-60,width:68,height:120,rx:12,fill:C.card,stroke:C.red,"stroke-width":4,filter:"url(#glowB)"},ph);el("rect",{x:-24,y:-46,width:48,height:84,rx:6,fill:"rgba(255,69,58,.25)"},ph);
+ txt(S.now,260,1500,"NOW",34,{fill:C.red,"font-weight":800,"letter-spacing":"8"});
+ S.most=el("g",{},scene);el("path",{d:"M640,1440 L820,1120 L1000,1440 Z",fill:"#121216",stroke:C.gold,"stroke-width":5,filter:"url(#glowB)"},S.most);
+ el("line",{x1:820,y1:1120,x2:820,y2:1010,stroke:C.white,"stroke-width":5},S.most);el("path",{d:"M823,1012 L880,1030 L823,1048 Z",fill:C.gold},S.most);el("circle",{cx:820,cy:1080,r:150,fill:"url(#halo)"},S.most);
+ txt(S.most,820,1500,"MOST",34,{fill:C.gold,"font-weight":800,"letter-spacing":"8"});
+ S.fig=makeFig();S.future=makeFig();
+ /* loud red bubbles */
+ const bub=(l,w,col,size=28)=>{const g=el("g",{opacity:0},scene);el("path",{d:`M${-w/2},-44 H${w/2} Q${w/2+18},-44 ${w/2+18},-26 V26 Q${w/2+18},44 ${w/2},44 H-20 L-46,78 L-40,44 H${-w/2} Q${-w/2-18},44 ${-w/2-18},26 V-26 Q${-w/2-18},-44 ${-w/2},-44 Z`,fill:col===C.red?"rgba(255,69,58,.1)":"rgba(245,184,61,.08)",stroke:col,"stroke-width":4,filter:"url(#glowB)"},g);txt(g,0,size*.36,l,size,{fill:col,"font-weight":800,"letter-spacing":"3"});return g;};
+ S.loud=[["JUST 5 MORE MINUTES",420,330,920],["TOMORROW.",230,770,840],["YOU DESERVE A BREAK",400,330,1090],["ONE MORE EPISODE",360,740,1010],["NOBODY WILL KNOW",340,320,770]].map(([l,w,x,y])=>{const g=bub(l,w,C.red);g.x=x;g.y=y;return g;});
+ S.whisper=bub("keep going.",170,C.gold,22);S.whisper.x=640;S.whisper.y=1060;
+ /* hour clock with two hands pulling */
+ S.clock=el("g",{opacity:0},scene);el("circle",{r:190,fill:C.card,stroke:C.white,"stroke-width":6},S.clock);
+ S.sector=el("path",{d:"M0,0 L0,-180 A180,180 0 0 1 155,-90 Z",fill:"rgba(245,184,61,.3)",stroke:C.gold,"stroke-width":3},S.clock);txt(S.clock,60,-80,"1H",34,{fill:C.gold,"font-weight":800,"letter-spacing":"2"});
+ for(let k=0;k<12;k++){const a=k*Math.PI/6;el("line",{x1:Math.sin(a)*160,y1:-Math.cos(a)*160,x2:Math.sin(a)*178,y2:-Math.cos(a)*178,stroke:"#fff","stroke-width":4,opacity:.6},S.clock);}
+ S.ropeR=el("path",{fill:"none",stroke:C.red,"stroke-width":6,"stroke-linecap":"round",opacity:0},scene);S.ropeG=el("path",{fill:"none",stroke:C.gold,"stroke-width":6,"stroke-linecap":"round",opacity:0},scene);
+ /* volume slider */
+ S.vol=el("g",{opacity:0},scene);el("rect",{x:-30,y:-260,width:60,height:520,rx:30,fill:C.card,stroke:C.white,"stroke-width":4},S.vol);S.volFill=el("rect",{x:-22,width:44,rx:22,fill:C.red},S.vol);
+ S.knob=el("rect",{x:-70,width:140,height:50,rx:14,fill:C.white,filter:"url(#glowB)"},S.vol);txt(S.vol,0,-290,"LOUD VOICE",22,{fill:C.red,"font-weight":800,"letter-spacing":"4"});
+ /* desk montage */
+ S.desk=el("g",{opacity:0},scene);el("rect",{x:360,y:1290,width:420,height:16,rx:8,fill:C.white},S.desk);el("line",{x1:380,y1:1306,x2:380,y2:1440,stroke:C.white,"stroke-width":8},S.desk);el("line",{x1:760,y1:1306,x2:760,y2:1440,stroke:C.white,"stroke-width":8},S.desk);
+ S.lamp=el("path",{d:"M700,1100 L740,1100 L820,1290 L560,1290 Z",fill:"url(#lamp)"},S.desk);el("path",{d:"M720,1290 L700,1120 L740,1090",fill:"none",stroke:C.white,"stroke-width":6},S.desk);
+ S.book=el("g",{},S.desk);S.bookL=el("path",{d:"M540,1286 L540,1226 Q500,1212 460,1226 L460,1286 Q500,1272 540,1286 Z",fill:"#f2efe6"},S.book);S.bookR=el("path",{fill:"#f2efe6"},S.book);
+ S.dphone=el("g",{},S.desk);el("rect",{x:-28,y:-10,width:56,height:20,rx:5,fill:C.card,stroke:C.red,"stroke-width":3},S.dphone);
+ S.chair=el("path",{d:"M220,1328 L340,1328 M230,1328 L222,1440 M330,1328 L338,1440 M218,1328 L206,1190",fill:"none",stroke:C.grey,"stroke-width":8,"stroke-linecap":"round",opacity:0},scene);
+ S.timer=txt(scene,600,1000,"",56,{fill:C.gold,"font-weight":800,"letter-spacing":"3",opacity:0,filter:"url(#glowB)"});
+ S.sweat=el("path",{d:"M0,-14 Q8,-2 8,5 A8,8 0 1,1 -8,5 Q-8,-2 0,-14 Z",fill:C.white,opacity:0},scene);
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ let o={x:540,y:GY},op=1;
+ // worlds visible in hook + choice scenes
+ const worlds=Math.max(win(t,-1,T[1]-.05,.01,.3),win(t,T[8]-.05,T[9]-.05,.25,.3),win(t,T[12]-.05,DUR,.25,.6));
+ S.now.setAttribute("opacity",(worlds*(t>=T[12]?.25:1)).toFixed(3));S.most.setAttribute("opacity",worlds.toFixed(3));
+ S.spotR.setAttribute("opacity",(worlds*.5*(t>=T[12]?0:1)+win(t,T[1],T[4],.2,.4)*.6).toFixed(3));
+ S.spotG.setAttribute("opacity",(worlds*.6+win(t,T[4],T[7],.3,.4)*.8).toFixed(3));
+ if(t<T[1]){const pull=Math.sin(t*1.6);o={x:540+pull*14,y:GY,look:pull,droop:.1,lean:pull*.15};}
+ // comfort + loud bubbles
+ S.loud.forEach((g,i)=>{const at=[T[1]+.3,T[3]+.2,T[3]+.9,T[3]+1.6,T[3]+2.3][i];const shrink=eIO(P(t,T[9]+.4,T[9]+1.6));
+   const k=eBack(P(t,at,at+.35))*(1-eIO(P(t,T[4]-.2,T[4]+.3)))+(sw(T[9],T[10])?(1-shrink):0);
+   g.setAttribute("opacity",clamp(k).toFixed(3));const pulse=1+.05*Math.sin(t*9+i);g.setAttribute("transform",`translate(${g.x+Math.sin(t*14+i)*3},${g.y}) scale(${(clamp(k)*pulse*(sw(T[9],T[10])?lerp(1,.3,shrink):1)).toFixed(3)})`);});
+ if(sw(T[1],T[4])){o={x:540,y:GY,look:Math.sin(t*3)*.5,droop:.3,cover:sw(T[3],T[4])?eIO(P(t,T[3]+1.2,T[3]+1.8))*.8:0};}
+ // whisper
+ const wk=win(t,T[5]-.05,T[7]-.05,.4,.3);S.whisper.setAttribute("opacity",(wk*(.75+.25*Math.sin(t*2))).toFixed(3));S.whisper.setAttribute("transform",`translate(${S.whisper.x},${S.whisper.y}) scale(${(.85+.15*wk).toFixed(3)})`);
+ if(sw(T[4],T[7])){o={x:420,y:GY,look:1,droop:-.1+.2*Math.sin(t*.8)};}
+ // future self
+ const fu=win(t,T[6]-.05,T[7]+.5,.5,.4)+win(t,T[12],DUR,.3,.6);
+ if(fu>0){const m=t>=T[12]?eIO(P(t,T[12]+.3,T[12]+1.6)):0;S.future.draw({x:lerp(760,540,m),y:GY,col:C.gold,droop:-.3,raise:t>=T[12]?.8:0,raiseL:t>=T[12]?.8:0});S.future.g.setAttribute("opacity",(Math.min(1,fu)*(.7+.3*Math.sin(t*3))*(1-m*.7)).toFixed(3));S.future.g.setAttribute("stroke-dasharray","8 8");}
+ else S.future.g.setAttribute("opacity",0);S.future.shadow.setAttribute("opacity",0);
+ // clock tug of war
+ const ck=win(t,T[7]-.05,T[8]-.05,.25,.25);S.clock.setAttribute("opacity",ck.toFixed(3));S.clock.setAttribute("transform",`translate(540,${980}) rotate(${Math.sin(t*3)*4})`);
+ const tug=Math.sin(t*2.2)*40;S.ropeR.setAttribute("d",`M${350+tug},990 Q250,1100 160,1180`);S.ropeG.setAttribute("d",`M${730+tug},990 Q830,1100 920,1180`);
+ S.ropeR.setAttribute("opacity",ck);S.ropeG.setAttribute("opacity",ck);if(sw(T[7],T[8]))op=0;
+ // choice
+ if(sw(T[8],T[9])){const c=eIO(P(t,T[8]+.5,T[8]+1.5));o={x:540,y:GY,look:lerp(-1,1,c),droop:-.1,raise:c*.3};}
+ // volume slider
+ const vk=win(t,T[9]-.05,T[10]-.05,.2,.25);S.vol.setAttribute("opacity",vk.toFixed(3));S.vol.setAttribute("transform","translate(860,1040)");
+ const lv=lerp(.95,.08,eIO(P(t,T[9]+.4,T[9]+1.6)));S.knob.setAttribute("y",(260-lv*520-25).toFixed(1));S.volFill.setAttribute("y",(260-lv*520).toFixed(1));S.volFill.setAttribute("height",(lv*520).toFixed(1));
+ if(sw(T[9],T[10]))o={x:540,y:GY,point:1,droop:-.2};
+ // desk: close app, open notebook, one more hour
+ const dk=win(t,T[10]-.05,T[12]-.05,.25,.3);S.desk.setAttribute("opacity",dk.toFixed(3));S.chair.setAttribute("opacity",dk.toFixed(3));
+ const op1=eIO(P(t,T[10]+1.0,T[10]+1.5));S.bookR.setAttribute("d",`M540,1286 L540,1226 Q${lerp(500,580,op1)},${lerp(1212,1212,op1)} ${lerp(460,620,op1)},1226 L${lerp(460,620,op1)},1286 Q${lerp(500,580,op1)},1272 540,1286 Z`);
+ const pf=eIO(P(t,T[10]+.2,T[10]+.7));S.dphone.setAttribute("transform",`translate(${lerp(640,690,pf)},1280) rotate(${pf*180})`);
+ S.lamp.setAttribute("opacity",(.7+.2*Math.sin(t*2)).toFixed(3));
+ const tm=win(t,T[10]+1.8,T[12]-.05,.3,.3);S.timer.setAttribute("opacity",tm.toFixed(3));const mins=Math.floor(clamp((t-T[10]-1.8)/(T[12]-T[10]-1.8))*59);S.timer.textContent=`00:${String(mins).padStart(2,"0")}`;
+ if(sw(T[10],T[12])){o={x:300,y:GY,sit:1,chair:1,write:t>T[10]+1.5?1:0,t,droop:.2+.25*eIO(P(t,T[11],T[11]+.6))};}
+ const sd=P(t,T[11]+.3,T[11]+1.3);S.sweat.setAttribute("opacity",(sd>0&&sd<1?Math.sin(sd*Math.PI):0).toFixed(3));if(sd>0&&sd<1)S.sweat.setAttribute("transform",`translate(${+S.fig.head.getAttribute("cx")+44},${+S.fig.head.getAttribute("cy")-16+sd*24})`);
+ // end
+ if(t>=T[12]){const v=eBack(P(t,T[12]+.2,T[12]+.6));o={x:540,y:GY,col:K.mixHex(C.white,C.gold,eIO(P(t,T[12],T[12]+1.4))),raise:clamp(v)*1.1,raiseL:clamp(v)*1.1,droop:-.4};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));S.fig.shadow.setAttribute("opacity",(op*.5).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,T[12],DUR,.2,.6)*.8).toFixed(3));S.rays.setAttribute("transform",`translate(540,${GY-150}) rotate(${t*7})`);
+ // camera
+ const c=K.cam;
+ if(t<T[1]){c.sc=lerp(1.25,1.0,eOut(P(t,0,2.5)));c.cy=1220;}
+ if(sw(T[1],T[4])){c.sc=1.05+.04*Math.sin(t*5);c.rot+=Math.sin(t*7)*.8;}
+ if(sw(T[4],T[6]))camFX.dolly(t,c,T[4],T[6],{sc:1.4,cx:640,cy:1080});
+ if(sw(T[6],T[7]))camFX.dolly(t,c,T[6],T[7],{sc:1.08,cx:620,cy:1200});
+ if(sw(T[8],T[9])){c.sc=lerp(1.0,1.15,eIO(P(t,T[8],T[9])));c.cy=1250;}
+ if(sw(T[10],T[12]))camFX.dolly(t,c,T[10],T[12],{sc:1.15,cx:480,cy:1200});
+ if(t>=T[12])camFX.dolly(t,c,T[12],DUR-.5,{sc:1.15,cx:540,cy:1150});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[T[2],T[12]],.14,5);
+ camFX.shake(t,c,[T[2],T[3]+.2,T[3]+.9,T[3]+1.6,T[3]+2.3],12,7);camFX.whip(t,c,T[4],1);camFX.whip(t,c,T[7],-1);camFX.whip(t,c,T[10],1);
+ camFX.tilt(t,c,T[1],T[4],-3);
+ K.flash+=K.pulses(t,[T[2],T[12]],10,.3,.3);
+ K.dim=win(t,T[4],T[6],.4,.4)*.55+win(t,T[10],T[12],.3,.3)*.3;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

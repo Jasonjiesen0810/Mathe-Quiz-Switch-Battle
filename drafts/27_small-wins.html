@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Small Wins</title></head>
+<body>
+<script>
+/* Song 14 "Fallen Angel" ab 0 – Drop 25,61 s, Schlag 0,6 s (alles läuft nach Plan) */
+const A=[0.3,2.74,8.1,10.15,13.27,15.89,21.41,23.88], B=[26.28,29.11,31.78,33.85,36.68,40.46,42.94];
+const DUR=47.9, DROP=25.61, BP=.6;
+window.VIDEO={DUR,seed:271,audio:"27_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,lines:[[{t:"SMALL",gold:1},"WINS","ARE"],["NOT",{t:"SMALL.",mark:1}]]},
+ {a:A[1]-.05,b:5.3,lines:[["MAKE","YOUR",{t:"BED.",gold:1}]]},
+ {a:5.35,b:6.6,lines:[["FINISH","ONE",{t:"TASK.",gold:1}]]},
+ {a:6.65,b:A[2]-.1,lines:[["SEND","THAT",{t:"EMAIL.",gold:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["DOESN'T","LOOK"],["LIKE","MUCH."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["BUT","SOMETHING"],[{t:"CHANGES.",gold:1}]]},
+ {a:A[4]-.05,b:A[6]-.1,lines:[["ONCE","YOU",{t:"BEGIN,",gold:1}],["YOU","WANT","TO",{t:"CONTINUE.",gold:1}]]},
+ {a:A[6]-.05,b:A[7]-.1,lines:[["YOUR","BRAIN","LOVES"],["THE","FEELING","OF",{t:"DONE.",gold:1}]]},
+ {a:A[7]-.05,b:DROP-.05,lines:[["AND","IT","WANTS","IT"],[{t:"AGAIN.",gold:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["ONE","WIN","FUELS"],["THE",{t:"NEXT.",gold:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["THEN","THE","NEXT."],["THEN","THE",{t:"NEXT.",gold:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[[{t:"MOMENTUM.",mark:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["DON'T","START","WITH","THE"],["HARDEST",{t:"MOUNTAIN.",red:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["START","WITH","ONE"],[{t:"SMALL WIN.",mark:1}]]},
+ {a:B[5]-.05,b:B[6]-.1,lines:[["SMALL","WINS","BUILD"],["BIG",{t:"DAYS.",gold:1}]]},
+ {a:B[6]-.05,b:DUR-.5,lines:[["BIG","DAYS","BUILD","A"],[{t:"DIFFERENT LIFE.",mark:1}]]},
+],
+LABELS:[{a:A[4]+.3,b:A[6]-.1,text:"— Brian Tracy, Eat That Frog!"}],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spot=K.spot(540,1);S.rays=K.raysG(540,1000);S.fig=makeFig();
+ const check=(p,sz=1,col=C.gold)=>{const g=el("g",{},p);el("rect",{x:-40*sz,y:-40*sz,width:80*sz,height:80*sz,rx:16*sz,fill:"rgba(245,184,61,.12)",stroke:col,"stroke-width":5,filter:"url(#glowB)"},g);
+   el("path",{d:`M${-18*sz},0 L${-4*sz},${14*sz} L${20*sz},${-14*sz}`,fill:"none",stroke:col,"stroke-width":7,"stroke-linecap":"round","stroke-linejoin":"round"},g);return g;};
+ S.hookCheck=check(scene,1);
+ /* three small tasks */
+ const icon=(lab,draw)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-130,y:-130,width:260,height:260,rx:34,fill:"#0b0b0d",stroke:C.white,"stroke-width":5},g);draw(g);txt(g,0,104,lab,24,{"font-weight":800,"letter-spacing":"5"});
+   const c=check(g,.8);c.setAttribute("transform","translate(100,-100)");c.setAttribute("opacity",0);g.c=c;return g;};
+ S.tasks=[icon("BED",g=>{el("rect",{x:-80,y:-10,width:160,height:50,rx:10,fill:"none",stroke:C.white,"stroke-width":6},g);el("rect",{x:-80,y:-50,width:50,height:40,rx:10,fill:"none",stroke:C.white,"stroke-width":6},g);el("line",{x1:-80,y1:40,x2:-80,y2:60,stroke:C.white,"stroke-width":6},g);el("line",{x1:80,y1:40,x2:80,y2:60,stroke:C.white,"stroke-width":6},g);}),
+  icon("TASK",g=>{[-40,-5,30].forEach((y,i)=>{el("rect",{x:-70,y:y-12,width:24,height:24,rx:5,fill:"none",stroke:C.white,"stroke-width":4},g);el("line",{x1:-30,y1:y,x2:70-i*15,y2:y,stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},g);});}),
+  icon("EMAIL",g=>{el("rect",{x:-80,y:-50,width:160,height:100,rx:10,fill:"none",stroke:C.white,"stroke-width":6},g);el("path",{d:"M-80,-50 L0,15 L80,-50",fill:"none",stroke:C.white,"stroke-width":6},g);})];
+ /* brain glow */
+ S.brain=el("g",{opacity:0},scene);el("circle",{r:160,fill:"url(#halo)"},S.brain);
+ [[0,0,48],[-40,-10,28],[40,-12,30],[0,-40,26]].forEach(([x,y,r])=>el("circle",{cx:x,cy:y,r,fill:"none",stroke:C.gold,"stroke-width":4,opacity:.8},S.brain));
+ S.sparks=[...Array(14)].map(()=>({c:el("circle",{r:4,fill:C.gold,opacity:0},scene),a:rnd()*6.28,v:80+rnd()*120,d:rnd()}));
+ /* book */
+ S.book=el("g",{opacity:0},scene);el("rect",{x:-110,y:-150,width:220,height:300,rx:10,fill:"#1a3a22",stroke:"#e9e6dc","stroke-width":5},S.book);txt(S.book,0,-60,"EAT",36,{fill:"#e9e6dc","font-weight":800,"letter-spacing":"4"});txt(S.book,0,-15,"THAT",36,{fill:"#e9e6dc","font-weight":800,"letter-spacing":"4"});txt(S.book,0,30,"FROG!",36,{fill:C.gold,"font-weight":800,"letter-spacing":"4"});
+ el("ellipse",{cx:0,cy:90,rx:40,ry:24,fill:"none",stroke:C.gold,"stroke-width":4},S.book);
+ /* ball + hill (momentum) */
+ S.hill=el("path",{d:"M60,1000 Q300,1000 540,1220 T1020,1440",fill:"none",stroke:C.white,"stroke-width":6,filter:"url(#glowB)",opacity:0},scene);S.hillL=S.hill.getTotalLength();
+ S.ball=el("g",{opacity:0},scene);S.ballC=el("circle",{r:60,fill:"rgba(245,184,61,.15)",stroke:C.gold,"stroke-width":6,filter:"url(#glowB)"},S.ball);el("path",{d:"M-30,0 L-8,22 L30,-20",fill:"none",stroke:C.gold,"stroke-width":8,"stroke-linecap":"round"},S.ball);
+ S.speed=[...Array(12)].map(()=>({l:el("line",{stroke:C.gold,"stroke-width":3,"stroke-linecap":"round",opacity:0},scene),o:rnd()*40-20,len:60+rnd()*120,d:rnd()}));
+ /* chain of checks on beat */
+ S.chain=[...Array(8)].map((_,i)=>{const g=check(scene,.7);g.setAttribute("opacity",0);return{g,x:150+i*110,y:1300-i*45};});
+ /* mountain vs small step */
+ S.mtn=el("g",{opacity:0},scene);el("path",{d:"M560,1440 L800,880 L1040,1440 Z",fill:"#121216",stroke:C.grey,"stroke-width":6},S.mtn);S.mtnX=el("path",{d:"M680,1000 L920,1240 M920,1000 L680,1240",stroke:C.red,"stroke-width":10,"stroke-linecap":"round",opacity:0},S.mtn);
+ S.step=el("g",{opacity:0},scene);el("rect",{x:-70,y:-40,width:140,height:40,rx:8,fill:"rgba(245,184,61,.2)",stroke:C.gold,"stroke-width":5,filter:"url(#glowB)"},S.step);
+ S.rope=el("path",{fill:"none",stroke:C.gold,"stroke-width":5,"stroke-dasharray":"10 8",opacity:0},scene);
+ /* week of big days */
+ S.week=[...Array(7)].map((_,i)=>{const g=el("g",{opacity:0},scene);const r=el("rect",{x:-56,y:-70,width:112,height:140,rx:14,fill:C.card,stroke:C.white,"stroke-width":4},g);txt(g,0,-38,"MTWTFSS"[i],22,{"font-weight":800,"letter-spacing":"0"});
+   const ck=check(g,.6);ck.setAttribute("transform","translate(0,20)");ck.setAttribute("opacity",0);return{g,r,ck,x:150+i*130};});
+ S.path=el("path",{d:"M200,1440 C420,1400 600,1240 900,820",fill:"none",stroke:C.gold,"stroke-width":8,"stroke-linecap":"round",filter:"url(#glowB)",opacity:0},scene);S.pathL=S.path.getTotalLength();S.path.style.strokeDasharray=S.pathL;
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,grid,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const beat=(a,b,d=9,e=1)=>grid(t,DROP,BP,a,b,d,e);
+ let o={x:540,y:GY},op=1;
+ // hook: tiny check becomes huge
+ const hk=win(t,-1,A[1]-.05,.01,.3);const grow=eIO(P(t,.4,2.4));S.hookCheck.setAttribute("opacity",hk.toFixed(3));S.hookCheck.setAttribute("transform",`translate(640,${lerp(1380,1050,grow)}) scale(${lerp(.35,3.2,grow).toFixed(3)})`);
+ if(t<A[1])o={x:340,y:GY,look:1,droop:lerp(.1,-.4,grow)};
+ // three tasks
+ const tt=[A[1],5.35,6.65];S.tasks.forEach((g,i)=>{const k=win(t,tt[i]-.05,(tt[i+1]||A[2])-.05,.15,.15);g.setAttribute("opacity",k.toFixed(3));g.setAttribute("transform",`translate(640,1060) scale(${(.85+.15*eBack(P(t,tt[i],tt[i]+.3))).toFixed(3)})`);
+   g.c.setAttribute("opacity",t>tt[i]+.6?1:0);g.c.setAttribute("transform",`translate(100,-100) scale(${t>tt[i]+.6?clamp(eBack(P(t,tt[i]+.6,tt[i]+.9))):0})`);});
+ if(sw(A[1],A[2]))o={x:300,y:GY,work:1,t,droop:-.1};
+ // doesn't look like much: three tiny checks on empty ground
+ if(sw(A[2],A[3])){o={x:540,y:GY,look:-.4,droop:.25};}
+ // brain
+ const br=win(t,A[3]-.05,A[4]-.05,.3,.3)+win(t,A[6]-.05,A[7]+.5,.3,.3);S.brain.setAttribute("opacity",Math.min(1,br).toFixed(3));
+ if(sw(A[3],A[4])||sw(A[6],A[7]+.5)){o={x:540,y:GY,droop:-.2,headTouch:sw(A[3],A[4])?eIO(P(t,A[3]+.3,A[3]+.8)):0};}
+ S.sparks.forEach(p=>{const k=((t-A[6])*.8+p.d)%1;const on=sw(A[6],A[7]+.5);p.c.setAttribute("cx",540+Math.cos(p.a)*p.v*k);p.c.setAttribute("cy",1160+Math.sin(p.a)*p.v*k-120*k);p.c.setAttribute("opacity",on?(Math.sin(k*Math.PI)).toFixed(3):0);});
+ // book
+ const bk=win(t,A[4]-.05,A[5]+.2,.25,.3);S.book.setAttribute("opacity",bk.toFixed(3));S.book.setAttribute("transform",`translate(760,1050) rotate(${-6+Math.sin(t)*2})`);
+ if(sw(A[4],A[5]))o={x:330,y:GY,point:1,droop:-.1};
+ // ball starts rolling (quote) -> wait at top (tension) -> rolls on drop
+ const hl=win(t,A[5]-.05,B[3]-.05,.3,.3);S.hill.setAttribute("opacity",hl.toFixed(3));
+ const push=eIO(P(t,A[5]+.5,A[6]-.4))*.12;const roll=t>=DROP?Math.min(1,.12+Math.pow(P(t,DROP,B[3]-.3),1.6)*.88):push;
+ const bp=S.hill.getPointAtLength(S.hillL*roll);const ballOn=Math.max(win(t,A[5]-.05,A[6]-.05,.3,.2),win(t,A[7]-.05,B[3]-.05,.2,.3));
+ S.ball.setAttribute("opacity",ballOn.toFixed(3));S.ball.setAttribute("transform",`translate(${bp.x},${bp.y-60-roll*30}) rotate(${roll*1400}) scale(${(1+roll*1.2).toFixed(3)})`);
+ S.speed.forEach(s=>{const on=t>=DROP+1&&t<B[3]-.2;const k=((t*2+s.d)%1);s.l.setAttribute("x1",bp.x-90-k*200);s.l.setAttribute("x2",bp.x-90-k*200-s.len);s.l.setAttribute("y1",bp.y-60+s.o);s.l.setAttribute("y2",bp.y-60+s.o);s.l.setAttribute("opacity",on?(1-k)*.8:0);});
+ if(sw(A[5],A[6])){const w=eIO(P(t,A[5]+.3,A[6]-.3));o={x:lerp(120,300,w)-70,y:1000+((lerp(120,300,w))>300?0:0)-0,ph:w*8,lean:.4,raise:.6,raiseL:.6};o.y=1000+0;}
+ if(sw(A[7],DROP)){o={x:200,y:1000,lean:.2,droop:.1,raise:.4,raiseL:.4};}
+ // drop: chain of checks lighting on the beat
+ const ch=win(t,DROP,B[2]-.05,.05,.3);S.chain.forEach((c,i)=>{const at=DROP+i*BP;const k=t>=at?clamp(eBack(P(t,at,at+.25))):0;c.g.setAttribute("opacity",(k*ch).toFixed(3));c.g.setAttribute("transform",`translate(${c.x},${c.y-200}) scale(${(.7*k).toFixed(3)})`);});
+ if(sw(DROP,B[3])){const k=P(t,DROP,B[3]);o={x:lerp(120,980,k),y:GY,run:1,ph:t*10,lean:.45,col:K.mixHex(C.white,C.gold,k)};}
+ // mountain vs small step + rope
+ const mt=win(t,B[3]-.05,B[5]-.05,.25,.3);S.mtn.setAttribute("opacity",mt.toFixed(3));S.mtnX.setAttribute("opacity",t>B[3]+1.2&&t<B[4]?1:0);
+ const st=win(t,B[4]-.05,B[5]-.05,.2,.3);S.step.setAttribute("opacity",st.toFixed(3));S.step.setAttribute("transform",`translate(330,${GY}) scale(${(1+.08*beat(B[4],B[5])).toFixed(3)})`);
+ S.rope.setAttribute("opacity",st*.9);S.rope.setAttribute("d",`M${330},${GY-40} Q330,1300 ${230},${GY-150}`);
+ if(sw(B[3],B[4]))o={x:330,y:GY,look:1,droop:.2};
+ if(sw(B[4],B[5])){const s2=eIO(P(t,B[4]+1.2,B[4]+2));o={x:lerp(220,330,s2),y:lerp(GY,GY-40,s2)-Math.sin(s2*Math.PI)*30,ph:s2*6,droop:-.2,col:C.gold};}
+ // week of big days
+ S.week.forEach((w,i)=>{const k=win(t,B[5]-.05+i*.08,B[6]+1,.2,.3);const lit=t>B[5]+.4+i*BP;w.g.setAttribute("opacity",k.toFixed(3));w.g.setAttribute("transform",`translate(${w.x},880)`);
+   w.ck.setAttribute("opacity",lit?1:0);w.r.setAttribute("stroke",lit?C.gold:C.white);});
+ if(sw(B[5],B[6]))o={x:540,y:GY,raise:.4+.2*beat(B[5],B[6]),droop:-.2,col:C.gold};
+ // different life: gold path, figure climbs
+ const pk=eIO(P(t,B[6],DUR-1.5));S.path.setAttribute("opacity",win(t,B[6]-.05,DUR,.2,.6).toFixed(3));S.path.style.strokeDashoffset=S.pathL*(1-Math.min(1,pk*1.3));
+ if(t>=B[6]){const q=S.path.getPointAtLength(S.pathL*pk);o={x:q.x,y:q.y,ph:t*9,stride:.9,lean:.25,col:C.gold,sc:1-.25*pk};if(pk>=.99)o={x:q.x,y:q.y,raise:1.1,raiseL:1.1,col:C.gold,sc:.75};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ S.brain.setAttribute("transform",`translate(${S.fig.head.getAttribute("cx")||540},${(+S.fig.head.getAttribute("cy")||1160)}) scale(${(1+.06*Math.sin(t*6)).toFixed(3)})`);
+S.fig.shadow.setAttribute("opacity",(sw(A[5],DROP)||t>=B[6]?0:.5));
+ S.spot.setAttribute("opacity",(win(t,-1,A[1],.01,.3)*.7+win(t,A[3],A[4],.3,.3)*.6+win(t,B[6],DUR,.3,.6)*.6).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,DROP,DROP+1.5,.05,.6)*.9+win(t,B[2],B[3],.1,.3)*.8+win(t,DUR-3.5,DUR,.3,.6)*.8).toFixed(3));S.rays.setAttribute("transform",`translate(${t>=B[6]?900:bp.x},${t>=B[6]?820:bp.y-60}) rotate(${t*9})`);
+ K.ground.setAttribute("opacity",(sw(A[5],DROP)?.0:1)*K.endFade);K.floorScroll=sw(DROP,B[3])?1.6:0;
+ // camera
+ const c=K.cam;
+ if(t<A[1]){c.sc=lerp(1.0,1.3,eIO(P(t,.4,2.4)));c.cx=lerp(540,620,eIO(P(t,.4,2.4)));c.cy=lerp(1150,1080,eIO(P(t,.4,2.4)));}
+ if(sw(A[1],A[2])){c.sc=1.06;c.cx=600;}
+ if(sw(A[2],A[3]))camFX.dolly(t,c,A[2],A[3],{sc:.94,cy:1200});
+ if(sw(A[3],A[4]))camFX.dolly(t,c,A[3],A[4],{sc:1.3,cy:1120});
+ if(sw(A[5],DROP)){const k=eIO(P(t,A[7],DROP));c.sc=lerp(1.0,1.25,k);c.cx=lerp(540,260,k);c.cy=lerp(1150,1000,k);c.rot+=Math.sin(t*25)*k*.8;}
+ if(sw(DROP,B[3])){c.sc=lerp(1.25,1.05,eOut(P(t,DROP,DROP+1)));c.cx=lerp(260,Math.min(760,Math.max(320,bp.x)),eIO(P(t,DROP,DROP+1)));c.cy=lerp(1000,1150,eIO(P(t,DROP,B[3])));}
+ if(sw(B[3],B[5]))camFX.dolly(t,c,B[3],B[5],{sc:1.08,cx:520,cy:1200});
+ if(t>=B[6])camFX.dolly(t,c,B[6],DUR-1,{sc:1.12,cx:760,cy:950});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[DROP],.2,5);c.sc+=beat(DROP,DUR-1,9)*.04;
+ camFX.shake(t,c,[DROP,B[3]+1.2],16,6);camFX.whip(t,c,A[3],1);camFX.whip(t,c,B[3],-1);camFX.whip(t,c,B[5],1);
+ K.flash+=K.pulses(t,[DROP],8,.55)+beat(DROP,DUR-1,12,2)*.08+K.pulses(t,[A[1]+.6,5.95,7.25],12,.12,.12);
+ K.dim=win(t,A[7],DROP,.4,.05)*.55;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

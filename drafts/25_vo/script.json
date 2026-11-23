@@ -1,0 +1,87 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Discipline is choosing between what you want now, and what you want most.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Right now, you want comfort. Your bed. Your phone. One more episode.",
+     "mode": "story"
+    },
+    {
+     "text": "And that voice is loud.",
+     "mode": "normal",
+     "pause": 0.8
+    },
+    {
+     "text": "It never gets tired. It always has a reason.",
+     "mode": "story",
+     "pause": 0.9
+    },
+    {
+     "text": "But there's another voice.",
+     "mode": "quote",
+     "pause": 0.9
+    },
+    {
+     "text": "It doesn't shout. It whispers.",
+     "mode": "quote",
+     "pause": 1.0
+    },
+    {
+     "text": "It's the voice of the person you could become.",
+     "mode": "quote",
+     "pause": 1.1,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Every night, both voices ask you for the same hour.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "And every night, you choose who gets it.",
+     "mode": "quote",
+     "pause": 1.1
+    },
+    {
+     "text": "So turn the loud one down.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Close the app. Open the notebook. Do one more hour.",
+     "mode": "story",
+     "pause": 0.9
+    },
+    {
+     "text": "Not because it feels good.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Because you want it most.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.15
+     ]
+    }
+   ]
+  }
+ ]
+}

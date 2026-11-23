@@ -1,0 +1,106 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Small wins are not small.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "You make your bed. You finish one task. You send that one email you've been avoiding.",
+     "mode": "story",
+     "pause": 0.8
+    },
+    {
+     "text": "It doesn't look like much.",
+     "mode": "normal",
+     "pause": 0.8
+    },
+    {
+     "text": "But something changes inside your head.",
+     "mode": "quote",
+     "pause": 0.9
+    },
+    {
+     "text": "Brian Tracy says it in Eat That Frog:",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "once you begin a valuable task, you're naturally motivated to continue.",
+     "mode": "quote",
+     "pause": 0.8
+    },
+    {
+     "text": "Your brain loves the feeling of done.",
+     "mode": "normal",
+     "pause": 0.7
+    },
+    {
+     "text": "And it wants that feeling again.",
+     "mode": "quote",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "min_at": 25.6,
+   "parts": [
+    {
+     "text": "One win gives you energy for the next.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Then the next. Then the next.",
+     "mode": "story",
+     "pause": 0.8
+    },
+    {
+     "text": "That's momentum.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "So don't start your day with the hardest mountain.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "Start with one small win, and let it pull you forward.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "Small wins build big days.",
+     "mode": "quote",
+     "pause": 0.7
+    },
+    {
+     "text": "And big days build a different life.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

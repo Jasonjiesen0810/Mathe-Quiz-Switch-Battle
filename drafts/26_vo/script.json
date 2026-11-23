@@ -1,0 +1,88 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Someday is not a day of the week.",
+     "mode": "quote",
+     "pause": 1.1,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Monday. Tuesday. Wednesday.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Look as long as you want. Someday is not there.",
+     "mode": "normal",
+     "pause": 1.0
+    },
+    {
+     "text": "But that's exactly where we put our biggest dreams.",
+     "mode": "quote",
+     "pause": 1.0
+    },
+    {
+     "text": "Someday I'll start the business. Someday I'll get in shape. Someday I'll call them back.",
+     "mode": "story",
+     "pause": 1.0
+    },
+    {
+     "text": "And while we wait for someday, the days keep passing.",
+     "mode": "quote",
+     "pause": 0.9
+    },
+    {
+     "text": "Quietly. One by one.",
+     "mode": "quote",
+     "pause": 1.2
+    },
+    {
+     "text": "Here's the truth nobody likes to hear:",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "someday doesn't arrive.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "You have to pick a real day.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "So take one dream you keep postponing, and give it a date.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "Not someday.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Today.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.15
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Someday</title></head>
+<body>
+<script>
+/* Song 9 "lilacs" ab 0 – traurige Motivation */
+const T=[0.3,3.29,6.19,10.0,13.56,19.13,23.01,26.81,29.24,31.53,33.53,37.63,39.15];
+const DUR=42.6;
+window.VIDEO={DUR,seed:261,audio:"26_vo/mix.wav",
+HEADS:[
+ {a:-1,b:T[1]-.1,lines:[[{t:"SOMEDAY",red:1},"IS","NOT"],["A","DAY","OF","THE","WEEK."]]},
+ {a:T[1]-.05,b:T[2]-.1,lines:[["MONDAY.","TUESDAY."],["WEDNESDAY."]]},
+ {a:T[2]-.05,b:T[3]-.1,lines:[["SOMEDAY","IS"],[{t:"NOT THERE.",red:1}]]},
+ {a:T[3]-.05,b:T[4]-.1,lines:[["BUT","THAT'S","WHERE","WE","PUT"],["OUR","BIGGEST",{t:"DREAMS.",gold:1}]]},
+ {a:T[4]-.05,b:T[5]-.1,lines:[["“SOMEDAY","I'LL…”"]]},
+ {a:T[5]-.05,b:T[6]-.1,lines:[["AND","THE","DAYS","KEEP"],[{t:"PASSING.",red:1}]]},
+ {a:T[6]-.05,b:T[7]-.1,lines:[["QUIETLY."],["ONE","BY","ONE."]]},
+ {a:T[7]-.05,b:T[8]-.1,lines:[["THE","TRUTH","NOBODY"],["LIKES","TO","HEAR:"]]},
+ {a:T[8]-.05,b:T[9]-.1,lines:[["SOMEDAY"],[{t:"DOESN'T ARRIVE.",red:1}]]},
+ {a:T[9]-.05,b:T[10]-.1,lines:[["PICK","A",{t:"REAL",gold:1},{t:"DAY.",gold:1}]]},
+ {a:T[10]-.05,b:T[11]-.1,lines:[["GIVE","ONE","DREAM"],["A",{t:"DATE.",gold:1}]]},
+ {a:T[11]-.05,b:T[12]-.1,lines:[["NOT",{t:"SOMEDAY.",red:1}]]},
+ {a:T[12]-.05,b:DUR-.5,lines:[[{t:"TODAY.",mark:1}]]},
+],
+LABELS:[{a:T[2]+.6,b:T[3]-.1,text:"Look as long as you want."},{a:T[4]+.3,b:T[5]-.1,text:"…start the business · get in shape · call them back"}],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spot=K.spot(540);S.rays=K.raysG(540,1000);S.fig=makeFig();
+ /* week strip */
+ S.week=el("g",{},scene);S.days=["MON","TUE","WED","THU","FRI","SAT","SUN"].map((d,i)=>{const g=el("g",{transform:`translate(${120+i*140},880)`},S.week);
+   const r=el("rect",{x:-60,y:-90,width:120,height:180,rx:16,fill:C.card,stroke:C.white,"stroke-width":4},g);el("rect",{x:-60,y:-90,width:120,height:44,rx:16,fill:"#2a2a30"},g);
+   txt(g,0,-60,d,22,{"font-weight":800,"letter-spacing":"3"});const n=txt(g,0,30,String(i+1),58,{"font-weight":800,"letter-spacing":"0"});return{g,r,n};});
+ S.somedayCard=el("g",{},scene);el("rect",{x:-110,y:-60,width:220,height:120,rx:18,fill:"rgba(255,69,58,.08)",stroke:C.red,"stroke-width":4,"stroke-dasharray":"10 8"},S.somedayCard);
+ txt(S.somedayCard,0,12,"SOMEDAY",34,{fill:C.red,"font-weight":800,"letter-spacing":"4"});
+ S.mag=el("g",{opacity:0},scene);el("circle",{r:70,fill:"rgba(255,255,255,.04)",stroke:C.white,"stroke-width":8},S.mag);el("line",{x1:50,y1:50,x2:110,y2:110,stroke:C.white,"stroke-width":14,"stroke-linecap":"round"},S.mag);
+ S.qm=txt(S.mag,0,20,"?",60,{fill:C.red,"font-weight":800,"letter-spacing":"0"});
+ /* SOMEDAY drawer */
+ S.drawer=el("g",{opacity:0},scene);el("rect",{x:-200,y:-150,width:400,height:300,rx:12,fill:"#101014",stroke:C.grey,"stroke-width":5},S.drawer);
+ S.slot=el("rect",{x:-170,y:-120,width:340,height:120,rx:8,fill:"#070707",stroke:"#3a3a3e","stroke-width":3},S.drawer);
+ el("rect",{x:-40,y:30,width:80,height:16,rx:8,fill:C.grey},S.drawer);S.dLabel=el("g",{},S.drawer);el("rect",{x:-90,y:70,width:180,height:44,rx:8,fill:"#1a1a1e",stroke:C.red,"stroke-width":3},S.dLabel);txt(S.dLabel,0,100,"SOMEDAY",24,{fill:C.red,"font-weight":800,"letter-spacing":"4"});
+ S.dust=el("g",{opacity:0},S.drawer);for(let i=0;i<40;i++)el("circle",{cx:-190+rnd()*380,cy:-140+rnd()*280,r:1.5+rnd()*2.5,fill:"#999",opacity:.5},S.dust);
+ for(let k=0;k<5;k++)el("path",{d:`M-200,-150 L${-200+Math.cos(k*.35)*130},${-150+Math.sin(k*.35)*130}`,stroke:"#aaa","stroke-width":2},S.dust);[50,95].forEach(r=>el("path",{d:`M${-200+r},-150 A${r},${r} 0 0 1 ${-200+Math.cos(1.4)*r},${-150+Math.sin(1.4)*r}`,fill:"none",stroke:"#aaa","stroke-width":2},S.dust));
+ S.dX=el("path",{d:"M-110,60 L110,124 M110,60 L-110,124",stroke:C.red,"stroke-width":8,"stroke-linecap":"round",opacity:0},S.drawer);
+ /* dream cards */
+ S.dreams=["BUSINESS","IN SHAPE","CALL THEM"].map((l,i)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-95,y:-60,width:190,height:120,rx:16,fill:"rgba(245,184,61,.1)",stroke:C.gold,"stroke-width":4,filter:"url(#glowB)"},g);
+   txt(g,0,10,l,26,{fill:C.gold,"font-weight":800,"letter-spacing":"3"});return g;});
+ /* falling calendar pages */
+ S.pages=[...Array(14)].map((_,i)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-70,y:-90,width:140,height:180,rx:8,fill:"#e9e6dc"},g);el("rect",{x:-70,y:-90,width:140,height:40,rx:8,fill:C.red},g);
+   txt(g,0,30,String(1+i),60,{fill:"#222","font-weight":800,"letter-spacing":"0"});return{g,x:180+rnd()*720,r:(rnd()-.5)*120,d:i*.42};});
+ S.hg=el("g",{opacity:0},scene);el("path",{d:"M-50,-80 L50,-80 Q50,-30 6,-3 L6,3 Q50,30 50,80 L-50,80 Q-50,30 -6,3 L-6,-3 Q-50,-30 -50,-80 Z",fill:"none",stroke:C.white,"stroke-width":5},S.hg);S.sand=el("path",{fill:C.gold},S.hg);S.sand2=el("path",{fill:C.gold},S.hg);
+ /* real day: big calendar with gold circle */
+ S.cal=el("g",{opacity:0},scene);el("rect",{x:-230,y:-260,width:460,height:520,rx:22,fill:"#e9e6dc"},S.cal);el("rect",{x:-230,y:-260,width:460,height:90,rx:22,fill:C.red},S.cal);
+ S.calT=txt(S.cal,0,-200,"TODAY",40,{fill:"#fff","font-weight":800,"letter-spacing":"6"});S.calN=txt(S.cal,0,90,"",210,{fill:"#222","font-weight":800,"letter-spacing":"-4"});
+ S.circ=el("ellipse",{cx:0,cy:20,rx:170,ry:150,fill:"none",stroke:C.gold,"stroke-width":12,"stroke-linecap":"round",filter:"url(#glowB)"},S.cal);S.cL=2*Math.PI*160;S.circ.style.strokeDasharray=S.cL;
+ S.pin=el("g",{opacity:0},S.cal);el("rect",{x:-110,y:120,width:220,height:90,rx:14,fill:"rgba(245,184,61,.2)",stroke:"#B07A12","stroke-width":4},S.pin);txt(S.pin,0,178,"BUSINESS",28,{fill:"#7a520a","font-weight":800,"letter-spacing":"3"});
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ let o={x:540,y:GY},op=1;
+ // week strip
+ const wk=win(t,-1,T[3]-.05,.01,.3);S.week.setAttribute("opacity",wk.toFixed(3));
+ S.days.forEach((d,i)=>{const lit=sw(T[1]+i*.95,T[1]+i*.95+.9)&&i<3;d.r.setAttribute("stroke",lit?C.gold:C.white);d.r.setAttribute("fill",lit?"rgba(245,184,61,.12)":C.card);
+   d.g.setAttribute("transform",`translate(${120+i*140},${880-(lit?14:0)})`);});
+ // someday card tries to fit and falls
+ const sc=win(t,-1,T[3]-.05,.01,.3)*(1-eIO(P(t,2.3,2.8)));S.somedayCard.setAttribute("opacity",sc.toFixed(3));
+ const fall=eIO(P(t,1.6,2.6));const shake=t>1.1&&t<1.6?Math.sin(t*60)*6:0;
+ S.somedayCard.setAttribute("transform",`translate(${540+shake},${lerp(700,1200,fall)}) rotate(${fall*25})`);
+ // magnifier search
+ const mg=win(t,T[2]-.05,T[3]-.05,.25,.25);S.mag.setAttribute("opacity",mg.toFixed(3));S.mag.setAttribute("transform",`translate(${120+((t-T[2])*240)%840},${880+Math.sin(t*3)*20})`);
+ if(t<T[3]){o={x:540,y:GY,look:Math.sin(t*1.8)*.8,droop:.1};op=1;}
+ // drawer + dreams
+ const dr=win(t,T[3]-.05,T[9]-.05,.3,.3)+win(t,T[10]-.05,T[11]+.4,.2,.3);S.drawer.setAttribute("opacity",Math.min(1,dr).toFixed(3));S.drawer.setAttribute("transform","translate(740,1240)");
+ S.dust.setAttribute("opacity",eIO(P(t,T[5],T[8]+.5)).toFixed(3));S.dX.setAttribute("opacity",t>T[11]+.1?1:0);
+ const dat=[T[4]+.1,T[4]+1.9,T[4]+3.7];
+ S.dreams.forEach((g,i)=>{const k=eIO(P(t,dat[i]+.5,dat[i]+1.4));const vis=win(t,dat[i],T[9],.2,.3);
+   let x=lerp(360,740,k),y=lerp(1000,1190,k),sc2=lerp(1,.5,k),opv=vis*(1-P(k,.85,1));
+   if(i===0&&t>=T[10]){const r=eIO(P(t,T[10]+.4,T[10]+1.4));x=lerp(740,540,r);y=lerp(1190,1100,r);sc2=lerp(.5,1,r);opv=r*(1-eIO(P(t,T[10]+1.6,T[10]+1.9)));}
+   g.setAttribute("opacity",opv.toFixed(3));g.setAttribute("transform",`translate(${x},${y}) scale(${sc2.toFixed(3)})`);});
+ if(sw(T[3],T[5]))o={x:300,y:GY,hold:sw(T[4],T[5])?1:.6,droop:.1,look:1};
+ // days passing: pages fall, figure waits & greys
+ S.pages.forEach(p=>{const k=P(t,T[5]+p.d,T[5]+p.d+2.4);p.g.setAttribute("opacity",(k>0&&k<1?(1-P(k,.7,1))*.95:0).toFixed(3));p.g.setAttribute("transform",`translate(${p.x+Math.sin(k*6)*40},${lerp(450,1500,k)}) rotate(${p.r*k})`);});
+ const hgk=win(t,T[6]-.05,T[7]-.05,.3,.3);S.hg.setAttribute("opacity",hgk.toFixed(3));S.hg.setAttribute("transform","translate(220,980)");
+ const lv=1-P(t,T[6],T[7]);S.sand.setAttribute("d",`M${-40*lv},${-6-60*lv} L${40*lv},${-6-60*lv} L5,-6 L-5,-6 Z`);S.sand2.setAttribute("d",`M-42,74 L42,74 L${42-20*lv},${74-50*(1-lv)} L${-42+20*lv},${74-50*(1-lv)} Z`);
+ if(sw(T[5],T[9])){const g=eIO(P(t,T[5],T[8]));o={x:360,y:GY,sit:1,droop:.6+.5*g,col:K.mixHex(C.white,C.grey,g),look:sw(T[7],T[8])?.5:0};}
+ // pick real day
+ const cl=win(t,T[9]-.05,DUR,.3,.6);S.cal.setAttribute("opacity",cl.toFixed(3));S.cal.setAttribute("transform",`translate(720,${1030}) rotate(${-4+Math.sin(t*.8)*1.5}) scale(.85)`);
+ const d=new Date();S.calN.textContent=String(d.getDate());S.calT.textContent=t>=T[12]?"TODAY":d.toLocaleString("en",{weekday:"long"}).toUpperCase();
+ S.circ.style.strokeDashoffset=S.cL*(1-eIO(P(t,T[9]+.6,T[9]+1.5)));
+ S.pin.setAttribute("opacity",eBack(P(t,T[10]+1.7,T[10]+2.1))>0?clamp(eBack(P(t,T[10]+1.7,T[10]+2.1))).toFixed(3):0);
+ if(t>=T[9]){const up=eBack(P(t,T[9],T[9]+.5));o={x:340,y:GY,droop:lerp(.6,-.2,clamp(up)),point:sw(T[9],T[12])?eIO(P(t,T[9]+.4,T[9]+.8)):0,col:K.mixHex(C.grey,C.white,clamp(up))};
+   if(t>=T[12]){const v=eBack(P(t,T[12],T[12]+.4));o={x:340,y:GY,col:K.mixHex(C.white,C.gold,eIO(P(t,T[12],T[12]+.8))),raise:clamp(v)*1.1,raiseL:clamp(v)*1.1,droop:-.4};}}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ S.spot.setAttribute("opacity",(win(t,T[7]-.05,T[9],.3,.3)*.9+win(t,T[12],DUR,.2,.6)*.6).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,T[12],DUR,.2,.6)*.7).toFixed(3));S.rays.setAttribute("transform",`translate(720,1030) rotate(${t*6})`);
+ // camera: slow, melancholic; pans along the week
+ const c=K.cam;
+ if(t<T[1]){c.sc=lerp(1.2,1.0,eOut(P(t,0,2)));c.cy=1000;}
+ if(sw(T[1],T[3])){c.sc=1.25;c.cx=lerp(220,560,eIO(P(t,T[1],T[2]+.5)));c.cy=900;if(t>T[2]){c.sc=lerp(1.25,1.05,eIO(P(t,T[2],T[2]+1)));c.cx=lerp(560,540,eIO(P(t,T[2],T[2]+1)));}}
+ if(sw(T[3],T[5]))camFX.dolly(t,c,T[3],T[5],{sc:1.12,cx:580,cy:1180});
+ if(sw(T[5],T[7]))camFX.dolly(t,c,T[5],T[7],{sc:.96,cx:540,cy:1100,rot:-2});
+ if(sw(T[7],T[9])){c.sc=lerp(1.0,1.3,eIO(P(t,T[7],T[9])));c.cx=lerp(540,700,eIO(P(t,T[8],T[9])));c.cy=1200;}
+ if(t>=T[9])camFX.dolly(t,c,T[9],DUR-.5,{sc:1.08,cx:600,cy:1100});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.04,7);camFX.punch(t,c,[T[12]],.12,5);
+ camFX.shake(t,c,[1.1,T[11]+.1],10,7);camFX.whip(t,c,T[3],1);camFX.whip(t,c,T[9],-1);
+ K.flash+=K.pulses(t,[T[12]],10,.3);
+ K.dim=win(t,T[5],T[9],.6,.4)*.5;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

@@ -119,7 +119,8 @@
      "text": "will ask you how you did it?",
      "dir": "normal",
      "pitch": 1,
-     "pause": 1.0
+     "pause": 1.0,
+     "takes": 6
     },
     {
      "text": "And you'll realize something.",
@@ -144,5 +145,8 @@
     }
    ]
   }
+ ],
+ "redo": [
+  17
  ]
 }

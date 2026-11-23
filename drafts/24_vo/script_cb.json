@@ -62,13 +62,14 @@
      "pause": 0.7
     },
     {
-     "text": "It's the version of you... that refused to quit.",
+     "text": "It's the version of you, that refused to quit.",
      "dir": "intense",
      "ex": 0.7,
      "pitch": -1,
      "speed": 0.9,
      "pause": 0.9,
-     "tag": "B4"
+     "tag": "B4",
+     "takes": 6
     },
     {
      "text": "Success was never the finish line.",
@@ -101,5 +102,8 @@
     }
    ]
   }
+ ],
+ "redo": [
+  7
  ]
 }

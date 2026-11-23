@@ -115,7 +115,7 @@ def main():
     m = ChatterboxTTS.from_pretrained(device='cpu')
     sr = m.sr
     ref = script.get('ref')
-    durs, clips, prev_end, tags = {}, [], 0.0, {}
+    durs, clips, prev_end, tags, pid = {}, [], 0.0, {}, -1
     for line in script['lines']:
         if line.get('at') == 'auto':
             line['at'] = round(max(prev_end + line.get('gap', 0.8), line.get('min_at', 0)), 2)
@@ -128,6 +128,13 @@ def main():
                 chunks.append(np.zeros(int(sr * before), np.float32)); pos += before
             starts.append(round(line['at'] + pos, 2))
             if p.get('tag'): tags[p['tag']] = starts[-1]
+            pid += 1
+            cpath = os.path.join(out, 'parts', f'{pid:02d}.wav'); os.makedirs(os.path.dirname(cpath), exist_ok=True)
+            if os.path.exists(cpath) and pid not in script.get('redo', []):
+                a, _ = sf.read(cpath, dtype='float32')
+                gap = p.get('pause', 0.7); chunks += [a, np.zeros(int(sr * gap), np.float32)]; pos += len(a) / sr + gap
+                print(f"  (gespeichert) {len(a)/sr:5.2f}s  {p['text'][:60]}", flush=True)
+                continue
             best = None
             for take in range(p.get('takes', script.get('takes', 3))):
                 w = m.generate(p['text'], audio_prompt_path=ref, exaggeration=ex, cfg_weight=cfg, temperature=temp)
@@ -141,6 +148,7 @@ def main():
             a = clean(raw, sr, W, p['text']) if W else trim(raw)
             print(f"    Auswahl: Wertung {sc:.2f} (0 = fehlerfrei) nach {take + 1} Versuch(en)", flush=True)
             a = fx(a, sr, p.get('speed', sp), p.get('pitch', pt)) * p.get('gain', g)
+            sf.write(cpath, a, sr)
             gap = p.get('pause', 0.7)
             chunks += [a, np.zeros(int(sr * gap), np.float32)]
             pos += len(a) / sr + gap

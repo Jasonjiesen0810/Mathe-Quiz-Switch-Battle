@@ -41,10 +41,11 @@
      "pause": 0.25
     },
     {
-     "text": "Scroll... or start?",
+     "text": "Scroll, or start?",
      "dir": "normal",
      "pitch": 0.8,
-     "pause": 0.25
+     "pause": 0.25,
+     "takes": 6
     },
     {
      "text": "Later... or now?",
@@ -90,10 +91,11 @@
    "min_at": 29.7,
    "parts": [
     {
-     "text": "And this time...",
+     "text": "And this time,",
      "dir": "soft",
      "pause": 0.3,
-     "tag": "B0"
+     "tag": "B0",
+     "takes": 6
     },
     {
      "text": "you get up.",
@@ -116,9 +118,10 @@
      "tag": "B2"
     },
     {
-     "text": "After a year...",
+     "text": "After a year,",
      "dir": "calm",
-     "pause": 0.3
+     "pause": 0.3,
+     "takes": 6
     },
     {
      "text": "it's a different life.",
@@ -143,5 +146,10 @@
     }
    ]
   }
+ ],
+ "redo": [
+  5,
+  11,
+  15
  ]
 }

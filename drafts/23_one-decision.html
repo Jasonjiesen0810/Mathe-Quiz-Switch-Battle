@@ -3,8 +3,8 @@
 <body>
 <script>
 /* DISGRACEMODE ab 0 – Spannungsaufbau, ab 29,65 s Tempo hoch ("der Plan ging auf") */
-const A=[0.15,4.53,7.86,11.1,16.1,19.15,22.22,25.63], B=[29.7,31.82,34.59,39.57,44.29];
-const DUR=48.4;
+const A=[0.15, 3.59, 7.16, 10.59, 16.33, 20.06, 22.51, 26.29], B=[29.7, 33.34, 35.69, 44.18, 46.93];
+const DUR=50.0;
 const SW=29.65;
 window.VIDEO={DUR:DUR,seed:231,audio:"23_vo/mix.wav",
 HEADS:[
@@ -18,14 +18,14 @@ HEADS:[
  {a:A[7]-.05,b:SW-.1,lines:[["TOMORROW,","THE","CHOICE"],["COMES",{t:"AGAIN.",red:1}]]},
  {a:B[0]-.05,b:B[1]-.1,lines:[["MAKE","THE",{t:"RIGHT",gold:1}],["ONE","ONCE."]]},
  {a:B[1]-.05,b:B[2]-.1,lines:[["AGAIN."],[{t:"AND AGAIN.",mark:1}]]},
- {a:B[2]-.05,b:36.98,lines:[["A","WEEK:"],[{t:"A HABIT.",gold:1}]]},
- {a:37.08,b:B[3]-.1,lines:[["A","YEAR:"],[{t:"A DIFFERENT LIFE.",mark:1}]]},
+ {a:B[2]-.05,b:39.84,lines:[["A","WEEK:"],[{t:"A HABIT.",gold:1}]]},
+ {a:39.94,b:B[3]-.1,lines:[["A","YEAR:"],[{t:"A DIFFERENT LIFE.",mark:1}]]},
  {a:B[3]-.05,b:B[4]-.1,lines:[["ONE","DECISION."],["EVERY",{t:"MORNING.",gold:1}]]},
  {a:B[4]-.05,b:DUR-.5,lines:[[{t:"MAKE IT TOMORROW.",mark:1}]]},
 ],
 LABELS:[
  {a:A[1]+1,b:A[2]-.1,text:"Not quitting your job."},
- {a:A[4]+2.4,b:A[5]-.1,text:"…and wonder why nothing changes."},
+ {a:A[4]+2.4,b:A[5]-.1,text:""},
 ],
 build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
  S.spot=K.spot(540);S.rays=K.raysG(540,1000);S.fig=makeFig();

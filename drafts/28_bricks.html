@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Brick By Brick</title></head>
+<body>
+<script>
+/* Song 7 "Lost Soul" ab 0 – tiefgründig, spannungsvoll */
+const T=[0.3,3.27,6.82,11.3,13.18,15.82,20.88,23.36,25.81,27.67,32.39,34.92,37.0];
+const DUR=41.9;
+window.VIDEO={DUR,seed:281,audio:"28_vo/mix.wav",
+HEADS:[
+ {a:-1,b:T[1]-.1,lines:[["EVERY","DAY,","YOU'RE"],[{t:"BUILDING",gold:1},{t:"SOMEONE.",gold:1}]]},
+ {a:T[1]-.05,b:T[2]-.1,lines:[["NOT","BIG","MOMENTS."],[{t:"SMALL CHOICES.",mark:1}]]},
+ {a:T[2]-.05,b:T[3]-.1,lines:[["SNOOZE.","SKIP."],[{t:"SCROLL.",red:1}]]},
+ {a:T[3]-.05,b:T[4]-.1,lines:[["EACH","ONE","IS","A"],[{t:"BRICK.",gold:1}]]},
+ {a:T[4]-.05,b:T[5]-.1,lines:[["YOU","DON'T","NOTICE"],["THE","WALL","GOING","UP."]]},
+ {a:T[5]-.05,b:T[6]-.1,lines:[["UNTIL","YOU","MEET"],["THE","PERSON","YOU",{t:"BUILT.",red:1}]]},
+ {a:T[6]-.05,b:T[7]-.1,lines:[["THE","PART","THAT"],[{t:"CHANGES",gold:1},{t:"EVERYTHING:",gold:1}]]},
+ {a:T[7]-.05,b:T[8]-.1,lines:[["YOU","NEVER","CHOSE"],[{t:"WHETHER",red:1},"TO","BUILD."]]},
+ {a:T[8]-.05,b:T[9]-.1,lines:[[{t:"ONLY WHO.",mark:1}]]},
+ {a:T[9]-.05,b:T[10]-.1,lines:[["SHOW","UP","=",{t:"GOLD.",gold:1}],["EXCUSE","=",{t:"GREY.",red:1}]]},
+ {a:T[10]-.05,b:T[11]-.1,lines:[["LOOK","AT",{t:"TODAY.",gold:1}]]},
+ {a:T[11]-.05,b:T[12]-.1,lines:[["WHAT","AM","I"],[{t:"BUILDING?",gold:1}]]},
+ {a:T[12]-.05,b:DUR-.5,lines:[["BUILD","SOMEONE","YOU'D","BE"],[{t:"PROUD TO MEET.",mark:1}]]},
+],
+LABELS:[],
+build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
+ S.spot=K.spot(760);S.spotG=K.spot(760,1);S.rays=K.raysG(760,1000);S.fig=makeFig();
+ /* statue made of bricks */
+ const statue=(cx)=>{const g=el("g",{},scene);const outline=el("g",{opacity:.35},g);
+   el("circle",{cx,cy:830,r:92,fill:"none",stroke:C.white,"stroke-width":3,"stroke-dasharray":"8 10"},outline);
+   el("path",{d:`M${cx-100},1440 L${cx-100},1010 Q${cx-100},940 ${cx-30},940 L${cx+30},940 Q${cx+100},940 ${cx+100},1010 L${cx+100},1440`,fill:"none",stroke:C.white,"stroke-width":3,"stroke-dasharray":"8 10"},outline);
+   const bricks=[];const bw=40,bh=22;
+   for(let y=1440-bh;y>720;y-=bh){const off=((1440-y)/bh)%2?bw/2:0;for(let x=cx-110+off;x<cx+110;x+=bw){const mx=x+bw/2,my=y+bh/2;
+     const inBody=my>950&&Math.abs(mx-cx)<96,inHead=Math.hypot(mx-cx,my-830)<88,inNeck=my>905&&my<=950&&Math.abs(mx-cx)<32;
+     if(inBody||inHead||inNeck)bricks.push({r:el("rect",{x:x+1.5,y:y+1.5,width:bw-3,height:bh-3,rx:3,fill:"#2a2a30",stroke:"#4a4a52","stroke-width":1.5,opacity:0},g),x,y});}}
+   return{g,outline,bricks};};
+ S.st=statue(760);S.st2=statue(300);S.st2.g.setAttribute("opacity",0);
+ S.n=S.st.bricks.length;S.gold=S.st.bricks.map(()=>rnd()<.5);
+ /* choice icons dropping bricks */
+ S.icons=["SNOOZE","SKIP","SCROLL"].map((l,i)=>pill(scene,0,0,l,C.red,l.length*20+50,26,60));
+ S.falling=[...Array(3)].map(()=>el("rect",{width:60,height:32,rx:4,fill:"#3a3a42",stroke:"#6a6a72","stroke-width":2,opacity:0},scene));
+ S.big=el("g",{opacity:0},scene);el("rect",{x:-160,y:-80,width:320,height:160,rx:12,fill:"#2a2a30",stroke:"#6a6a72","stroke-width":4},S.big);
+ for(let k=0;k<20;k++)el("circle",{cx:-140+(k*53)%280,cy:-60+(k*37)%120,r:3,fill:"#4a4a52"},S.big);
+ S.dust=[...Array(14)].map(()=>({c:el("circle",{r:4,fill:C.grey,opacity:0},scene),vx:(rnd()-.5)*300,vy:-40-rnd()*100}));
+ /* mirror */
+ S.mirror=el("g",{opacity:0},scene);el("rect",{x:-150,y:-300,width:300,height:600,rx:150,fill:"rgba(180,200,255,.05)",stroke:"#9aa",  "stroke-width":8},S.mirror);
+ S.refl=makeFig(S.mirror);
+ /* rain of bricks */
+ S.rain=[...Array(18)].map(()=>({r:el("rect",{width:50,height:26,rx:4,opacity:0},scene),x:100+rnd()*880,d:rnd(),g:rnd()<.5}));
+ S.vs=txt(scene,530,1100,"OR",40,{fill:C.grey,"font-weight":800,"letter-spacing":"6",opacity:0});
+ S.lab1=txt(scene,300,1500,"WHO YOU'LL BE",22,{fill:C.grey,"font-weight":700,"letter-spacing":"4",opacity:0});S.lab2=txt(scene,760,1500,"WHO YOU COULD BE",22,{fill:C.gold,"font-weight":700,"letter-spacing":"4",opacity:0});
+ S.today=pill(scene,0,0,"TODAY",C.gold,170,30,64);S.handBrick=el("rect",{width:56,height:30,rx:4,fill:C.gold,stroke:"#B07A12","stroke-width":2,opacity:0,filter:"url(#glowB)"},scene);
+ S.q=txt(scene,0,0,"?",90,{fill:C.gold,"font-weight":800,"letter-spacing":"0",opacity:0,filter:"url(#glowB)"});
+},
+render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ let o={x:420,y:GY},op=1;
+ // build progress of main statue (bricks bottom→top)
+ let prog=0;
+ prog=Math.max(prog,lerp(0,.06,eIO(P(t,T[1],T[2]))));prog=Math.max(prog,lerp(.06,.14,eIO(P(t,T[2],T[3]))));prog=Math.max(prog,lerp(.14,.2,eIO(P(t,T[3],T[4]))));
+ prog=Math.max(prog,lerp(.2,.85,eIO(P(t,T[4],T[5]+1))));prog=Math.max(prog,lerp(.85,1,eIO(P(t,T[5]+1,T[6]))));
+ const greyMode=t<T[9];const goldShare=t>=T[9]?eIO(P(t,T[9],T[12]+1)):0;
+ const stOn=win(t,-1,T[5]-.05,.01,.3)+win(t,T[8]-.05,DUR,.3,.6);
+ S.st.g.setAttribute("opacity",Math.min(1,stOn).toFixed(3));
+ S.st.bricks.forEach((b,i)=>{const k=i/S.n;const vis=t>=T[9]?1:(k<prog?1:0);const drop=k<prog?0:0;
+   const gold=t>=T[9]&&S.gold[i]&&(i/S.n<goldShare*1.6);b.r.setAttribute("opacity",vis?1:0);
+   b.r.setAttribute("fill",gold?"rgba(245,184,61,.85)":"#2a2a30");b.r.setAttribute("stroke",gold?C.gold:"#4a4a52");});
+ S.st.g.setAttribute("filter",goldShare>.6?"url(#glowB)":"");
+ S.st.outline.setAttribute("opacity",(.35*(1-prog)).toFixed(3));
+ if(t<T[2])o={x:420,y:GY,look:1,droop:-.1};
+ // icons + falling bricks
+ S.icons.forEach((p,i)=>{p.x=[250,250,250][i];p.y=[900,1020,1140][i];K.popAt(p,t,T[2]+i*1.3,T[3]-.1);});
+ S.falling.forEach((f,i)=>{const at=T[2]+i*1.3+.4;const k=P(t,at,at+.6);f.setAttribute("opacity",(k>0&&k<1?1:0));f.setAttribute("x",lerp(330,730,eIO(k)));f.setAttribute("y",lerp(1000,1400-i*30,k*k));});
+ if(sw(T[2],T[3]))o={x:420,y:GY,droop:.2,look:-.6};
+ // close-up brick thud
+ const bg=win(t,T[3]-.05,T[4]-.05,.1,.25);S.big.setAttribute("opacity",bg.toFixed(3));S.big.setAttribute("transform",`translate(540,${lerp(500,1160,eOut(P(t,T[3],T[3]+.35)))})`);
+ S.dust.forEach(d=>{const k=P(t,T[3]+.35,T[3]+1.2);d.c.setAttribute("cx",540+d.vx*eOut(k));d.c.setAttribute("cy",1230+d.vy*eOut(k)+k*k*80);d.c.setAttribute("opacity",(k>0&&k<1?(1-k):0).toFixed(3));});
+ if(sw(T[3],T[4]))op=0;
+ if(sw(T[4],T[5]))o={x:330,y:GY,ph:t*6,stride:.6,look:-1,droop:.1};   // walks around, doesn't look
+ // mirror
+ const mr=win(t,T[5]-.05,T[6]-.05,.3,.3);S.mirror.setAttribute("opacity",mr.toFixed(3));S.mirror.setAttribute("transform","translate(760,1150)");
+ S.refl.draw({x:0,y:290,col:"#6a6a72",droop:1,sc:.9});
+ if(sw(T[5],T[6])){o={x:430,y:GY,look:1,droop:eIO(P(t,T[5]+1.5,T[6]))*.9};S.st.g.setAttribute("opacity",0);}
+ // dark + rain of bricks
+ S.rain.forEach(r=>{const k=((t-T[7])*.7+r.d)%1;const on=sw(T[7],T[8]);r.r.setAttribute("x",r.x);r.r.setAttribute("y",lerp(400,1450,k));r.r.setAttribute("opacity",on?(1-P(k,.85,1)).toFixed(3):0);r.r.setAttribute("fill",r.g?C.gold:"#3a3a42");});
+ if(sw(T[6],T[8]))o={x:540,y:GY,look:Math.sin(t*2)*.5,droop:.2};
+ // only who: two statues
+ const two=win(t,T[8]-.05,T[9]-.05,.25,.3);S.st2.g.setAttribute("opacity",two.toFixed(3));S.vs.setAttribute("opacity",two);S.lab1.setAttribute("opacity",two);S.lab2.setAttribute("opacity",two);
+ S.st2.bricks.forEach(b=>b.r.setAttribute("opacity",1));S.st2.outline.setAttribute("opacity",0);
+ if(sw(T[8],T[9])){S.st.bricks.forEach((b,i)=>{b.r.setAttribute("fill","rgba(245,184,61,.85)");b.r.setAttribute("stroke",C.gold);});op=0;}
+ // gold vs grey on the beat
+ if(sw(T[9],T[10]))o={x:330,y:GY,work:1,t,droop:-.1};
+ // today, holding a brick, ?
+ S.today.x=330;S.today.y=880;K.popAt(S.today,t,T[10],T[12]-.1);
+ const hb=t>=T[10]&&t<T[12]+.8;S.handBrick.setAttribute("opacity",hb?1:0);
+ if(t>=T[10]&&t<T[12]){const r=eIO(P(t,T[11],T[11]+.4));o={x:330,y:GY,hold:1-r,raise:r*1.05,droop:-.2};}
+ if(t>=T[10]){const [hx,hy]=S.fig.hand;S.handBrick.setAttribute("x",hx-28);S.handBrick.setAttribute("y",hy-34);}
+ S.q.setAttribute("opacity",win(t,T[11],T[12],.2,.3));S.q.setAttribute("x",420);S.q.setAttribute("y",880);
+ // end: meets the gold statue
+ if(t>=T[12]){const w=eIO(P(t,T[12]+.2,T[12]+1.6));o={x:lerp(330,560,w),y:GY,ph:w*6,col:K.mixHex(C.white,C.gold,w),droop:-.2,raise:w>=1?.5:0};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));S.fig.shadow.setAttribute("opacity",(op*.5).toFixed(3));
+ S.spot.setAttribute("opacity",(win(t,-1,T[9],.01,.3)*.6).toFixed(3));S.spotG.setAttribute("opacity",(win(t,T[9],DUR,.3,.6)*.9).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,T[8],T[9],.05,.4)*.7+win(t,T[12],DUR,.2,.6)*.8).toFixed(3));S.rays.setAttribute("transform",`translate(760,1000) rotate(${t*6})`);
+ // camera
+ const c=K.cam;
+ if(t<T[1]){c.sc=lerp(1.25,1.0,eOut(P(t,0,2.5)));c.cy=1150;}
+ if(sw(T[1],T[3]))camFX.dolly(t,c,T[1],T[3],{sc:1.1,cx:560,cy:1200});
+ if(sw(T[4],T[5])){c.sc=lerp(1.2,.95,eIO(P(t,T[4],T[5])));c.cy=lerp(1300,1100,eIO(P(t,T[4],T[5])));c.cx=650;}
+ if(sw(T[5],T[6]))camFX.dolly(t,c,T[5],T[6],{sc:1.3,cx:700,cy:1080});
+ if(sw(T[6],T[8])){c.sc=1.0+.05*Math.sin(t*1.5);c.rot+=Math.sin(t*1.3)*1.5;}
+ if(sw(T[8],T[9])){c.sc=lerp(1.3,1.0,eOut(P(t,T[8],T[8]+1.2)));c.cx=530;c.cy=1100;}
+ if(sw(T[10],T[12]))camFX.dolly(t,c,T[10],T[12],{sc:1.15,cx:430,cy:1150});
+ if(t>=T[12])camFX.dolly(t,c,T[12],DUR-.5,{sc:1.12,cx:660,cy:1100});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[T[8]],.16,5);
+ camFX.shake(t,c,[T[3]+.35],18,6);camFX.shake(t,c,[T[2]+1,T[2]+2.3,T[2]+3.6],6,9);
+ camFX.whip(t,c,T[6],1);camFX.whip(t,c,T[9],-1);camFX.tilt(t,c,T[5],T[6],-3);
+ K.flash+=K.pulses(t,[T[6],T[8]],9,.35,.35);
+ K.dim=win(t,T[6],T[8],.3,.3)*.6;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

@@ -1,0 +1,103 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Close your eyes for a second.",
+     "mode": "quote",
+     "pause": 0.9
+    },
+    {
+     "text": "Picture the life you really want.",
+     "mode": "quote",
+     "pause": 1.0
+    },
+    {
+     "text": "You wake up without dreading the day.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "You do work you're proud of.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "The people you love look at you, and they're proud too.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "You feel calm. Not because life is easy, but because you know you can handle it.",
+     "mode": "normal",
+     "pause": 1.0
+    },
+    {
+     "text": "Hold that picture.",
+     "mode": "quote",
+     "pause": 1.2
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "Now open them.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Here's the truth:",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "that life isn't far away.",
+     "mode": "quote",
+     "pause": 0.8
+    },
+    {
+     "text": "The only thing standing between you and that picture is what you do next.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Not next year. Not next month.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "Next.",
+     "mode": "quote",
+     "pause": 1.1,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "So go build it.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

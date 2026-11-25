@@ -1,0 +1,91 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "Every day, you're building someone.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Not with big moments. With small choices.",
+     "mode": "normal",
+     "pause": 0.8
+    },
+    {
+     "text": "Hitting snooze. Skipping the workout. Scrolling instead of reading.",
+     "mode": "story",
+     "pause": 0.8
+    },
+    {
+     "text": "Each one is a brick.",
+     "mode": "quote",
+     "pause": 0.8
+    },
+    {
+     "text": "And you don't notice the wall going up.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "Until one day you look in the mirror, and you meet the person you built.",
+     "mode": "quote",
+     "pause": 1.1
+    },
+    {
+     "text": "Here's the part that changes everything:",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "you were never choosing whether to build.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Only who.",
+     "mode": "quote",
+     "pause": 1.1,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Every hour you show up is a gold brick. Every excuse is a grey one.",
+     "mode": "story",
+     "pause": 0.9
+    },
+    {
+     "text": "So look at today, and ask yourself:",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "what am I building?",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Build someone you'd be proud to meet.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.8,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.3,
+   "parts": [
+    {
+     "text": "The people who fail the most often win the most.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Sounds backwards, right?",
+     "mode": "normal",
+     "pause": 0.8
+    },
+    {
+     "text": "We're taught that failure is the opposite of success.",
+     "mode": "normal",
+     "pause": 0.7
+    },
+    {
+     "text": "So we avoid it. We wait until we're sure. We only try what we know we can win.",
+     "mode": "story",
+     "pause": 0.9
+    },
+    {
+     "text": "And we count every failure like a scar.",
+     "mode": "quote",
+     "pause": 0.9
+    },
+    {
+     "text": "But look closer.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Every person you admire has a longer list of failures than you.",
+     "mode": "quote",
+     "pause": 0
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "Because they weren't counting failures.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "They were counting attempts.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Each try taught them something the person who waited will never learn.",
+     "mode": "normal",
+     "pause": 0.9
+    },
+    {
+     "text": "So stop protecting your record.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Raise your number of attempts.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Fail more. Fail faster.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "That's how winning starts.",
+     "mode": "quote",
+     "pause": 0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

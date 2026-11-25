@@ -174,3 +174,6 @@ Ursache: Frame 1 zu ruhig (schwarz, kleine Figur), erster Satz zu lang/ruhig (~3
 - Die Effekte landen in der Stimmspur, sind also auch in der UPLOAD-Version (ohne Musik) drin.
 - `drafts/NN_vo/nosfx` anlegen = keine Effekte. `NORENDER=1 tools/finish.sh …` = nur den Ton neu mischen, ohne neu zu rendern.
 - Länge: neue Videos ca. 30 s (bessere Abschlussrate).
+
+## KEINE EMOJIS (Feedback 25.11.)
+Keine bunten Emojis in den Videos (unprofessionell). Erlaubt: schlichte Schriftzeichen in Stilfarben (✓ ★ ✕ ? !) oder selbst gezeichnete Symbole.

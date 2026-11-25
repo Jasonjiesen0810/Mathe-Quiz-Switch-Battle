@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "You don't have a time problem.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "You get the same day as everyone else.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "But watch where it goes.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "A few minutes here. A few scrolls there. One more episode.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Each one feels small.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Together, they're your whole evening.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "So it's not that you have no time.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "It's that you never decided what it's for.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Decide first.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Then protect it like it matters.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Because it does.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

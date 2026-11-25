@@ -1,0 +1,80 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "You're losing a race nobody else is running.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "You see someone ahead of you, and your chest gets tight.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "They're richer. Fitter. Further.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "So you run faster. You copy their route. You chase their finish line.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "And you still feel behind.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "Here's what you missed.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "They're on a different track.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Different start. Different finish.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "The only person you need to beat is who you were yesterday.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Run your own race.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

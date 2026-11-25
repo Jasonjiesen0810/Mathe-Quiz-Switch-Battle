@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "You don't trust yourself.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "And honestly, why would you?",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "You said you'd start on Monday.",
+     "mode": "story",
+     "pause": 0.4
+    },
+    {
+     "text": "You said just one more day.",
+     "mode": "story",
+     "pause": 0.4
+    },
+    {
+     "text": "You said this time would be different.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Every broken promise teaches you the same thing: you don't mean it.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "But trust is rebuilt the same way it was lost.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "One small promise. Kept.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Then another.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Make promises so small you can't break them.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "That's how you start believing yourself again.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

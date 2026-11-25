@@ -44,7 +44,7 @@ build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
  const gauge=el("g",{opacity:0},scene);el("path",{d:"M-70,20 A70,70 0 0 1 70,20",fill:"none",stroke:C.red,"stroke-width":10},gauge);
  gauge.n=el("line",{x1:0,y1:20,x2:0,y2:-40,stroke:C.white,"stroke-width":7,"stroke-linecap":"round"},gauge);ic.push(gauge);S.icons=ic;
  S.star=txt(scene,0,0,"★",90,{fill:C.gold,opacity:0,filter:"url(#glowB)","letter-spacing":"0"});
- S.claps=txt(scene,860,900,"👏 0",44,{fill:C.grey,opacity:0,"letter-spacing":"0"});
+ S.claps=txt(scene,860,900,"",44,{fill:C.grey,opacity:0});
 },
 render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
  const carry=t<B[2]+1.2;

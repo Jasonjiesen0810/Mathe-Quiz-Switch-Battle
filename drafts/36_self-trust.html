@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Self Trust</title></head>
+<body>
+<script>
+/* Song 9 "lilacs" ab 0 – traurige Motivation, Twist bei "But trust is rebuilt…" */
+const A=[0.05,1.77,4.05,5.76,7.39,9.49];
+const B=[14.96,18.83,22.18,23.61,26.58];
+const DUR=32.5;
+const NP=8,PX=362,PW=37;
+const FALL=[...Array(NP)].map((_,i)=>A[5]+.5+i*.45);
+const BUILD=[B[1]+.4,B[2]+.25,...[...Array(NP-2)].map((_,i)=>B[3]+.4+i*.3)];
+window.VIDEO={DUR,hookFX:1,seed:361,audio:"36_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["YOU","DON'T"],[{t:"TRUST",red:1}],["YOURSELF."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["AND","HONESTLY,"],["WHY",{t:"WOULD",gold:1},"YOU?"]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["\"I'LL","START","ON"],[{t:"MONDAY.\"",red:1}]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["\"JUST","ONE"],[{t:"MORE DAY.\"",red:1}]]},
+ {a:A[4]-.05,b:A[5]-.1,lines:[["\"THIS","TIME","WILL","BE"],[{t:"DIFFERENT.\"",red:1}]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["EVERY","BROKEN","PROMISE"],["TEACHES","YOU:"],["YOU",{t:"DON'T MEAN IT.",red:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["TRUST","IS",{t:"REBUILT",gold:1}],["THE","SAME","WAY"],["IT","WAS","LOST."]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["ONE","SMALL","PROMISE."],[{t:"KEPT.",mark:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["THEN",{t:"ANOTHER.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["MAKE","PROMISES","SO"],[{t:"SMALL",gold:1},"YOU","CAN'T"],["BREAK","THEM."]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[["THAT'S","HOW","YOU"],["START",{t:"BELIEVING",gold:1}],["YOURSELF","AGAIN."]]},
+],
+LABELS:[],
+SFX:[[.15,"glass",.7],[A[2]+.9,"scratch",1],[A[3]+.8,"scratch",1],[A[4]+1,"scratch",1],...FALL.map(a=>[a,"thud",.55]),[A[5]+1.5,"heartbeat",.9],[B[0],"riser",1],...BUILD.map((a,i)=>[a,i<2?"ding":"tick",i<2?.8:.8]),[B[4]+1.6,"shimmer",.9],[B[4]+1.7,"ding",1]],
+build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
+ S.spot=K.spot(300);S.spotG=K.spot(540,1);S.rays=K.raysG(540,1150);
+ /* pit between them */
+ S.pit=el("rect",{x:PX,y:1442,width:NP*PW,height:600,fill:"#070707"},scene);
+ el("line",{x1:PX,y1:1442,x2:PX,y2:1700,stroke:"#333","stroke-width":3},scene);el("line",{x1:PX+NP*PW,y1:1442,x2:PX+NP*PW,y2:1700,stroke:"#333","stroke-width":3},scene);
+ S.planks=[...Array(NP)].map((_,i)=>el("rect",{x:PX+i*PW+2,y:1430,width:PW-4,height:24,rx:4,fill:"#9a9aa2"},scene));
+ /* mirror */
+ S.mir=el("g",{},scene);el("rect",{x:680,y:900,width:280,height:560,rx:140,fill:"rgba(180,200,255,.05)",stroke:"#aab","stroke-width":8},S.mir);
+ S.crack=el("path",{d:"M800,960 L780,1060 L830,1120 L790,1210 L840,1300 M780,1060 L720,1090 M830,1120 L900,1110 M790,1210 L740,1260",fill:"none",stroke:C.red,"stroke-width":5,"stroke-linecap":"round"},S.mir);
+ S.refl=makeFig();S.fig=makeFig();
+ S.cards=["MONDAY","ONE MORE DAY","THIS TIME"].map(l=>{const g=el("g",{opacity:0},scene);el("rect",{x:-150,y:-50,width:300,height:100,rx:12,fill:"#e8e2c8"},g);txt(g,0,-12,"PROMISE",18,{fill:"#777","font-weight":800});
+   txt(g,0,28,l,30,{fill:"#070707","font-weight":800});g.cut=el("line",{x1:-160,y1:-60,x2:-160,y2:-60,stroke:C.red,"stroke-width":9,"stroke-linecap":"round"},g);return g;});
+ S.kept=txt(scene,0,0,"KEPT ✓",24,{fill:C.gold,"font-weight":800,opacity:0});
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ /* planks */
+ S.planks.forEach((p,i)=>{let y=1430,op=1,rot=0,fill="#9a9aa2";
+   if(t>=FALL[i]){const k=P(t,FALL[i],FALL[i]+.7);y=1430+k*k*520;rot=k*40*(i%2?1:-1);op=1-k;}
+   if(t>=BUILD[i]){const k=eBack(P(t,BUILD[i],BUILD[i]+.35));y=lerp(1360,1430,k);rot=0;op=clamp(k*2);fill=C.gold;}
+   p.setAttribute("y",y.toFixed(1));p.setAttribute("opacity",op.toFixed(3));p.setAttribute("fill",fill);p.setAttribute("filter",fill===C.gold?"url(#glowB)":"");
+   p.setAttribute("transform",`rotate(${rot.toFixed(1)} ${PX+i*PW+PW/2} 1442)`);});
+ S.kept.setAttribute("opacity",win(t,B[1]+.5,B[2]+.5,.2,.3).toFixed(3));S.kept.setAttribute("x",PX+PW/2+10);S.kept.setAttribute("y",1400);
+ /* mirror crack heals */
+ const heal=eIO(P(t,B[4]+1.2,B[4]+2));S.crack.setAttribute("opacity",(1-heal).toFixed(3));
+ /* cards */
+ S.cards.forEach((g,i)=>{const a=A[2+i],cut=a+[.9,.8,1][i];const vis=t>=a&&t<cut+.9;g.setAttribute("opacity",vis?(1-P(t,cut+.4,cut+.9)).toFixed(3):0);
+   const pop=eBack(P(t,a,a+.35)),fall=P(t,cut+.1,cut+.9);g.setAttribute("transform",`translate(${520},${lerp(1000,1300,fall*fall)}) rotate(${fall*25}) scale(${(1.3*(.6+.4*pop)).toFixed(3)})`);
+   g.cut.setAttribute("x2",-160+320*eOut(P(t,cut,cut+.25)));g.cut.setAttribute("y2",-60+120*eOut(P(t,cut,cut+.25)));});
+ /* figure */
+ let o={x:250,y:GY,look:1,droop:.2};
+ if(t<A[1])o={x:250,y:GY,look:1,droop:.35};
+ if(sw(A[1],A[2]))o={x:250,y:GY,look:1,droop:.2,headTouch:eIO(P(t,A[1]+.2,A[1]+.6))};
+ if(sw(A[2],A[5]))o={x:250,y:GY,look:1,droop:.1,point:.5};
+ if(sw(A[5],B[0]))o={x:250,y:GY,look:1,droop:lerp(.2,.95,P(t,A[5],B[0]-1))};
+ if(sw(B[0],B[1]))o={x:250,y:GY,look:1,droop:.3};
+ if(sw(B[1],B[4]))o={x:250,y:GY,look:1,droop:-.05,work:t<B[3]+2.4?0:0,raise:sw(B[1]+.4,B[1]+1)?.4:0};
+ if(t>=B[4]){const w=eIO(P(t,B[4]+.1,B[4]+1.5));o={x:lerp(250,650,w),y:GY,ph:w*8,stride:.9,droop:-.2,look:1,col:K.mixHex(C.white,C.gold,P(t,B[4]+1.2,B[4]+1.8)),raise:t>B[4]+1.6?.8:0};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",K.endFade.toFixed(3));
+ /* reflection: turns away, shrugs, later turns back */
+ let r={x:820,y:GY-4,face:-1,col:"#aab4c8",droop:.25};
+ if(t<A[1])r={x:820,y:GY-4,face:1,look:1,col:"#aab4c8",droop:.3};
+ if(sw(A[1],A[2])){const s=Math.sin(Math.PI*P(t,A[1]+.3,A[1]+1.1));r={x:820,y:GY-4,face:-1,col:"#aab4c8",raise:s*.45,raiseL:s*.45,droop:-.1};}
+ if(sw(A[5],B[0]))r={x:820,y:GY-4,face:1,look:1,col:"#aab4c8",droop:.4};
+ if(t>=B[1])r={x:820,y:GY-4,face:-1,col:K.mixHex("#aab4c8",C.gold,P(t,B[4]+1.2,B[4]+1.8)),droop:lerp(.25,-.2,P(t,B[1],B[4])),raise:t>B[4]+1.6?.8:0};
+ S.refl.draw(r);S.refl.g.setAttribute("opacity",(.85*K.endFade).toFixed(3));S.refl.shadow.setAttribute("opacity",0);
+ /* light */
+ S.spot.setAttribute("opacity",(win(t,-1,B[1],.01,.3)*.6).toFixed(3));S.spotG.setAttribute("opacity",(win(t,B[1],DUR,.4,.6)*.7).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,B[4]+1.5,DUR,.1,.6)*.8).toFixed(3));S.rays.setAttribute("transform",`translate(720,1180) rotate(${t*8})`);
+ /* camera */
+ const c=K.cam;
+ if(t<A[1]){c.sc=.92;c.cx=540;c.cy=1150;}
+ if(sw(A[1],A[2]))camFX.dolly(t,c,A[1],A[2],{sc:1.3,cx:780,cy:1180});
+ if(sw(A[2],A[5])){c.sc=1.0;c.cx=530;c.cy=1130;}
+ if(sw(A[5],B[0]))camFX.dolly(t,c,A[5],B[0],{sc:1.2,cx:520,cy:1250});
+ if(sw(B[0],B[1]))c.sc=lerp(1.25,1.0,eOut(P(t,B[0],B[1])));
+ if(sw(B[1],B[3]))camFX.dolly(t,c,B[1],B[3],{sc:1.3,cx:480,cy:1280});
+ if(sw(B[3],B[4])){c.sc=lerp(1.3,1.0,eIO(P(t,B[3],B[3]+1)));c.cx=540;c.cy=1180;}
+ if(t>=B[4])camFX.dolly(t,c,B[4],DUR,{sc:1.15,cx:700,cy:1160});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[B[0],B[1]],.14,5);
+ camFX.shake(t,c,[A[2]+.9,A[3]+.8,A[4]+1],7,8);camFX.shake(t,c,[B[0]],16,5);
+ camFX.whip(t,c,A[2],1);camFX.whip(t,c,A[5],-1);camFX.whip(t,c,B[3],1);camFX.tilt(t,c,A[5],B[0],-3);
+ K.flash+=K.pulses(t,[B[0],B[1]+.4,B[4]+1.6],9,.4,.3);
+ K.dim=win(t,A[5],B[0],.5,.1)*.4;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

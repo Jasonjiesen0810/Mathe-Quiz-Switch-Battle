@@ -32,7 +32,7 @@ build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
  const bub=(l,w)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-w/2,y:-48,width:w,height:96,rx:30,fill:"#f2f2f5"},g);el("path",{d:"M-30,46 L-56,86 L4,46 Z",fill:"#f2f2f5"},g);
    txt(g,0,12,l,32,{fill:"#070707","font-weight":800});return g;};
  S.bubs=[bub("I'M GONNA BE RICH!",470),bub("I'M STARTING A BUSINESS!",640),bub("I'M GETTING FIT!",420)];
- S.nod=[...Array(3)].map(()=>txt(scene,0,0,"👍",46,{opacity:0,"letter-spacing":"0"}));
+ S.nod=[...Array(3)].map(()=>txt(scene,0,0,"✓",52,{fill:C.gold,"font-weight":800,opacity:0,"letter-spacing":"0"}));
  /* bars */
  const bar=(y,l,col)=>{const g=el("g",{opacity:0},scene);txt(g,-250,12,l,30,{fill:col,"font-weight":800,"text-anchor":"start"});
    el("rect",{x:-20,y:-24,width:340,height:48,rx:24,fill:"#141418",stroke:"#444","stroke-width":3},g);g.f=el("rect",{x:-20,y:-24,width:0,height:48,rx:24,fill:col},g);g.setAttribute("transform",`translate(540,${y})`);return g;};
@@ -49,7 +49,7 @@ build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
  S.lampL=el("path",{d:"M740,1120 L600,1290 L860,1290 Z",fill:"rgba(245,184,61,.18)",opacity:0},scene);
  S.prog=el("g",{opacity:0},scene);el("rect",{x:-200,y:-20,width:400,height:40,rx:20,fill:"#141418",stroke:"#444","stroke-width":3},S.prog);S.progF=el("rect",{x:-200,y:-20,width:0,height:40,rx:20,fill:C.gold},S.prog);
  txt(S.prog,0,-40,"PROGRESS",24,{fill:C.gold,"font-weight":800});S.prog.setAttribute("transform","translate(540,880)");
- S.shh=txt(scene,0,0,"🤫",70,{opacity:0,"letter-spacing":"0"});
+ S.shh=txt(scene,0,0,"SHH",34,{fill:"#9a9aa2","font-weight":800,opacity:0});
  /* reveal */
  S.big=el("g",{opacity:0},scene);el("path",{d:"M-110,-170 L110,-170 L88,10 Q0,80 -88,10 Z",fill:C.gold,filter:"url(#glowB)"},S.big);el("rect",{x:-20,y:60,width:40,height:70,fill:C.gold},S.big);el("rect",{x:-90,y:125,width:180,height:34,rx:8,fill:C.gold},S.big);
  txt(S.big,0,-60,"DONE",44,{fill:"#070707","font-weight":800});

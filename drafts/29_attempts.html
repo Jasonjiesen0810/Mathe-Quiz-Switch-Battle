@@ -3,12 +3,12 @@
 <body>
 <script>
 /* Song 8 "STRUCT" – Highlight (83,5 s) liegt auf "Because they weren't counting failures." */
-const T=[0.3,3.9,5.94,9.31,14.53,17.64,19.19];
-const B=[23.98,26.41,28.74,33.32,35.61,37.99,40.34];
-const DUR=44.4;
-window.VIDEO={DUR,seed:291,audio:"29_vo/mix.wav",
+const T=[0.05,2.19,4.23,7.6,12.81,15.93,17.48];
+const B=[22.26,24.69,27.02,31.6,33.89,36.27,38.62];
+const DUR=42.7;
+window.VIDEO={DUR,hookFX:1,seed:291,audio:"29_vo/mix.wav",
 HEADS:[
- {a:-1,b:T[1]-.1,lines:[["THE","PEOPLE","WHO",{t:"FAIL",red:1}],["THE","MOST","OFTEN"],[{t:"WIN THE MOST.",mark:1}]]},
+ {a:-1,b:T[1]-.1,hook:1,lines:[[{t:"FAIL",red:1},{t:"MORE",gold:1}],["THAN","EVERYONE"],["YOU","KNOW."]]},
  {a:T[1]-.05,b:T[2]-.1,lines:[["SOUNDS",{t:"BACKWARDS,",gold:1}],["RIGHT?"]]},
  {a:T[2]-.05,b:T[3]-.1,lines:[["WE'RE","TAUGHT","FAILURE","IS"],["THE",{t:"OPPOSITE",red:1},"OF",{t:"SUCCESS.",gold:1}]]},
  {a:T[3]-.05,b:T[4]-.1,lines:[["SO","WE",{t:"AVOID",red:1},"IT."],["WE","ONLY","TRY","WHAT"],["WE","KNOW","WE","CAN","WIN."]]},
@@ -74,11 +74,11 @@ render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};co
  let o={x:360,y:GY},op=1,ballOn=0,bx=0,by=0;
  const hoopOn=win(t,-1,T[2]-.05,.01,.3)+win(t,B[5]-.05,DUR,.25,.6);S.hoop.setAttribute("opacity",Math.min(1,hoopOn).toFixed(3));
  /* throws: [start, flight, make] */
- const throws=[[-.45,.8,0],[.85,.8,0],[2.15,.8,0],[B[5]-.25,.55,0],[B[5]+.4,.55,0],[B[5]+1.05,.55,0],[B[5]+1.7,.55,0],[B[6]+.05,.8,1]];
+ const throws=[[-.12,.5,0],[.5,.6,0],[1.3,.6,0],[B[5]-.25,.55,0],[B[5]+.4,.55,0],[B[5]+1.05,.55,0],[B[5]+1.7,.55,0],[B[6]+.05,.8,1]];
  let missCount=0;
  const throwing=t<T[1]||t>=B[5];
  throws.forEach((th,i)=>{const [ts,fd,mk]=th;const k=(t-ts)/fd;
-   if(throwing&&k>=0&&k<1){ballOn=1;bx=lerp(410,820,k);by=lerp(1120,mk?935:915,k)-420*Math.sin(Math.PI*k);}
+   if(throwing&&k>=0&&k<1){ballOn=1;bx=lerp(410,820,k);by=lerp(1120,mk?935:915,k)-(ts<1?260:420)*Math.sin(Math.PI*k);}
    if(throwing&&k>=1&&k<2.2){const k2=(k-1)/1.2;ballOn=1;
      if(mk){bx=820;by=935+k2*k2*500+k2*60;}else{bx=830+170*k2;by=915-150*Math.sin(Math.PI*Math.min(1,k2*1.6))+(k2>.62?(k2-.62)*1300:0);by=Math.min(by,1416);}}
    if(!mk&&t>=ts+fd)missCount++;
@@ -90,7 +90,7 @@ render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};co
  S.rim.setAttribute("filter",t>=B[6]+.85?"url(#glowGoldU)":"");
  /* board */
  let bOp=0,bx0=540,by0=680,bs=.8,n=0,gold=0,flipK=0;
- if(t<T[1]){bOp=1;n=Math.min(3,missCount);bx0=330;by0=820;bs=.55;}
+ if(t<T[1]){bOp=1;n=Math.min(3,missCount);bx0=310;by0=930;bs=.55;}
  if(sw(T[3],T[4])){bOp=win(t,T[3],T[4],.3,.3);n=0;bx0=760;by0=760;bs=.7;}
  if(sw(B[0],B[2])){bOp=win(t,B[0]-.05,B[2]-.05,.01,.3);bs=lerp(1.5,1.15,eOut(P(t,B[0],B[0]+.6)));by0=980;n=Math.round(60*eOut(P(t,B[0],B[0]+1.2)));
    flipK=P(t,B[1],B[1]+.5);gold=flipK>=.5?1:0;}

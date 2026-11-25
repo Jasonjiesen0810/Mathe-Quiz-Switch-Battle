@@ -155,3 +155,14 @@ materials/referenzen/ (Screenshots, nur Stilvorbild)
   wichtige Sätze langsamer + Pause davor/danach, Erzählung schneller; keine Schreie, kein Theater
 - Text im viralen Stil: konkrete Szenen ("you'll post, and nobody watches"), Bruch ("But here's the thing."), merkbarer Schluss
 - Jeder Satz mit Regie: dir (soft/calm/normal/story/intense), speed, pitch (Halbtöne), pause, tag (Szenen-Anker fürs Video)
+
+## HOOK-REGELN v2 (nach TikTok-Analyse, 25.11.)
+Daten: ~32 % weg nach 1 s, ~50 % nach 2–3 s, Ø Watchtime 8–9 s, nur 3–6 % schauen bis zum Ende.
+Ursache: Frame 1 zu ruhig (schwarz, kleine Figur), erster Satz zu lang/ruhig (~3 s), Text klein.
+1. **Hook-Satz max. ~7 Wörter, fertig gesprochen nach ≤ 2 s.** Stimme startet bei 0,05 s, Modus "story" (schneller).
+2. **Provokant / direkt / Widerspruch:** "You're building someone you might hate." · "Fail more than everyone you know." · "Don't scroll. Close your eyes." Kein sanfter Einstieg wie "Every day…".
+3. **Hook-Headline groß:** `hook:1` im ersten HEADS-Eintrag (118 px statt 84 px), max. 3 kurze Zeilen, Rot/Gold-Wort drin.
+4. **Bewegung auf Frame 1:** `hookFX:1` im VIDEO (Kamera startet nah, reißt mit Ruck auf + Shake). Zusätzlich echte Aktion in den ersten 0,3 s (Ziegel knallt runter, Ball fliegt, Auge schließt sich).
+5. **Impact-Sound bei 0 s:** Datei `drafts/NN_vo/hit` anlegen → finish.sh mischt `materials/sfx/hit.wav` (selbst erzeugt) ein.
+6. Hook-Objekte dürfen die Headline auf Frame 1 nicht verdecken (Stills bei 0 und 0,25 s prüfen).
+7. Länge testen: kürzere Versionen (20–30 s) erhöhen die Abschlussrate.

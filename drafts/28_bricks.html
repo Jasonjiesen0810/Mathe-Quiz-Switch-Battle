@@ -3,11 +3,11 @@
 <body>
 <script>
 /* Song 7 "Lost Soul" ab 0 – tiefgründig, spannungsvoll */
-const T=[0.3,3.27,6.82,11.3,13.18,15.82,20.88,23.36,25.81,27.67,32.39,34.92,37.0];
-const DUR=41.9;
-window.VIDEO={DUR,seed:281,audio:"28_vo/mix.wav",
+const T=[0.05,2.17,5.72,10.2,12.08,14.72,19.78,22.26,24.71,26.57,31.29,33.82,35.9];
+const DUR=40.8;
+window.VIDEO={DUR,hookFX:1,seed:281,audio:"28_vo/mix.wav",
 HEADS:[
- {a:-1,b:T[1]-.1,lines:[["EVERY","DAY,","YOU'RE"],[{t:"BUILDING",gold:1},{t:"SOMEONE.",gold:1}]]},
+ {a:-1,b:T[1]-.1,hook:1,lines:[["YOU'RE","BUILDING"],["SOMEONE","YOU"],[{t:"MIGHT HATE.",red:1}]]},
  {a:T[1]-.05,b:T[2]-.1,lines:[["NOT","BIG","MOMENTS."],[{t:"SMALL CHOICES.",mark:1}]]},
  {a:T[2]-.05,b:T[3]-.1,lines:[["SNOOZE.","SKIP."],[{t:"SCROLL.",red:1}]]},
  {a:T[3]-.05,b:T[4]-.1,lines:[["EACH","ONE","IS","A"],[{t:"BRICK.",gold:1}]]},
@@ -49,14 +49,15 @@ build(K){const {el,txt,C,scene,makeFig,pill,GY,rnd}=K;const S=K.S={};
  S.vs=txt(scene,530,1100,"OR",40,{fill:C.grey,"font-weight":800,"letter-spacing":"6",opacity:0});
  S.lab1=txt(scene,300,1500,"WHO YOU'LL BE",22,{fill:C.grey,"font-weight":700,"letter-spacing":"4",opacity:0});S.lab2=txt(scene,760,1500,"WHO YOU COULD BE",22,{fill:C.gold,"font-weight":700,"letter-spacing":"4",opacity:0});
  S.today=pill(scene,0,0,"TODAY",C.gold,170,30,64);S.handBrick=el("rect",{width:56,height:30,rx:4,fill:C.gold,stroke:"#B07A12","stroke-width":2,opacity:0,filter:"url(#glowB)"},scene);
+ S.hb=el("rect",{width:120,height:62,rx:6,fill:"#3a3a42",stroke:"#8a8a92","stroke-width":3},scene);
+ S.hdust=[...Array(10)].map(()=>({c:el("circle",{r:5,fill:C.grey,opacity:0},scene),vx:(rnd()-.5)*360,vy:-60-rnd()*120}));
  S.q=txt(scene,0,0,"?",90,{fill:C.gold,"font-weight":800,"letter-spacing":"0",opacity:0,filter:"url(#glowB)"});
 },
 render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
  let o={x:420,y:GY},op=1;
  // build progress of main statue (bricks bottom→top)
- let prog=0;
- prog=Math.max(prog,lerp(0,.06,eIO(P(t,T[1],T[2]))));prog=Math.max(prog,lerp(.06,.14,eIO(P(t,T[2],T[3]))));prog=Math.max(prog,lerp(.14,.2,eIO(P(t,T[3],T[4]))));
- prog=Math.max(prog,lerp(.2,.85,eIO(P(t,T[4],T[5]+1))));prog=Math.max(prog,lerp(.85,1,eIO(P(t,T[5]+1,T[6]))));
+ let prog=t<T[1]?1:0;
+ [[T[1],T[2],0,.06],[T[2],T[3],.06,.14],[T[3],T[4],.14,.2],[T[4],T[5]+1,.2,.85],[T[5]+1,T[6],.85,1]].forEach(([a,b,p0,p1])=>{if(t>=a)prog=lerp(p0,p1,eIO(P(t,a,b)));});
  const greyMode=t<T[9];const goldShare=t>=T[9]?eIO(P(t,T[9],T[12]+1)):0;
  const stOn=win(t,-1,T[5]-.05,.01,.3)+win(t,T[8]-.05,DUR,.3,.6);
  S.st.g.setAttribute("opacity",Math.min(1,stOn).toFixed(3));
@@ -99,6 +100,10 @@ render(t,K){const {P,eIO,eOut,eExpo,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K
  S.fig.draw(o);S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));S.fig.shadow.setAttribute("opacity",(op*.5).toFixed(3));
  S.spot.setAttribute("opacity",(win(t,-1,T[9],.01,.3)*.6).toFixed(3));S.spotG.setAttribute("opacity",(win(t,T[9],DUR,.3,.6)*.9).toFixed(3));
  S.rays.setAttribute("opacity",(win(t,T[8],T[9],.05,.4)*.7+win(t,T[12],DUR,.2,.6)*.8).toFixed(3));S.rays.setAttribute("transform",`translate(760,1000) rotate(${t*6})`);
+ // hook: brick slams down on frame 1
+ {const k=P(t,-.05,.28);S.hb.setAttribute("x",700);S.hb.setAttribute("y",lerp(980,1378,k*k));S.hb.setAttribute("opacity",(1-P(t,T[1]-.4,T[1])).toFixed(3));
+  S.hdust.forEach(d=>{const q=P(t,.28,1.1);d.c.setAttribute("cx",760+d.vx*eOut(q));d.c.setAttribute("cy",1430+d.vy*eOut(q)+q*q*90);d.c.setAttribute("opacity",(q>0&&q<1?(1-q):0).toFixed(3));});
+  camFX.shake(t,K.cam,[.28],20,6);}
  // camera
  const c=K.cam;
  if(t<T[1]){c.sc=lerp(1.25,1.0,eOut(P(t,0,2.5)));c.cy=1150;}

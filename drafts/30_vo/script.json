@@ -6,12 +6,15 @@
  "lines": [
   {
    "id": "a",
-   "at": 0.3,
+   "at": 0.05,
    "parts": [
     {
-     "text": "Close your eyes for a second.",
-     "mode": "quote",
-     "pause": 0.9
+     "text": "Don't scroll. Close your eyes for a second.",
+     "mode": "story",
+     "pause": 0.7,
+     "gains": [
+      1.15
+     ]
     },
     {
      "text": "Picture the life you really want.",

@@ -166,3 +166,11 @@ Ursache: Frame 1 zu ruhig (schwarz, kleine Figur), erster Satz zu lang/ruhig (~3
 5. **Impact-Sound bei 0 s:** Datei `drafts/NN_vo/hit` anlegen → finish.sh mischt `materials/sfx/hit.wav` (selbst erzeugt) ein.
 6. Hook-Objekte dürfen die Headline auf Frame 1 nicht verdecken (Stills bei 0 und 0,25 s prüfen).
 7. Länge testen: kürzere Versionen (20–30 s) erhöhen die Abschlussrate.
+
+## SOUNDEFFEKTE (ab Video 31)
+- Eigene, synthetische Bibliothek: `materials/sfx/` (neu erzeugen mit `python3 tools/make_sfx.py`), daher keine Lizenzprobleme.
+- Automatisch aus der Animation: Whip → whoosh, Shake → impact/thud, popAt → pop, Flash → shimmer, hookFX → impact bei 0 s.
+- Gezielt pro Szene über `SFX:[[zeit,"name",lautstärke],…]` im VIDEO: brick, clang, swish, glass, shutter, scratch, tick, ding, riser (endet auf dem Zeitpunkt → vor jeden Twist), heartbeat, clap, alarm, switch.
+- Die Effekte landen in der Stimmspur, sind also auch in der UPLOAD-Version (ohne Musik) drin.
+- `drafts/NN_vo/nosfx` anlegen = keine Effekte. `NORENDER=1 tools/finish.sh …` = nur den Ton neu mischen, ohne neu zu rendern.
+- Länge: neue Videos ca. 30 s (bessere Abschlussrate).

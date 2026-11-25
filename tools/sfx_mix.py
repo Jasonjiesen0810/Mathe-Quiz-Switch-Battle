@@ -4,7 +4,7 @@ import json, sys, wave, numpy as np, os
 SR = 48000
 SFX = os.path.join(os.path.dirname(__file__), "..", "materials", "sfx")
 GAIN = {"whoosh": .45, "impact": .7, "thud": .5, "brick": .55, "pop": .32, "tick": .3, "ding": .35, "shimmer": .3,
-        "riser": .4, "clang": .45, "swish": .45, "glass": .5, "shutter": .45, "scratch": .4, "heartbeat": .6}
+        "riser": .4, "clang": .45, "swish": .45, "glass": .5, "shutter": .45, "scratch": .4, "heartbeat": .6, "clap": .45, "alarm": .35, "switch": .5}
 def rd(p):
     with wave.open(p) as w:
         a = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768

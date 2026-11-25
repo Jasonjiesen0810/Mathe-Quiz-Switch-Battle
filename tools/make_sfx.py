@@ -151,4 +151,20 @@ d = .9; t = t_(d)
 b = lambda s: sine_sweep(d, 90, 45, 14) * np.exp(-14 * np.clip(t - s, 0, None)) * (t >= s)
 save("heartbeat", norm(b(0) + .7 * np.roll(b(0), int(.22 * SR)), .85))
 
+# Clap – kurzer Applaus (viele Klatscher)
+d = 1.6; t = t_(d); x = np.zeros_like(t)
+for i in range(70):
+    s0 = rng.uniform(0, 1.1); m = t >= s0
+    x[m] += rng.uniform(.4, 1) * band(noise(d), 900, 5000)[m] * np.exp(-90 * (t[m] - s0))
+save("clap", norm(x * np.clip((d - t) / .5, 0, 1), .6))
+
+# Alarm – Wecker-Piepen
+d = .9; t = t_(d)
+gate = ((t * 8) % 1 < .5) * (t < .75)
+save("alarm", norm(np.sign(np.sin(2 * np.pi * 2000 * t)) * .5 * gate * np.exp(-.8 * t), .35))
+
+# Switch – Licht aus/an
+d = .12; t = t_(d)
+save("switch", norm(band(noise(d), 600, 6000) * np.exp(-120 * t) + .6 * np.sin(2 * np.pi * 180 * t) * np.exp(-60 * t), .7))
+
 print("SFX erstellt:", sorted(os.listdir(OUT)))

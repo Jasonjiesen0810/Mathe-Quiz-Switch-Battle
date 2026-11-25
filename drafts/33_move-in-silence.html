@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Move In Silence</title></head>
+<body>
+<script>
+/* Song 13 "DISGRACEMODE" – Tempo-Wechsel (29,65 s) liegt auf "Do it the other way around." */
+const A=[0.05,2.25,4.16,8.56,10.27,13.89];
+const B=[16.98,18.95,20.74,22.95,24.35];
+const DUR=29.0;
+window.VIDEO={DUR,hookFX:1,seed:331,audio:"33_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[[{t:"STOP",red:1},"TELLING"],["EVERYONE"],["YOUR","PLANS."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["IT","FEELS",{t:"GOOD",gold:1}],["TO","SAY","IT","OUT","LOUD."]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["PEOPLE","ARE",{t:"IMPRESSED.",gold:1}],["YOU","FEEL","LIKE","YOU"],["ALREADY","DID","SOMETHING."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["AND","THAT'S","THE"],[{t:"PROBLEM.",red:1}]]},
+ {a:A[4]-.05,b:A[5]-.1,lines:[["YOUR","BRAIN","GETS","THE"],[{t:"REWARD",gold:1},{t:"BEFORE",red:1}],["THE","WORK."]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["SO","THE","PLAN"],["STAYS","A",{t:"PLAN.",red:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["DO","IT","THE"],[{t:"OTHER WAY AROUND.",mark:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["WORK",{t:"QUIETLY.",gold:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["LET","THEM","HEAR","ABOUT"],["IT","WHEN","IT'S",{t:"DONE.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["PLANS",{t:"TALK.",red:1}]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[[{t:"RESULTS SPEAK.",mark:1}]]},
+],
+LABELS:[],
+SFX:[[.15,"pop",.9],[A[1]+.1,"pop",.8],[A[1]+1,"pop",.8],[A[2]+.8,"clap",1],[A[2]+2.4,"clap",.9],[A[2]+3.4,"ding",.7],[A[3],"scratch",1.2],[A[5]+.5,"tick",.6],[A[5]+1.5,"tick",.6],[A[5]+2.5,"tick",.6],[B[0],"riser",1],[B[0]+.1,"whoosh",.9],[B[1]+.1,"switch",1],...[...Array(8)].map((_,i)=>[B[1]+.4+i*.17,"tick",.6]),[B[2]+.4,"whoosh",.8],[B[2]+.9,"clap",1],[B[3]+.2,"scratch",.8],[B[4]+.1,"ding",1]],
+build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
+ S.spot=K.spot(540);S.spotG=K.spot(540,1);S.rays=K.raysG(540,1050);
+ /* stage */
+ S.stage=el("rect",{x:380,y:1400,width:320,height:40,rx:6,fill:"#1a1a1f",stroke:"#555","stroke-width":3,opacity:0},scene);
+ S.fig=makeFig();S.crowd=[0,1,2].map(()=>makeFig());
+ S.mega=el("path",{d:"M0,-14 L70,-46 L70,46 L0,14 Z",fill:"#d9d9de",stroke:"#888","stroke-width":4,opacity:0},scene);
+ S.waves=[0,1,2].map(i=>el("path",{d:`M${90+i*34},-${30+i*16} Q${110+i*40},0 ${90+i*34},${30+i*16}`,fill:"none",stroke:C.gold,"stroke-width":6,"stroke-linecap":"round",opacity:0},scene));
+ const bub=(l,w)=>{const g=el("g",{opacity:0},scene);el("rect",{x:-w/2,y:-48,width:w,height:96,rx:30,fill:"#f2f2f5"},g);el("path",{d:"M-30,46 L-56,86 L4,46 Z",fill:"#f2f2f5"},g);
+   txt(g,0,12,l,32,{fill:"#070707","font-weight":800});return g;};
+ S.bubs=[bub("I'M GONNA BE RICH!",470),bub("I'M STARTING A BUSINESS!",640),bub("I'M GETTING FIT!",420)];
+ S.nod=[...Array(3)].map(()=>txt(scene,0,0,"👍",46,{opacity:0,"letter-spacing":"0"}));
+ /* bars */
+ const bar=(y,l,col)=>{const g=el("g",{opacity:0},scene);txt(g,-250,12,l,30,{fill:col,"font-weight":800,"text-anchor":"start"});
+   el("rect",{x:-20,y:-24,width:340,height:48,rx:24,fill:"#141418",stroke:"#444","stroke-width":3},g);g.f=el("rect",{x:-20,y:-24,width:0,height:48,rx:24,fill:col},g);g.setAttribute("transform",`translate(540,${y})`);return g;};
+ S.bR=bar(860,"REWARD",C.gold);S.bW=bar(950,"WORK","#9a9aa2");
+ /* couch + plan note */
+ S.couch=el("g",{opacity:0},scene);el("rect",{x:330,y:1330,width:330,height:70,rx:20,fill:"#2a2a30",stroke:"#555","stroke-width":3},S.couch);el("rect",{x:330,y:1250,width:60,height:150,rx:20,fill:"#2a2a30",stroke:"#555","stroke-width":3},S.couch);
+ S.note=el("g",{opacity:0},scene);el("rect",{x:-70,y:-90,width:140,height:180,rx:6,fill:"#e8e2c8"},S.note);txt(S.note,0,-40,"PLAN",28,{fill:"#070707","font-weight":800});
+ for(let i=0;i<3;i++)el("line",{x1:-45,y1:0+i*28,x2:45,y2:0+i*28,stroke:"#999","stroke-width":5},S.note);
+ S.web=el("path",{d:"M70,-90 L20,-90 M70,-90 L70,-40 M70,-90 L30,-50 M58,-90 Q56,-70 70,-66 M44,-90 Q40,-58 70,-54",stroke:"#aaa","stroke-width":2,fill:"none",opacity:0},S.note);
+ S.trophyS=el("g",{opacity:0},scene);el("path",{d:"M-30,-50 L30,-50 L24,0 Q0,22 -24,0 Z",fill:C.gold},S.trophyS);el("rect",{x:-6,y:14,width:12,height:24,fill:C.gold},S.trophyS);el("rect",{x:-24,y:36,width:48,height:10,rx:3,fill:C.gold},S.trophyS);
+ /* quiet work room */
+ S.desk=el("g",{opacity:0},scene);el("rect",{x:540,y:1290,width:300,height:16,rx:4,fill:"#3a3a42"},S.desk);el("rect",{x:560,y:1306,width:12,height:134,fill:"#3a3a42"},S.desk);el("rect",{x:808,y:1306,width:12,height:134,fill:"#3a3a42"},S.desk);
+ el("rect",{x:640,y:1215,width:120,height:75,rx:6,fill:"#111",stroke:"#888","stroke-width":3},S.desk);el("path",{d:"M800,1290 L800,1160 L740,1120",stroke:"#777","stroke-width":6,fill:"none"},S.desk);
+ S.lampL=el("path",{d:"M740,1120 L600,1290 L860,1290 Z",fill:"rgba(245,184,61,.18)",opacity:0},scene);
+ S.prog=el("g",{opacity:0},scene);el("rect",{x:-200,y:-20,width:400,height:40,rx:20,fill:"#141418",stroke:"#444","stroke-width":3},S.prog);S.progF=el("rect",{x:-200,y:-20,width:0,height:40,rx:20,fill:C.gold},S.prog);
+ txt(S.prog,0,-40,"PROGRESS",24,{fill:C.gold,"font-weight":800});S.prog.setAttribute("transform","translate(540,880)");
+ S.shh=txt(scene,0,0,"🤫",70,{opacity:0,"letter-spacing":"0"});
+ /* reveal */
+ S.big=el("g",{opacity:0},scene);el("path",{d:"M-110,-170 L110,-170 L88,10 Q0,80 -88,10 Z",fill:C.gold,filter:"url(#glowB)"},S.big);el("rect",{x:-20,y:60,width:40,height:70,fill:C.gold},S.big);el("rect",{x:-90,y:125,width:180,height:34,rx:8,fill:C.gold},S.big);
+ txt(S.big,0,-60,"DONE",44,{fill:"#070707","font-weight":800});
+ S.wow=[0,1,2].map(()=>txt(scene,0,0,"!",70,{fill:C.gold,"font-weight":800,opacity:0,"letter-spacing":"0"}));
+ S.talk=el("g",{opacity:0},scene);el("rect",{x:-170,y:-48,width:340,height:96,rx:30,fill:"#3a3a42"},S.talk);el("path",{d:"M-30,46 L-56,86 L4,46 Z",fill:"#3a3a42"},S.talk);txt(S.talk,0,12,"BLAH BLAH",34,{fill:"#9a9aa2","font-weight":800});
+ S.talkX=el("line",{x1:-180,y1:0,x2:-180,y2:0,stroke:C.red,"stroke-width":10,"stroke-linecap":"round"},S.talk);
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ let o={x:540,y:GY-40},op=1;
+ const stageOn=t<A[5]-.05;S.stage.setAttribute("opacity",stageOn?1:0);
+ /* talking with megaphone */
+ const talk=t<A[3];
+ if(talk)o={x:500,y:GY-40,raise:.55,look:.3,droop:-.25,blush:sw(A[2]+2.2,A[3])?.6:0};
+ if(sw(A[3],A[4]))o={x:540,y:GY-40,droop:.3,look:.2};
+ S.fig.draw(o);
+ const [mx,my]=S.fig.hand;S.mega.setAttribute("opacity",talk?1:0);S.mega.setAttribute("transform",`translate(${mx-6},${my-6}) rotate(-28)`);
+ S.waves.forEach((w,i)=>{const k=(t*2.2+i/3)%1;w.setAttribute("opacity",talk?(1-k).toFixed(3):0);w.setAttribute("transform",`translate(${mx+40},${my-40}) rotate(-28) scale(${(.8+k*.5).toFixed(3)})`);});
+ /* bubbles */
+ const bt=[-.4,A[1]+.1,A[1]+1];S.bubs.forEach((b,i)=>{const k=win(t,bt[i],A[2]+.4,.01,.3);const s=.5+.5*eBack(clamp((t-bt[i])/.35));
+   b.setAttribute("opacity",(t<0.0&&i===0?1:k).toFixed(3));b.setAttribute("transform",`translate(540,${[930,790,1060][i]}) scale(${(i===0&&t<.35?1:s).toFixed(3)})`);});
+ S.bubs[0].setAttribute("opacity",win(t,-1,A[2]+.4,.01,.3).toFixed(3));
+ /* crowd nodding + clapping */
+ const crowdOn=win(t,A[2]-.05,A[4],.3,.3)+win(t,B[2]+.3,B[3],.2,.3);
+ S.crowd.forEach((c,i)=>{const xs=[170,330,880];let oc={x:xs[i],y:GY,sc:.8,face:i<2?1:-1,droop:.15+Math.max(0,Math.sin(t*7+i))*.35*(sw(A[2],A[3])?1:0),raise:sw(A[2]+.8,A[2]+2.6)?.4+Math.abs(Math.sin(t*14+i))*.3:0,raiseL:sw(A[2]+.8,A[2]+2.6)?.4+Math.abs(Math.sin(t*14+i+1))*.3:0};
+   if(t>=B[2])oc={x:xs[i],y:GY,sc:.8,face:i<2?1:-1,raise:.4+Math.abs(Math.sin(t*14+i))*.4,raiseL:.4+Math.abs(Math.sin(t*14+i+1))*.4,droop:-.2};
+   c.draw(oc);c.g.setAttribute("opacity",Math.min(1,crowdOn).toFixed(3));c.shadow.setAttribute("opacity",(Math.min(1,crowdOn)*.4).toFixed(3));
+   S.wow[i].setAttribute("opacity",(t>=B[2]+.5&&t<B[3]?1:0));S.wow[i].setAttribute("x",xs[i]);S.wow[i].setAttribute("y",1150-eBack(P(t,B[2]+.5,B[2]+.9))*20);});
+ S.nod.forEach((n,i)=>{const at=A[2]+.3+i*.5;n.setAttribute("opacity",win(t,at,A[3],.1,.2).toFixed(3));n.setAttribute("x",[170,330,880][i]);n.setAttribute("y",1150-eOut(P(t,at,at+.5))*40);});
+ S.trophyS.setAttribute("opacity",win(t,A[2]+3.3,B[0],.2,.3).toFixed(3));
+ /* bars */
+ const bOn=win(t,A[4]-.05,A[5],.3,.3)+win(t,B[0]-.05,B[1],.2,.3);S.bR.setAttribute("opacity",Math.min(1,bOn).toFixed(3));S.bW.setAttribute("opacity",Math.min(1,bOn).toFixed(3));
+ let rF=eOut(P(t,A[4]+.4,A[4]+1.2)),wF=0;if(t>=B[0]){rF=1-eIO(P(t,B[0]+.2,B[0]+1));wF=eIO(P(t,B[0]+.4,B[0]+1.4));}
+ S.bR.f.setAttribute("width",340*rF);S.bW.f.setAttribute("width",340*wF);S.bW.f.setAttribute("fill",t>=B[0]?C.gold:"#9a9aa2");
+ /* couch */
+ S.couch.setAttribute("opacity",win(t,A[5]-.05,B[0],.3,.2).toFixed(3));S.note.setAttribute("opacity",win(t,A[5]-.05,B[0],.3,.2).toFixed(3));S.note.setAttribute("transform","translate(820,1120) rotate(6)");
+ S.web.setAttribute("opacity",P(t,A[5]+1,A[5]+2.2));
+ if(sw(A[5],B[0])){o={x:460,y:GY,sit:1,chair:1,droop:.2,hold:1,look:.3};S.fig.draw(o);}
+ if(sw(A[2]+3.3,A[5])){const[hx,hy]=S.fig.handL;S.trophyS.setAttribute("transform",`translate(${hx},${hy-40})`);}
+ if(sw(A[5],B[0])){const[hx,hy]=S.fig.hand;S.trophyS.setAttribute("transform",`translate(${hx+10},${hy-30}) scale(.8)`);}
+ if(sw(A[2]+3.3,A[3])){o.raiseL=1;S.fig.draw(o);const[hx,hy]=S.fig.handL;S.trophyS.setAttribute("transform",`translate(${hx},${hy-40})`);}
+ /* b0 flip */
+ if(sw(B[0],B[1])){o={x:540,y:GY,droop:-.1,look:.2};S.fig.draw(o);}
+ /* b1 quiet work */
+ const wk=win(t,B[1]-.05,B[2]+.6,.3,.4);S.desk.setAttribute("opacity",wk.toFixed(3));S.lampL.setAttribute("opacity",(wk*(t>=B[1]+.1?1:0)).toFixed(3));
+ S.prog.setAttribute("opacity",win(t,B[1]+.2,B[2]+.6,.2,.3).toFixed(3));S.progF.setAttribute("width",400*eIO(P(t,B[1]+.4,B[2]+.2)));
+ S.shh.setAttribute("opacity",win(t,B[1]+.3,B[2],.2,.2).toFixed(3));S.shh.setAttribute("x",380);S.shh.setAttribute("y",1060);
+ if(sw(B[1],B[2]+.6)){o={x:470,y:GY,work:1,t,droop:.1};S.fig.draw(o);}
+ /* reveal */
+ const rv=win(t,B[2]+.3,DUR,.4,.6);S.big.setAttribute("opacity",(t>=B[3]&&t<B[4]?.35:1)*rv);S.big.setAttribute("transform",`translate(560,${1060}) scale(${(.5+.5*eBack(P(t,B[2]+.3,B[2]+.8))).toFixed(3)})`);
+ if(t>=B[2]+.6){o={x:420,y:GY,droop:-.25,look:1,raise:t>=B[4]?eBack(P(t,B[4],B[4]+.5))*1.05:0,col:t>=B[4]?K.mixHex(C.white,C.gold,P(t,B[4],B[4]+.5)):C.white};S.fig.draw(o);}
+ S.talk.setAttribute("opacity",win(t,B[3],B[4],.15,.25).toFixed(3));S.talk.setAttribute("transform",`translate(300,820) scale(${(.5+.3*eBack(P(t,B[3],B[3]+.35))).toFixed(3)})`);
+ S.talkX.setAttribute("x2",-180+360*eOut(P(t,B[3]+.2,B[3]+.6)));
+ S.fig.g.setAttribute("opacity",(op*K.endFade).toFixed(3));
+ /* light */
+ S.spot.setAttribute("opacity",(win(t,-1,B[1],.01,.2)*.65).toFixed(3));S.spotG.setAttribute("opacity",(win(t,B[2]+.3,DUR,.3,.6)*.85).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,B[2]+.3,B[3],.1,.3)*.6+win(t,B[4],DUR,.1,.6)*.85).toFixed(3));S.rays.setAttribute("transform",`translate(560,1000) rotate(${t*8})`);
+ /* camera */
+ const c=K.cam;
+ if(t<A[1]){c.sc=1.15;c.cy=1050;}
+ if(sw(A[1],A[2]))camFX.dolly(t,c,A[1],A[2],{sc:1.1,cx:520,cy:1000});
+ if(sw(A[2],A[3])){c.sc=lerp(1.1,.95,eIO(P(t,A[2],A[2]+1)));c.cy=1100;}
+ if(sw(A[3],A[4])){c.sc=1.35;c.cy=1220;c.rot+=-4;}
+ if(sw(A[4],A[5]))camFX.dolly(t,c,A[4],A[5],{sc:1.05,cx:540,cy:1000});
+ if(sw(A[5],B[0]))camFX.dolly(t,c,A[5],B[0],{sc:1.25,cx:600,cy:1200});
+ if(sw(B[0],B[1])){c.cy=1000;}
+ if(sw(B[1],B[2]))camFX.dolly(t,c,B[1],B[2],{sc:1.3,cx:600,cy:1150});
+ if(t>=B[2])camFX.dolly(t,c,B[2],B[2]+1.5,{sc:1.0,cx:540,cy:1100});
+ if(t>=B[4])camFX.dolly(t,c,B[4],DUR,{sc:1.12,cx:540,cy:1080});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[A[3],B[0],B[4]],.16,5);
+ camFX.shake(t,c,[A[3]],18,5);camFX.shake(t,c,[B[2]+.5],14,6);
+ camFX.whip(t,c,A[4],1);camFX.whip(t,c,A[5],-1);camFX.whip(t,c,B[0]+.1,1);camFX.whip(t,c,B[3],-1);
+ K.flash+=K.pulses(t,[B[0],B[2]+.5,B[4]],9,.4,.4);
+ K.dim=win(t,A[3],A[4],.05,.2)*.5+win(t,B[1],B[2]+.3,.1,.3)*.55;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

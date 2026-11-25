@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "You're not lazy.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "You've been told you just need more discipline.",
+     "mode": "story",
+     "pause": 0.4
+    },
+    {
+     "text": "More alarms. More plans. More pressure.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "But look at what you're carrying.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "A dream your parents picked. A goal you saw online. A life someone else wanted for you.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "No wonder you can't move.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "You're not lazy.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "You're carrying goals that aren't yours.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Put them down.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Find the one thing you'd do even if nobody clapped.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Then watch how fast you move.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

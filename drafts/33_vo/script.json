@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "Stop telling everyone your plans.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "It feels good to say it out loud.",
+     "mode": "story",
+     "pause": 0.4
+    },
+    {
+     "text": "People nod. They're impressed. You feel like you already did something.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "And that's the problem.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Your brain gets the reward before you do the work.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "So the plan stays a plan.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "Do it the other way around.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Work quietly.",
+     "mode": "quote",
+     "pause": 0.8,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Let them hear about it when it's done.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Plans talk.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "Results speak.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.15
+     ]
+    }
+   ]
+  }
+ ]
+}

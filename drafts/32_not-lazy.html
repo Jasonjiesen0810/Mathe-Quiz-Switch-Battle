@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Not Lazy</title></head>
+<body>
+<script>
+/* Song 15 "Want To Love" – dichter Teil (~33 s) startet auf "You're not lazy." (Twist) */
+const A=[0.05,1.43,4.08,7.43,9.37,14.48];
+const B=[17.46,18.93,21.78,23.32,26.9];
+const DUR=32.1;
+const LBL=[A[4]+.1,A[4]+1.8,A[4]+3.2];
+window.VIDEO={DUR,hookFX:1,seed:321,audio:"32_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["YOU'RE",{t:"NOT",gold:1}],[{t:"LAZY.",red:1}]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["\"YOU","JUST","NEED","MORE"],[{t:"DISCIPLINE.\"",red:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["MORE","ALARMS."],["MORE","PLANS."],["MORE",{t:"PRESSURE.",red:1}]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["BUT","LOOK","AT","WHAT"],["YOU'RE",{t:"CARRYING.",gold:1}]]},
+ {a:A[4]-.05,b:A[5]-.1,lines:[["A","LIFE",{t:"SOMEONE ELSE",red:1}],["WANTED","FOR","YOU."]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["NO","WONDER","YOU"],["CAN'T",{t:"MOVE.",red:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["YOU'RE",{t:"NOT LAZY.",mark:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["YOU'RE","CARRYING","GOALS"],["THAT",{t:"AREN'T YOURS.",red:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["PUT","THEM",{t:"DOWN.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["FIND","THE",{t:"ONE THING",gold:1}],["YOU'D","DO","EVEN","IF"],["NOBODY","CLAPPED."]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[["THEN","WATCH","HOW"],[{t:"FAST YOU MOVE.",mark:1}]]},
+],
+LABELS:[],
+SFX:[[.25,"thud",1],[A[2]+.1,"alarm",1],[A[2]+1.2,"scratch",.6],[A[2]+2.2,"heartbeat",.7],...LBL.map(a=>[a,"pop",.8]),[A[5]+.4,"heartbeat",1],[A[5]+1.5,"heartbeat",1],[B[0],"riser",1],[B[1]+.4,"scratch",.9],[B[2]+.1,"brick",1],[B[2]+.45,"brick",1],[B[2]+.8,"brick",1],[B[3]+.5,"ding",.9],[B[4]+.2,"whoosh",1],[B[4]+1.2,"whoosh",.8]],
+build(K){const {el,txt,C,scene,makeFig,pill,rnd}=K;const S=K.S={};
+ S.spot=K.spot(540);S.spotG=K.spot(540,1);S.rays=K.raysG(540,1100);
+ S.speed=[...Array(16)].map(()=>({l:el("line",{stroke:C.gold,"stroke-width":5,"stroke-linecap":"round",opacity:0},scene),y:900+rnd()*520,d:rnd(),L:80+rnd()*160}));
+ S.fig=makeFig();
+ S.boxes=["THEIR DREAM","FOR THE LIKES","THEIR LIFE"].map((l,i)=>{const g=el("g",{},scene);
+   g.r=el("rect",{x:-115,y:-62,width:230,height:124,rx:10,fill:"#2a2620",stroke:"#8a7a5a","stroke-width":4},g);
+   el("line",{x1:-115,y1:-10,x2:115,y2:-10,stroke:"#5a4f3a","stroke-width":3},g);
+   g.l=txt(g,0,34,l,24,{fill:C.white,"font-weight":800,opacity:0});g.st=txt(g,0,-22,"NOT YOURS",22,{fill:C.red,"font-weight":800,opacity:0});return g;});
+ S.sweat=[0,1,2].map(()=>el("path",{d:"M0,0 q8,14 0,20 q-8,-6 0,-20z",fill:"#8ab4ff",opacity:0},scene));
+ /* pointing hands */
+ S.hands=[1,-1].map(d=>{const g=el("g",{opacity:0},scene);el("rect",{x:-420,y:-34,width:340,height:68,rx:30,fill:"#d9d9de",stroke:"#888","stroke-width":4},g);
+   el("circle",{cx:-80,cy:0,r:52,fill:"#d9d9de",stroke:"#888","stroke-width":4},g);el("rect",{x:-60,y:-26,width:120,height:34,rx:17,fill:"#d9d9de",stroke:"#888","stroke-width":4},g);g.d=d;return g;});
+ /* icons */
+ const ic=[];
+ const alarm=el("g",{opacity:0},scene);el("circle",{r:62,fill:"#141418",stroke:C.red,"stroke-width":6},alarm);el("circle",{cx:-50,cy:-55,r:20,fill:C.red},alarm);el("circle",{cx:50,cy:-55,r:20,fill:C.red},alarm);
+ el("line",{x1:0,y1:0,x2:0,y2:-40,stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},alarm);el("line",{x1:0,y1:0,x2:28,y2:10,stroke:C.white,"stroke-width":6,"stroke-linecap":"round"},alarm);ic.push(alarm);
+ const list=el("g",{opacity:0},scene);el("rect",{x:-55,y:-70,width:110,height:140,rx:8,fill:"#141418",stroke:C.white,"stroke-width":5},list);
+ for(let i=0;i<4;i++)el("line",{x1:-32,y1:-40+i*28,x2:34,y2:-40+i*28,stroke:"#888","stroke-width":6,"stroke-linecap":"round"},list);ic.push(list);
+ const gauge=el("g",{opacity:0},scene);el("path",{d:"M-70,20 A70,70 0 0 1 70,20",fill:"none",stroke:C.red,"stroke-width":10},gauge);
+ gauge.n=el("line",{x1:0,y1:20,x2:0,y2:-40,stroke:C.white,"stroke-width":7,"stroke-linecap":"round"},gauge);ic.push(gauge);S.icons=ic;
+ S.star=txt(scene,0,0,"★",90,{fill:C.gold,opacity:0,filter:"url(#glowB)","letter-spacing":"0"});
+ S.claps=txt(scene,860,900,"👏 0",44,{fill:C.grey,opacity:0,"letter-spacing":"0"});
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const carry=t<B[2]+1.2;
+ let o={x:540,y:GY,droop:.9,lean:.15,ph:0};
+ if(t<A[1])o={x:540,y:GY,droop:.9,lean:.2,ph:Math.sin(t*3)*.3,stride:.3};
+ if(sw(A[1],A[2]))o={x:540,y:GY,droop:.9,lean:.15};
+ if(sw(A[2],A[3]))o={x:540+Math.sin(t*40)*3,y:GY,droop:.95,lean:.18};
+ if(sw(A[3],A[5]))o={x:540,y:GY,droop:.85,lean:.15,look:.3};
+ if(sw(A[5],B[0])){const st=Math.sin((t-A[5])*5);o={x:540+Math.max(0,st)*6,y:GY,droop:1,lean:.25+.1*st,ph:st*.6,stride:.4};}
+ if(sw(B[0],B[2]))o={x:540,y:GY,droop:.7,lean:.1,look:-.2};
+ if(sw(B[2],B[3])){const u=eIO(P(t,B[2]+.3,B[2]+1.3));o={x:540,y:GY,droop:lerp(.7,-.2,u),lean:lerp(.1,0,u)};}
+ if(sw(B[3],B[4]))o={x:540,y:GY,droop:-.2,hold:eIO(P(t,B[3]+.3,B[3]+.8))};
+ if(t>=B[4]){const r=eIO(P(t,B[4],B[4]+.6));o={x:lerp(540,480,r),y:GY,run:r,ph:t*14,lean:.35*r,droop:-.1,col:K.mixHex(C.white,C.gold,r),hold:1-r};}
+ S.fig.draw(o);S.fig.g.setAttribute("opacity",K.endFade.toFixed(3));
+ /* boxes on the back (from the neck) */
+ const [hx,hy]=[+S.fig.head.getAttribute("cx"),+S.fig.head.getAttribute("cy")];
+ S.boxes.forEach((g,i)=>{let x=hx-118,y=hy+52-i*100,rot=-8+i*5+Math.sin(t*2+i)*2,op=1;
+   if(t>=B[2]){const at=B[2]+.1+(2-i)*.35;const k=P(t,at-.35,at);if(t>=at-.35){x+=-220*k-(2-i)*30;y=lerp(y,GY-62-(2-i)*4,k*k);rot+=-25*k;}
+     op=1-P(t,B[3]+.3,B[3]+.8);}
+   g.setAttribute("transform",`translate(${x},${y}) rotate(${rot}) scale(.85)`);g.setAttribute("opacity",op.toFixed(3));
+   g.l.setAttribute("opacity",t>=LBL[i]?1:0);g.st.setAttribute("opacity",win(t,B[1]+.3+i*.15,B[3],.1,.3).toFixed(3));
+   const grey=P(t,B[1]+.2,B[1]+.6);g.r.setAttribute("stroke",grey>0?K.mixHex("#8a7a5a",C.red,grey):"#8a7a5a");});
+ S.sweat.forEach((s,i)=>{const k=((t*1.4+i/3)%1);s.setAttribute("opacity",(sw(A[2],B[0])?1-k:0).toFixed(3));s.setAttribute("transform",`translate(${hx+40+i*12},${hy-10+k*90})`);});
+ /* pointing hands */
+ S.hands.forEach(g=>{const k=eOut(P(t,A[1]+.1,A[1]+.6));g.setAttribute("opacity",win(t,A[1],A[2]+.2,.1,.3).toFixed(3));
+   const jab=Math.max(0,Math.sin((t-A[1])*9))*16;g.setAttribute("transform",g.d>0?`translate(${lerp(-200,330,k)+jab},${1080})`:`translate(${lerp(1280,750,k)-jab},${1160}) scale(-1,1)`);});
+ /* icons */
+ S.icons.forEach((g,i)=>{const at=A[2]+[0,1.1,2.1][i];const k=win(t,at,A[3],.01,.3);g.setAttribute("opacity",k.toFixed(3));
+   const sh=i===0?Math.sin(t*60)*6:0;g.setAttribute("transform",`translate(${[230,540,850][i]+sh},${820}) scale(${(.4+.6*eBack(P(t,at,at+.4))).toFixed(3)}) rotate(${i===0?Math.sin(t*50)*6:0})`);});
+ S.icons[2].n.setAttribute("transform",`rotate(${lerp(-60,70,eOut(P(t,A[2]+2.2,A[3])))+Math.sin(t*40)*4},0,20)`);
+ /* star + no claps */
+ const [fx,fy]=S.fig.hand;S.star.setAttribute("x",fx+8);S.star.setAttribute("y",fy-6);S.star.setAttribute("opacity",(t>=B[3]+.4?1:0)*(1-P(t,B[4]+.3,B[4]+.6)));
+ S.claps.setAttribute("opacity",win(t,B[3]+1.2,B[4],.3,.3).toFixed(3));
+ /* speed lines */
+ S.speed.forEach(s=>{const k=(t*1.8+s.d)%1;const on=t>=B[4]+.3;const x=lerp(1200,-200,k);s.l.setAttribute("x1",x);s.l.setAttribute("x2",x+s.L);s.l.setAttribute("y1",s.y);s.l.setAttribute("y2",s.y);s.l.setAttribute("opacity",on?.6:0);});
+ K.floorScroll=t>=B[4]?lerp(0,3,P(t,B[4],B[4]+.6)):0;
+ /* light */
+ S.spot.setAttribute("opacity",(win(t,-1,B[3],.01,.3)*.6).toFixed(3));S.spotG.setAttribute("opacity",(win(t,B[3],DUR,.3,.6)*.85).toFixed(3));
+ S.rays.setAttribute("opacity",(win(t,B[0],B[1],.05,.4)*.6+win(t,B[3]+.4,B[4],.2,.3)*.6).toFixed(3));S.rays.setAttribute("transform",`translate(${fx},${fy}) rotate(${t*8})`);
+ /* camera */
+ const c=K.cam;
+ if(t<A[1]){c.sc=1.2;c.cy=1050;}
+ if(sw(A[1],A[2]))camFX.dolly(t,c,A[1],A[2],{sc:1.05,cx:540,cy:1100});
+ if(sw(A[2],A[3]))c.sc=1.0;
+ if(sw(A[3],A[4])){c.sc=lerp(1.35,.95,eIO(P(t,A[3],A[4])));c.cy=lerp(1250,1000,eIO(P(t,A[3],A[4])));}
+ if(sw(A[4],A[5]))camFX.dolly(t,c,A[4],A[5],{sc:1.15,cx:520,cy:950});
+ if(sw(A[5],B[0]))camFX.dolly(t,c,A[5],B[0],{sc:1.35,cx:540,cy:1180});
+ if(sw(B[0],B[2]))c.sc=lerp(1.25,1.05,eOut(P(t,B[0],B[0]+1)));
+ if(sw(B[3],B[4]))camFX.dolly(t,c,B[3],B[4],{sc:1.25,cx:560,cy:1120});
+ if(t>=B[4]){c.sc=lerp(1.1,1.0,P(t,B[4],DUR));c.cy=1150;c.rot+=-2;}
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.05,7);camFX.punch(t,c,[B[0]],.18,5);
+ camFX.shake(t,c,[B[0]],20,5);camFX.shake(t,c,[A[2]+.1],8,6);camFX.shake(t,c,[B[2]+.1,B[2]+.45,B[2]+.8],10,8);
+ camFX.whip(t,c,A[2],1);camFX.whip(t,c,A[4],-1);camFX.whip(t,c,B[3],1);camFX.tilt(t,c,A[5],B[0],3);
+ K.flash+=K.pulses(t,[B[0],B[4]],9,.45,.35);
+ K.dim=win(t,A[5],B[0],.5,.05)*.35;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

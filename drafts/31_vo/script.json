@@ -1,0 +1,90 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "Nobody is thinking about you.",
+     "mode": "story",
+     "pause": 0.6,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "That mistake you made last week? Already forgotten.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "That outfit you worried about? Nobody noticed.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "Everyone is too busy worrying about themselves.",
+     "mode": "normal",
+     "pause": 0.7
+    },
+    {
+     "text": "Psychologists call it the spotlight effect.",
+     "mode": "normal",
+     "pause": 0.4
+    },
+    {
+     "text": "We think the light is always on us.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.9,
+   "parts": [
+    {
+     "text": "And that's not sad.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "That's freedom.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Nobody is watching you fail.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "So ask the question. Post the video. Start the thing.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "The light was never on you.",
+     "mode": "quote",
+     "pause": 0.4
+    },
+    {
+     "text": "So go make your own.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

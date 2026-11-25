@@ -177,3 +177,15 @@ Ursache: Frame 1 zu ruhig (schwarz, kleine Figur), erster Satz zu lang/ruhig (~3
 
 ## KEINE EMOJIS (Feedback 25.11.)
 Keine bunten Emojis in den Videos (unprofessionell). Erlaubt: schlichte Schriftzeichen in Stilfarben (✓ ★ ✕ ? !) oder selbst gezeichnete Symbole.
+
+## NEUER LOOK: MONO / BUSINESS-PRÄSENTATION (ab Video 37, Feedback 25.11.)
+Ziel: ruhig, selbstbewusst, kalt, leicht abgehoben, wie eine hochwertige Business-Präsentation, nicht "Dopamin für Kinder".
+- **Keine Farbe** (Gold/Rot weg). Betonung nur über Kontrast: Weiß mit weißem Glow vs. Grau. `theme:"mono"` im VIDEO setzt das automatisch (C.gold → Weiß, C.red → Dunkelgrau).
+- **Licht:** Hängelampen mit Lichtkegel (`K.lamp(x)`), Punkteraster, gestrichelte Bodenlinie.
+- **Schrift:** Inter, dünn (300), Satzschreibweise statt GROSSBUCHSTABEN, ca. 56 px (Hook 66 px). Schlüsselwörter weiß/fett, Rest grau. Wichtigster Satz als weiße Pille (`mark`).
+- **Labels klein** mit weiter Sperrung (`K.label`, z. B. "PAYCHECK · MONTHLY"), **Zahlen groß** (`K.big`, `K.money`).
+- **Icons dünn** (Linienzeichnungen, 2,5 px, z. B. `K.desk`).
+- **Figur bleibt** (detailliert), nur ruhiger: dünnere Kontur; Nebenfiguren dunkelgrau, Hauptfigur weiß mit Glow.
+- **Kamera-Effekte bleiben** (Zoom, Punch, Shake, Tilt), nur ruhiger dosiert. Übergänge = **Wischen** (`camFX.wipe(t,c,zeit,richtung)`) statt Reißschwenk.
+- **Hooks:** seltsam/kontraintuitiv, aber seriös. Muster: "[überraschende Behauptung], and the reason why explains …" – z. B. "Getting a raise is one of the fastest ways to stay broke." Neugier auf die Begründung, kein Clickbait.
+- Beispielzahlen nur als klar hypothetisches Rechenbeispiel ("You earn three thousand…"), keine erfundenen Statistiken.

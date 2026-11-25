@@ -1,0 +1,90 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "Getting a raise is one of the fastest ways to stay broke.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "And almost nobody notices it happening.",
+     "mode": "normal",
+     "pause": 0.7
+    },
+    {
+     "text": "Here's how it works.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "You earn three thousand a month, and you spend all of it.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "Then you get a raise. Four thousand.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "A nicer apartment. A better car. Dinner out, because you deserve it.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "A year later, you're spending four thousand.",
+     "mode": "normal",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "You earn more than ever, and you're exactly as broke as before.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Because wealth was never about what you earn.",
+     "mode": "quote",
+     "pause": 0.6,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "It's the gap between what you earn and what you spend.",
+     "mode": "quote",
+     "pause": 0.8
+    },
+    {
+     "text": "So the next time you get a raise, don't raise your life.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "Raise the gap.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.15
+     ]
+    }
+   ]
+  }
+ ]
+}

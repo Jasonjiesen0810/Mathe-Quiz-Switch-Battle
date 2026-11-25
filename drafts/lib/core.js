@@ -152,7 +152,7 @@ function makeFig(parent){
 function pill(parent,x,y,str,col,w,size=22,h=52){const g=el("g",{opacity:0},parent);
   el("rect",{x:-w/2,y:-h/2,width:w,height:h,rx:h/2,fill:col===C.gold?"rgba(245,184,61,.08)":col===C.red?"rgba(255,69,58,.07)":"rgba(255,255,255,.04)",stroke:col,"stroke-width":3.5},g);
   txt(g,0,size*.36,str,size,{fill:col,"letter-spacing":size*.2,"font-weight":700});g.x=x;g.y=y;return g;}
-const popAt=(g,t,a,b,base=1)=>{const k=eBack(P(t,a,a+.4))*(1-eIO(P(t,b,b+.3)));g.setAttribute("opacity",clamp(k).toFixed(3));g.setAttribute("transform",`translate(${g.x},${g.y}) scale(${(base*(.6+.4*clamp(k))).toFixed(3)})`);return k;};
+const popAt=(g,t,a,b,base=1)=>{sfx("pop",a,.6);const k=eBack(P(t,a,a+.4))*(1-eIO(P(t,b,b+.3)));g.setAttribute("opacity",clamp(k).toFixed(3));g.setAttribute("transform",`translate(${g.x},${g.y}) scale(${(base*(.6+.4*clamp(k))).toFixed(3)})`);return k;};
 
 /* headlines */
 const heads=document.getElementById("heads");
@@ -164,17 +164,19 @@ V.HEADS.forEach(h=>{const d=document.createElement("div");d.className="hl"+(h.ho
 (V.LABELS||[]).forEach(l=>{const d=document.createElement("div");d.className="label";d.style.top=(l.top||540)+"px";d.textContent=l.text;heads.appendChild(d);l.el=d;});
 
 /* camera helpers: call inside render(t,K) */
+/* Soundeffekte: Animationen melden ihre Ereignisse, tools/sfxlist.js sammelt sie */
+const SFXLOG={};const sfx=(n,at,v=1)=>{at=+at;if(!(at>-1))return;const k=n+"@"+at.toFixed(2);if(!(k in SFXLOG))SFXLOG[k]={n,at:Math.max(0,at),v};};window.SFXLOG=SFXLOG;
 const camFX={
   // ruhiges Handkamera-Schweben (immer an, ausschaltbar mit VIDEO.noDrift)
   drift(t,c,amt=1){c.dx+=(Math.sin(t*.7)*6+Math.sin(t*1.9)*2.5)*amt;c.dy+=(Math.cos(t*.53)*5+Math.sin(t*1.3)*2)*amt;c.rot=(c.rot||0)+Math.sin(t*.41)*.35*amt;},
   // Wackeln ab Zeitpunkten (Aufprall, Drop, Schock)
-  shake(t,c,list,str=16,decay=6){list.forEach(a=>{if(t>=a){const k=Math.exp(-(t-a)*decay);c.dx+=Math.sin(t*93)*str*k;c.dy+=Math.cos(t*71)*str*.65*k;c.rot=(c.rot||0)+Math.sin(t*57)*1.2*k*str/16;}});},
+  shake(t,c,list,str=16,decay=6){list.forEach(a=>sfx(str>=15?"impact":"thud",a,Math.min(1,.45+str/40)));list.forEach(a=>{if(t>=a){const k=Math.exp(-(t-a)*decay);c.dx+=Math.sin(t*93)*str*k;c.dy+=Math.cos(t*71)*str*.65*k;c.rot=(c.rot||0)+Math.sin(t*57)*1.2*k*str/16;}});},
   // Zoom-Stoß (Punch-in)
   punch(t,c,list,amt=.12,decay=6){list.forEach(a=>{if(t>=a)c.sc+=Math.exp(-(t-a)*decay)*amt;});},
   // Kamerafahrt zu einem Punkt (a→b Sekunden)
   dolly(t,c,a,b,to){const k=eIO(P(t,a,b));if(k<=0)return;c.sc=lerp(c.sc,to.sc||c.sc,k);c.cx=lerp(c.cx,to.cx??c.cx,k);c.cy=lerp(c.cy,to.cy??c.cy,k);c.rot=lerp(c.rot||0,to.rot||0,k);},
   // Reißschwenk (Whip-Pan) mit Bewegungsunschärfe-Gefühl
-  whip(t,c,at,dir=1,dur=.35){const k=P(t,at-dur/2,at+dur/2);if(k>0&&k<1){const s=Math.sin(k*Math.PI);c.dx+=dir*s*420;c.rot=(c.rot||0)+dir*s*3;K.flash+=s*.15;}},
+  whip(t,c,at,dir=1,dur=.35){sfx("whoosh",at-.27,.75);const k=P(t,at-dur/2,at+dur/2);if(k>0&&k<1){const s=Math.sin(k*Math.PI);c.dx+=dir*s*420;c.rot=(c.rot||0)+dir*s*3;K.flash+=s*.15;}},
   // Kamera kippt leicht (Dutch angle) für Unruhe/Spannung
   tilt(t,c,a,b,deg=4){c.rot=(c.rot||0)+deg*win(t,a,b,.4,.4);},
 };
@@ -210,7 +212,7 @@ pb.onclick=()=>{playing=!playing;pb.textContent=playing?"Pause":"Play ▶";t0=pe
 document.getElementById("restart").onclick=()=>{cur=0;t0=performance.now();vo.currentTime=0;};
 scrub.oninput=()=>{cur=+scrub.value;t0=performance.now()-cur*1000;vo.currentTime=cur;};
 document.getElementById("safeBtn").onclick=()=>{const s=document.getElementById("safe");s.style.display=s.style.display==="block"?"none":"block";};
-window.seek=seek;window.DUR=V.DUR;
+window.seek=seek;window.DUR=V.DUR;window.__K=K;
 function fitHeads(){document.querySelectorAll(".hl").forEach(d=>{d.style.fontSize="";const base=d.classList.contains("hook")?118:84;let w=0;d.querySelectorAll(".ln").forEach(l=>w=Math.max(w,l.scrollWidth));if(w>860)d.style.fontSize=(base*860/w).toFixed(1)+"px";});}
 document.fonts.ready.then(()=>{fitHeads();window.READY=true;if(!isExport)requestAnimationFrame(frame);else seek(0);});
 })();

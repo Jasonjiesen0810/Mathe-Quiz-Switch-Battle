@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Least Willpower</title></head>
+<body>
+<script>
+/* MONO – Disziplin = Umgebung gestalten statt Willenskraft. Prozentwerte sind symbolisch (Anzeige), keine Statistik. */
+const A=[0.05,3.49,5.98,10.03,14.19,16.24];
+const B=[19.66,22.18,24.05,28.62,31.83];
+const DUR=39.4;
+const TEMPT=[A[3]+.1,A[3]+1.3,A[3]+2.6];
+window.VIDEO={DUR,theme:"mono",hookFX:1,seed:381,audio:"38_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["The","most",{t:"disciplined",gold:1},"people"],["you","know","have","the"],[{t:"least",gold:1},"willpower."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["And","that's","exactly"],["why","they",{t:"win.",gold:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["We","think","discipline","means"],[{t:"fighting",gold:1},"temptation","all","day."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["Phone","on","the","desk."],["Snacks","in","the","kitchen."],["Notifications",{t:"on.",gold:1}]]},
+ {a:A[4]-.05,b:A[5]-.1,lines:[["Every","hour,","a","new",{t:"fight.",gold:1}]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["And","every","fight"],[{t:"costs",gold:1},"you","a","little","more."]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["Disciplined","people","don't"],["win","those","fights."]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["They",{t:"remove",gold:1},"them."]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["Phone","in","another","room."],["Notifications",{t:"off.",gold:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["Nothing","to","resist,"],["so",{t:"nothing",gold:1},"to","lose."]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[["Stop","training","your","willpower."],[{t:"Design your environment.",mark:1}]]},
+],
+LABELS:[],
+SFX:[...TEMPT.map(a=>[a,"tick",1]),[TEMPT[0]+.3,"tick",.6],[A[4]+.2,"tick",.7],[A[4]+.7,"tick",.7],[A[4]+1.2,"tick",.7],[A[5]+.4,"heartbeat",.7],[B[1],"riser",1],[B[2]+.4,"whoosh",.6],[B[2]+2.4,"switch",1],[B[4]+.2,"shimmer",.8]],
+build(K){const {el,txt,C,scene,makeFig,lamp,desk,label,big,GY}=K;const S=K.S={};
+ const LST={fill:"none",stroke:"#D0D0D0","stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round"};const st=o=>Object.assign({},LST,o);
+ const chair=(x,p)=>el("path",st({d:`M${x-175},${GY-330} L${x-175},${GY-120} M${x-175},${GY-120} L${x-30},${GY-120} M${x-100},${GY-120} L${x-100},${GY-18} M${x-145},${GY-10} L${x-55},${GY-10}`}),p);
+ const meter=(p,x,y)=>{const g={};g.l=label(p,x,y,"WILLPOWER",20);el("rect",{x:x-160,y:y+22,width:320,height:10,rx:5,fill:"none",stroke:"#5A5A5A","stroke-width":2},p);
+   g.f=el("rect",{x:x-160,y:y+22,width:320,height:10,rx:5,fill:"#EDEDED"},p);g.v=big(p,x,y+150,"100%",110);return g;};
+ /* Hook: zwei Personen */
+ S.two=el("g",{},scene);S.twoL=[300,780].map(x=>lamp(x,150,380,S.two));
+ S.fA=makeFig(S.two);S.fB=makeFig(S.two);
+ S.mA=[0,1].map(i=>{const x=[300,780][i];const g={};label(S.two,x,700,"WILLPOWER",18);el("rect",{x:x-120,y:720,width:240,height:8,rx:4,fill:"none",stroke:"#5A5A5A","stroke-width":2},S.two);
+   g.f=el("rect",{x:x-120,y:720,width:0,height:8,rx:4,fill:"#EDEDED"},S.two);g.t=label(S.two,x,790,["LOW","HIGH"][i],22,{fill:"#EDEDED"});return g;});
+ S.res=[0,1].map(i=>label(S.two,[300,780][i],1530,["RESULTS ↑","RESULTS —"][i],20,{fill:i?"#6A6A6A":"#FFFFFF"}));
+ /* Schreibtisch "Kampf" */
+ S.fight=el("g",{opacity:0},scene);S.fL=lamp(500,150,460,S.fight);desk(450,S.fight);chair(450,S.fight);S.f1=makeFig(S.fight);S.m1=meter(S.fight,540,640);
+ S.phone=el("g",{opacity:0},S.fight);el("rect",st({x:-18,y:-32,width:36,height:64,rx:6}),S.phone);el("line",st({x1:-6,y1:24,x2:6,y2:24}),S.phone);
+ S.buzz=[0,1].map(i=>el("path",st({d:i?"M26,-14 q8,14 0,28":"M-26,-14 q-8,14 0,28",opacity:0}),S.phone));
+ S.snack=el("g",{opacity:0},S.fight);el("path",st({d:"M-26,-34 L26,-34 L30,30 L-30,30 Z M-26,-34 L-20,-44 L20,-44 L26,-34"}),S.snack);el("circle",st({cx:0,cy:0,r:10}),S.snack);
+ S.notes=[0,1,2].map(i=>{const g=el("g",{opacity:0},S.fight);el("rect",st({x:-70,y:-22,width:140,height:44,rx:12,fill:"#0a0a0a"}),g);el("circle",{cx:-46,cy:0,r:8,fill:"#BDBDBD"},g);
+   el("rect",{x:-30,y:-8,width:80,height:6,rx:3,fill:"#6A6A6A"},g);el("rect",{x:-30,y:4,width:56,height:6,rx:3,fill:"#4A4A4A"},g);return g;});
+ S.clock=el("g",{opacity:0},S.fight);el("circle",st({r:46}),S.clock);S.ch1=el("line",st({x1:0,y1:0,x2:0,y2:-34}),S.clock);S.ch2=el("line",st({x1:0,y1:0,x2:22,y2:0}),S.clock);
+ /* Schreibtisch "Design" */
+ S.calm=el("g",{opacity:0},scene);S.cL=lamp(500,150,460,S.calm);desk(450,S.calm);chair(450,S.calm);S.f2=makeFig(S.calm);S.m2=meter(S.calm,540,640);
+ S.ph2=el("g",{},S.calm);el("rect",st({x:-18,y:-32,width:36,height:64,rx:6}),S.ph2);el("line",st({x1:-6,y1:24,x2:6,y2:24}),S.ph2);
+ S.sn2=el("g",{},S.calm);el("path",st({d:"M-26,-34 L26,-34 L30,30 L-30,30 Z M-26,-34 L-20,-44 L20,-44 L26,-34"}),S.sn2);el("circle",st({cx:0,cy:0,r:10}),S.sn2);
+ S.nt2=[0,1,2].map(i=>{const g=el("g",{},S.calm);el("rect",st({x:-70,y:-22,width:140,height:44,rx:12,fill:"#0a0a0a"}),g);el("circle",{cx:-46,cy:0,r:8,fill:"#BDBDBD"},g);el("rect",{x:-30,y:-8,width:80,height:6,rx:3,fill:"#6A6A6A"},g);return g;});
+ S.room=el("g",{opacity:0},S.calm);el("rect",st({x:-90,y:-80,width:180,height:160,rx:6,"stroke-dasharray":"10 8"}),S.room);label(S.room,0,110,"ANOTHER ROOM",18);
+ S.tog=el("g",{opacity:0},S.calm);label(S.tog,-10,-40,"NOTIFICATIONS",18);el("rect",st({x:-50,y:-20,width:100,height:44,rx:22}),S.tog);S.knob=el("circle",{cx:28,cy:2,r:16,fill:"#EDEDED"},S.tog);S.togL=label(S.tog,0,62,"ON",18,{fill:"#EDEDED"});
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const sTwo=t<A[2],sFight=sw(A[2],B[0]),sCalm=t>=B[0];
+ S.two.setAttribute("opacity",sTwo?1:0);S.fight.setAttribute("opacity",sFight?1:0);S.calm.setAttribute("opacity",sCalm?1:0);
+ /* Hook */
+ const win2=P(t,A[1],A[1]+.6);
+ S.fA.draw({x:300,y:GY,droop:-.1,col:C.white,look:.2});S.fB.draw({x:780,y:GY,droop:lerp(0,.4,win2),col:K.mixHex(C.white,"#4A4A4A",win2),face:-1,look:-.2});
+ S.fA.g.setAttribute("filter","url(#glow)");S.fB.g.setAttribute("filter",win2>.5?"":"url(#glow)");S.fA.shadow.setAttribute("opacity",0);S.fB.shadow.setAttribute("opacity",0);
+ S.mA[0].f.setAttribute("width",240*.18*eOut(P(t,-.5,.6)));S.mA[1].f.setAttribute("width",240*.92*eOut(P(t,-.5,.6)));
+ S.res.forEach(r=>r.setAttribute("opacity",P(t,A[1],A[1]+.4).toFixed(3)));S.twoL[0].set(1);S.twoL[1].set(lerp(1,.3,win2));
+ /* Kampf */
+ let wp=100;TEMPT.forEach((a,i)=>{if(t>=a)wp-=15*eOut(P(t,a,a+.5));});if(t>=A[4])wp-=25*eOut(P(t,A[4],A[5]));if(t>=A[5])wp-=23*eOut(P(t,A[5],A[5]+2));
+ S.m1.f.setAttribute("width",320*wp/100);S.m1.v.textContent=Math.round(wp)+"%";S.m1.v.setAttribute("fill",wp<40?"#8A8A8A":"#FFFFFF");S.m1.v.setAttribute("filter",wp<40?"":"url(#glowB)");
+ const look=sw(A[4],B[0])?Math.sin((t-A[4])*3.2):0;
+ S.f1.draw({x:380,y:GY,sit:1,chair:1,work:look>.3?0:1,t,col:C.white,droop:lerp(.1,.8,P(t,A[5],B[0])),look:look>.3?1:0,face:1});S.f1.shadow.setAttribute("opacity",0);
+ const pop=(g,a,x,y)=>{const k=win(t,a,B[0],.3,.2);g.setAttribute("opacity",k.toFixed(3));g.setAttribute("transform",`translate(${x},${y+(1-eOut(P(t,a,a+.4)))*20})`);};
+ pop(S.phone,TEMPT[0],560,GY-250);pop(S.snack,TEMPT[1],760,GY-262);S.notes.forEach((n,i)=>pop(n,TEMPT[2]+i*.25,[300,520,740][i]-0,1000-i*0));
+ S.buzz.forEach(b=>b.setAttribute("opacity",(sw(TEMPT[0],B[0])&&Math.sin(t*18)>0)?1:0));
+ S.clock.setAttribute("opacity",win(t,A[4],A[5]+.4,.3,.3).toFixed(3));S.clock.setAttribute("transform","translate(860,560)");
+ S.ch1.setAttribute("transform",`rotate(${t*300})`);S.ch2.setAttribute("transform",`rotate(${t*25})`);
+ S.fL.set(lerp(1,.45,P(t,A[5],B[0])));
+ /* Design */
+ const rm=eIO(P(t,B[1]+.1,B[1]+.9));
+ S.ph2.setAttribute("transform",`translate(${lerp(560,860,t>=B[2]?eIO(P(t,B[2]+.2,B[2]+1.2)):0)},${lerp(GY-250,820,t>=B[2]?eIO(P(t,B[2]+.2,B[2]+1.2)):0)})`);
+ S.ph2.setAttribute("opacity",t<B[1]?1:(t<B[2]?1-.5*rm:1));
+ S.sn2.setAttribute("transform",`translate(${760+rm*260},${GY-262})`);S.sn2.setAttribute("opacity",(1-rm).toFixed(3));
+ S.nt2.forEach((n,i)=>{const k=eIO(P(t,B[1]+.2+i*.15,B[1]+.7+i*.15));n.setAttribute("opacity",(1-k).toFixed(3));n.setAttribute("transform",`translate(${[300,520,740][i]},${1000-k*80}) scale(${1-.3*k})`);});
+ S.room.setAttribute("opacity",win(t,B[2]+.1,DUR,.3,.5).toFixed(3));S.room.setAttribute("transform","translate(860,830)");
+ S.tog.setAttribute("opacity",win(t,B[2]+1.8,DUR,.3,.5).toFixed(3));S.tog.setAttribute("transform","translate(250,830)");
+ const off=P(t,B[2]+2.4,B[2]+2.6);S.knob.setAttribute("cx",lerp(28,-28,off));S.knob.setAttribute("fill",off>.5?"#5A5A5A":"#EDEDED");S.togL.textContent=off>.5?"OFF":"ON";
+ S.m2.f.setAttribute("width",320);S.m2.v.textContent="100%";
+ const fin=t>=B[4];S.f2.draw({x:380,y:GY,sit:1,chair:1,work:1,t,col:C.white,droop:-.05});S.f2.shadow.setAttribute("opacity",0);S.f2.g.setAttribute("filter","url(#glow)");
+ S.cL.set(lerp(.8,1,P(t,B[4],B[4]+1)));
+ /* Kamera */
+ const c=K.cam;
+ if(t<A[2]){c.sc=lerp(1.12,1.0,eOut(P(t,0,2)));c.cy=1080;}
+ if(sw(A[2],A[3]))camFX.dolly(t,c,A[2],A[3],{sc:1.08,cx:520,cy:1060});
+ if(sw(A[3],A[5])){c.sc=1.05;c.cy=1040;}
+ if(sw(A[5],B[0]))camFX.dolly(t,c,A[5],B[0],{sc:1.25,cx:440,cy:1150});
+ if(sw(B[0],B[2])){c.sc=1.05;c.cy=1050;}
+ if(sw(B[2],B[4])){c.sc=lerp(1.0,1.06,P(t,B[2],B[4]));c.cy=1020;}
+ if(t>=B[4])camFX.dolly(t,c,B[4],DUR,{sc:.95,cx:540,cy:1060});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.03,6);camFX.punch(t,c,[B[1]],.1,5);
+ camFX.shake(t,c,TEMPT,5,9);camFX.shake(t,c,[B[1]],12,5);
+ camFX.wipe(t,c,A[2],1);camFX.wipe(t,c,B[0],-1);
+ camFX.tilt(t,c,A[5],B[0],-1.5);
+ K.flash+=K.pulses(t,[B[1],B[4]+.2],8,.55,.4);
+ K.dim=win(t,A[5]+.5,B[0],.8,.1)*.3;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

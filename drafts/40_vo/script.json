@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "Saving money won't make you rich.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "And the people who are rich already know why.",
+     "mode": "normal",
+     "pause": 0.7
+    },
+    {
+     "text": "Saving is defense. It protects what you have.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Every month, a little goes into the jar.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "It feels safe. And it is safe.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "But safe money mostly just sits there.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "Rich people don't only ask, how much can I save?",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "They ask, where can this money grow?",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Into skills that raise what they earn. Into things that keep working while they sleep.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Save first. That's your foundation.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Then make your money work, not just wait.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

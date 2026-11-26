@@ -1,0 +1,80 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "Being busy is the most comfortable way to stay exactly where you are.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "It feels like progress.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Emails answered. Meetings attended. A to-do list full of checkmarks.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "You go to bed exhausted, so it must have been a good day.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "But look at what actually moved.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "Nothing important did.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Busy is motion. Progress is direction.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Brian Tracy calls it the vital few: a handful of tasks create most of your results.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "So tomorrow, before you answer anything, do the one task that actually moves you.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Less motion. More direction.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

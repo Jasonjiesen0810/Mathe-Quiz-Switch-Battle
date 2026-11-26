@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Motion Not Direction</title></head>
+<body>
+<script>
+/* MONO – Beschäftigt sein ≠ Fortschritt. "Vital few" nach Brian Tracy, Eat That Frog. Zähler sind symbolisch. */
+const A=[0.05,4.19,6.07,10.46,14.07];
+const B=[17.18,19.19,23.59,29.54,35.0];
+const DUR=41.4;
+const CHK=[...Array(7)].map((_,i)=>A[2]+.3+i*.55);
+window.VIDEO={DUR,theme:"mono",hookFX:1,seed:391,audio:"39_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["Being",{t:"busy",gold:1},"is","the","most"],["comfortable","way","to","stay"],["exactly","where","you",{t:"are.",gold:1}]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["It","feels","like",{t:"progress.",gold:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["Emails","answered.","Meetings","attended."],["A","to-do","list","full","of",{t:"checkmarks.",gold:1}]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["You","go","to","bed",{t:"exhausted,",gold:1}],["so","it","must","have","been","a","good","day."]]},
+ {a:A[4]-.05,b:B[0]-.1,lines:[["But","look","at","what"],["actually",{t:"moved.",gold:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[[{t:"Nothing",gold:1},"important","did."]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["Busy","is",{t:"motion.",gold:1}],["Progress","is",{t:"direction.",gold:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["A",{t:"handful",gold:1},"of","tasks","create"],["most","of","your","results."]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["Before","you","answer","anything,"],["do","the",{t:"one task",gold:1},"that","moves","you."]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[["Less","motion."],[{t:"More direction.",mark:1}]]},
+],
+LABELS:[],
+SFX:[...CHK.map(a=>[a,"tick",1]),[A[4]+.6,"tick",.8],[B[0]+.3,"heartbeat",.8],[B[1],"riser",1],...[...Array(2)].map((_,i)=>[B[2]+.9+i*.3,"tick",1]),[B[3]+.4,"whoosh",.5],[B[4]+.3,"shimmer",.8]],
+build(K){const {el,txt,C,scene,makeFig,lamp,desk,label,big,GY}=K;const S=K.S={};
+ const LST={fill:"none",stroke:"#D0D0D0","stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round"};const st=o=>Object.assign({},LST,o);
+ const treadmill=(p,x)=>{const g=el("g",{},p);el("rect",st({x:x-170,y:GY-46,width:340,height:40,rx:20}),g);el("circle",st({cx:x-150,cy:GY-26,r:14}),g);el("circle",st({cx:x+150,cy:GY-26,r:14}),g);
+   el("path",st({d:`M${x+150},${GY-46} L${x+190},${GY-300} L${x+60},${GY-310}`}),g);const disp=el("rect",st({x:x+90,y:GY-380,width:170,height:60,rx:8,fill:"#0a0a0a"}),g);
+   const dl=label(g,x+175,GY-342,"BUSY",20,{fill:"#EDEDED"});const marks=[...Array(8)].map(()=>el("line",{y1:GY-38,y2:GY-38,stroke:"#7A7A7A","stroke-width":3},g));return {g,marks,dl};};
+ /* Laufband */
+ S.tm=el("g",{},scene);S.tmL=lamp(480,150,460,S.tm);S.t1=treadmill(S.tm,460);S.fR=makeFig(S.tm);
+ S.dL=label(S.tm,300,700,"DISTANCE",20);S.dV=big(S.tm,300,830,"0 m",110);S.sL=label(S.tm,780,700,"EFFORT",20);S.sV=big(S.tm,780,830,"",110);
+ /* Checkliste */
+ S.cl=el("g",{opacity:0},scene);S.clL=lamp(540,150,520,S.cl);
+ el("rect",st({x:260,y:640,width:560,height:560,rx:14,fill:"#090909"}),S.cl);label(S.cl,540,690,"TODAY",22,{fill:"#EDEDED"});
+ S.rows=["EMAILS","MEETING","REPLY","CALL","REPORT","ADMIN","FOLLOW-UP"].map((l,i)=>{const y=750+i*62;el("rect",st({x:300,y:y-18,width:30,height:30,rx:6}),S.cl);
+   const ck=el("path",st({d:`M${306},${y-3} L${314},${y+6} L${326},${y-12}`,stroke:"#FFFFFF","stroke-width":3.5,opacity:0}),S.cl);txt(S.cl,350,y+8,l,24,{fill:"#BDBDBD","text-anchor":"start","letter-spacing":3,"font-weight":400});return ck;});
+ S.doneL=label(S.cl,540,1290,"DONE",20);S.doneV=big(S.cl,540,1400,"0",100);
+ S.en=el("g",{opacity:0},scene);label(S.en,540,700,"ENERGY",20);el("rect",{x:380,y:722,width:320,height:10,rx:5,fill:"none",stroke:"#5A5A5A","stroke-width":2},S.en);S.enF=el("rect",{x:380,y:722,width:320,height:10,rx:5,fill:"#EDEDED"},S.en);
+ S.moon=el("path",st({d:"M0,-50 A50,50 0 1 0 50,10 A38,38 0 1 1 0,-50 Z"}),S.en);S.fT=makeFig(S.en);S.bed=el("path",st({d:"M380,1330 L800,1330 L800,1440 M380,1330 L380,1440 M780,1330 L780,1270"}),S.en);
+ /* Ziel-Fortschritt */
+ S.goal=el("g",{opacity:0},scene);S.gL=lamp(540,150,520,S.goal);label(S.goal,540,760,"IMPORTANT WORK",22,{fill:"#EDEDED"});
+ el("rect",{x:240,y:790,width:600,height:14,rx:7,fill:"none",stroke:"#5A5A5A","stroke-width":2},S.goal);S.gF=el("rect",{x:240,y:790,width:0,height:14,rx:7,fill:"#FFFFFF",filter:"url(#glowB)"},S.goal);
+ S.gV=big(S.goal,540,960,"0%",110);
+ /* Split: Motion vs Direction */
+ S.split=el("g",{opacity:0},scene);S.sp1=lamp(270,150,380,S.split);S.sp2=lamp(810,150,380,S.split);
+ S.t2=treadmill(S.split,250);S.f2a=makeFig(S.split);S.f2b=makeFig(S.split);label(S.split,250,1520,"MOTION",22);label(S.split,800,1520,"DIRECTION",22,{fill:"#FFFFFF"});
+ el("line",st({x1:600,y1:GY-2,x2:1040,y2:GY-2,"stroke-dasharray":"2 14",stroke:"#9A9A9A"}),S.split);
+ S.flag=el("g",{},S.split);el("line",st({x1:1000,y1:GY,x2:1000,y2:GY-160}),S.flag);el("path",st({d:"M1000,GY-160 L1050,GY-140 L1000,GY-120".replace(/GY/g,GY),fill:"#EDEDED"}),S.flag);
+ /* Vital few */
+ S.vf=el("g",{opacity:0},scene);S.vfL=lamp(540,150,560,S.vf);
+ S.cards=[...Array(10)].map((_,i)=>{const g=el("g",{},S.vf);const r=el("rect",st({x:-80,y:-50,width:160,height:100,rx:10,fill:"#0a0a0a"}),g);[0,1].forEach(j=>el("rect",{x:-56,y:-18+j*22,width:[100,70][j],height:7,rx:3,fill:"#5A5A5A"},g));g.r=r;return g;});
+ S.vfT=label(S.vf,540,1330,"THE VITAL FEW",22,{fill:"#FFFFFF",opacity:0});S.vfS=label(S.vf,540,1372,"— BRIAN TRACY, EAT THAT FROG",16,{opacity:0});
+ S.one=label(S.vf,540,0,"THE ONE TASK",20,{fill:"#FFFFFF",opacity:0});
+ S.fEnd=makeFig(S.vf);
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const s1=t<A[2],s2=sw(A[2],A[3]),s3=sw(A[3],A[4]),s4=sw(A[4],B[1]),s5=sw(B[1],B[2]),s6=t>=B[2];
+ [[S.tm,s1],[S.cl,s2],[S.en,s3],[S.goal,s4],[S.split,s5],[S.vf,s6]].forEach(([g,on])=>g.setAttribute("opacity",on?1:0));
+ /* Laufband */
+ const belt=(tm,sp)=>tm.marks.forEach((m,i)=>{const x=((i*42-t*sp)%336+336)%336;m.setAttribute("x1",tm===S.t1?460-160+x:250-160+x);m.setAttribute("x2",(tm===S.t1?460-160+x:250-160+x)+16);});
+ belt(S.t1,300);S.fR.draw({x:440,y:GY-48,run:1,ph:1.2+t*13,lean:.3,droop:.1,col:C.white});S.fR.shadow.setAttribute("opacity",0);S.fR.g.setAttribute("filter","url(#glow)");
+ S.sV.textContent=Math.min(100,Math.round(70+t*9))+"%";S.sV.setAttribute("font-size",90);
+ /* Checkliste */
+ let done=0;S.rows.forEach((ck,i)=>{const k=P(t,CHK[i],CHK[i]+.15);ck.setAttribute("opacity",k.toFixed(3));if(t>=CHK[i])done++;});S.doneV.textContent=String(done*3+(done?2:0));
+ /* Energie / müde */
+ const ek=eIO(P(t,A[3]+.2,A[4]-.5));S.enF.setAttribute("width",320*(1-ek*.92));S.moon.setAttribute("transform","translate(820,560)");
+ S.fT.draw({x:520,y:GY,sit:1,chair:1,droop:.9,col:C.white,lean:-.1});S.fT.shadow.setAttribute("opacity",0);
+ /* Ziel */
+ S.gF.setAttribute("width",0);S.gV.textContent="0%";S.gV.setAttribute("fill",sw(B[0],B[1])?"#7A7A7A":"#FFFFFF");S.gV.setAttribute("filter",sw(B[0],B[1])?"":"url(#glowB)");
+ S.gL.set(sw(B[0],B[1])?lerp(1,.4,P(t,B[0],B[0]+1)):1);
+ /* Split */
+ belt(S.t2,300);S.f2a.draw({x:230,y:GY-48,run:1,ph:t*13,lean:.3,col:"#7A7A7A",sc:.9});S.f2a.shadow.setAttribute("opacity",0);
+ const w=P(t,B[1]+.2,B[2]);S.f2b.draw({x:lerp(640,930,w),y:GY,ph:w*14,stride:.9,col:C.white,sc:.9});S.f2b.shadow.setAttribute("opacity",0);S.f2b.g.setAttribute("filter","url(#glow)");
+ /* Vital few */
+ S.cards.forEach((g,i)=>{const col=i%2,row=Math.floor(i/2);let x=[380,700][col],y=700+row*120,sc=.9,o=win(t,B[2]+i*.06,DUR,.3,.5);
+   const vital=i===1||i===6;const hl=vital&&t>=B[2]+.9;
+   g.r.setAttribute("stroke",hl?"#FFFFFF":"#5A5A5A");g.r.setAttribute("filter",hl?"url(#glowB)":"");
+   let dimK=t>=B[2]+.9&&!vital?.35:1;
+   if(t>=B[3]){if(i===1){const k=eIO(P(t,B[3]+.2,B[3]+1));x=lerp(x,540,k);y=lerp(y,760,k);sc=lerp(.9,1.5,k);}else{dimK=lerp(dimK,.12,P(t,B[3]+.2,B[3]+1));}}
+   g.setAttribute("opacity",(o*dimK).toFixed(3));g.setAttribute("transform",`translate(${x},${y}) scale(${sc})`);});
+ S.vfT.setAttribute("opacity",win(t,B[2]+1,B[3],.3,.3).toFixed(3));S.vfS.setAttribute("opacity",win(t,B[2]+1.4,B[3],.3,.3).toFixed(3));
+ S.one.setAttribute("opacity",win(t,B[3]+1,DUR,.3,.5).toFixed(3));S.one.setAttribute("y",880);
+ const fe=t>=B[3];const fw=eIO(P(t,B[4]+.2,B[4]+1.6));S.fEnd.draw({x:lerp(300,470,fw),y:GY,ph:fw*8,stride:.9,col:C.white,point:t>=B[3]+1&&t<B[4]?eOut(P(t,B[3]+1,B[3]+1.4)):0,look:1});
+ S.fEnd.g.setAttribute("opacity",(fe?K.endFade:0).toFixed(3));S.fEnd.shadow.setAttribute("opacity",0);
+ S.vfL.set(lerp(.8,1,P(t,B[4],B[4]+1)));
+ /* Kamera */
+ const c=K.cam;
+ if(t<A[2]){c.sc=lerp(1.12,1.04,eOut(P(t,0,2)));c.cy=1080;}
+ if(sw(A[2],A[3]))camFX.dolly(t,c,A[2],A[3],{sc:1.08,cx:540,cy:1020});
+ if(sw(A[3],A[4]))camFX.dolly(t,c,A[3],A[4],{sc:1.15,cx:540,cy:1150});
+ if(sw(A[4],B[1])){c.sc=lerp(1.0,1.12,P(t,A[4],B[1]));c.cy=1000;}
+ if(sw(B[1],B[2])){c.sc=1.0;c.cy=1080;}
+ if(sw(B[2],B[3])){c.sc=1.0;c.cy=1000;}
+ if(t>=B[3])camFX.dolly(t,c,B[3],B[4],{sc:1.08,cx:540,cy:1000});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.03,6);camFX.punch(t,c,[B[1]],.1,5);
+ camFX.shake(t,c,[B[1]],12,5);camFX.shake(t,c,[B[0]+.1],5,6);
+ camFX.wipe(t,c,A[2],1);camFX.wipe(t,c,A[3],-1);camFX.wipe(t,c,A[4],1);camFX.wipe(t,c,B[1],-1);camFX.wipe(t,c,B[2],1);
+ camFX.tilt(t,c,A[3],A[4],-1.2);
+ K.flash+=K.pulses(t,[B[1],B[4]+.3],8,.55,.4);
+ K.dim=win(t,B[0]+.2,B[1],.6,.1)*.3;
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

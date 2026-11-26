@@ -1,0 +1,85 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "The most disciplined people you know have the least willpower.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "And that's exactly why they win.",
+     "mode": "quote",
+     "pause": 0.7
+    },
+    {
+     "text": "Most of us think discipline means fighting temptation all day.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "Phone on the desk. Snacks in the kitchen. Notifications on.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "Every hour, a new fight.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "And every fight costs you a little more.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "Disciplined people don't win those fights.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "They remove them.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Phone in another room. No snacks in the house. Notifications off.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Nothing to resist, so nothing to lose.",
+     "mode": "quote",
+     "pause": 0.7
+    },
+    {
+     "text": "Stop training your willpower. Design your environment.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

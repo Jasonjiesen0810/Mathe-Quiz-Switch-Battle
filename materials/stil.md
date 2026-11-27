@@ -189,3 +189,12 @@ Ziel: ruhig, selbstbewusst, kalt, leicht abgehoben, wie eine hochwertige Busines
 - **Kamera-Effekte bleiben** (Zoom, Punch, Shake, Tilt), nur ruhiger dosiert. Übergänge = **Wischen** (`camFX.wipe(t,c,zeit,richtung)`) statt Reißschwenk.
 - **Hooks:** seltsam/kontraintuitiv, aber seriös. Muster: "[überraschende Behauptung], and the reason why explains …" – z. B. "Getting a raise is one of the fastest ways to stay broke." Neugier auf die Begründung, kein Clickbait.
 - Beispielzahlen nur als klar hypothetisches Rechenbeispiel ("You earn three thousand…"), keine erfundenen Statistiken.
+
+## APPLE-FEINSCHLIFF (ab Video 41, Feedback 27.11.)
+"Smooth und elegant, einfach aber hochwertig" – wie Apple.
+- Reines Schwarz, kein Punkteraster, kein Bodengitter. Nur eine feine leuchtende Bodenlinie mit kleinen Punkten. Viel Leerraum.
+- Text: Inter 600, weiß mit leichtem Glow, Satzschreibweise, Wort-für-Wort-Einblendung (synchron zur Stimme, weich mit leichter Unschärfe).
+- Betonung: einzelnes Wort in kursiver Serifenschrift (Instrument Serif) statt Farbe. Kernsatz als weiße Pille (blendet weich ein).
+- Elemente: Glas-Panels (`K.glass`), Piktogramm-Büsten in Reihen (`K.bust`, eine hell, Rest grau), dünne leuchtende Linien-Icons, kleine gesperrte Labels, große Zahlen.
+- Figur: schlanke Strichfigur mit weißem Glow.
+- Übergänge per Wischen; Kamera ruhig, kleine Punches/Shakes nur auf dem Twist.

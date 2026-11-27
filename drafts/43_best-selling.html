@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Best Selling</title></head>
+<body>
+<script>
+/* MONO/Apple – Rich Dad Poor Dad, Lektion 6 ("Work to learn, don't work for money"). Song "L.E.S." – Highlight 0:22. */
+const A=[0.05,4.4,7.97,11.16,13.6];
+const B=[18.93,21.14,23.95,26.31,31.51];
+const DUR=39.4;
+window.VIDEO={DUR,theme:"mono",hookFX:1,seed:431,audio:"43_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["The","most",{t:"talented",gold:1},"person"],["in","the","room","often"],["earns","the",{t:"least.",gold:1}]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["Robert","Kiyosaki","once","met"],["a","journalist","in",{t:"Singapore.",gold:1}]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["Her","writing","was",{t:"excellent.",gold:1}],["Her","novels","went","nowhere."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["He","told","her","to","take"],["a","course","in",{t:"selling.",gold:1}]]},
+ {a:A[4]-.05,b:B[0]-.1,lines:[["She","was",{t:"offended.",gold:1}],["She","had","a","master's","degree"],["in","English","literature."]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["So","he","pointed","at","her"],["own",{t:"notes.",gold:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["She","had","written:"]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["Not",{t:"best-writing",gold:1},"author."]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["Talent","alone","is","rarely",{t:"enough.",gold:1}],["You","need","the","skills","that"],["carry","it","to","people."]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[[{t:"Work to learn,",mark:1}],["not","just","to",{t:"earn.",gold:1}]]},
+],
+LABELS:[],
+SFX:[[A[1]+.3,"tick",.7],[A[2]+.4,"tick",.6],[A[3]+.3,"tick",.8],[A[4]+.4,"whoosh",.5],[B[0]+.4,"tick",.7],[B[1]+.5,"scratch",.5],[B[2],"riser",1],[B[2]+.6,"scratch",.9],[B[3]+.8,"tick",.6],...[...Array(7)].map((_,i)=>[B[3]+2+i*.18,"tick",.4]),[B[4]+.3,"shimmer",.8]],
+build(K){const {el,txt,C,scene,makeFig,label,big,bust,glass,GY,pill}=K;const S=K.S={};
+ const L={fill:"none",stroke:"#FFFFFF","stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round",filter:"url(#glow)"};const st=o=>Object.assign({},L,o);
+ /* Hook: Talent vs. Einkommen */
+ S.h=el("g",{},scene);S.row=[...Array(7)].map(()=>bust(S.h));
+ S.bars=[...Array(7)].map((_,i)=>el("rect",{x:150+i*130-6,width:12,rx:6,fill:i===3?"#FFFFFF":"#4A4A4A"},S.h));
+ label(S.h,540,1500,"INCOME",18);S.star=label(S.h,540,1240,"MOST TALENTED",18,{fill:"#FFFFFF"});
+ /* Treffen */
+ S.m=el("g",{opacity:0},scene);S.bJ=bust(S.m);S.bR=bust(S.m);el("line",st({x1:260,y1:1300,x2:820,y2:1300}),S.m);
+ [440,640].forEach(x=>el("path",st({d:`M${x-22},1262 L${x-18},1298 L${x+18},1298 L${x+22},1262 Z M${x+22},1270 q14,0 14,10 q0,10 -14,10`,"stroke-width":2}),S.m));
+ label(S.m,540,1500,"SINGAPORE · 1995",18);S.lJ=label(S.m,330,1440,"JOURNALIST",16);S.lR=label(S.m,750,1440,"KIYOSAKI",16);
+ /* Manuskripte + flache Verkäufe */
+ S.ms=el("g",{opacity:0},scene);[0,1,2,3].forEach(i=>{const g=el("g",{transform:`translate(${300+i*14},${780+i*14})`},S.ms);el("rect",st({x:0,y:0,width:240,height:310,rx:6,fill:"#0a0a0a","stroke-width":2}),g);for(let j=0;j<7;j++)el("rect",{x:28,y:40+j*34,width:[180,150,170,120,175,140,90][j],height:6,rx:3,fill:"#5A5A5A"},g);});
+ label(S.ms,770,820,"SALES",18);el("line",{x1:650,y1:1060,x2:900,y2:1060,stroke:"#5A5A5A","stroke-width":2},S.ms);S.flat=el("polyline",st({points:"",stroke:"#8A8A8A",filter:""}),S.ms);
+ S.course=pill(S.ms,0,0,"SALES COURSE",C.white,330,26,70);
+ /* Abschluss / beleidigt */
+ S.deg=el("g",{opacity:0},scene);S.bJ2=bust(S.deg);el("path",st({d:"M440,1180 L540,1140 L640,1180 L540,1220 Z M480,1196 L480,1236 Q540,1262 600,1236 L600,1196 M640,1180 L640,1230"}),S.deg);
+ label(S.deg,540,1500,"M.A. ENGLISH LITERATURE",18,{fill:"#EDEDED"});
+ /* Notizblock */
+ S.nb=el("g",{opacity:0},scene);glass(S.nb,170,650,740,620);
+ for(let j=0;j<9;j++)el("line",{x1:220,y1:740+j*60,x2:860,y2:740+j*60,stroke:"#fff",opacity:.08,"stroke-width":2},S.nb);
+ S.n1=txt(S.nb,240,800,"Robert Kiyosaki,",54,{fill:"#BDBDBD","font-family":"ISerif","font-style":"italic","text-anchor":"start","letter-spacing":0,opacity:0});
+ S.n2=txt(S.nb,240,920,"best-selling author",64,{fill:"#FFFFFF","font-family":"ISerif","font-style":"italic","text-anchor":"start","letter-spacing":0,filter:"url(#glowB)",opacity:0});
+ S.ul=el("line",st({x1:395,y1:945,x2:395,y2:945,"stroke-width":4}),S.nb);
+ S.n3=txt(S.nb,240,1080,"best-writing author",52,{fill:"#6A6A6A","font-family":"ISerif","font-style":"italic","text-anchor":"start","letter-spacing":0,opacity:0});
+ S.strike=el("line",{x1:236,y1:1064,x2:236,y2:1064,stroke:"#8A8A8A","stroke-width":3},S.nb);
+ S.pointer=makeFig(S.nb);
+ /* Talent + Reichweite */
+ S.tr=el("g",{opacity:0},scene);
+ [["TALENT",760],["REACH",860]].forEach(([l,y],i)=>{label(S.tr,150,y+8,l,22,{"text-anchor":"start",fill:"#EDEDED"});el("rect",{x:340,y:y-9,width:580,height:18,rx:9,fill:"none",stroke:"#4A4A4A","stroke-width":2},S.tr);S["tr"+i]=el("rect",{x:340,y:y-9,width:0,height:18,rx:9,fill:"#FFFFFF",filter:"url(#glowB)"},S.tr);});
+ S.crowd=[...Array(7)].map(()=>bust(S.tr));
+ /* Schluss */
+ S.fin=el("g",{opacity:0},scene);S.fF=makeFig(S.fin);label(S.fin,540,1520,"RICH DAD POOR DAD · LESSON 6",16);
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ [[S.h,t<A[1]],[S.m,sw(A[1],A[2])],[S.ms,sw(A[2],A[4])],[S.deg,sw(A[4],B[0])],[S.nb,sw(B[0],B[3])],[S.tr,sw(B[3],B[4])],[S.fin,t>=B[4]]].forEach(([g,on])=>g.setAttribute("opacity",on?1:0));
+ /* Hook */
+ const inc=[.55,.7,.45,.12,.6,.5,.65];const g0=eOut(P(t,-1.2,.4));
+ S.row.forEach((b,i)=>b.draw({x:150+i*130,y:GY,sc:.8,hl:i===3?1:0}));
+ S.bars.forEach((r,i)=>{const h=320*inc[i]*g0;r.setAttribute("y",1180-h);r.setAttribute("height",h);r.setAttribute("filter",i===3?"url(#glowB)":"");});
+ /* Treffen */
+ S.bJ.draw({x:330,y:1300,sc:1.1,hl:1});S.bR.draw({x:750,y:1300,sc:1.1,hl:.3});
+ /* Manuskripte */
+ const fk=eOut(P(t,A[2]+.4,A[3]));const pts=[];for(let i=0;i<=20;i++){const u=i/20;if(u>fk)break;pts.push((650+u*250)+","+(1050-u*8-Math.sin(u*9)*4));}S.flat.setAttribute("points",pts.join(" "));
+ S.course.x=770;S.course.y=1220;K.popAt(S.course,t,A[3]+.3,A[4]-.1,1);
+ /* beleidigt: dreht sich weg */
+ const away=eIO(P(t,A[4]+1.2,A[4]+2.2));S.bJ2.draw({x:lerp(540,420,away),y:1440,sc:1.4,hl:1});
+ /* Notizen */
+ S.n1.setAttribute("opacity",P(t,B[0]+.3,B[0]+.8));S.n2.setAttribute("opacity",P(t,B[1]+.2,B[1]+.8));
+ const ul=eOut(P(t,B[2]+.4,B[2]+1));S.ul.setAttribute("x2",395+170*ul);S.ul.setAttribute("x1",395);
+ S.n3.setAttribute("opacity",(P(t,B[2]+.1,B[2]+.5)).toFixed(3));S.strike.setAttribute("x2",236+520*eOut(P(t,B[2]+.6,B[2]+1.1)));
+ S.pointer.draw({x:120,y:GY,look:1,point:eOut(P(t,B[0]+.2,B[0]+.6)),droop:-.1,col:C.white});S.pointer.shadow.setAttribute("opacity",0);
+ /* Talent/Reach */
+ S.tr0.setAttribute("width",580*eOut(P(t,B[3]+.2,B[3]+.9)));S.tr1.setAttribute("width",580*lerp(.08,.85,eIO(P(t,B[3]+2,B[4]-.3)))*eOut(P(t,B[3]+.6,B[3]+1.2)));
+ S.crowd.forEach((b,i)=>b.draw({x:150+i*130,y:GY,sc:.8,hl:t>=B[3]+2+i*.18?1:0}));
+ /* Schluss */
+ const fw=eIO(P(t,B[4]+.3,B[4]+1.8));S.fF.draw({x:lerp(300,540,fw),y:GY,ph:fw*7,stride:.8,col:C.white,droop:-.15,look:1});S.fF.shadow.setAttribute("opacity",0);S.fF.g.setAttribute("opacity",K.endFade.toFixed(3));
+ /* Kamera */
+ const c=K.cam;
+ if(t<A[1]){c.sc=lerp(1.06,1.0,eOut(P(t,0,3)));c.cy=1120;}
+ if(sw(A[1],A[2]))camFX.dolly(t,c,A[1],A[2],{sc:1.08,cx:540,cy:1220});
+ if(sw(A[2],A[4])){c.sc=lerp(1.0,1.05,P(t,A[2],A[4]));c.cy=1020;}
+ if(sw(A[4],B[0]))camFX.dolly(t,c,A[4],B[0],{sc:1.1,cx:500,cy:1250});
+ if(sw(B[0],B[3]))camFX.dolly(t,c,B[0],B[3],{sc:1.06,cx:540,cy:940});
+ if(sw(B[3],B[4])){c.sc=1.0;c.cy=1080;}
+ if(t>=B[4])camFX.dolly(t,c,B[4],DUR,{sc:1.08,cx:540,cy:1150});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.025,6);camFX.punch(t,c,[B[2]],.09,5);
+ camFX.shake(t,c,[B[2]],10,5);
+ camFX.wipe(t,c,A[1],1);camFX.wipe(t,c,A[2],-1);camFX.wipe(t,c,A[4],1);camFX.wipe(t,c,B[0],-1);camFX.wipe(t,c,B[3],1);camFX.wipe(t,c,B[4],-1);
+ K.flash+=K.pulses(t,[B[2],B[4]+.3],8,.5,.35);
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

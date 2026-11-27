@@ -33,3 +33,10 @@ Muster TON → SATZ → TON → SATZ: jeder Sprechsatz beginnt direkt nach einem
 | 13 | s13_disgracemode.mp3 (STAKILLAZ – DISGRACEMODE, Ultra Slowed) | Spannungsaufbau, "bald schaffe ich es"; ab 30 s Tempo hoch = der Plan ging auf | Start 0 s, Wechsel 29,65 s |
 | 14 | s14_fallen_angel.mp3 (fdream – Fallen Angel) | positives Arbeiten, alles läuft nach Plan | Beat-Drop 25,6 s |
 | 15 | s15_want_to_love.mp3 (Aloboi – Want To Love, Just Raw) | Realization – "der Hustle beginnt" | Start 0 s (direkt) |
+
+## Neu (27.11.)
+| Datei | Song | Stimmung | Höhepunkt |
+|---|---|---|---|
+| s16_timeless.mp3 | The Weeknd & Playboi Carti – Timeless (slowed/reverb) | Comeback, Erfolg bereits da | 0:28 |
+| s17_poster_boy.mp3 | 2hollis – poster boy | Endlich geschafft, leicht abgehoben | 0:33 |
+| s18_les.mp3 | Childish Gambino – L.E.S. (instrumental, slowed) | belehrend, tiefgründig | 0:22 |

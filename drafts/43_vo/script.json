@@ -1,0 +1,80 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "The most talented person in the room is often the one who earns the least.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "Robert Kiyosaki once met a journalist in Singapore.",
+     "mode": "story",
+     "pause": 0.4
+    },
+    {
+     "text": "Her writing was excellent. Her novels went nowhere.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "He told her to take a course in selling.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "She was offended. She had a master's degree in English literature.",
+     "mode": "normal",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "So he pointed at her own notes.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "She had written: best-selling author.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "Not best-writing author.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Talent alone is rarely enough. You also need the skills that carry it to people.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "His advice was simple. Work to learn, not just to earn.",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

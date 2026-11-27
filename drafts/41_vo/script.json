@@ -1,0 +1,80 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "The house you're proud of might be the reason you're not getting rich.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "That's one of the most controversial ideas in Rich Dad Poor Dad.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Robert Kiyosaki's rich dad used a simple test.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "An asset puts money in your pocket. A liability takes money out.",
+     "mode": "quote",
+     "pause": 0.8
+    },
+    {
+     "text": "Now look at the house. The mortgage. The repairs. The taxes.",
+     "mode": "story",
+     "pause": 0.6
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "Every month, money leaves.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "So by that test, it's a liability.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Rich dad put it like this: the rich acquire assets. Everyone else acquires liabilities, and thinks they're assets.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "It's not how much money you make. It's how much you keep.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "So before you buy anything, ask one question. Which way does the money flow?",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}

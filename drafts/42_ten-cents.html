@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ten Cents</title></head>
+<body>
+<script>
+/* MONO/Apple – Rich Dad Poor Dad, Lektion 1 ("The rich don't work for money"). Song "Poster Boy" – Highlight 0:33 auf "The rich have money work for them." */
+const A=[0.05,4.15,7.58,12.24,15.67,17.84];
+const B=[21.08,23.48,26.5,29.12,32.22,37.07];
+const DUR=42.3;
+window.VIDEO={DUR,theme:"mono",hookFX:1,seed:421,audio:"42_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["At","nine,","Robert","Kiyosaki"],["worked","for",{t:"ten cents",gold:1}],["an","hour."]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["It","became","the","most"],[{t:"valuable",gold:1},"job","he","ever","had."]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["Every","Saturday,","in","a","store"],["owned","by","his",{t:"rich dad.",gold:1}]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["After","three","weeks,","he","was",{t:"angry.",gold:1}],["He","wanted","a","raise."]]},
+ {a:A[4]-.05,b:A[5]-.1,lines:[["Rich","dad","didn't","give","him","one."]]},
+ {a:A[5]-.05,b:B[0]-.1,lines:[["He","took","the","pay","away"],[{t:"completely.",gold:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["The","low","pay","was","the",{t:"lesson.",gold:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["The","poor","and","the","middle","class"],["work","for",{t:"money.",gold:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["The","rich","have",{t:"money work for them.",mark:1}]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["Most","people","spend","their","lives"],["asking","for","a",{t:"raise.",gold:1}]]},
+ {a:B[4]-.05,b:B[5]-.1,lines:[["Few","ask","how","to",{t:"build",gold:1},"something"],["that","pays","them,","even","when"],["they're","not","there."]]},
+ {a:B[5]-.05,b:DUR-.5,lines:[["Which","question","are","you",{t:"asking?",gold:1}]]},
+],
+LABELS:[],
+SFX:[[.3,"tick",.8],[A[2]+.4,"tick",.6],...[0,1,2].map(i=>[A[3]+.2+i*.5,"tick",.8]),[A[5]+.2,"thud",.7],[B[0]+.3,"heartbeat",.6],[B[2],"riser",1],[B[3]+.6,"tick",.6],[B[3]+1.2,"tick",.6],[B[3]+1.8,"tick",.6],[B[5]+.2,"tick",.8],[B[5]+1.0,"shimmer",.8]],
+build(K){const {el,txt,C,scene,makeFig,label,big,bust,glass,GY,pill}=K;const S=K.S={};
+ const L={fill:"none",stroke:"#FFFFFF","stroke-width":2.5,"stroke-linejoin":"round","stroke-linecap":"round",filter:"url(#glow)"};const st=o=>Object.assign({},L,o);
+ const flow=(p,n,r=6)=>[...Array(n)].map(()=>el("circle",{r,fill:"#fff",opacity:0,filter:"url(#glow)"},p));
+ /* Glas-Panel mit Lohn */
+ S.pan=el("g",{},scene);glass(S.pan,380,660,520,780);S.wage=big(S.pan,640,930,"$0.10",130);S.wL=label(S.pan,640,990,"AN HOUR",22,{fill:"#EDEDED"});
+ S.wSub=label(S.pan,640,1380,"AGE 9 · 1956",18);S.kid=makeFig(S.pan);
+ /* Laden */
+ S.store=el("g",{opacity:0},scene);
+ [0,1,2].forEach(r=>{el("line",st({x1:560,y1:900+r*150,x2:940,y2:900+r*150,"stroke-width":2,opacity:.8}),S.store);for(let i=0;i<6;i++)el("rect",st({x:580+i*58,y:900+r*150-62,width:38,height:62,rx:6,"stroke-width":2}),S.store);});
+ el("path",st({d:"M540,1440 L540,760 L960,760 L960,1440"}),S.store);label(S.store,750,720,"SATURDAYS · 3 HOURS",18);S.kid2=makeFig(S.store);
+ S.dust=[...Array(10)].map(()=>el("circle",{r:3,fill:"#fff",opacity:0},S.store));
+ /* Wochen */
+ S.wk=el("g",{opacity:0},scene);el("line",{x1:140,y1:1000,x2:940,y2:1000,stroke:"#fff",opacity:.55,"stroke-width":2,filter:"url(#glow)"},S.wk);
+ S.wks=[0,1,2].map(i=>{const x=280+i*260;const d=el("circle",{cx:x,cy:1000,r:9,fill:"#fff",opacity:0,filter:"url(#glow)"},S.wk);const l=label(S.wk,x,1055,"WEEK "+(i+1),18,{opacity:0});return {d,l};});
+ S.raise=pill(S.wk,0,0,"RAISE?",C.white,200,26,66);S.kid3=makeFig(S.wk);
+ /* Rich dad */
+ S.rd=el("g",{opacity:0},scene);S.rdB=bust(S.rd);label(S.rd,760,1490,"RICH DAD",20,{fill:"#FFFFFF"});S.kid4=makeFig(S.rd);
+ /* Arbeit für Geld vs. Geld arbeitet */
+ S.mw=el("g",{opacity:0},scene);S.coin=el("g",{},S.mw);el("circle",st({cx:540,cy:840,r:80,"stroke-width":3}),S.coin);txt(S.coin,540,868,"$",80,{fill:"#fff","font-weight":300,"letter-spacing":0});
+ S.row=[...Array(6)].map(()=>bust(S.mw));S.mwDots=[...Array(6)].map(()=>flow(S.mw,3,5));S.inDots=flow(S.mw,10,6);
+ S.mwL=label(S.mw,540,1500,"",20,{fill:"#EDEDED"});
+ /* Leben: Raises */
+ S.life=el("g",{opacity:0},scene);el("line",{x1:100,y1:GY,x2:980,y2:GY,stroke:"#fff",opacity:0},S.life);
+ S.ages=[25,35,45,55,65].map((a,i)=>{const x=160+i*190;label(S.life,x,GY+50,"AGE "+a,16);return x;});
+ S.rs=[0,1,2,3].map(i=>label(S.life,255+i*190,GY-230,"+ RAISE",18,{fill:"#EDEDED",opacity:0}));S.walker=makeFig(S.life);
+ /* System */
+ S.sys=el("g",{opacity:0},scene);glass(S.sys,260,700,560,480);label(S.sys,540,760,"SYSTEM",22,{fill:"#FFFFFF"});
+ S.gears=[[460,950,70],[610,1010,50],[560,880,36]].map(([x,y,r])=>{const g=el("g",{transform:`translate(${x},${y})`},S.sys);el("circle",st({r,"stroke-width":2.5}),g);for(let i=0;i<8;i++){const a=i*Math.PI/4;el("line",st({x1:Math.cos(a)*r,y1:Math.sin(a)*r,x2:Math.cos(a)*(r+12),y2:Math.sin(a)*(r+12),"stroke-width":5,filter:""}),g);}g.r=r;return g;});
+ S.sysOut=flow(S.sys,8,5);S.chair=el("path",st({d:"M780,1440 L780,1300 L880,1300 L880,1440 M780,1360 L880,1360 M780,1300 L780,1220","stroke-width":2.5}),S.sys);label(S.sys,830,1500,"NOT THERE",16);
+ /* Fragen */
+ S.qs=el("g",{opacity:0},scene);S.q1=pill(S.qs,0,0,"HOW DO I GET A RAISE?",C.red,560,24,70);S.q2=pill(S.qs,0,0,"WHAT CAN I BUILD?",C.gold,500,26,76);S.endFig=makeFig(S.qs);
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const sc=[[S.pan,t<A[2]||sw(A[5],B[1])],[S.store,sw(A[2],A[3])],[S.wk,sw(A[3],A[4])],[S.rd,sw(A[4],A[5])],[S.mw,sw(B[1],B[3])],[S.life,sw(B[3],B[4])],[S.sys,sw(B[4],B[5])],[S.qs,t>=B[5]]];
+ sc.forEach(([g,on])=>g.setAttribute("opacity",on?1:0));
+ /* Panel */
+ let w=.10;if(t>=A[5])w=lerp(.10,0,eIO(P(t,A[5]+.2,A[5]+1.2)));S.wage.textContent="$"+w.toFixed(2);
+ S.wage.setAttribute("fill",t>=A[5]+1.2?"#6A6A6A":"#fff");S.wage.setAttribute("filter",t>=A[5]+1.2?"":"url(#glowB)");
+ S.wL.textContent=t>=B[0]?"THE LESSON":"AN HOUR";
+ S.kid.draw({x:250,y:GY,sc:.72,look:1,droop:t>=A[5]?.5:.1,col:C.white});S.kid.shadow.setAttribute("opacity",0);
+ /* Laden */
+ S.kid2.draw({x:400,y:GY,sc:.72,work:1,t,look:1,col:C.white});S.kid2.shadow.setAttribute("opacity",0);
+ S.dust.forEach((d,i)=>{const k=((t*.5+i/10)%1);d.setAttribute("cx",600+i*32);d.setAttribute("cy",1300-k*240);d.setAttribute("opacity",(Math.sin(k*Math.PI)*.5).toFixed(3));});
+ /* Wochen */
+ S.wks.forEach((w2,i)=>{const k=P(t,A[3]+.2+i*.5,A[3]+.5+i*.5);w2.d.setAttribute("opacity",k);w2.l.setAttribute("opacity",k);});
+ S.raise.x=540;S.raise.y=820;K.popAt(S.raise,t,A[3]+1.8,A[4]-.1,1.1);
+ const ang=P(t,A[3]+1.5,A[3]+2);S.kid3.draw({x:540,y:GY,sc:.72,raise:ang*1.05,droop:-.1,col:C.white});S.kid3.shadow.setAttribute("opacity",0);
+ /* Rich dad */
+ S.rdB.draw({x:760,y:1440,sc:1.5,hl:1});S.kid4.draw({x:330,y:GY,sc:.72,look:1,droop:.2,col:C.white});S.kid4.shadow.setAttribute("opacity",0);
+ /* money flows */
+ const flip=t>=B[2];S.mwL.textContent=flip?"MONEY WORKS FOR THEM":"THEY WORK FOR MONEY";
+ S.row.forEach((b,i)=>b.draw({x:165+i*150,y:GY,sc:.85,hl:flip?(i===2?1:0):.35}));
+ S.mwDots.forEach((arr,i)=>arr.forEach((d,j)=>{const k=((t*.6+j/3+i*.13)%1);const x0=165+i*150,y0=GY-150;d.setAttribute("cx",lerp(x0,540,k));d.setAttribute("cy",lerp(y0,930,k));d.setAttribute("opacity",(!flip?Math.sin(k*Math.PI)*.8:0).toFixed(3));}));
+ S.inDots.forEach((d,j)=>{const k=((t*.7+j/10)%1);d.setAttribute("cx",lerp(540,465,k));d.setAttribute("cy",lerp(930,GY-160,k));d.setAttribute("opacity",(flip?Math.sin(k*Math.PI):0).toFixed(3));});
+ S.coin.setAttribute("filter",flip?"url(#glowB)":"");
+ /* Leben */
+ const lw=P(t,B[3]+.1,B[4]);S.walker.draw({x:lerp(140,920,lw),y:GY,ph:lw*30,stride:.8,col:C.white,droop:lerp(0,.5,lw)});S.walker.shadow.setAttribute("opacity",0);
+ S.rs.forEach((r,i)=>r.setAttribute("opacity",win(t,B[3]+.5+i*.6,B[4],.2,.2).toFixed(3)));
+ /* System */
+ S.gears.forEach((g,i)=>g.setAttribute("transform",`${g.getAttribute("transform").split(" rotate")[0]} rotate(${(i%2?-1:1)*t*60*(70/g.r)})`));
+ S.sysOut.forEach((d,j)=>{const k=((t*.5+j/8)%1);d.setAttribute("cx",lerp(820,1000,k));d.setAttribute("cy",lerp(980,1200,k));d.setAttribute("opacity",(Math.sin(k*Math.PI)*.9).toFixed(3));});
+ /* Fragen */
+ S.q1.x=540;S.q1.y=820;S.q2.x=540;S.q2.y=960;K.popAt(S.q1,t,B[5]+.1,DUR,1);K.popAt(S.q2,t,B[5]+.9,DUR,1.1);
+ S.endFig.draw({x:540,y:GY,look:1,droop:-.15,col:C.white});S.endFig.g.setAttribute("opacity",K.endFade.toFixed(3));S.endFig.shadow.setAttribute("opacity",0);
+ /* Kamera */
+ const c=K.cam;
+ if(t<A[2]){c.sc=lerp(1.08,1.0,eOut(P(t,0,3)));c.cy=1050;}
+ if(sw(A[2],A[3]))camFX.dolly(t,c,A[2],A[3],{sc:1.08,cx:620,cy:1100});
+ if(sw(A[3],A[5])){c.sc=1.0;c.cy=1080;}
+ if(sw(A[5],B[1]))camFX.dolly(t,c,A[5],B[1],{sc:1.1,cx:640,cy:950});
+ if(sw(B[1],B[3])){c.sc=lerp(1.0,1.05,P(t,B[1],B[3]));c.cy=1100;}
+ if(sw(B[3],B[4])){c.sc=1.0;c.cy=1150;}
+ if(sw(B[4],B[5]))camFX.dolly(t,c,B[4],B[5],{sc:1.06,cx:600,cy:1000});
+ if(t>=B[5])camFX.dolly(t,c,B[5],DUR,{sc:1.05,cx:540,cy:1050});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.025,6);camFX.punch(t,c,[B[2]],.08,5);
+ camFX.shake(t,c,[B[2]],10,5);camFX.shake(t,c,[A[5]+1.2],6,7);
+ camFX.wipe(t,c,A[2],1);camFX.wipe(t,c,A[3],-1);camFX.wipe(t,c,A[4],1);camFX.wipe(t,c,A[5],-1);camFX.wipe(t,c,B[1],1);camFX.wipe(t,c,B[3],-1);camFX.wipe(t,c,B[4],1);camFX.wipe(t,c,B[5],-1);
+ K.flash+=K.pulses(t,[B[2],B[5]+1],8,.5,.35);
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

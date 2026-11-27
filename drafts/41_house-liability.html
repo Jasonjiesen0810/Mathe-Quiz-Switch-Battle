@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Money Flow</title></head>
+<body>
+<script>
+/* MONO/Apple – Rich Dad Poor Dad, Lektion 2 (Assets vs. Liabilities). Song "Timeless" – Highlight 0:28 auf "So by that test, it's a liability." */
+const A=[0.05,3.54,7.92,11.5,16.96];
+const B=[22.31,24.37,27.6,35.13,39.47];
+const DUR=48.4;
+const OUT=[A[4]+1.2,A[4]+2.3,A[4]+3.4];
+window.VIDEO={DUR,theme:"mono",hookFX:1,seed:411,audio:"41_vo/mix.wav",
+HEADS:[
+ {a:-1,b:A[1]-.1,hook:1,lines:[["The","house","you're",{t:"proud",gold:1},"of"],["might","be","the","reason"],["you're","not","getting",{t:"rich.",gold:1}]]},
+ {a:A[1]-.05,b:A[2]-.1,lines:[["One","of","the","most",{t:"controversial",gold:1}],["ideas","in","Rich","Dad","Poor","Dad."]]},
+ {a:A[2]-.05,b:A[3]-.1,lines:[["His","rich","dad","used","a"],[{t:"simple",gold:1},"test."]]},
+ {a:A[3]-.05,b:A[4]-.1,lines:[["An","asset","puts","money",{t:"in.",gold:1}],["A","liability","takes","money",{t:"out.",gold:1}]]},
+ {a:A[4]-.05,b:B[0]-.1,lines:[["Now","look","at","the",{t:"house.",gold:1}]]},
+ {a:B[0]-.05,b:B[1]-.1,lines:[["Every","month,","money",{t:"leaves.",gold:1}]]},
+ {a:B[1]-.05,b:B[2]-.1,lines:[["By","that","test,","it's","a"],[{t:"liability.",mark:1}]]},
+ {a:B[2]-.05,b:B[3]-.1,lines:[["The","rich","acquire",{t:"assets.",gold:1}],["Everyone","else","acquires"],["liabilities","and","thinks"],["they're","assets."]]},
+ {a:B[3]-.05,b:B[4]-.1,lines:[["It's","not","how","much","you","make."],["It's","how","much","you",{t:"keep.",gold:1}]]},
+ {a:B[4]-.05,b:DUR-.5,lines:[["Before","you","buy","anything:"],[{t:"Which way does the money flow?",mark:1}]]},
+],
+LABELS:[],
+SFX:[[A[1]+.2,"tick",.8],[A[2]+.2,"tick",.6],[A[2]+.6,"tick",.6],...OUT.map(a=>[a,"tick",.9]),[B[0]+.3,"heartbeat",.7],[B[1],"riser",1],[B[2]+.3,"tick",.7],[B[2]+2.3,"tick",.7],[B[4]+.2,"shimmer",.8]],
+build(K){const {el,txt,C,scene,makeFig,label,big,bust,glass,GY}=K;const S=K.S={};
+ const L={fill:"none",stroke:"#FFFFFF","stroke-width":3,"stroke-linejoin":"round","stroke-linecap":"round",filter:"url(#glow)"};const st=o=>Object.assign({},L,o);
+ const house=(p,x,y,s)=>{const g=el("g",{transform:`translate(${x},${y}) scale(${s})`},p);el("path",st({d:"M-150,-10 L0,-140 L150,-10 M-118,-36 L-118,150 L118,150 L118,-36 M-34,150 L-34,60 L34,60 L34,150"}),g);
+   el("path",st({d:"M60,-80 L60,-128 L90,-128 L90,-54","stroke-width":2.5}),g);return g;};
+ const flow=(p,n)=>[...Array(n)].map(()=>el("circle",{r:6,fill:"#fff",opacity:0,filter:"url(#glow)"},p));
+ /* Szene 1/5/7: Haus */
+ S.h=el("g",{},scene);S.house=house(S.h,540,1080,1.25);S.drip=flow(S.h,8);
+ S.hLab=label(S.h,540,1330,"YOUR BIGGEST ASSET?",22);S.hPill=el("g",{opacity:0},S.h);el("rect",{x:-150,y:-34,width:300,height:68,rx:34,fill:"#F2F2F2",filter:"url(#glowB)"},S.hPill);txt(S.hPill,0,12,"LIABILITY",30,{fill:"#050505","font-weight":600,"letter-spacing":6});
+ S.costs=["MORTGAGE","REPAIRS","TAXES"].map((l,i)=>{const g=el("g",{opacity:0},S.h);label(g,0,0,l,22,{fill:"#EDEDED"});g.dots=flow(g,5);return g;});
+ /* Szene 2: Buch */
+ S.bk=el("g",{opacity:0},scene);glass(S.bk,300,640,480,640);label(S.bk,540,860,"RICH DAD",30,{fill:"#FFFFFF"});label(S.bk,540,910,"POOR DAD",30,{fill:"#8A8A8A"});
+ el("line",{x1:400,y1:980,x2:680,y2:980,stroke:"#fff",opacity:.3,"stroke-width":2},S.bk);label(S.bk,540,1040,"ROBERT T. KIYOSAKI",18);label(S.bk,540,1190,"LESSON 2",18,{fill:"#EDEDED"});
+ /* Szene 3: zwei Väter */
+ S.dads=el("g",{opacity:0},scene);S.b1=bust(S.dads);S.b2=bust(S.dads);label(S.dads,330,1490,"POOR DAD",20);label(S.dads,750,1490,"RICH DAD",20,{fill:"#FFFFFF"});
+ /* Szene 4: Test */
+ S.test=el("g",{opacity:0},scene);glass(S.test,90,720,420,520);glass(S.test,570,720,420,520);
+ label(S.test,300,790,"ASSET",26,{fill:"#FFFFFF"});label(S.test,780,790,"LIABILITY",26,{fill:"#8A8A8A"});
+ const pocket=(x)=>el("path",st({d:`M${x-60},1040 L${x+60},1040 L${x+50},1130 Q${x},1160 ${x-50},1130 Z`}),S.test);pocket(300);pocket(780);
+ label(S.test,300,1200,"MONEY IN",18);label(S.test,780,1200,"MONEY OUT",18);S.fin=flow(S.test,5);S.fout=flow(S.test,5);
+ /* Szene 6: Monate */
+ S.mo=el("g",{opacity:0},scene);el("line",{x1:90,y1:1000,x2:990,y2:1000,stroke:"#fff","stroke-width":2,opacity:.6,filter:"url(#glow)"},S.mo);
+ S.mTicks=["JAN","FEB","MAR","APR","MAY","JUN"].map((m,i)=>{const x=150+i*155;el("circle",{cx:x,cy:1000,r:7,fill:"#fff"},S.mo);label(S.mo,x,1050,m,18);const d=flow(S.mo,3);return {x,d};});
+ /* Szene 8: Spalten */
+ S.cols=el("g",{opacity:0},scene);glass(S.cols,90,640,420,640);glass(S.cols,570,640,420,640);
+ label(S.cols,300,710,"ASSETS",24,{fill:"#FFFFFF"});label(S.cols,780,710,"LIABILITIES",24,{fill:"#8A8A8A"});
+ ["BUSINESSES","RENTAL PROPERTY","STOCKS & BONDS","ROYALTIES"].forEach((l,i)=>label(S.cols,300,820+i*90,l,19,{fill:"#EDEDED"}));
+ ["MORTGAGE","CAR LOAN","CREDIT CARDS","CONSUMER DEBT"].forEach((l,i)=>label(S.cols,780,820+i*90,l,19));
+ S.crowd=[...Array(7)].map(()=>bust(S.cols));
+ /* Szene 9: make/keep */
+ S.mk=el("g",{opacity:0},scene);
+ [["MAKE",780],["KEEP",980]].forEach(([l,y],i)=>{label(S.mk,160,y+8,l,24,{"text-anchor":"start",fill:i?"#FFFFFF":"#8A8A8A"});el("rect",{x:330,y:y-9,width:600,height:18,rx:9,fill:"none",stroke:"#4A4A4A","stroke-width":2},S.mk);S["mk"+i]=el("rect",{x:330,y:y-9,width:0,height:18,rx:9,fill:i?"#FFFFFF":"#6A6A6A",filter:i?"url(#glowB)":""},S.mk);});
+ /* Schluss: Figur + Fluss */
+ S.fig=makeFig();S.endFlow=flow(scene,8);
+},
+render(t,K){const {P,eIO,eOut,eBack,lerp,clamp,win,C,GY,S,camFX}={...K,S:K.S};const sw=(a,b)=>t>=a&&t<b;
+ const sH=t<A[1]||sw(A[4],B[2])||t>=B[4],sBk=sw(A[1],A[2]),sD=sw(A[2],A[3]),sT=sw(A[3],A[4]),sC=sw(B[2],B[3]),sM=sw(B[3],B[4]);
+ const sMo=sw(B[0],B[1]);
+ [[S.h,sH&&!sMo],[S.bk,sBk],[S.dads,sD],[S.test,sT],[S.mo,sMo],[S.cols,sC],[S.mk,sM]].forEach(([g,on])=>g.setAttribute("opacity",on?1:0));
+ const fl=(arr,x0,y0,x1,y1,sp,on,off=0)=>arr.forEach((d,i)=>{const k=((t*sp+i/arr.length+off)%1);d.setAttribute("cx",lerp(x0,x1,k));d.setAttribute("cy",lerp(y0,y1,k)+Math.sin(k*Math.PI)*0);d.setAttribute("opacity",on?(Math.sin(k*Math.PI)*.95).toFixed(3):0);});
+ /* Haus */
+ const endH=t>=B[4];S.house.setAttribute("transform",`translate(${endH?660:540},${endH?1120:1080}) scale(${endH?.9:1.25})`);
+ fl(S.drip,540,1250,540,1520,.55,t<A[1]||sw(A[4],B[0]));
+ S.hLab.setAttribute("opacity",(t<A[1]||sw(A[4],B[1]))?1:0);
+ S.hPill.setAttribute("opacity",(t>=B[1]&&t<B[2]?eOut(P(t,B[1],B[1]+.4)):0).toFixed(3));S.hPill.setAttribute("transform",`translate(540,1340) scale(${(.85+.15*eOut(P(t,B[1],B[1]+.4))).toFixed(3)})`);
+ S.costs.forEach((g,i)=>{const x=[230,540,850][i];g.setAttribute("opacity",win(t,OUT[i],B[0],.35,.3).toFixed(3));g.setAttribute("transform",`translate(${x},${[700,640,700][i]})`);
+   g.dots.forEach((d,j)=>{const k=((t*.7+j/5)%1);d.setAttribute("cx",lerp(0,0,k));d.setAttribute("cy",lerp(30,180,k));d.setAttribute("opacity",(t>=OUT[i]?Math.sin(k*Math.PI)*.9:0).toFixed(3));});});
+ /* Väter */
+ S.b1.draw({x:330,y:1440,sc:1.4,hl:0});S.b2.draw({x:750,y:1440,sc:1.4,hl:eOut(P(t,A[2]+.3,A[2]+.9))});
+ /* Test */
+ fl(S.fin,300,860,300,1080,.8,sT);fl(S.fout,780,1100,780,1330,.8,sT);
+ /* Monate */
+ S.mTicks.forEach((m,i)=>fl(m.d,m.x,1010,m.x,1200,.9,sMo&&t>=B[0]+i*.25,i*.2));
+ /* Spalten + Menge */
+ S.crowd.forEach((b,i)=>{b.draw({x:180+i*120,y:GY,sc:.85,hl:i===3?1:0});});
+ /* make/keep */
+ S.mk0.setAttribute("width",600*eOut(P(t,B[3]+.2,B[3]+1)));S.mk1.setAttribute("width",600*.22*eOut(P(t,B[3]+1.6,B[3]+2.4)));
+ /* Figur */
+ const fOn=t>=B[4];const w=eIO(P(t,B[4]+.3,B[4]+1.6));
+ S.fig.draw({x:lerp(140,300,w),y:GY,ph:w*7,stride:.8,look:1,droop:-.1,col:C.white});S.fig.g.setAttribute("opacity",(fOn?K.endFade:0).toFixed(3));S.fig.shadow.setAttribute("opacity",0);
+ fl(S.endFlow,660,1180,330,1240,.5,fOn&&t>=B[4]+1.2);
+ /* Kamera */
+ const c=K.cam;
+ if(t<A[1]){c.sc=lerp(1.08,1.0,eOut(P(t,0,2.5)));c.cy=1120;}
+ if(sBk)camFX.dolly(t,c,A[1],A[2],{sc:1.06,cx:540,cy:980});
+ if(sD)camFX.dolly(t,c,A[2],A[3],{sc:1.1,cx:640,cy:1200});
+ if(sT){c.sc=1.0;c.cy=1000;}
+ if(sw(A[4],B[0])){c.sc=lerp(.95,1.05,P(t,A[4],B[0]));c.cy=1020;}
+ if(sMo){c.sc=1.0;c.cy=1050;}
+ if(sw(B[1],B[2]))c.sc=lerp(1.15,1.05,eOut(P(t,B[1],B[2])));
+ if(sC){c.sc=lerp(1.0,1.04,P(t,B[2],B[3]));c.cy=1050;}
+ if(sM){c.sc=1.0;c.cy=950;}
+ if(t>=B[4])camFX.dolly(t,c,B[4],DUR,{sc:1.05,cx:500,cy:1080});
+ camFX.punch(t,c,window.VIDEO.HEADS.map(h=>h.a).filter(a=>a>0),.025,6);camFX.punch(t,c,[B[1]],.08,5);
+ camFX.shake(t,c,[B[1]],10,5);
+ camFX.wipe(t,c,A[1],1);camFX.wipe(t,c,A[2],-1);camFX.wipe(t,c,A[3],1);camFX.wipe(t,c,A[4],-1);camFX.wipe(t,c,B[0],1);camFX.wipe(t,c,B[1],-1);camFX.wipe(t,c,B[2],1);camFX.wipe(t,c,B[3],-1);camFX.wipe(t,c,B[4],1);
+ K.flash+=K.pulses(t,[B[1],B[4]+.2],8,.5,.35);
+},
+};
+</script>
+<script src="lib/core.js"></script>
+</body></html>

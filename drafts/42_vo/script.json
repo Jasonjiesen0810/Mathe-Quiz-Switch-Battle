@@ -1,0 +1,90 @@
+{
+ "voice": "af_bella",
+ "modes": 1,
+ "duration": "auto",
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "a",
+   "at": 0.05,
+   "parts": [
+    {
+     "text": "At nine years old, Robert Kiyosaki worked for ten cents an hour.",
+     "mode": "story",
+     "pause": 0.5,
+     "gains": [
+      1.1
+     ]
+    },
+    {
+     "text": "And it became the most valuable job he ever had.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Every Saturday, he worked in a store owned by the man he called his rich dad.",
+     "mode": "story",
+     "pause": 0.5
+    },
+    {
+     "text": "After three weeks, he was angry. He wanted a raise.",
+     "mode": "story",
+     "pause": 0.6
+    },
+    {
+     "text": "Rich dad didn't give him one.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "He took the pay away completely.",
+     "mode": "quote",
+     "pause": 0.7
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "at": "auto",
+   "gap": 0.8,
+   "parts": [
+    {
+     "text": "Because the low pay was the lesson.",
+     "mode": "quote",
+     "pause": 0.6
+    },
+    {
+     "text": "The poor and the middle class work for money.",
+     "mode": "quote",
+     "pause": 0.5
+    },
+    {
+     "text": "The rich have money work for them.",
+     "mode": "quote",
+     "pause": 0.9,
+     "gains": [
+      1.15
+     ]
+    },
+    {
+     "text": "Most people spend their lives asking for a raise.",
+     "mode": "normal",
+     "pause": 0.5
+    },
+    {
+     "text": "Very few ask how to build something that pays them, even when they're not there.",
+     "mode": "normal",
+     "pause": 0.6
+    },
+    {
+     "text": "Which question are you asking?",
+     "mode": "quote",
+     "pause": 1.0,
+     "gains": [
+      1.1
+     ]
+    }
+   ]
+  }
+ ]
+}
